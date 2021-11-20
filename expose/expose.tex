@@ -1,0 +1,68 @@
+\documentclass{scrartcl}
+
+\usepackage{csquotes}
+
+\subject{Exposé}
+\title{Parallelization of Software Verification}
+\author{
+    Vincent Winkler\\
+    \vspace{1em}\\
+    Reviewer: Prof. Dr. Bernhard Beckert\\
+    \vspace{1em}\\
+    Advisor: Dr. Mattias Ulbrich
+}
+
+\begin{document}
+
+\maketitle
+
+This exposè was produced during the early stages of a master thesis
+surrounding the topic of parallelization of software verification.
+Its aim is to clarify the goals of the thesis, provide the means to draft a schedule,
+and make sure the work heads in the right direction.
+Furthermore it functions as an agreement between the thesis reviewer and the student
+and defines the expectations that will be evaluated in the assessment of the thesis.
+
+This exposè is an instance of a type of document defined in
+\enquote{Handreichung zur Erstellung eines Exposés für eine Abschlussarbeit}.
+
+\section{Exposition}
+The central object is the existing KeY Verification Tool.
+The thesis sets out to modify or extend KeY in order to make more use of parallelization
+and thereby increase runtime performance.
+This modification is the primary artefact of the thesis.
+It is examined in the light of the question whether it sufficeintly improves the runtime
+performance to increase KeY's usability.
+The artefact includes multiple parallelization approaches.
+The thesis seeks to determine how to apply these approaches
+and how they compare among each other.
+A particular interest is their individual performance impact.
+These rather tangible objects of research are expected
+to enhance present knowledge on a more abstract question:
+\enquote{How to parallelize formal software verification}.
+
+Prior to the work on the thesis,
+two approaches for parallelization have been recognized to be promising.
+One is the parallelization of KeY itself.
+Internally, KeY uses a tree structure, further branching out as it works on its tasks.
+As work on one branch is mostly independend from work on another,
+a \enquote{by-branch} parallelization is possible.
+Implementation of this approach is made more complicated
+by datastructures shared between branches.
+Thus spotting these datastructures and parallelizing them
+before assigning the branches to different threads (e.g. from a thread pool),
+is required.
+KeY can also be viewed as a black box that outputs SMT proof obligations.
+These proof obligations are already being run concurrently in different SMT solver instances.
+Similarly, a single proof obligation can be run independendly in several instances
+composing a \enquote{parallel portfolio}.
+As with every portfolio, diversification is crucial.
+The solver instances should differ in the choice of SMT solver,
+in their configuration and/or have different seeds.
+An additional dimension to the diversification has been called \enquote{Cut-Points}.
+% ToDo: describe what that means
+Parallel portfolios are the second approach explored in the thesis.
+Parallelization of the innards of SMT solvers themself is not planned to be a task in this thesis,
+however the state of the art in parallel SMT solving should be researched.
+
+\end{document}
