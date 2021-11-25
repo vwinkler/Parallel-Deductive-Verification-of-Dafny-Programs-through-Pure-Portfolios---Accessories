@@ -49,7 +49,11 @@ to enhance present knowledge on a more abstract question:
 \subsection{Research approach}
 Prior to the work on the thesis,
 two approaches for parallelization have been recognized to be promising.
-One is the parallelization of KeY itself.
+The approach that will actually be followed
+or if both will be followed is not yet decided
+and depends on the problems that come up during their implementation.
+
+The first approach is the parallelization of KeY itself.
 Internally, KeY uses a tree structure, further branching out as it works on its tasks.
 As work on one branch is mostly independent from work on another,
 a \enquote{by-branch} parallelization is possible.
@@ -62,7 +66,7 @@ is required.
 KeY can also be viewed as a black box that outputs SMT proof obligations.
 These proof obligations are already being run concurrently in different SMT solver instances.
 Similarly, running a single proof obligation in several instances (\enquote{parallel portfolio})
-constitutes a parallelization and the second approach explored in the thesis.
+constitutes a parallelization and the second approach for the thesis.
 As with every portfolio, diversification is crucial.
 The solver instances should differ in the choice of SMT solver,
 in their configuration and/or have different seeds.
@@ -82,18 +86,18 @@ yields information on their effectiveness in general.
 \section{Research goal}
 On completion there will be a version of the KeY verification tool
 (hereby known as \enquote{more parallel version of KeY})
-that makes use of the above-mentioned parallelization approaches.
+that makes use of at least one of the above-mentioned parallelization approaches.
 
-The artifact and the individual approaches will be evaluated
+The artifact and the implemented, individual approaches will be evaluated
 against the benchmarks that are part of KeY's nightly builds.
-Additinaly, the portfolio approach will be evaluated with applicable benchmarks from
-SMT-LIB.
+Additinaly, if implemented,
+the portfolio approach will be evaluated with applicable benchmarks from SMT-LIB.
 Runtime and speedup are particularly interesting quantities for this purpose,
 hence runtime and speedup plots will be the artifacts of the evaluation.
 They'll allow comparing KeY with the more parallel version of KeY and
-both parallelization approaches among each other.
+both parallelization approaches among each other, if both will be implemented.
 Moreover, they'll provide the basis for finding an appropriate configuration
-and implementation for both approaches.
+and implementation for either approach.
 Besides the results, an attempt at their explanation will also be part of the evaluation.
 
 A decrease in runtime by a factor of at least two would be considerable.
