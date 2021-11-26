@@ -7,7 +7,7 @@
 \usepackage{subcaption}
 \usepackage{multirow}
 \usepackage{listings}
-
+\usepackage{csquotes}
 \usepackage{enumerate}
 \usepackage{scrextend}
 
@@ -33,10 +33,35 @@
         \item How successfull are parallel SMT solvers?
         \item Are they used particularly in software verification?
         \item Have (parallel) porfolios been used in SMT solving?
+        \item How is diversification achieved?
     \end{enumerate}
 \end{addmargin}
 
 \vspace{1cm}
 
+SMT solving is mentioned as the \enquote{traditional application field of SMT solvers}.
+It is stated that SMT solving exhibits an inherent randomness
+that lends itself to a parallel portfolio approach.
+Previous work on SMT portfolios can be found in
+\enquote{A Concurrent Portfolio Approach to SMT Solving} by Wintersteiger
+which is reported to compare \enquote{favorably to many other portfolio-based approaches}.
+
+% Figure 5.1 is an interesting presentation.
+
+The paper exclaims:
+\enquote{Sharing of learned lemmas plays a central role in parallel SMT.}
+About three pages including some pseudocode is dedicated to this aspect.
+
+The rest of the paper (about ten pages) highlights SMT solver parallelization strategies
+other than portfolios.
+These are search-space partitioning and decomposition,
+A partitioning of a formula is an equivalent disjunction into formulas
+whose pairwise conjunctions are unsatisfiable.
+This entails that searching for a satisfying assignment at the same \enquote{coordinates}
+is futile as one should expect from a partitioning.
+Decomposition is introduced as an alternative to partitioning,
+without this feature.
+
+% For diversification, read p. 147
 
 \end{document}
