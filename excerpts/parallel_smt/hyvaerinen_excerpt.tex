@@ -45,8 +45,19 @@ that lends itself to a parallel portfolio approach.
 Previous work on SMT portfolios can be found in
 \enquote{A Concurrent Portfolio Approach to SMT Solving} by Wintersteiger
 which is reported to compare \enquote{favorably to many other portfolio-based approaches}.
+The paper only very briefly strikes diversification techniques
+and mentions several examples of places for randomization without giving details:
+\begin{itemize}
+    \item \enquote{explanation generation inside the theory solvers}
+    \item \enquote{the process used for selecting decision literals}
+    \item tie breaking
+    \item \enquote{a heuristic equivalence parameter}
+    \item \enquote{mixing random heuristics together with a more context-dependent heuristic}
+    \item \enquote{different algorithms for the core theory solvers}
+\end{itemize}
 
-% Figure 5.1 is an interesting presentation.
+
+Figure 5.1 is an interesting presentation.
 
 The paper exclaims:
 \enquote{Sharing of learned lemmas plays a central role in parallel SMT.}
@@ -62,6 +73,11 @@ is futile as one should expect from a partitioning.
 Decomposition is introduced as an alternative to partitioning,
 without this feature.
 
-% For diversification, read p. 147
+As a side note: The paper has an interesting way to present the rationale of a portfolio approach.
+The runtime of a SMT solver (for a particular formula) is understood as a random variable \(T\).
+Figure 5.1 displays the probability densitiy function of \(T\) for two different formulas.
+The paper acknowledges:
+\enquote{the difference between the two distributions means that the instances will benefit
+from parallelization approaches in very different ways}.
 
 \end{document}
