@@ -7,7 +7,7 @@
 \usepackage{subcaption}
 \usepackage{multirow}
 \usepackage{listings}
-
+\usepackage{csquotes}
 \usepackage{enumerate}
 \usepackage{scrextend}
 
@@ -33,10 +33,55 @@
         \item How successfull are parallel SMT solvers?
         \item Are they used particularly in software verification?
         \item Have (parallel) porfolios been used in SMT solving?
+        \item How is diversification achieved?
     \end{enumerate}
 \end{addmargin}
 
 \vspace{1cm}
+
+Wintersteiger, Hamadi, and de Moura describe their parallel version of Z3.
+They apply the parallel portfolio approach by running four sequential Z3 solvers
+with different configurations.
+
+Their benchmarks are from the QF\_IDL (quantifier-free integer difference logic) category
+of the SMT library.
+They tested four different portfolios that yielded speedups \(S\).
+Many benchmarks took sequential Z3 only less than \(60\, s\) to solve
+hence the parallelization overhead dominates.
+Excluding those benchmarks resulted in a much higher speedup of \(S'\).
+\begin{itemize}
+    \item four arithmetic solvers without sharing \(\,\to\, S < 1.0\)
+    \item four arithmetic solvers (with sharing) \(\,\to\, S = 1.06, S' = 3.2\)
+    \item four solvers with diversified SAT strategies (with sharing)
+        \(\,\to\, S = 1.14, S' = 2.6\)
+    \item four solvers with randomized seeds (with sharing)\(\,\to\, S = 1.28, S' = 3.5\)
+\end{itemize}
+
+\textit{I believe QF\_IDL is, as a subset of ILP, decidable and in \(NP\)
+I wonder if the portfolio approach would have performed better on more difficult
+benchmarks.}
+
+The paper is very vague and ambiguous when it comes to its diversification approach.
+To quote the full description:
+\enquote{The default conﬁguration of our implementation uses the same portfolio as
+ManySAT on the ﬁrst four cores, i.e., it only diversiﬁes based on heuristics spe-
+ciﬁc to the built-in SAT-solver. Additional cores are conﬁgured by using diﬀerent
+combinations of settings. Other conﬁgurations may be set from the command
+line, a feature available to the user in order to deﬁne their own portfolios.}
+In the final section of the paper, the authors expect better portfolios
+from the practical application of their solver.
+
+Furthermore, it looks like the four arithmetic solvers are:
+a QF\_UF (quantifier-free uninterpreted functions logic) solver,
+two algorithmically different difference-logic solvers,
+and one simplex solver.
+The first three are over-approximations that can only definitively determine unsatisfiability.
+These solvers are mentioned in the \enquote{Portfolios} section of the paper.
+
+As a side note:
+The paper claims that
+\enquote{most benchmarks in the SMT library require a relatively small amount of memory to solve}
+and that \enquote{it is rare to see benchmarks that require more than 100 MB}.
 
 
 \end{document}
