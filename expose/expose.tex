@@ -1,7 +1,10 @@
 \documentclass{scrartcl}
 
+\usepackage{biblatex}
 \usepackage{csquotes}
 \usepackage{draftwatermark}
+
+\addbibresource{sources.bib}
 
 \SetWatermarkScale{5}
 
@@ -103,5 +106,30 @@ Besides the results, an attempt at their explanation will also be part of the ev
 A decrease in runtime by a factor of at least two would be considerable.
 Reducing the asymptotic time complexity however, is unobtainable
 as the problems are undecidable.
+
+\section{state of the art}
+In 2018 Hyvärinen and Wintersteiger \cite{HJW2018} provided an overview of
+recent advances in parallel SMT solving.
+It states that, next to search-space partitinging and decomposition,
+parallel portfolios are an applicable approach towards parallel SMT solving.
+Hyvärinen and Wintersteiger particularly reference \cite{WHM2009}, a paper from 2009.
+
+In this paper Wintersteiger, Hamadi and de Moura describe their parallelization of the
+SMT solver Z3.
+They test three different portfolio approaches using the QF\_IDL
+(quantifier-free integer difference logic) benchmarks from SMT-LIB.
+Diversification in those three approaches is accomplished through using
+different SMT solvers, a diversified SAT solving strategy
+and randomized seeds respectively.
+Bumping into problems with parallelization overhead due to memory bandwidth,
+they did not achieve a sufficient speedup on most benchmarks.
+However, selecting only problems that take sequential Z3 at least 60 seconds to solve,
+their best portfolio yielded an average speedup of \(3.5\) on four cores.
+
+The work proposed in this exposé sets itself apart from Wintersteiger, Hamadi and de Moura's work
+in the approach taken to diversify the solvers in the portfolio.
+A benchmark suite more focused on deductive software verification leads to further distinction.
+
+\printbibliography
 
 \end{document}
