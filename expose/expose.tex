@@ -55,6 +55,7 @@ two approaches for parallelization have been recognized to be promising.
 The approach that will actually be followed
 or if both will be followed is not yet decided
 and depends on the problems that come up during their implementation.
+Particulars are given below.
 
 The first approach is the parallelization of KeY itself.
 Internally, KeY uses a tree structure, further branching out as it works on its tasks.
@@ -65,6 +66,9 @@ by datastructures shared between branches.
 Thus spotting these datastructures and parallelizing them
 before assigning the branches to different threads (e.g. from a thread pool),
 is required.
+This approach can be followed until KeY's entire feature set
+is working in the parallel version
+or just until only a sufficiently significant subset is supported.
 
 KeY can also be viewed as a black box that outputs SMT proof obligations.
 These proof obligations are already being run concurrently in different SMT solver instances.
@@ -152,11 +156,22 @@ A benchmark suite more focused on deductive software verification leads to furth
     \end{enumerate}
     \item write Thesis (\(8\, wk \le t \le 12\, wk\))
 \end{itemize}
+
 The implementation of an evaluation environment is finished as soon as
 all important plots (at least runtime and speedup) can be generated from the benchmarks.
 Within the meaning of this exposé, one is considered acquainted with KeY,
 as soon as they know where the parallelization of the branches would have to be
 implemented in the code.
+
+Along the \enquote{Parallel SMT Portfolio}-approach the
+\enquote{become acquainted with KeY}-step of the \enquote{Parallel KeY}-approach
+will be followed.
+Then, for further procedure, exactly one of the following options may be taken:
+\begin{itemize}
+    \item fully implementing the portfolio, abandoning the parallelization of KeY
+    \item fully implementing the portfolio, partially implementing the parallelization of KeY
+    \item abandoning the portfolio, fully implementing the parallelization of KeY
+\end{itemize}
 
 Taking into account that the total time cannot exceed 26 weeks,
 the aggregated time spent on both approaches has to be less than 14 weeks
