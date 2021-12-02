@@ -1,0 +1,86 @@
+\documentclass{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{oz}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{csquotes}
+\usepackage{enumerate}
+\usepackage{scrextend}
+
+\title{Excerpt of smt-comp.github.io/2021}
+
+\begin{document}
+\begin{center}
+    \Large{\textbf{Excerpt of}}
+
+    \LARGE{smt-comp.github.io/2021}
+
+    \large{by Haniel Barbosa, Jochen Hoenicke, Antti Hyvarinen}
+\end{center}
+
+\vspace{1cm}
+
+\begin{addmargin}[0.2\linewidth]{0.2\linewidth}
+    \begin{center}
+        \textbf{Key questions}
+    \end{center}
+    \begin{enumerate}[i]
+        \item What is the state of the art in parallel SMT solving?
+        \item How successfull are parallel SMT solvers?
+        \item Are they used particularly in software verification?
+        \item Have (parallel) porfolios been used in SMT solving?
+    \end{enumerate}
+\end{addmargin}
+
+\vspace{1cm}
+
+The 2021 SMT-COMP featured a Cloud Track and Parallel Track.
+All tracks used AWS hardware.
+Each instance had a wall-clock time limit of 20 minutes.
+The Cloud Track submissions were run on 100 machines (m4.4xlarge)
+à 16 virtual CPUs with 64 GB memory.
+The Parallel track submissions were run on a single machine (m4.16xlarge)
+with 64 virtual cores and 256 GB memory.
+
+In total there were six submissions in the Cloud Track and four in the Parallel Track
+(each had one non-competing submission, namely \enquote{Par4}).
+
+\begin{tabular}{ | p{.3\linewidth} | p{.3\linewidth} | p{.3\linewidth} | }
+    \hline
+    Submission/Solver & Cloud Track & Parallel Track \\
+    \hline\hline
+    SMTS cube-and-conquer & \tiny QF\_IDL, QF\_LIA, QF\_LRA, QF\_RDL, QF\_UF & \\
+    \hline
+    SMTS portfolio & \tiny QF\_IDL, QF\_LIA, QF\_LRA, QF\_RDL, QF\_UF & \\
+    \hline
+    STP-CMS-Cloud & \tiny QF\_BV & \\
+    \hline
+    STP-parallel & & \tiny QF\_BV \\
+    \hline
+    Vampire &
+    \tiny
+    ALIA, AUFDTLIA, AUFDTLIRA, AUFDTNIRA, AUFLIA, AUFLIRA, AUFNIA, AUFNIRA,
+    LIA, LRA, NIA, NRA, UF, UFDT, UFDTLIA, UFDTLIRA, UFDTNIA, UFDTNIRA, UFIDL, UFLIA,
+    UFLRA, UFNIA &
+    \tiny
+    ALIA, AUFDTLIA, AUFDTLIRA, AUFDTNIRA, AUFLIA, AUFLIRA, AUFNIA, AUFNIRA,
+    LIA, LRA, NIA, NRA, UF, UFDT, UFDTLIA, UFDTLIRA, UFDTNIA, UFDTNIRA, UFIDL, UFLIA,
+    UFLRA, UFNIA \\
+    \hline
+    cvc5-gg & many & many \\
+    \hline
+    Par4 &
+    \tiny
+    AUFLIRA, AUFNIRA, BV, LRA, NRA, QF\_ABV, QF\_BV, QF\_BVFP, QF\_FP, QF\_IDL, QF\_LIA,
+    QF\_LIRA, QF\_LRA, QF\_NIA, QF\_NRA, QF\_UF, QF\_UFNRA, UF, UFBV, UFIDL, UFLIA, UFNIA &
+    \tiny
+    AUFLIRA, AUFNIRA, BV, LRA, NRA, QF\_ABV, QF\_BV, QF\_BVFP, QF\_FP, QF\_IDL, QF\_LIA,
+    QF\_LIRA, QF\_LRA, QF\_NIA, QF\_NRA, QF\_UF, QF\_UFNRA, UF, UFBV, UFIDL, UFLIA, UFNIA \\
+    \hline
+\end{tabular}
+
+\end{document}
