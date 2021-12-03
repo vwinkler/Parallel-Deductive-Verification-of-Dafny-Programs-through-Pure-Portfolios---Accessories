@@ -1,0 +1,65 @@
+\documentclass{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{oz}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{csquotes}
+\usepackage{enumerate}
+\usepackage{scrextend}
+
+\title{Excerpt of CVC5-gg at the SMT Competition 2021}
+
+\begin{document}
+\begin{center}
+    \Large{\textbf{Excerpt of}}
+
+    \LARGE{CVC5-gg at the SMT Competition 2021}
+
+    \large{by Clark Barrett, Andres Nötzli, Alex Ozdemir1, Andrew Reynolds,
+    Cesare Tinelli, Amalee Wilson, and Haoze Wu}
+\end{center}
+
+\vspace{1cm}
+
+\begin{addmargin}[0.2\linewidth]{0.2\linewidth}
+    \begin{center}
+        \textbf{Key questions}
+    \end{center}
+    \begin{enumerate}[i]
+        \item What is the state of the art in parallel SMT solving?
+        \item How successfull are parallel SMT solvers?
+        \item Are they used particularly in software verification?
+        \item Have (parallel) porfolios been used in SMT solving?
+    \end{enumerate}
+\end{addmargin}
+
+\vspace{1cm}
+
+cvc5-gg performs a recursive partitioning of the formula
+or in other words it is a divide-and-conquer SMT solver.
+Each recursive step consists of an attempt to solve formula (using cvc5)
+and if it times out, a subsequent split.
+The formula \(F\) is transformed into the equisatisfiable formula
+\(F \wedge C_1 \vee \dots \vee F \wedge C_d\) where \(C_1, \dotsc, C_d\) are cubes
+encoding a partitioning of the search space.
+The sub-problems \(F \wedge C_1, \dotsc, F \wedge C_d\) are added to a queue
+and will be solved with an increased timeout.
+
+The splitter abuses cvc5 to generate the cubes.
+cvc5 is a CDCL(T) solver hence the calls to theory solvers can be intercepted
+after a model for the SAT skeleton was found.
+The decision literals that cvc5 used to produce that model is used as the cube \(C_1\)
+(only the first \(log_2(d)\) literals ar used).
+The negation of that cube is added as an assertion to the formula
+and another cube is produced in the same way.
+It may occur that not enough cubes can be produced.
+In that case, lemmas produced by the theory solvers may yield more cubes.
+Either way, the final cube will be \(C_n = \neg C_1 \vee \dots \vee \neg C_{n-1}\).
+
+cvc5-gg uses gg for scheduling sub-problems and executing solvers.
+
+\end{document}
