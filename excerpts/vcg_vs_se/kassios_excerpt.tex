@@ -39,5 +39,34 @@
 
 \vspace{1cm}
 
+The paper abstracts automated program verification into three layers:
+the specification methodology, the program verifier, and the theorem prover.
+The program verifier extracts proof obligations which are passed to the theorem prover.
+There are two approaches to design program verifiers:
+Verification Condition Generation (VCG) and Symbolic Execution (SE).
+VCG \enquote{uses programming calculi such as weakest preconditions
+to compute a formula whose validity entails the correctness of the program}.
+SE \enquote{executes a program using symbolic instead
+of concrete values and accumulates constraints on those values, which are
+used to generate proof obligations}.
+
+The paper uses the Chalice language and compares two verification setups:
+\begin{enumerate}
+    \item Chalice's VCG-based verifier (Z3 as verifier)
+    \item a new SE engine (Z3 as verifier)
+\end{enumerate}.
+
+\textit{Note: KeY uses SE and not VCG, hence trying to use VCG/SE for diversification entails
+using a verification tool other than KeY.}
+
+The paper does not beat around the bush with its conclusion that
+\enquote{SE is generally more efficient}, albeit by only a constant factor.
+However, they do concede that it \enquote{is not clear to what degree our observations
+apply to KeY-style SE}.
+The key differences being that KeY uses JML as specification language
+and the handling of heap properties.
+
+\textit{Note: This interpretation of their results does not at all lend itself
+    to a promise of good diversification through VCG/SE}.
 
 \end{document}
