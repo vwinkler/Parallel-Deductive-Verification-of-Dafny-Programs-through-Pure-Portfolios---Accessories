@@ -25,7 +25,8 @@ class SmtProcessStream:
         return self.process.communicate()
 
     def write(self, input):
-        self.process.communicate(input, timeout=1)
+        self.process.communicate(input, timeout=10)
+
 
     def write_eof(self):
         self.process.stdin.close()

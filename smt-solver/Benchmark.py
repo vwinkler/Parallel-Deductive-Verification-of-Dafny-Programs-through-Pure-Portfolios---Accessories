@@ -39,7 +39,12 @@ class Benchmark:
         pid = process.get_pid()
         self.processes[pid] = (process, instance)
         self.printStartMessage(command, pid)
+        self.assignProcessToInstance(instance, process)
+
+    def assignProcessToInstance(self, instance, process):
         instance.assign_process(process.get_stream())
+        if instance.termination_pending:
+            self.forceProcessTermination(process)
 
     def awaitTerminationOfAllProcesses(self):
         while len(self.processes) > 0:
@@ -64,11 +69,18 @@ class Benchmark:
         process.wait()
         return pid
 
+    def forceProcessTermination(self, process):
+        process.terminate()
+        self.cleanUpTerminatedProcess(process.get_pid())
+
     def cleanUpTerminatedProcess(self, pid):
         (process, instance) = self.processes[pid]
         del self.processes[pid]
         instance.unassign_process()
         self.printTerminationMessage(pid)
+        self.terminatePendingProcesses()
+
+    def terminatePendingProcesses(self):
         for pid, (process, instance) in self.processes.items():
             if instance.has_termination_pending():
                 process.terminate()

@@ -41,8 +41,11 @@ class Z3Instance:
     def assign_process(self, stream):
         self.solving_begin_time = time()
         self.stream = stream
-        stream.write(self.smt2_string)
-        stream.write_eof()
+        try:
+            stream.write(self.smt2_string)
+            stream.write_eof()
+        except:
+            self.termination_pending = True
 
     def unassign_process(self):
         (self.output, self.errors) = self.stream.read()
