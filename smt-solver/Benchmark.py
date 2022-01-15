@@ -1,4 +1,5 @@
 import os
+from time import sleep
 from time import time
 
 from SmtPortfolio import SmtPortfolio
@@ -53,10 +54,10 @@ class Benchmark:
                 self.cleanUpTerminatedProcess(pid)
 
     def awaitTerminatedProcess(self):
-        try:
-            pid = self.awaitNextProcessTermination()
-        except ChildProcessError:
-            pid = self.awaitTerminationOfSomeProcess()
+        #try:
+            #pid = self.awaitNextProcessTermination()
+        #except ChildProcessError:
+        pid = self.awaitTerminationOfSomeProcess()
         return pid
 
     def awaitNextProcessTermination(self):
