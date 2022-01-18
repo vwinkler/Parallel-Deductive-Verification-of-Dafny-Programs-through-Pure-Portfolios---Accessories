@@ -3,6 +3,7 @@ from subprocess import PIPE
 import threading
 from time import time
 
+
 class SmtProcess:
     def __init__(self, args):
         self.process = subprocess.Popen(args, stdin=PIPE, stdout=PIPE, stderr=PIPE, text=True)
@@ -19,6 +20,10 @@ class SmtProcess:
 
     def wait(self):
         return self.process.wait()
+
+    def has_terminated(self):
+        return self.process.poll() is not None
+
 
 class SmtProcessStream:
     def __init__(self, process):
@@ -57,4 +62,3 @@ class SmtProcessStream:
             raise e
         finally:
             self.lock.release()
-            

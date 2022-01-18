@@ -26,6 +26,7 @@ class Benchmark:
     def runPortfolio(self):
         self.portfolio = SmtPortfolio(self.problem)
         self.startProcesses()
+
         self.awaitTerminationOfAllProcesses()
 
     def startProcesses(self):
@@ -49,16 +50,18 @@ class Benchmark:
 
     def awaitTerminationOfAllProcesses(self):
         while len(self.processes) > 0:
+            self.tryAwaitTerminatedProcess()
+            self.cleanUpTerminatedProcesses()
+
+    def tryAwaitTerminatedProcess(self):
+        try:
             pid = self.awaitTerminatedProcess()
-            if pid in self.processes:
-                self.cleanUpTerminatedProcess(pid)
+        except ChildProcessError:
+            pid = None
+        return pid
 
     def awaitTerminatedProcess(self):
-        #try:
-            #pid = self.awaitNextProcessTermination()
-        #except ChildProcessError:
-        pid = self.awaitTerminationOfSomeProcess()
-        return pid
+        return self.awaitNextProcessTermination()
 
     def awaitNextProcessTermination(self):
         pid, _ = os.wait()
@@ -73,6 +76,12 @@ class Benchmark:
     def forceProcessTermination(self, process):
         process.terminate()
         self.cleanUpTerminatedProcess(process.get_pid())
+
+    def cleanUpTerminatedProcesses(self):
+
+        terminatedProcesses = [pid for pid, (process, _) in self.processes.items() if process.has_terminated()]
+        for pid in terminatedProcesses:
+            self.cleanUpTerminatedProcess(pid)
 
     def cleanUpTerminatedProcess(self, pid):
         (process, instance) = self.processes[pid]
