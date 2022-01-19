@@ -47,7 +47,7 @@ class SmtProcessStream:
     def write_and_eof_blocking(self, input):
         self.lock.acquire()
         try:
-            self.process.communicate(input, timeout=10)
+            self.process.communicate(input)
             self.process.stdin.close()
         except Exception as e:
             raise e
