@@ -21,6 +21,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run a portfolio of SMT-Solvers")
     parser.add_argument("--problems", "-f", metavar="IN_FILENAME:OUT_FILENAME", dest="filenames", type=file_tuple,
                         nargs="+")
+    parser.add_argument("--seed", metavar="STRING", dest="seed", type=str)
 
     args = parser.parse_args()
 
@@ -31,7 +32,7 @@ if __name__ == "__main__":
         in_file = open(problem_files["in"], "r")
         out_file = open(problem_files["out"], "w")
         problem = SmtProblem(in_file)
-        benchmark = Benchmark(sys.stdout)
+        benchmark = Benchmark(sys.stdout, args.seed)
 
         result = benchmark.run(problem)
 

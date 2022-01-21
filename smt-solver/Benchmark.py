@@ -1,4 +1,5 @@
 import os
+from random import Random
 from time import sleep
 from time import time
 
@@ -8,8 +9,9 @@ import util
 
 
 class Benchmark:
-    def __init__(self, output):
+    def __init__(self, output, seed):
         self.output = output
+        self.random = Random(seed)
         self.problem = None
         self.start_time = None
         self.end_time = None
@@ -24,7 +26,7 @@ class Benchmark:
         return self.makeResultJson()
 
     def runPortfolio(self):
-        self.portfolio = SmtPortfolio(self.problem)
+        self.portfolio = SmtPortfolio(self.problem, self.random.randint(0, 2 ** 32))
         self.startProcesses()
 
         self.awaitTerminationOfAllProcesses()

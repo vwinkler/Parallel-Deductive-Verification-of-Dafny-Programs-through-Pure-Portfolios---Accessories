@@ -1,11 +1,12 @@
-import random
+from random import Random
 from time import time
 
 import util
 
 class SmtPortfolio:
-    def __init__(self, problem):
+    def __init__(self, problem, seed):
         self.problem = problem
+        self.random = Random(seed)
         self.instances = []
         self.creation_time = time()
         self.first_solution_time = None
@@ -13,7 +14,7 @@ class SmtPortfolio:
     def make_instances(self, num_instances):
         instances = [Z3Instance(self.problem.smt2_string, self) for i in range(num_instances)]
         for instance in instances:
-            instance.seed = random.randint(0, 2 ** 32)
+            instance.seed = self.random.randint(0, 2 ** 32)
         self.instances.extend(instances)
         return instances
 
