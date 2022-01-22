@@ -6,7 +6,7 @@ import argparse
 import json
 
 from SmtProblem import SmtProblem
-from PortfolioSolver import PortfolioSolver
+from solvers import make_solver, solver_names
 
 
 def file_tuple(s):
@@ -19,6 +19,7 @@ def file_tuple(s):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run a portfolio of SMT-Solvers")
+    parser.add_argument("--solver", metavar="STRING", dest="solver", type=str, choices=solver_names)
     parser.add_argument("--problems", "-f", metavar="IN_FILENAME:OUT_FILENAME", dest="filenames", type=file_tuple,
                         nargs="+")
     parser.add_argument("--seed", metavar="STRING", dest="seed", type=str)
@@ -32,8 +33,8 @@ if __name__ == "__main__":
         in_file = open(problem_files["in"], "r")
         out_file = open(problem_files["out"], "w")
         problem = SmtProblem(in_file)
-        benchmark = PortfolioSolver(sys.stdout, args.seed)
+        solver = make_solver(sys.stdout, args)
 
-        result = benchmark.run(problem)
+        result = solver.run(problem)
 
         json.dump(result, out_file, indent=2)
