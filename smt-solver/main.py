@@ -6,7 +6,7 @@ import argparse
 import json
 
 from SmtProblem import SmtProblem
-from Benchmark import Benchmark
+from PortfolioSolver import PortfolioSolver
 
 
 def file_tuple(s):
@@ -32,7 +32,7 @@ if __name__ == "__main__":
         in_file = open(problem_files["in"], "r")
         out_file = open(problem_files["out"], "w")
         problem = SmtProblem(in_file)
-        benchmark = Benchmark(sys.stdout, args.seed)
+        benchmark = PortfolioSolver(sys.stdout, args.seed)
 
         result = benchmark.run(problem)
 

@@ -4,10 +4,10 @@ import threading
 from time import time
 
 
-class SmtProcess:
+class Process:
     def __init__(self, args):
         self.process = subprocess.Popen(args, stdin=PIPE, stdout=PIPE, stderr=PIPE, text=True)
-        self.stream = SmtProcessStream(self.process)
+        self.stream = ProcessStream(self.process)
 
     def get_pid(self):
         return self.process.pid
@@ -25,7 +25,7 @@ class SmtProcess:
         return self.process.poll() is not None
 
 
-class SmtProcessStream:
+class ProcessStream:
     def __init__(self, process):
         self.thread = None
         self.process = process

@@ -4,11 +4,11 @@ from time import sleep
 from time import time
 
 from SmtPortfolio import SmtPortfolio
-from SmtProcess import SmtProcess
+from Process import Process
 import util
 
 
-class Benchmark:
+class PortfolioSolver:
     def __init__(self, output, seed):
         self.output = output
         self.random = Random(seed)
@@ -39,7 +39,7 @@ class Benchmark:
 
     def startProcess(self, instance):
         command = instance.get_cli_command()
-        process = SmtProcess(command)
+        process = Process(command)
         pid = process.get_pid()
         self.processes[pid] = (process, instance)
         self.printStartMessage(command, pid)
