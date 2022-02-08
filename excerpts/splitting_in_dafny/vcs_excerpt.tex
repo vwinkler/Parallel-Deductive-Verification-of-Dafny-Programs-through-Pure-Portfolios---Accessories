@@ -48,6 +48,14 @@ Multiple proof obligations in the same branch are kept together,
 as lemmas discovered during the proof of one obligation may be useful for subsequent ones.
 
 The authors carefully define a type of CFGs that has \enquote{assume} and \enquote{assert}.
+These CFGs are acyclic, because the loops are replaced by an induction
+(it is assumed that the invariant is known).
+Furthermore, the vertices have no more than two children
+(can be accomplished through transofmation).
+\textit{An example can be found in figure 0 (\enquote{A horizontal split}).
+Note that there presubambly is an error: the third vertex should have \(\all\)
+instead of \(\exists\). The vertex is the induction hypothesis for any \(i_1\).}
+
 They define that a CFG \enquote{goes wrong} if an execution trace exists
 such that all assumptions on it evaluate to true but the last node of the trace has an assertion
 that evaluates to false.
