@@ -1,0 +1,63 @@
+\documentclass{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{oz}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{csquotes}
+\usepackage{enumerate}
+\usepackage{scrextend}
+
+\title{Excerpt of: Verification Condition Splitting}
+
+\begin{document}
+\begin{center}
+    \Large{\textbf{Excerpt of}}
+
+    \LARGE{Verification Condition Splitting}
+
+    \large{by K. Rustan M. Leino , Michał Moskal, and Wolfram Schulte}
+\end{center}
+
+\vspace{1cm}
+
+\begin{addmargin}[0.2\linewidth]{0.2\linewidth}
+    \begin{center}
+        \textbf{Key questions}
+    \end{center}
+    \begin{enumerate}[i]
+        \item What do Dafnys options regarding \enquote{Verification-condition splitting} do?
+        \item How does Dafny split verification conditions?
+        \item How does the approach compare to our \enquote{cut-points} approach?
+        \item Can Dafnys verification condition splitting be used as an approach to\
+            diversify a parallel portfolio that solves .dfy files?
+    \end{enumerate}
+\end{addmargin}
+
+\vspace{1cm}
+
+The paper explains the traditional approach of VCG and goes on to mention
+\enquote{modular verification}, that is generating a VC for each part of the program.
+
+The basic idea is to \enquote{split VCs using control-flow information}.
+The splitting is done \enquote{at the level of the intermediate language}.
+Multiple proof obligations in the same branch are kept together,
+as lemmas discovered during the proof of one obligation may be useful for subsequent ones.
+
+The authors carefully define a type of CFGs that has \enquote{assume} and \enquote{assert}.
+They define that a CFG \enquote{goes wrong} if an execution trace exists
+such that all assumptions on it evaluate to true but the last node of the trace has an assertion
+that evaluates to false.
+They go on to define horizontal (at a branching) and vertical
+(by removing some assertions for one CFG and the remaining ones for the other) splits.
+Correctness is proven.
+
+On first sight the horizontal splits align perfectly with what we planned for our
+\enquote{cut-point} approach.
+The difference is: splitting of the CFG vs splitting of the VC.
+It is to be understood whether that makes functional difference.
+
+\end{document}
