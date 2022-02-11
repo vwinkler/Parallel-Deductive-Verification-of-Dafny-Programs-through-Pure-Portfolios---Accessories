@@ -10,6 +10,7 @@
 \usepackage{csquotes}
 \usepackage{enumerate}
 \usepackage{scrextend}
+\usepackage{sidenotes}
 
 \title{Excerpt of: Verification Condition Splitting}
 
@@ -30,7 +31,8 @@
     \end{center}
     \begin{enumerate}[i]
         \item What do Dafnys options regarding \enquote{Verification-condition splitting} do?
-        \item How does Dafny split verification conditions?
+            \label{cli}
+        \item How does Dafny split verification conditions? \label{split}
         \item How does the approach compare to our \enquote{cut-points} approach?
         \item Can Dafnys verification condition splitting be used as an approach to\
             diversify a parallel portfolio that solves .dfy files?
@@ -56,16 +58,108 @@ Furthermore, the vertices have no more than two children
 Note that there presubambly is an error: the third vertex should have \(\all\)
 instead of \(\exists\). The vertex is the induction hypothesis for any \(i_1\).}
 
+
 They define that a CFG \enquote{goes wrong} if an execution trace exists
 such that all assumptions on it evaluate to true but the last node of the trace has an assertion
 that evaluates to false.
+\textit{Assuming that all asserts of a \enquote{program part} are combined to one VC
+(before splitting,}
+there is a one-to-one relation between verifcation conditions and CFGs,
+denoted by \(wrong(\cdot)\) in the paper.
+\textit{This assumption is justified as }
+\enquote{lemmas discovered during the proof of one proof obligation [might] turn out to be useful    
+also for other proof obligations in the same branch of the program.}
+\sidenote{q. \ref{split}}
 They go on to define horizontal (at a branching) and vertical
 (by removing some assertions for one CFG and the remaining ones for the other) splits.
 Correctness is proven.
+\textit{In Boogies help message horizontal splits are referred to as \enquote{path splitting},
+    vertical splits as \enquote{assertion splitting}.}
+
+
+A vertical split is performed if no horizontal split is performed.
+This is determined by a cost heuristic:
+A particular horizontal split into CFGs \(G_0\) and \(G_1\) is chosen if 
+\[
+    \mathcal{K}_\mathcal{G}(G)^2 \le \gamma_H
+    \cdot (\mathcal{K}_\mathcal{G}(G_0)^2 + \mathcal{K}_\mathcal{G}(G_1)^2)
+\]
+where \(\mathcal{K}_\mathcal{G}(G)\) is the cost of a CFG \(G\).
+\textit{The paper, most likely, got the inequality sign in
+    \(\mathcal{K}_\mathcal{G}(G)^2 \le \gamma_H
+    \cdot (\mathcal{K}_\mathcal{G}(G_0)^2 + \mathcal{K}_\mathcal{G}(G_1)^2)\).
+    wrong. It should be
+    \(\mathcal{K}_\mathcal{G}(G)^2 \ge \gamma_H
+    \cdot (\mathcal{K}_\mathcal{G}(G_0)^2 + \mathcal{K}_\mathcal{G}(G_1)^2)\).
+    This is fixed in Boogies help message.
+}
+
+The paper defines the cost heuristic for formulas \(\psi\),
+labels \(l\) (\(l = assert\ \psi\) or \(l = assume\ \psi\)),
+nodes \(v\) and CFGs \(G\) as
+
+\[\mathcal{K}_\mathcal{G}(G) = \sum_{v\in V} mathcal{K}_V(v)\]
+        
+\[\mathcal{K}_V(n) = \mathcal{K}_\mathcal{L}(L(n)) \cdot \gamma_V + \mathcal{K}_E(n))\]
+    
+\[\mathcal{K}_E(n) =
+    \begin{cases}
+        1, \text{when \(n\) is the entry point}\\
+        mathcal{K}_E(n'), \text{when \(n\) has indegree 1 and \((n', n) \in E\)}\\
+        \gamma_E \cdot \sum_{(n', n) \in E}, \text{otherwise}
+    \end{cases}
+\]
+
+\[
+    \mathcal{K}_\mathcal{L}(assume\ \psi) =
+    \gamma_\mathcal{L} \cdot \mathcal{K}_\mathcal{T}(\psi)\\
+    \mathcal{K}_\mathcal{L}(assert\ \psi) = \mathcal{K}_\mathcal{T}(\psi)
+\]
+
+In the implementation of the paper \(\mathcal{K}_\mathcal{T}(\psi)\) is constant.
+\textit{Boogies help message indicates that \(\mathcal{K}_\mathcal{T}(\psi) = 1\).}
+
 
 On first sight the horizontal splits align perfectly with what we planned for our
 \enquote{cut-point} approach.
 The difference is: splitting of the CFG vs splitting of the VC.
 It is to be understood whether that makes functional difference.
+
+
+\sidenote{q. \ref{cli}}
+The paper does not refer to dafnys or boogies command line options.
+The unclear relation between \enquote{verification condition splitting}
+and \enquote{CFG splitting} specifically creates further confusion.
+\textit{As the paper does not describe a way to split particular verifaction conditions
+without splitting the entire CFG (one CFG may contain more than one VCs)}
+
+\textit{Despite there not being a reliable mapping of the coefficients and thresholds in the paper
+to the parameters,
+I presume the follwing.}
+
+\begin{tabular}{|l|l|}
+    \hline
+    CLI Parameter & Equivalent in the paper \\
+    \hline
+    /vcsMaxCost:\textlangle f \textrangle
+                  & The minimum value for \(mathcal{K}_\mathcal{V}(n)^2\), to be eligable for a split\\
+    /vcsMaxSplits: \textlangle n \textrangle  & - \\
+    /vcsMaxKeepGoingSplits: \textlangle n \textrangle  & - \\
+    /vcsKeepGoingTimeout: \textlangle n \textrangle  & - \\
+    /vcsFinalAssertTimeout: \textlangle n \textrangle  & - \\
+    /vcsPathJoinMult: \textlangle f \textrangle  & \(\gamma_E\) \\
+    /vcsPathCostMult: \textlangle f1 \textrangle  & related to \(\gamma_V\) * \\
+    /vcsAssumeMult: \textlangle f2 \textrangle  & \(\gamma_mathcal{L}\) \\
+    /vcsPathSplitMult: \textlangle f \textrangle  & \(\gamma_H\) \\
+    /vcsDumpSplits & - \\
+    /vcsCores: \textlangle n \textrangle  & - \\
+    /vcsLoad: \textlangle f \textrangle  & - \\
+    \hline
+\end{tabular}
+
+\begin{footnotesize}
+    * In Boogie the definition of \(\mathcal{K}_V(n)\) is
+    \(mathcal{K}_V(n) = mathcal{K}_\mathcal{L}(L(n)) \cdot (1 + \text{f1} \cdot \mathcal{K}_E(n))\).
+\end{footnotesize}
 
 \end{document}
