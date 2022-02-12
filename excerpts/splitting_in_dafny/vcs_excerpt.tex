@@ -36,7 +36,7 @@
         \item How does the approach compare to our \enquote{cut-points} approach?
             \label{cut-points}
         \item Can Dafnys verification condition splitting be used as an approach to\
-            diversify a parallel portfolio that solves .dfy files?
+            diversify a parallel portfolio that solves .dfy files? \label{portfolio}
     \end{enumerate}
 \end{addmargin}
 
@@ -194,5 +194,48 @@ I presume the follwing.}
         }
     }
 \end{tabular}
+
+
+\sidenote{q. \ref{portfolio}}
+\textit{
+    Verification condition splitting, as described in the paper,
+    is a useful approach to diversification in a parallel portfolio solver
+    if there are parameters that influence runtime in an unpredictable way.
+    If some configuration is preferable for some problem instances
+    and there is no anticipating which ones,
+    a portfolio is applicable.
+}
+
+The paper evaluates the influence of the number of splits, \(\gamma_E\) and \(\gamma_H\)
+on the verification time.
+This is done on multiple problem instances (benchmarks),
+allowing for a different parameter value that minimizes verification time,
+for each instance and parameter.
+\textit{If those values are very different for some parameter, that parameter might be
+    worth considering to diversify a portfolio.}
+    
+The evaluation shows that splitting the VC reduces the verification time substantially
+for some instances,
+but is not detrimental to any unless the number of splits is very high.
+However, the paper does show that too many splits slows down the verification process
+and provides additional references for that claim.
+
+It is to be determined how dynamic splitting fares,
+the paper does not evaluate it.
+
+There is indication for \(\gamma_E\) being a good choice for portfolio diversification.
+The paper shows two problem instances (figure 2) in one the runtime rises with  \(\gamma_E\)
+in the other it declines.
+However, there is a sweet spot at \(\gamma_E = 0.8\) for both.
+Evaluation of further problem instances is necessary.
+
+The ideal choice for \(\gamma_H\) seems to always be \(\gamma_H = 0.5\),
+meaning that horizontal splitting should be preferred (shown in figure 4).
+
+Besides the parameters, another source of diversification might come from the choice of
+horizontal splits.
+Selecting them at random (to a degree) rather than (purely) by the cost heuristic might
+be worthwhile.
+The paper does not mention this strategy.
 
 \end{document}
