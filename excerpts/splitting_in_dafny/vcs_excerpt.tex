@@ -128,6 +128,24 @@ The difference is: splitting of the CFG vs splitting of the VC.
 It is to be understood whether that makes functional difference.
 
 
+The paper suggests two modes of operation: static and dynamic spitting.
+Static splitting repeatedly splits the VC with the largest cost
+until splitting is no longer possible or a limit is reached.
+
+Dynamic splitting suggests embedding the splitting procedure into a prover in the following way:
+Try to prove the VC with a timeout of \(t_1\).
+If the time runs out, split into \(k\) pieces (if possible).
+Repeat this for each (partial) VC until the split is not possible
+(i.e. there is only one assert on a single path)
+and run the prover on that VC with a timeout of \(t_2\).
+
+\textit{The paper refers to both \(t_1\) and \(t_2\) as \(t\) which is rejectable.}
+
+\textit{Boogie implements an an initial split. This is not discussed in the paper.}
+
+\textit{The dynamic mode is called \enquote{keep going mode} in the Boogie help message.}
+    
+
 \sidenote{q. \ref{cli}}
 The paper does not refer to dafnys or boogies command line options.
 The unclear relation between \enquote{verification condition splitting}
@@ -145,10 +163,10 @@ I presume the follwing.}
     \hline
     /vcsMaxCost:\textlangle f \textrangle
                   & The minimum value for \(mathcal{K}_\mathcal{V}(n)^2\), to be eligable for a split\\
-    /vcsMaxSplits: \textlangle n \textrangle  & - \\
-    /vcsMaxKeepGoingSplits: \textlangle n \textrangle  & - \\
-    /vcsKeepGoingTimeout: \textlangle n \textrangle  & - \\
-    /vcsFinalAssertTimeout: \textlangle n \textrangle  & - \\
+    /vcsMaxSplits: \textlangle n \textrangle & - \textdagger \\
+    /vcsMaxKeepGoingSplits: \textlangle n \textrangle  & \(k\) \\
+    /vcsKeepGoingTimeout: \textlangle n \textrangle  & \(t_1\) \\
+    /vcsFinalAssertTimeout: \textlangle n \textrangle  & \(t_2\) \\
     /vcsPathJoinMult: \textlangle f \textrangle  & \(\gamma_E\) \\
     /vcsPathCostMult: \textlangle f1 \textrangle  & related to \(\gamma_V\) * \\
     /vcsAssumeMult: \textlangle f2 \textrangle  & \(\gamma_mathcal{L}\) \\
@@ -161,7 +179,8 @@ I presume the follwing.}
 
 \begin{footnotesize}
     * In Boogie the definition of \(\mathcal{K}_V(n)\) is
-    \(mathcal{K}_V(n) = mathcal{K}_\mathcal{L}(L(n)) \cdot (1 + \text{f1} \cdot \mathcal{K}_E(n))\).
+    \(mathcal{K}_V(n) = mathcal{K}_\mathcal{L}(L(n)) \cdot (1 + \text{f1} \cdot \mathcal{K}_E(n))\).\\
+    \textdagger The paper does not suggest an initial split of the VC as is implemented in Boogie.
 \end{footnotesize}
 
 \end{document}
