@@ -99,14 +99,14 @@ The paper defines the cost heuristic for formulas \(\psi\),
 labels \(l\) (\(l = assert\ \psi\) or \(l = assume\ \psi\)),
 nodes \(v\) and CFGs \(G\) as
 
-\[\mathcal{K}_\mathcal{G}(G) = \sum_{v\in V} mathcal{K}_V(v)\]
+\[\mathcal{K}_\mathcal{G}(G) = \sum_{v\in V} \mathcal{K}_V(v)\]
         
 \[\mathcal{K}_V(n) = \mathcal{K}_\mathcal{L}(L(n)) \cdot \gamma_V + \mathcal{K}_E(n))\]
     
 \[\mathcal{K}_E(n) =
     \begin{cases}
         1, \text{when \(n\) is the entry point}\\
-        mathcal{K}_E(n'), \text{when \(n\) has indegree 1 and \((n', n) \in E\)}\\
+        \mathcal{K}_E(n'), \text{when \(n\) has indegree 1 and \((n', n) \in E\)}\\
         \gamma_E \cdot \sum_{(n', n) \in E}, \text{otherwise}
     \end{cases}
 \]
@@ -162,14 +162,14 @@ I presume the follwing.}
     CLI Parameter & Equivalent in the paper \\
     \hline
     /vcsMaxCost:\textlangle f \textrangle
-                  & The minimum value for \(mathcal{K}_\mathcal{V}(n)^2\), to be eligable for a split\\
+                  & The minimum value for \(\mathcal{K}_\mathcal{V}(n)^2\), to be eligable for a split\\
     /vcsMaxSplits: \textlangle n \textrangle & - \textdagger \\
     /vcsMaxKeepGoingSplits: \textlangle n \textrangle  & \(k\) \\
     /vcsKeepGoingTimeout: \textlangle n \textrangle  & \(t_1\) \\
     /vcsFinalAssertTimeout: \textlangle n \textrangle  & \(t_2\) \\
     /vcsPathJoinMult: \textlangle f \textrangle  & \(\gamma_E\) \\
     /vcsPathCostMult: \textlangle f1 \textrangle  & related to \(\gamma_V\) * \\
-    /vcsAssumeMult: \textlangle f2 \textrangle  & \(\gamma_mathcal{L}\) \\
+    /vcsAssumeMult: \textlangle f2 \textrangle  & \(\gamma_\mathcal{L}\) \\
     /vcsPathSplitMult: \textlangle f \textrangle  & \(\gamma_H\) \\
     /vcsDumpSplits & - \\
     /vcsCores: \textlangle n \textrangle  & - \\
@@ -179,7 +179,7 @@ I presume the follwing.}
 
 \begin{footnotesize}
     * In Boogie the definition of \(\mathcal{K}_V(n)\) is
-    \(mathcal{K}_V(n) = mathcal{K}_\mathcal{L}(L(n)) \cdot (1 + \text{f1} \cdot \mathcal{K}_E(n))\).\\
+    \(\mathcal{K}_V(n) = \mathcal{K}_\mathcal{L}(L(n)) \cdot (1 + \text{f1} \cdot \mathcal{K}_E(n))\).\\
     \textdagger The paper does not suggest an initial split of the VC as is implemented in Boogie.
 \end{footnotesize}
 
