@@ -1,0 +1,116 @@
+\documentclass{scrartcl}
+
+\usepackage{csquotes}
+\usepackage{listings}
+
+\title{Excerpt of: Dafny: An Automatic Program Verifier for Functional Correctness}
+
+\begin{document}
+\begin{center}
+    \Large{\textbf{Report on}}
+
+    \LARGE{The difference between multiple ways to acquire a log of dafny's/boogie's input
+    for Z3}
+\end{center}
+
+\vspace{1cm}
+
+The Dafny verifier creates a Boogie program.
+Boogie controls Z3 via the SMT-LIB commands.
+
+There are different ways to save what commands Boogie/Dafny actually passes to Z3
+given the program \lstinline|program.bpl|/\lstinline|program.dfy|
+(\lstinline|program.bpl| can be produced using
+\lstinline|dafny /print:program.bpl program.dfy /noVerify|)
+in a file called \lstinline|logfile|:
+\begin{enumerate}
+    \item \lstinline|dafny /proverOpt:PROVER_PATH=logging_z3.sh program.dfy|
+        \label{dafny_intercepted}
+    \item \lstinline|dafny /proverOpt:LOG_FILE=logfile program.dfy|
+        \label{dafny_proveroption}
+    \item \lstinline|boogie /proverOpt:PROVER_PATH=logging_z3.sh program.bpl|
+        \label{boogie_intercepted}
+    \item \lstinline|boogie /proverOpt:LOG_FILE=logfile program.bpl|
+        \label{boogie_proveroption}
+    \item \lstinline|boogie /proverLog:logfile program.bpl|
+        \label{boogie_boogieoption}
+\end{enumerate}
+
+Where \lstinline|logging_z3.sh| contains
+
+\begin{lstlisting}[frame=single]
+#!/bin/sh
+logfilename="$(dirname '$0')/logfile"
+tee $logfilename | z3 -in $@
+\end{lstlisting}
+
+Superficial examination shows that not every logfile has an equal number of lines.
+
+\begin{tabular}{|l|l|l|}
+    \hline
+    & Logfile creation & \#lines in logfile \\
+    \hline
+    \ref{dafny_intercepted} \
+    & \lstinline|dafny /proverOpt:PROVER_PATH=logging_z3.sh program.dfy| \
+    & \testdafnyproverlogintercepted \\
+    \ref{dafny_proveroption} \
+    & \lstinline|dafny /proverOpt:LOG_FILE=logfile program.dfy|          \
+    & \testdafnyproverlogproveroption \\
+    \ref{boogie_intercepted} \
+    & \lstinline|boogie /proverOpt:PROVER_PATH=logging_z3.sh program.bpl| \
+    & \testboogieproverlogintercepted \\
+    \ref{boogie_proveroption} \
+    & \lstinline|boogie /proverOpt:LOG_FILE=logfile program.bpl|          \
+    & \testboogieproverlogproveroption \\
+    \ref{boogie_boogieoption} \
+    & \lstinline|boogie /proverLog:logfile program.bpl|                   \
+    & \testboogieproverlogboogieoption \\
+    - & Total & \total \\
+    \hline
+\end{tabular}
+
+\section{Comparison by the way of example}
+In this section the logfiles, created in the ways described above, are compared.
+They all stem from Boogie/Dafny runs on the same Dafny program:
+\lstinputlisting[frame=single]{test.dfy}
+
+The logfiles created by \ref{boogie_proveroption} and \ref{boogie_boogieoption} are identical.
+
+The intercepted version (\ref{boogie_intercepted}) contains eight additional lines.
+A total of six are \lstinline|(get-info :name)|
+at the start in the middle and at the end of the document.
+Three lines are prepended:
+\begin{lstlisting}[frame=single]
+(reset)
+(get-info :name)
+(set-option :rlimit 0)
+\end{lstlisting}
+
+The differneces between \ref{dafny_proveroption} and \ref{dafny_intercepted} are very similar.
+The intercepted version (\ref{dafny_intercepted}) contains six additional lines.
+A total of four are \lstinline|(get-info :name)|
+in the middle and at the end of the document but not at the start.
+Two lines are prepended:
+\begin{lstlisting}[frame=single]
+(reset)
+(set-option :rlimit 0)
+\end{lstlisting}
+
+There is a great number of changed lines between
+\ref{boogie_proveroption} and \ref{dafny_proveroption}.
+Most notably, \ref{dafny_proveroption} contains
+\begin{lstlisting}[frame=single]
+(set-option :auto_config false)
+(set-option :type_check true)
+(set-option :smt.case_split 3)
+(set-option :smt.qi.eager_threshold 100)
+(set-option :smt.delay_units true)
+(set-option :smt.arith.solver 2)
+\end{lstlisting}
+almost right at the start of the file and again in the middle.
+Another change is in an assertion in the middle (before the middle \enquote{set-option} lines)
+in which \lstinline|MapType2Type| is replaced by \lstinline|MapType3Type|.
+All in all there are 6152 insertions and 6118 deletions.
+
+
+\end{document}
