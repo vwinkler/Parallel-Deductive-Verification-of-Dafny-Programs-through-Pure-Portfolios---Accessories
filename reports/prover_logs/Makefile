@@ -1,4 +1,5 @@
 logging_z3=../../smt-solver/util/logged_z3.sh
+boogie=../../smt-solver/util/call_boogie_like_dafny_does.sh
 logs=test_dafny_prover_log_intercepted\
      test_dafny_prover_log_prover-option\
      test_boogie_prover_log_intercepted\
@@ -19,14 +20,14 @@ all: difference_of_prover_logs.pdf $(logs)
 	dafny /proverOpt:LOG_FILE=$@ $<
 
 %_boogie_prover_log_intercepted : %.bpl
-	boogie /proverOpt:PROVER_PATH=$(logging_z3) $<
+	$(boogie) /proverOpt:PROVER_PATH=$(logging_z3) $<
 	mv logfile $@
 
 %_boogie_prover_log_prover-option : %.bpl
-	boogie /proverOpt:LOG_FILE=$@ $<
+	$(boogie) /proverOpt:LOG_FILE=$@ $<
 
 %_boogie_prover_log_boogie-option : %.bpl
-	boogie /proverLog:$@ $<
+	$(boogie) /proverLog:$@ $<
 
 wc_of_logs.txt : $(logs)
 	wc -l $^ > $@
