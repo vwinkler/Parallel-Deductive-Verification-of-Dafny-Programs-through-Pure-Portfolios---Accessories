@@ -1,4 +1,6 @@
+import json
 from ProcessCollection import *
+from XmlResultParser import *
 
 
 class Portfolio:
@@ -21,5 +23,23 @@ class Portfolio:
         while self.process_collection.count_running_processes() > 0:
             self.process_collection.await_termination_of_any_process()
 
+        xml_parser = XmlResultParser()
+        instances_results = []
+        for id in range(self.num_processes):
+            try:
+                xml_results = xml_parser.parse(self._make_xml_filename(id))
+            except Exception as e:
+                xml_results = str(e)
+
+            instance_results = {"id": id,
+                                "diversification": dynamic_args_selection[id],
+                                "xml": xml_results}
+            instances_results.append(instance_results)
+
+        return instances_results
+
     def _make_xml_arg(self, id):
-        return "/xml:{}_{}.xml".format(self.filename, id)
+        return "/xml:{}".format(self._make_xml_filename(id))
+
+    def _make_xml_filename(self, id):
+        return "{}_{}.xml".format(self.filename, id)
