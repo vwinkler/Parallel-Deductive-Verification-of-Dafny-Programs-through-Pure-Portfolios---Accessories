@@ -11,7 +11,7 @@ option_selectors = {
 }
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Run a portfolio of SMT-Solvers")
+    parser = argparse.ArgumentParser(description="Run the Dafny solver in a portfolio")
     parser.add_argument(metavar="DAFNYFILE", dest="dafny_file", type=str)
     parser.add_argument(metavar="PROCEDURENAME", dest="procedure_name", type=str)
     parser.add_argument(metavar="OPTIONSELECTOR", dest="option_selector_name", choices=option_selectors.keys(),
