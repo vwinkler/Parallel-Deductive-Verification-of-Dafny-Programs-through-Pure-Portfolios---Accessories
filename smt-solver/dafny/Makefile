@@ -1,6 +1,7 @@
 smt2ToProblem = ../util/makeProblem.py
+dfy_path = ../../benchmarks/dafny
 
-all : $(patsubst %.dfy, %.problem.json, $(wildcard *.dfy))
+all : $(patsubst %.dfy, %.problem.json, $(wildcard $(dfy_path)/*.dfy))
 
 %.problem.json : %.smt2 $(smt2ToProblem)
 	python $(smt2ToProblem) --in $< --out $@
@@ -11,5 +12,5 @@ all : $(patsubst %.dfy, %.problem.json, $(wildcard *.dfy))
 %.log.smt2 : %.bpl
 	boogie $< /proverLog:$@
 
-%.bpl : %.dfy
+%.bpl : $(dfy_path)/%.dfy
 	dafny $< /print:$@ /noVerify
