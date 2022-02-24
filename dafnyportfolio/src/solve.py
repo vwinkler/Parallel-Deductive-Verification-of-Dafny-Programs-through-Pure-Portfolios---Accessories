@@ -18,11 +18,13 @@ if __name__ == '__main__':
                         default=default_option_selector)
     parser.add_argument(metavar="RESULTSFILE", dest="results_filename", type=str)
     parser.add_argument("--num-threads", dest="num_threads", type=int, default=cpu_count())
+    parser.add_argument("--dafny-cmd", dest="dafny_command", type=str, default="dafny")
     args = parser.parse_args()
 
     start_time = time()
-    portfolio = Portfolio(args.dafny_file, args.procedure_name, args.num_threads,
-                          option_selectors[args.option_selector_name])
+    chosen_option_selector = option_selectors[args.option_selector_name]
+    portfolio = Portfolio(args.dafny_file, args.procedure_name, args.num_threads, chosen_option_selector,
+                          args.dafny_command)
     end_time = time()
     instances_results = portfolio.run()
     portfolio_results = {"total_runtime": util.format_timediff(start_time, end_time),

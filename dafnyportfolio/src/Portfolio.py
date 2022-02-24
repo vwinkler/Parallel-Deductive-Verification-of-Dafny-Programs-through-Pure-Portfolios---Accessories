@@ -4,11 +4,12 @@ from XmlResultParser import *
 
 
 class Portfolio:
-    def __init__(self, filename, procedure_name, num_processes, option_selector):
+    def __init__(self, filename, procedure_name, num_processes, option_selector, dafny_command):
         self.option_selector = option_selector
         self.num_processes = num_processes
         self.filename = filename
         self.procedure_name = procedure_name
+        self.dafny_command = dafny_command
         self.process_collection = ProcessCollection()
 
     def run(self):
@@ -16,7 +17,7 @@ class Portfolio:
 
         dynamic_args_selection = self.option_selector.create_arguments(self.num_processes)
         for id in range(self.num_processes):
-            static_args = ["dafny", self.filename, proc_argument, self._make_xml_arg(id)]
+            static_args = [self.dafny_command, self.filename, proc_argument, self._make_xml_arg(id)]
             dynamic_args = dynamic_args_selection[id]
             self.process_collection.start_process(static_args + dynamic_args)
 
@@ -42,4 +43,5 @@ class Portfolio:
         return "/xml:{}".format(self._make_xml_filename(id))
 
     def _make_xml_filename(self, id):
-        return "{}_{}.xml".format(self.filename, id)
+        filename = os.path.splitext(os.path.basename(self.filename))[0]
+        return "{}_{}.xml".format(filename, id)
