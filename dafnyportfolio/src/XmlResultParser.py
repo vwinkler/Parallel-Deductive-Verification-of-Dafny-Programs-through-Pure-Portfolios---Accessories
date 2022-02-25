@@ -56,17 +56,23 @@ class XmlResultParser:
         result = {"name": self._parse_method_name_attribute_value(self._try_get_attribute(method_element, "name")),
                   "startTime": self._parse_time_attribute_value(self._try_get_attribute(method_element, "startTime"))}
 
-        conclusion_element = self._try_find_element(method_element, "conclusion")
-        if conclusion_element is None:
-            result["finished"] = False
-            result["endTime"] = None
-            result["outcome"] = None
-        else:
-            conclusion = self._parse_conclusion(conclusion_element)
-            result["finished"] = True
-            result["endTime"] = conclusion["endTime"]
-            result["duration"] = conclusion["duration"]
-            result["outcome"] = conclusion["outcome"]
+        try:
+            conclusion_element = self._try_find_element(method_element, "conclusion")
+        except MissingElementException:
+            return self.make_unconcluded_method_result(result)
+
+        conclusion = self._parse_conclusion(conclusion_element)
+        result["finished"] = True
+        result["endTime"] = conclusion["endTime"]
+        result["duration"] = conclusion["duration"]
+        result["outcome"] = conclusion["outcome"]
+        return result
+
+    def make_unconcluded_method_result(self, method_result_before_conclusion):
+        result = method_result_before_conclusion.copy()
+        result["finished"] = False
+        result["endTime"] = None
+        result["outcome"] = None
         return result
 
     def _try_get_attribute(self, element, name):
