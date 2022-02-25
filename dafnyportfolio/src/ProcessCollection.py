@@ -7,8 +7,8 @@ class ProcessCollection:
         self.processesMarkedTerminated = set()
         self.processes = dict()
 
-    def start_process(self, args):
-        process = Process(args)
+    def start_process(self, args, stdin=PIPE, stdout=PIPE, stderr=PIPE):
+        process = Process(args, stdin=stdin, stdout=stdout, stderr=stderr)
         self.processes[process.get_pid()] = process
         return process
 
@@ -58,13 +58,19 @@ class ProcessCollection:
 
 
 class Process:
-    def __init__(self, args):
-        self.wrapped_process = Popen(args, stdin=PIPE, stdout=PIPE, stderr=PIPE, text=True)
+    def __init__(self, args, stdin=PIPE, stdout=PIPE, stderr=PIPE):
+        self.stdin_is_pipe = stdin == PIPE
+        self.stdout_is_pipe = stdout == PIPE
+        self.stderr_is_pipe = stderr == PIPE
+        self.wrapped_process = Popen(args, stdin=stdin, stdout=stdout, stderr=stderr, text=True)
 
     def __del__(self):
-        self.wrapped_process.stdin.close()
-        self.wrapped_process.stdout.close()
-        self.wrapped_process.stderr.close()
+        if self.stdin_is_pipe:
+            self.wrapped_process.stdin.close()
+        if self.stdout_is_pipe:
+            self.wrapped_process.stdout.close()
+        if self.stderr_is_pipe:
+            self.wrapped_process.stderr.close()
 
     def get_pid(self):
         return self.wrapped_process.pid
