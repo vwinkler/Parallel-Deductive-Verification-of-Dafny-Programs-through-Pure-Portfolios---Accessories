@@ -24,13 +24,14 @@ if __name__ == '__main__':
     parser.add_argument("--dafny-cmd", dest="dafny_command", type=str, default="dafny")
     args = parser.parse_args()
 
-    start_time = time()
     chosen_option_selector = option_selectors[args.option_selector_name]
     chosen_option_selector.set_rand(Random(args.seed))
     portfolio = Portfolio(args.dafny_file, args.procedure_name, args.num_threads, chosen_option_selector,
                           args.dafny_command)
-    end_time = time()
+
+    start_time = time()
     instances_results = portfolio.run()
+    end_time = time()
     portfolio_results = {"total_runtime": util.format_timediff(start_time, end_time),
                          "instances": instances_results}
 
