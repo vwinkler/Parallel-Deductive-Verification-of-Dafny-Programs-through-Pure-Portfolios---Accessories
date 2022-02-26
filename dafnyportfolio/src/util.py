@@ -1,4 +1,5 @@
 from datetime import datetime
+import git
 
 
 def format_timediff(start_time, end_time):
@@ -25,3 +26,7 @@ def try_format_readable_time_point(end_time):
         return datetime.fromtimestamp(end_time).isoformat()
     except Exception:
         return "undefined"
+
+
+def get_current_commit_hash():
+    return git.Repo(search_parent_directories=True).head.object.hexsha

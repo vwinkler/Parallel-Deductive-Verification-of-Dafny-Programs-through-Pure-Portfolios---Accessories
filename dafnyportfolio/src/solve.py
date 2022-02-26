@@ -6,12 +6,14 @@ from Portfolio import *
 from NoDiversificationOptionSelector import *
 from SeedDiversificationOptionSelector import *
 import util
+from dafnyportfolio.src.util import get_current_commit_hash
 
 default_option_selector = "no-diversification"
 option_selectors = {
     default_option_selector: NoDiversificationOptionSelector(),
     "seed-diversification": SeedDiversificationOptionSelector()
 }
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Run the Dafny solver in a portfolio")
     parser.add_argument(metavar="DAFNYFILE", dest="dafny_file", type=str)
@@ -32,7 +34,9 @@ if __name__ == '__main__':
     start_time = time()
     instances_results = portfolio.run()
     end_time = time()
-    portfolio_results = {"total_runtime": util.format_timediff(start_time, end_time),
+    portfolio_results = {"args": vars(args),
+                         "commit_hash": get_current_commit_hash(),
+                         "total_runtime": util.format_timediff(start_time, end_time),
                          "instances": instances_results}
 
     json.dump(portfolio_results, open(args.results_filename, "w"), indent=4, default=str)
