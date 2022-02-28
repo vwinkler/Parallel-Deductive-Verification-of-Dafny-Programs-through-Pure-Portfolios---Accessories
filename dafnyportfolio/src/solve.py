@@ -6,7 +6,6 @@ from Portfolio import *
 from NoDiversificationOptionSelector import *
 from SeedDiversificationOptionSelector import *
 import util
-from dafnyportfolio.src.util import get_current_commit_hash
 
 default_option_selector = "no-diversification"
 option_selectors = {
@@ -35,7 +34,7 @@ if __name__ == '__main__':
     instances_results = portfolio.run()
     end_time = time()
     portfolio_results = {"args": vars(args),
-                         "commit_hash": get_current_commit_hash(),
+                         "commit_hash": util.get_current_commit_hash(),
                          "total_runtime": util.format_timediff(start_time, end_time),
                          "instances": instances_results}
 
