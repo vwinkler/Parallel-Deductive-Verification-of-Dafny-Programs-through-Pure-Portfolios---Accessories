@@ -10,7 +10,7 @@ class Portfolio:
         self.dafny_instance_factory = DafnyInstanceFactory(dafny_command, filename, procedure_name)
         self.process_collection = ProcessCollection()
         self.xml_parser = XmlResultParser()
-        
+
         dynamic_args = self.select_dynamic_args(num_processes)
         self.instances = self.create_dafny_instances(dynamic_args)
 
@@ -33,8 +33,10 @@ class Portfolio:
             instance.start(self.process_collection)
 
     def wait_for_termination(self):
-        while self.process_collection.count_running_processes() > 0:
+        if self.process_collection.count_running_processes() > 0:
             self.process_collection.await_termination_of_any_process()
+        self.process_collection.kill_all()
+        self.process_collection.await_termination_of_all_processes()
 
     def collect_results(self, instances):
         instances_results = []

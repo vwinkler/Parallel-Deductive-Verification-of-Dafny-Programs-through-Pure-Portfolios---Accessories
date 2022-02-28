@@ -12,6 +12,14 @@ class ProcessCollection:
         self.processes[process.get_pid()] = process
         return process
 
+    def kill_all(self):
+        for process in self.processes.values():
+            process.kill()
+
+    def await_termination_of_all_processes(self):
+        while self.count_running_processes() > 0:
+            self.await_termination_of_any_process()
+
     def count_running_processes(self):
         return len(self.find_running_processes())
 
