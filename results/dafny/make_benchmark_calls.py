@@ -14,7 +14,7 @@ if __name__ == '__main__':
     with open(methods_file) as file:
         for line in file.readlines():
             dfy_filename, method_name = line.split()
-            results_filename = "{}_{}.json".format(dfy_filename, args.results_file_suffix)
+            results_filename = "{}{}.json".format(dfy_filename, args.results_file_suffix)
             cmd_template = "(set -x; python {scr} {path}{dfy} {method} {div} {results_file} {args})"
             print(cmd_template.format(scr=script, path=benchmark_path_prefix, dfy=dfy_filename, method=method_name,
                                       div=args.command_selection, args=args.additional_args,
