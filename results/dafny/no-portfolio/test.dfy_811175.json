@@ -2,19 +2,19 @@
     "args": {
         "dafny_file": "../../../benchmarks/dafny/test.dfy",
         "procedure_name": "Triple",
-        "option_selector_name": "no-diversification",
+        "option_selector_name": "seed-diversification",
         "results_filename": "test.dfy_811175.json",
         "seed": "811175",
         "num_threads": 1,
         "dafny_command": "dafny"
     },
-    "commit_hash": "bc2577cffabc38377727788a9fcd0b1532a193b1",
+    "commit_hash": "eb092a798f1ce018f065439b802221cf646a60d0",
     "total_runtime": {
-        "start": 1646089576.2145047,
-        "start_readable": "2022-03-01T00:06:16.214505",
-        "end": 1646089577.823761,
-        "end_readable": "2022-03-01T00:06:17.823761",
-        "duration": "1.6092562675"
+        "start": 1646238857.7064083,
+        "start_readable": "2022-03-02T17:34:17.706408",
+        "end": 1646238859.2679327,
+        "end_readable": "2022-03-02T17:34:19.267933",
+        "duration": "1.5615243912"
     },
     "instances": [
         {
@@ -23,9 +23,12 @@
                 "dafny",
                 "../../../benchmarks/dafny/test.dfy",
                 "/proc:*Triple",
-                "/xml:/tmp/tmpxnpb5_0n.xml"
+                "/xml:/tmp/tmpmczev1_l.xml",
+                "/proverOpt:O:smt.random_seed=420334502"
             ],
-            "diversification": [],
+            "diversification": [
+                "/proverOpt:O:smt.random_seed=420334502"
+            ],
             "stdout": [
                 "b''",
                 "b'Dafny program verifier finished with 1 verified, 0 errors'"
@@ -33,14 +36,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.3.0.31104",
-                "command": "/opt/dafny/Dafny.dll ../../../benchmarks/dafny/test.dfy /proc:*Triple /xml:/tmp/tmpxnpb5_0n.xml",
+                "command": "/opt/dafny/Dafny.dll ../../../benchmarks/dafny/test.dfy /proc:*Triple /xml:/tmp/tmpmczev1_l.xml /proverOpt:O:smt.random_seed=420334502",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.Triple",
-                        "startTime": "2022-02-28 23:06:17+00:00",
+                        "startTime": "2022-03-02 16:34:18+00:00",
                         "finished": true,
-                        "endTime": "2022-02-28 23:06:17+00:00",
-                        "duration": 0.3686623,
+                        "endTime": "2022-03-02 16:34:19+00:00",
+                        "duration": 0.3452778,
                         "outcome": "correct"
                     }
                 ]

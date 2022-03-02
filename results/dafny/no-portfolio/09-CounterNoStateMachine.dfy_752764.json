@@ -2,19 +2,19 @@
     "args": {
         "dafny_file": "../../../benchmarks/dafny/09-CounterNoStateMachine.dfy",
         "procedure_name": "Incrementer",
-        "option_selector_name": "no-diversification",
+        "option_selector_name": "seed-diversification",
         "results_filename": "09-CounterNoStateMachine.dfy_752764.json",
         "seed": "752764",
         "num_threads": 1,
         "dafny_command": "dafny"
     },
-    "commit_hash": "bc2577cffabc38377727788a9fcd0b1532a193b1",
+    "commit_hash": "eb092a798f1ce018f065439b802221cf646a60d0",
     "total_runtime": {
-        "start": 1646088884.5539827,
-        "start_readable": "2022-02-28T23:54:44.553983",
-        "end": 1646088946.9819355,
-        "end_readable": "2022-02-28T23:55:46.981936",
-        "duration": "62.4279527664"
+        "start": 1646238002.7614305,
+        "start_readable": "2022-03-02T17:20:02.761431",
+        "end": 1646238060.0072806,
+        "end_readable": "2022-03-02T17:21:00.007281",
+        "duration": "57.2458500862"
     },
     "instances": [
         {
@@ -23,9 +23,12 @@
                 "dafny",
                 "../../../benchmarks/dafny/09-CounterNoStateMachine.dfy",
                 "/proc:*Incrementer",
-                "/xml:/tmp/tmp8u_8pdne.xml"
+                "/xml:/tmp/tmph_ookyfb.xml",
+                "/proverOpt:O:smt.random_seed=1107517990"
             ],
-            "diversification": [],
+            "diversification": [
+                "/proverOpt:O:smt.random_seed=1107517990"
+            ],
             "stdout": [
                 "b''",
                 "b'Dafny program verifier finished with 2 verified, 0 errors'"
@@ -33,22 +36,22 @@
             "stderr": [],
             "xml": {
                 "version": "3.3.0.31104",
-                "command": "/opt/dafny/Dafny.dll ../../../benchmarks/dafny/09-CounterNoStateMachine.dfy /proc:*Incrementer /xml:/tmp/tmp8u_8pdne.xml",
+                "command": "/opt/dafny/Dafny.dll ../../../benchmarks/dafny/09-CounterNoStateMachine.dfy /proc:*Incrementer /xml:/tmp/tmph_ookyfb.xml /proverOpt:O:smt.random_seed=1107517990",
                 "methods": [
                     {
                         "name": "CheckWellformed$$_module.__default.Incrementer",
-                        "startTime": "2022-02-28 22:54:47+00:00",
+                        "startTime": "2022-03-02 16:20:06+00:00",
                         "finished": true,
-                        "endTime": "2022-02-28 22:54:48+00:00",
-                        "duration": 0.7460599,
+                        "endTime": "2022-03-02 16:20:06+00:00",
+                        "duration": 0.6534878,
                         "outcome": "correct"
                     },
                     {
                         "name": "Impl$$_module.__default.Incrementer",
-                        "startTime": "2022-02-28 22:54:48+00:00",
+                        "startTime": "2022-03-02 16:20:06+00:00",
                         "finished": true,
-                        "endTime": "2022-02-28 22:55:46+00:00",
-                        "duration": 58.2623513,
+                        "endTime": "2022-03-02 16:20:59+00:00",
+                        "duration": 53.2359954,
                         "outcome": "correct"
                     }
                 ]

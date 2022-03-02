@@ -2,19 +2,19 @@
     "args": {
         "dafny_file": "../../../benchmarks/dafny/09-CounterNoStateMachine.dfy",
         "procedure_name": "Incrementer",
-        "option_selector_name": "no-diversification",
+        "option_selector_name": "seed-diversification",
         "results_filename": "09-CounterNoStateMachine.dfy_286325.json",
         "seed": "286325",
         "num_threads": 1,
         "dafny_command": "dafny"
     },
-    "commit_hash": "bc2577cffabc38377727788a9fcd0b1532a193b1",
+    "commit_hash": "eb092a798f1ce018f065439b802221cf646a60d0",
     "total_runtime": {
-        "start": 1646088687.279195,
-        "start_readable": "2022-02-28T23:51:27.279195",
-        "end": 1646088741.6015954,
-        "end_readable": "2022-02-28T23:52:21.601595",
-        "duration": "54.3224003315"
+        "start": 1646237631.638185,
+        "start_readable": "2022-03-02T17:13:51.638185",
+        "end": 1646237687.5813768,
+        "end_readable": "2022-03-02T17:14:47.581377",
+        "duration": "55.9431917667"
     },
     "instances": [
         {
@@ -23,9 +23,12 @@
                 "dafny",
                 "../../../benchmarks/dafny/09-CounterNoStateMachine.dfy",
                 "/proc:*Incrementer",
-                "/xml:/tmp/tmpzg4xkhb_.xml"
+                "/xml:/tmp/tmpp8ah4wn7.xml",
+                "/proverOpt:O:smt.random_seed=380903967"
             ],
-            "diversification": [],
+            "diversification": [
+                "/proverOpt:O:smt.random_seed=380903967"
+            ],
             "stdout": [
                 "b''",
                 "b'Dafny program verifier finished with 2 verified, 0 errors'"
@@ -33,22 +36,22 @@
             "stderr": [],
             "xml": {
                 "version": "3.3.0.31104",
-                "command": "/opt/dafny/Dafny.dll ../../../benchmarks/dafny/09-CounterNoStateMachine.dfy /proc:*Incrementer /xml:/tmp/tmpzg4xkhb_.xml",
+                "command": "/opt/dafny/Dafny.dll ../../../benchmarks/dafny/09-CounterNoStateMachine.dfy /proc:*Incrementer /xml:/tmp/tmpp8ah4wn7.xml /proverOpt:O:smt.random_seed=380903967",
                 "methods": [
                     {
                         "name": "CheckWellformed$$_module.__default.Incrementer",
-                        "startTime": "2022-02-28 22:51:29+00:00",
+                        "startTime": "2022-03-02 16:13:54+00:00",
                         "finished": true,
-                        "endTime": "2022-02-28 22:51:30+00:00",
-                        "duration": 0.6063949,
+                        "endTime": "2022-03-02 16:13:54+00:00",
+                        "duration": 0.5713305,
                         "outcome": "correct"
                     },
                     {
                         "name": "Impl$$_module.__default.Incrementer",
-                        "startTime": "2022-02-28 22:51:30+00:00",
+                        "startTime": "2022-03-02 16:13:54+00:00",
                         "finished": true,
-                        "endTime": "2022-02-28 22:52:21+00:00",
-                        "duration": 51.2829928,
+                        "endTime": "2022-03-02 16:14:47+00:00",
+                        "duration": 52.8721886,
                         "outcome": "correct"
                     }
                 ]
