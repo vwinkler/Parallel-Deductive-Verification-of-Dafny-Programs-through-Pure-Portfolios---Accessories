@@ -2,19 +2,19 @@
     "args": {
         "dafny_file": "../../../benchmarks/dafny/09-CounterNoStateMachine.dfy",
         "procedure_name": "Incrementer",
-        "option_selector_name": "no-diversification",
+        "option_selector_name": "seed-diversification",
         "results_filename": "09-CounterNoStateMachine.dfy_522591.json",
         "seed": "522591",
         "num_threads": 1,
         "dafny_command": "dafny"
     },
-    "commit_hash": "bc2577cffabc38377727788a9fcd0b1532a193b1",
+    "commit_hash": "eb092a798f1ce018f065439b802221cf646a60d0",
     "total_runtime": {
-        "start": 1646089118.656913,
-        "start_readable": "2022-02-28T23:58:38.656913",
-        "end": 1646089180.7050498,
-        "end_readable": "2022-02-28T23:59:40.705050",
-        "duration": "62.0481367111"
+        "start": 1646238284.1386893,
+        "start_readable": "2022-03-02T17:24:44.138689",
+        "end": 1646238343.4615474,
+        "end_readable": "2022-03-02T17:25:43.461547",
+        "duration": "59.3228580952"
     },
     "instances": [
         {
@@ -23,9 +23,12 @@
                 "dafny",
                 "../../../benchmarks/dafny/09-CounterNoStateMachine.dfy",
                 "/proc:*Incrementer",
-                "/xml:/tmp/tmptn18rdzr.xml"
+                "/xml:/tmp/tmp0tdey23m.xml",
+                "/proverOpt:O:smt.random_seed=2434818073"
             ],
-            "diversification": [],
+            "diversification": [
+                "/proverOpt:O:smt.random_seed=2434818073"
+            ],
             "stdout": [
                 "b''",
                 "b'Dafny program verifier finished with 2 verified, 0 errors'"
@@ -33,22 +36,22 @@
             "stderr": [],
             "xml": {
                 "version": "3.3.0.31104",
-                "command": "/opt/dafny/Dafny.dll ../../../benchmarks/dafny/09-CounterNoStateMachine.dfy /proc:*Incrementer /xml:/tmp/tmptn18rdzr.xml",
+                "command": "/opt/dafny/Dafny.dll ../../../benchmarks/dafny/09-CounterNoStateMachine.dfy /proc:*Incrementer /xml:/tmp/tmp0tdey23m.xml /proverOpt:O:smt.random_seed=2434818073",
                 "methods": [
                     {
                         "name": "CheckWellformed$$_module.__default.Incrementer",
-                        "startTime": "2022-02-28 22:58:41+00:00",
+                        "startTime": "2022-03-02 16:24:46+00:00",
                         "finished": true,
-                        "endTime": "2022-02-28 22:58:42+00:00",
-                        "duration": 0.7189754,
+                        "endTime": "2022-03-02 16:24:47+00:00",
+                        "duration": 0.6109996,
                         "outcome": "correct"
                     },
                     {
                         "name": "Impl$$_module.__default.Incrementer",
-                        "startTime": "2022-02-28 22:58:42+00:00",
+                        "startTime": "2022-03-02 16:24:47+00:00",
                         "finished": true,
-                        "endTime": "2022-02-28 22:59:40+00:00",
-                        "duration": 57.9403607,
+                        "endTime": "2022-03-02 16:25:43+00:00",
+                        "duration": 56.1603503,
                         "outcome": "correct"
                     }
                 ]

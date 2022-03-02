@@ -14,6 +14,7 @@ def collect_runtimes(result_filenames) -> pd.DataFrame:
                              "option_selector": [(results["args"]["option_selector_name"])],
                              "processes": [len(results["instances"])],
                              "seed": [results["args"]["seed"]],
+                             "num_threads" : [results["args"]["num_threads"]],
                              "runtime": [results["total_runtime"]["duration"]]})
         data = data.astype({"runtime": "float64"})
         df = pd.concat([df, data])

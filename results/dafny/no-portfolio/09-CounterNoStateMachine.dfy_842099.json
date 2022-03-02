@@ -2,19 +2,19 @@
     "args": {
         "dafny_file": "../../../benchmarks/dafny/09-CounterNoStateMachine.dfy",
         "procedure_name": "Incrementer",
-        "option_selector_name": "no-diversification",
+        "option_selector_name": "seed-diversification",
         "results_filename": "09-CounterNoStateMachine.dfy_842099.json",
         "seed": "842099",
         "num_threads": 1,
         "dafny_command": "dafny"
     },
-    "commit_hash": "bc2577cffabc38377727788a9fcd0b1532a193b1",
+    "commit_hash": "eb092a798f1ce018f065439b802221cf646a60d0",
     "total_runtime": {
-        "start": 1646089356.7886722,
-        "start_readable": "2022-03-01T00:02:36.788672",
-        "end": 1646089418.374663,
-        "end_readable": "2022-03-01T00:03:38.374663",
-        "duration": "61.5859909058"
+        "start": 1646238570.4343574,
+        "start_readable": "2022-03-02T17:29:30.434357",
+        "end": 1646238628.7516959,
+        "end_readable": "2022-03-02T17:30:28.751696",
+        "duration": "58.3173384666"
     },
     "instances": [
         {
@@ -23,9 +23,12 @@
                 "dafny",
                 "../../../benchmarks/dafny/09-CounterNoStateMachine.dfy",
                 "/proc:*Incrementer",
-                "/xml:/tmp/tmpg89g4cws.xml"
+                "/xml:/tmp/tmp2apt_du5.xml",
+                "/proverOpt:O:smt.random_seed=2294189913"
             ],
-            "diversification": [],
+            "diversification": [
+                "/proverOpt:O:smt.random_seed=2294189913"
+            ],
             "stdout": [
                 "b''",
                 "b'Dafny program verifier finished with 2 verified, 0 errors'"
@@ -33,22 +36,22 @@
             "stderr": [],
             "xml": {
                 "version": "3.3.0.31104",
-                "command": "/opt/dafny/Dafny.dll ../../../benchmarks/dafny/09-CounterNoStateMachine.dfy /proc:*Incrementer /xml:/tmp/tmpg89g4cws.xml",
+                "command": "/opt/dafny/Dafny.dll ../../../benchmarks/dafny/09-CounterNoStateMachine.dfy /proc:*Incrementer /xml:/tmp/tmp2apt_du5.xml /proverOpt:O:smt.random_seed=2294189913",
                 "methods": [
                     {
                         "name": "CheckWellformed$$_module.__default.Incrementer",
-                        "startTime": "2022-02-28 23:02:40+00:00",
+                        "startTime": "2022-03-02 16:29:33+00:00",
                         "finished": true,
-                        "endTime": "2022-02-28 23:02:41+00:00",
-                        "duration": 0.8500013,
+                        "endTime": "2022-03-02 16:29:33+00:00",
+                        "duration": 0.6471793,
                         "outcome": "correct"
                     },
                     {
                         "name": "Impl$$_module.__default.Incrementer",
-                        "startTime": "2022-02-28 23:02:41+00:00",
+                        "startTime": "2022-03-02 16:29:33+00:00",
                         "finished": true,
-                        "endTime": "2022-02-28 23:03:38+00:00",
-                        "duration": 57.158282,
+                        "endTime": "2022-03-02 16:30:28+00:00",
+                        "duration": 55.05384,
                         "outcome": "correct"
                     }
                 ]
