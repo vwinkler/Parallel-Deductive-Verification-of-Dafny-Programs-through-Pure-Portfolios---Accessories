@@ -1,6 +1,7 @@
 from os.path import basename
 import argparse
 import matplotlib.pyplot as plt
+from matplotlib import rcParams
 from slugify import slugify
 from collect import *
 
@@ -12,8 +13,12 @@ if __name__ == '__main__':
 
     df = collect_runtimes(args.result_filenames)
 
+    rcParams.update({'figure.autolayout': True})
+
     for (problem, procedure), group in df.groupby(["problem", "procedure"]):
         y_max = group["runtime"].max()
         group = group.pivot(columns=["option_selector", "num_threads"], index="seed", values="runtime").reset_index()
         boxplot = group.plot(kind="box", ylim=(0, y_max * 1.1))
+
+        plt.setp(boxplot.xaxis.get_majorticklabels(), rotation=45)
         boxplot.get_figure().savefig("{}_{}{}.svg".format(slugify(problem), slugify(procedure), args.out_file_suffix))
