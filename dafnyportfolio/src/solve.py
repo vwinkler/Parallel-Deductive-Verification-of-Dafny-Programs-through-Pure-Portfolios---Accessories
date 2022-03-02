@@ -5,12 +5,16 @@ from random import Random
 from Portfolio import *
 from NoDiversificationOptionSelector import *
 from SeedDiversificationOptionSelector import *
+from SatSeedDiversificationOptionSelector import *
+from SmtSeedDiversificationOptionSelector import *
 import util
 
 default_option_selector = "no-diversification"
 option_selectors = {
     default_option_selector: NoDiversificationOptionSelector(),
-    "seed-diversification": SeedDiversificationOptionSelector()
+    "seed-diversification": SeedDiversificationOptionSelector(),
+    "sat-seed-diversification": SatSeedDiversificationOptionSelector(),
+    "smt-seed-diversification": SmtSeedDiversificationOptionSelector()
 }
 
 if __name__ == '__main__':
