@@ -1,12 +1,8 @@
 import argparse
 from time import time
 from multiprocessing import cpu_count
-from random import Random
 from Portfolio import *
-from NoDiversificationOptionSelector import *
-from SeedDiversificationOptionSelector import *
-from SatSeedDiversificationOptionSelector import *
-from SmtSeedDiversificationOptionSelector import *
+from diversification import *
 import util
 
 default_option_selector = "no-diversification"
