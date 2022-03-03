@@ -10,7 +10,9 @@ option_selectors = {
     default_option_selector: NoDiversificationOptionSelector(),
     "seed-diversification": SeedDiversificationOptionSelector(),
     "sat-seed-diversification": SatSeedDiversificationOptionSelector(),
-    "smt-seed-diversification": SmtSeedDiversificationOptionSelector()
+    "smt-seed-diversification": SmtSeedDiversificationOptionSelector(),
+    "split-limit-diversification": SplitLimitDiversificationOptionSelector(),
+    "dynamic-split-limit-diversification": DynamicSplitLimitDiversificationOptionSelector()
 }
 
 if __name__ == '__main__':
