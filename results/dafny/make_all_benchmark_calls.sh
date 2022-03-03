@@ -5,6 +5,14 @@ cmd="python make_benchmark_calls.py"
 seeds="286325 752764 522591 842099 811175"
 
 for seed in $seeds; do
+  echo "mkdir -p split-limit-diversification && cd split-limit-diversification"
+  $cmd split-limit-diversification "_004t_$seed" "--num-threads 4 --seed=$seed"
+  echo "cd .."
+
+  echo "mkdir -p dynamic-split-limit-diversification && cd dynamic-split-limit-diversification"
+  $cmd dynamic-split-limit-diversification "_004t_$seed" "--num-threads 4 --seed=$seed"
+  echo "cd .."
+
   echo "mkdir -p seed-diversification && cd seed-diversification"
   $cmd seed-diversification "_001t_$seed" "--num-threads 1 --seed=$seed"
   $cmd seed-diversification "_004t_$seed" "--num-threads 4 --seed=$seed"
