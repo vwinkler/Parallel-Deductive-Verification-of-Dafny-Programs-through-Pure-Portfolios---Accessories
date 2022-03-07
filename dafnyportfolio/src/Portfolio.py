@@ -5,14 +5,17 @@ from XmlResultParser import *
 
 
 class Portfolio:
-    def __init__(self, filename, procedure_name, num_processes, option_selector, dafny_command):
+    def __init__(self, filename, procedure_name, num_instances, active_instances, option_selector, dafny_command):
         self.option_selector = option_selector
         self.dafny_instance_factory = DafnyInstanceFactory(dafny_command, filename, procedure_name)
         self.process_collection = ProcessCollection()
         self.xml_parser = XmlResultParser()
 
-        dynamic_args = self.select_dynamic_args(num_processes)
-        self.instances = self.create_dafny_instances(dynamic_args)
+        dynamic_args = self.select_dynamic_args(num_instances)
+        self.instances = self.filter_active_instances(self.create_dafny_instances(dynamic_args), active_instances)
+
+    def filter_active_instances(self, instances, active_ids):
+        return {id: instance for id, instance in instances.items() if id in active_ids}
 
     def run(self):
         self.start_dafny_instances(self.instances)
