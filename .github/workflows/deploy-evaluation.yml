@@ -15,5 +15,12 @@ jobs:
           webdav_address: ${{secrets.webdav_address}}
           webdav_username: ${{secrets.webdav_username}}
           webdav_password: ${{secrets.webdav_password}}
-          webdav_upload_path: ${{secrets.webdav_public_root}}/${{github.ref_name}}/evaluation/dafny/
-          files: "./evaluation/dafny/**.svg"
+          webdav_upload_path: ${{secrets.webdav_public_root}}/${{github.ref_name}}/evaluation/dafny/compare_portfolios
+          files: "./evaluation/dafny/compare_portfolios/*.svg"
+      - uses: bxb100/action-upload-webdav@v1
+        with:
+          webdav_address: ${{secrets.webdav_address}}
+          webdav_username: ${{secrets.webdav_username}}
+          webdav_password: ${{secrets.webdav_password}}
+          webdav_upload_path: ${{secrets.webdav_public_root}}/${{github.ref_name}}/evaluation/dafny/compare_instances
+          files: "./evaluation/dafny/compare_instances/*.svg"
