@@ -1,5 +1,6 @@
 import argparse
 import json
+import os.path
 import sys
 
 from slugify import slugify
@@ -31,11 +32,19 @@ def make_arg_strings(call):
     return [str(v) for v in result_file_identifier]
 
 
+def make_dfy_path(base, rest):
+    if base is None:
+        return rest
+    else:
+        return os.path.join(base, rest)
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Turn some job.json into a shell script")
     parser.add_argument(metavar="FILE", dest="filename", type=str)
     parser.add_argument(metavar="CMD", dest="command", type=str)
     parser.add_argument("--dafny-cmd", dest="dafny_cmd", type=str, default=None)
+    parser.add_argument("--dfy-base-path", dest="dfy_base_path", type=str, default=None)
     args = parser.parse_args()
 
     print("#!/bin/sh")
@@ -54,7 +63,7 @@ if __name__ == '__main__':
                    "(set -x; "
                    "python "
                    f"{args.command} "
-                   f"{call['dfy-path']} "
+                   f"{make_dfy_path(args.dfy_base_path, call['dfy-path'])} "
                    f"{call['procedurename']} "
                    f"{call['optionselector']} "
                    f"{results_filename} "
