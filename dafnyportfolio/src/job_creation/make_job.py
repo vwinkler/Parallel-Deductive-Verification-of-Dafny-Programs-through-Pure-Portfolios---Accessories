@@ -3,7 +3,7 @@ import json
 import sys
 
 from slugify import slugify
-from expand import expand
+import expand
 
 
 def turn_key_errors_and_null_to_emptystring(format_string, container, key):
@@ -41,7 +41,7 @@ if __name__ == '__main__':
     print("#!/bin/sh")
     with open(args.filename) as job_file:
         job = json.load(job_file)
-        expanded_job = expand(job)
+        expanded_job = expand.process(job)
 
         seen_results_filenames = set()
         for call in expanded_job:

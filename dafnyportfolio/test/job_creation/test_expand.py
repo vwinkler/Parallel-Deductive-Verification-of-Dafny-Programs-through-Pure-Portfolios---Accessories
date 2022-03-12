@@ -1,6 +1,6 @@
 import unittest
 
-from dafnyportfolio.src.job_creation.expand import expand
+from dafnyportfolio.src.job_creation.expand import expand, resolve_includes
 
 
 class ExpandTest(unittest.TestCase):
@@ -50,5 +50,10 @@ class ExpandTest(unittest.TestCase):
         expectation = [{"x": 1}, {"x": 2}, 0]
         self.assertCountEqual(expectation, expand(example))
 
-        if __name__ == '__main__':
-            unittest.main()
+    def test_include(self):
+        example = [{"[include]x": {"y": 1}, "y": 0}]
+        expectation = [{"y": 1}]
+        self.assertCountEqual(expectation, resolve_includes(example))
+
+    if __name__ == '__main__':
+        unittest.main()
