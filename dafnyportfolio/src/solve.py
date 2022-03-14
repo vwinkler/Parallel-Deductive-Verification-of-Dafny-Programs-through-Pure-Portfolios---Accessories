@@ -24,6 +24,10 @@ def determine_instance_ids(args):
     return result
 
 
+def get_commit_hash():
+    return args.commit_hash if args.commit_hash is not None else util.get_current_commit_hash()
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Run the Dafny solver in a portfolio")
     parser.add_argument(metavar="DAFNYFILE", dest="dafny_file", type=str)
@@ -35,6 +39,7 @@ if __name__ == '__main__':
     parser.add_argument("--num-instances", dest="num_instances", type=int, default=cpu_count())
     parser.add_argument("--dafny-cmd", dest="dafny_command", type=str, default="dafny")
     parser.add_argument("--only-instances", dest="only_instances", type=int, nargs="*")
+    parser.add_argument("--commit-hash", dest="commit_hash", type=str)
     args = parser.parse_args()
 
     chosen_option_selector = option_selectors[args.option_selector_name]
@@ -47,7 +52,7 @@ if __name__ == '__main__':
     instances_results = portfolio.run()
     end_time = time()
     portfolio_results = {"args": vars(args),
-                         "commit_hash": util.get_current_commit_hash(),
+                         "commit_hash": get_commit_hash(),
                          "total_runtime": util.format_timediff(start_time, end_time),
                          "instances": instances_results}
 
