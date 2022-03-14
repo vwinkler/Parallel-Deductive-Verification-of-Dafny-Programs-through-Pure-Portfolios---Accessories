@@ -1,14 +1,5 @@
 import argparse
-import os.path
-
 from util import *
-
-
-def make_dfy_path(base, rest):
-    if base is None:
-        return rest
-    else:
-        return os.path.join(base, rest)
 
 
 def make_self_announcing_normal_command(args, call, results_filename):
@@ -18,7 +9,7 @@ def make_self_announcing_normal_command(args, call, results_filename):
 def make_normal_command(args, call, results_filename):
     cmd = ("python "
            f"{args.command} "
-           f"{make_dfy_path(args.dfy_base_path, call['dfy-path'])} "
+           f"{prepend_base_path(args.dfy_base_path, call['dfy-path'])} "
            f"{call['procedurename']} "
            f"{call['optionselector']} "
            f"{results_filename} "

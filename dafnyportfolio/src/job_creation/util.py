@@ -1,3 +1,4 @@
+import os
 import json
 import sys
 from slugify import slugify
@@ -23,9 +24,8 @@ def make_result_filename(call):
 
 
 def make_arg_strings(call):
-    result_file_identifier = [call['dfy-path'], call['procedurename'], call['optionselector'],
-                              call['optionselector'], call['num_instances'], call['only_instances'],
-                              call['seed']]
+    result_file_identifier = [call['dfy-path'], call['procedurename'], call['optionselector'], call['num_instances'],
+                              call['only_instances'], call['seed']]
     return [str(v) for v in result_file_identifier]
 
 
@@ -45,3 +45,10 @@ def for_all_calls(filename, f):
             print_error_if_duplicate(seen_results_filenames, results_filename)
             seen_results_filenames.add(results_filename)
             f(call, results_filename)
+
+
+def prepend_base_path(base, rest):
+    if base is None:
+        return rest
+    else:
+        return os.path.join(base, rest)
