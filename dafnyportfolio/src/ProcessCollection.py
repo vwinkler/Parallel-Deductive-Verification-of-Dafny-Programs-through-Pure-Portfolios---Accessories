@@ -73,12 +73,15 @@ class Process:
         self.wrapped_process = Popen(args, stdin=stdin, stdout=stdout, stderr=stderr, text=True)
 
     def __del__(self):
-        if self.stdin_is_pipe:
-            self.wrapped_process.stdin.close()
-        if self.stdout_is_pipe:
-            self.wrapped_process.stdout.close()
-        if self.stderr_is_pipe:
-            self.wrapped_process.stderr.close()
+        try:
+            if self.stdin_is_pipe:
+                self.wrapped_process.stdin.close()
+            if self.stdout_is_pipe:
+                self.wrapped_process.stdout.close()
+            if self.stderr_is_pipe:
+                self.wrapped_process.stderr.close()
+        except AttributeError:
+            pass
 
     def get_pid(self):
         return self.wrapped_process.pid
