@@ -15,12 +15,26 @@ jobs:
           webdav_address: ${{secrets.webdav_address}}
           webdav_username: ${{secrets.webdav_username}}
           webdav_password: ${{secrets.webdav_password}}
-          webdav_upload_path: ${{secrets.webdav_public_root}}/${{github.ref_name}}/evaluation/dafny/compare_portfolios
-          files: "./evaluation/dafny/compare_portfolios/*.svg"
+          webdav_upload_path: ${{secrets.webdav_public_root}}/${{github.ref_name}}/evaluation/dafny/pc/compare_portfolios
+          files: "./evaluation/dafny/pc/compare_portfolios/*.svg"
       - uses: bxb100/action-upload-webdav@v1
         with:
           webdav_address: ${{secrets.webdav_address}}
           webdav_username: ${{secrets.webdav_username}}
           webdav_password: ${{secrets.webdav_password}}
-          webdav_upload_path: ${{secrets.webdav_public_root}}/${{github.ref_name}}/evaluation/dafny/compare_instances
-          files: "./evaluation/dafny/compare_instances/*.svg"
+          webdav_upload_path: ${{secrets.webdav_public_root}}/${{github.ref_name}}/evaluation/dafny/pc/compare_instances
+          files: "./evaluation/dafny/pc/compare_instances/*.svg"
+      - uses: bxb100/action-upload-webdav@v1
+        with:
+          webdav_address: ${{secrets.webdav_address}}
+          webdav_username: ${{secrets.webdav_username}}
+          webdav_password: ${{secrets.webdav_password}}
+          webdav_upload_path: ${{secrets.webdav_public_root}}/${{github.ref_name}}/evaluation/dafny/cluster/compare_portfolios
+          files: "./evaluation/dafny/cluster/compare_portfolios/*.svg"
+      - uses: bxb100/action-upload-webdav@v1
+        with:
+          webdav_address: ${{secrets.webdav_address}}
+          webdav_username: ${{secrets.webdav_username}}
+          webdav_password: ${{secrets.webdav_password}}
+          webdav_upload_path: ${{secrets.webdav_public_root}}/${{github.ref_name}}/evaluation/dafny/cluster/compare_instances
+          files: "./evaluation/dafny/cluster/compare_instances/*.svg"
