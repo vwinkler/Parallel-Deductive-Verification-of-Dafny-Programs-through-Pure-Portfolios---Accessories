@@ -1,0 +1,71 @@
+{
+    "args": {
+        "dafny_file": "/benchmarks/09-CounterNoStateMachine.dfy",
+        "procedure_name": "Incrementer",
+        "option_selector_name": "seed-diversification",
+        "results_filename": "/result/09-counternostatemachine-dfy-incrementer-seed-diversification-10-4-842099.json",
+        "seed": "842099",
+        "num_instances": 10,
+        "dafny_command": "/opt/dafny/dafny",
+        "only_instances": [
+            4
+        ],
+        "commit_hash": ""
+    },
+    "commit_hash": "",
+    "total_runtime": {
+        "start": 1647885964.3534853,
+        "start_readable": "2022-03-21T19:06:04.353485",
+        "end": 1647886000.269747,
+        "end_readable": "2022-03-21T19:06:40.269747",
+        "duration": "35.9162616730"
+    },
+    "instances": [
+        {
+            "id": 4,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/09-CounterNoStateMachine.dfy",
+                "/proc:*Incrementer",
+                "/xml:/tmp/tmpemqkrc66.xml",
+                "/proverOpt:O:sat.random_seed=1493871544",
+                "/proverOpt:O:smt.random_seed=2801983165",
+                "/proverOpt:O:fp.spacer.random_seed=3330301152",
+                "/proverOpt:O:sls.random_seed=652556968"
+            ],
+            "diversification": [
+                "/proverOpt:O:sat.random_seed=1493871544",
+                "/proverOpt:O:smt.random_seed=2801983165",
+                "/proverOpt:O:fp.spacer.random_seed=3330301152",
+                "/proverOpt:O:sls.random_seed=652556968"
+            ],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 2 verified, 0 errors'"
+            ],
+            "stderr": [],
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/09-CounterNoStateMachine.dfy /proc:*Incrementer /xml:/tmp/tmpemqkrc66.xml /proverOpt:O:sat.random_seed=1493871544 /proverOpt:O:smt.random_seed=2801983165 /proverOpt:O:fp.spacer.random_seed=3330301152 /proverOpt:O:sls.random_seed=652556968",
+                "methods": [
+                    {
+                        "name": "CheckWellformed$$_module.__default.Incrementer",
+                        "startTime": "2022-03-21 18:06:06+00:00",
+                        "finished": true,
+                        "endTime": "2022-03-21 18:06:07+00:00",
+                        "duration": 0.2885873,
+                        "outcome": "correct"
+                    },
+                    {
+                        "name": "Impl$$_module.__default.Incrementer",
+                        "startTime": "2022-03-21 18:06:07+00:00",
+                        "finished": true,
+                        "endTime": "2022-03-21 18:06:40+00:00",
+                        "duration": 33.1393231,
+                        "outcome": "correct"
+                    }
+                ]
+            }
+        }
+    ]
+}
