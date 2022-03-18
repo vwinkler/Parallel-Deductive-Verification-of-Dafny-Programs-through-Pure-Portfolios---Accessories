@@ -1,9 +1,19 @@
+import os
 from os.path import basename
 import argparse
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from slugify import slugify
 from collect import *
+
+
+def save_plot(boxplot, filename):
+    try:
+        os.makedirs(os.path.dirname(filename))
+    except FileExistsError:
+        pass
+    boxplot.get_figure().savefig(filename)
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Plot boxplots displaying runtime")
@@ -15,10 +25,14 @@ if __name__ == '__main__':
 
     rcParams.update({'figure.autolayout': True})
 
-    for (problem, procedure), group in df.groupby(["problem", "procedure"]):
+    for (problem, procedure, is_portfolio), group in df.groupby(["problem", "procedure", "is_portfolio"]):
         y_max = group["runtime"].max()
-        group = group.pivot(columns=["option_selector", "num_instances", "only_instances"], index="seed", values="runtime").reset_index()
+        group = group.pivot(columns=["option_selector", "num_instances", "only_instances"], index="seed",
+                            values="runtime").reset_index()
         boxplot = group.plot(kind="box", ylim=(0, y_max * 1.1))
 
         plt.setp(boxplot.xaxis.get_majorticklabels(), rotation=45)
-        boxplot.get_figure().savefig("{}_{}{}.svg".format(slugify(problem), slugify(procedure), args.out_file_suffix))
+
+        cmp_string = "compare_portfolios" if is_portfolio else "compare_instances"
+        filename = "{}/{}_{}{}.svg".format(cmp_string, slugify(problem), slugify(procedure), args.out_file_suffix)
+        save_plot(boxplot, filename)
