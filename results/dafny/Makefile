@@ -10,12 +10,12 @@ run.sh : $(make_job) job.json
 	
 run_cloud_dev_single.sh : print_warning.sh $(make_cloud_job) job.json
 	cat print_warning.sh > $@
-	python $(make_cloud_job) --results-base-path dev/ --dfy-base-path ../../benchmarks/dafny/ job.json dev_single vwinkler+dafnyportfolio-evaluation >> $@
+	python $(make_cloud_job) --results-base-path dev/ --skip-existing --dfy-base-path ../../benchmarks/dafny/ job.json dev_single vwinkler+dafnyportfolio-evaluation >> $@
 
 run_cloud_single.sh : print_warning.sh $(make_cloud_job) job.json
 	cat print_warning.sh > $@
-	python $(make_cloud_job) --results-base-path experiments/ --dfy-base-path ../../benchmarks/dafny/ job.json single vwinkler+dafnyportfolio-evaluation >> $@
+	python $(make_cloud_job) --results-base-path experiments/ --skip-existing --dfy-base-path ../../benchmarks/dafny/ job.json single vwinkler+dafnyportfolio-evaluation >> $@
 	
 run_local_container.sh : $(make_cloud_job) job.json
 	cat print_warning.sh > $@
-	python $(make_cloud_job) --container-framework docker --omit-sbatch --dfy-base-path ../../benchmarks/dafny/ job.json single vwinkler/dafnyportfolio-evaluation >> $@
+	python $(make_cloud_job) --container-framework docker --skip-existing --omit-sbatch --dfy-base-path ../../benchmarks/dafny/ job.json single vwinkler/dafnyportfolio-evaluation >> $@
