@@ -8,6 +8,10 @@ def make_command(args, call, results_filename):
     if not args.omit_sbatch:
         cmd += make_sbatch_prefix(args, call, results_filename)
     cmd += make_container_command(args, call, results_filename)
+
+    if args.skip_existing:
+        path = prepend_base_path(args.results_base_path, results_filename)
+        cmd = f"if [[ ! -e '{path}' ]]; then {cmd}; else echo skipping '{path}'; fi"
     return cmd
 
 
@@ -67,6 +71,7 @@ if __name__ == '__main__':
     parser.add_argument("--dfy-base-path", dest="dfy_base_path", type=str, default=None)
     parser.add_argument("--results-base-path", dest="results_base_path", type=str, default=".")
     parser.add_argument("--omit-sbatch", dest="omit_sbatch", action='store_true')
+    parser.add_argument("--skip-existing", dest="skip_existing", action='store_true')
     args = parser.parse_args()
 
     print("#!/bin/sh")
