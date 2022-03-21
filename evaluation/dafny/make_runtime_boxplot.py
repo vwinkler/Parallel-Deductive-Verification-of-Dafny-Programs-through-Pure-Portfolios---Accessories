@@ -25,14 +25,17 @@ if __name__ == '__main__':
 
     rcParams.update({'figure.autolayout': True})
 
-    for (problem, procedure, is_portfolio), group in df.groupby(["problem", "procedure", "is_portfolio"]):
+    grouped_data = df.groupby(["problem", "procedure", "num_instances", "is_portfolio"])
+    for (problem, procedure, num_instances, is_portfolio), group in grouped_data:
         y_max = group["runtime"].max()
         group = group.pivot(columns=["option_selector", "num_instances", "only_instances"], index="seed",
                             values="runtime").reset_index()
         boxplot = group.plot(kind="box", ylim=(0, y_max * 1.1))
 
-        plt.setp(boxplot.xaxis.get_majorticklabels(), rotation=45)
+        plt.setp(boxplot.xaxis.get_majorticklabels(), rotation=90)
 
         cmp_string = "compare_portfolios" if is_portfolio else "compare_instances"
-        filename = "{}/{}_{}{}.svg".format(cmp_string, slugify(problem), slugify(procedure), args.out_file_suffix)
+        filename = "{}/{}_{}_{}{}.svg".format(cmp_string, slugify(problem), slugify(procedure), slugify(num_instances),
+                                              args.out_file_suffix)
         save_plot(boxplot, filename)
+        plt.close()
