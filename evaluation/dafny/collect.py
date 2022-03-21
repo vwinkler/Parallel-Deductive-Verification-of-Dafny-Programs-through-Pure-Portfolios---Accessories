@@ -2,7 +2,6 @@ import pandas as pd
 import json
 
 
-# Returned columns: problem | procedure | option_selector | processes | seed | only_instances | runtime | is_portfolio
 def collect_runtimes(result_filenames) -> pd.DataFrame:
     df = collect_runtime_files(result_filenames)
     df = add_is_portfolio_column(df)
