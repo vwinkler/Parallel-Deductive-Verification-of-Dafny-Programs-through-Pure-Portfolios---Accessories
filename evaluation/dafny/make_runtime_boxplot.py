@@ -38,3 +38,4 @@ if __name__ == '__main__':
         filename = "{}/{}_{}_{}{}.svg".format(cmp_string, slugify(problem), slugify(procedure), slugify(num_instances),
                                               args.out_file_suffix)
         save_plot(boxplot, filename)
+        plt.close()
