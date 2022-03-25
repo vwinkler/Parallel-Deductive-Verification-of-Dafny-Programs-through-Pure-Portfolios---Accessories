@@ -36,7 +36,7 @@ def make_container_command(args, call, results_filename):
         f"{make_mount_argument(args.container_framework, dfy_base_path, '/benchmarks/', read_only=True)} "
         f"{args.container} "
         f"{prepend_base_path('/benchmarks/', call['dfy-path'])} "
-        f"{call['procedurename']} "
+        f"{escape_procedurename(call)} "
         f"{call['optionselector']} "
         f"{prepend_base_path('/result/', results_filename)} "
         "--dafny-cmd /opt/dafny/dafny "
