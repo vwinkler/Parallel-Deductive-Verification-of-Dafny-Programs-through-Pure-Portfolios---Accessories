@@ -15,6 +15,7 @@ def process(dict_tree):
     dict_tree = resolve_includes(dict_tree)
     return dict_tree
 
+
 def expand_dict(dict_to_expand):
     keys = dict_to_expand.keys()
     values = dict_to_expand.values()
@@ -33,11 +34,22 @@ def resolve_includes(dict_tree):
 
 
 def resolve_includes_in_dict(dict_tree):
-    result = {k: resolve_includes(v) for k, v in dict_tree.items()}
-    for key, value in dict_tree.items():
+    return resolve_includes_in_dict_keep_values(resolve_includes_in_dict_values(dict_tree))
+
+
+def resolve_includes_in_dict_values(dict_tree):
+    dict_with_resolved_values = {k: resolve_includes(v) for k, v in dict_tree.items()}
+    return dict_with_resolved_values
+
+
+def resolve_includes_in_dict_keep_values(dict_with_resolved_values):
+    result = dict()
+    for key, value in dict_with_resolved_values.items():
         if key.startswith("[include]"):
             assert isinstance(value, dict)
             for inner_key, inner_value in value.items():
                 result[inner_key] = inner_value
-            del result[key]
+        else:
+            if key not in result:
+                result[key] = value
     return result
