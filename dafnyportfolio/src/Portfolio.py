@@ -77,7 +77,7 @@ class DafnyInstance:
         self._error_file = NamedTemporaryFile("w+b", suffix=".err")
         self._xml_file = NamedTemporaryFile("r", suffix=".xml")
 
-        proc_argument = "/proc:*{}".format(procedure_name)
+        proc_argument = "/proc:{}".format(procedure_name)
         static_args = [dafny_command, dfy_filename, proc_argument]
         xml_argument = "/xml:{}".format(self._xml_file.name)
         self._dynamic_args = dynamic_args

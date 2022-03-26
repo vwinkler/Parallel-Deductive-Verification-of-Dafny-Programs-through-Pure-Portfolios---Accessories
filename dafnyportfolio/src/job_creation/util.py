@@ -52,3 +52,7 @@ def prepend_base_path(base, rest):
         return rest
     else:
         return os.path.join(base, rest)
+
+
+def escape_procedurename(call):
+    return f"'{call['procedurename']}'"

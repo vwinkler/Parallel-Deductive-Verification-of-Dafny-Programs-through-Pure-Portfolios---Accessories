@@ -10,7 +10,7 @@ def make_normal_command(args, call, results_filename):
     cmd = ("python "
            f"{args.command} "
            f"{prepend_base_path(args.dfy_base_path, call['dfy-path'])} "
-           f"{call['procedurename']} "
+           f"{escape_procedurename(call)} "
            f"{call['optionselector']} "
            f"{results_filename} "
            )
