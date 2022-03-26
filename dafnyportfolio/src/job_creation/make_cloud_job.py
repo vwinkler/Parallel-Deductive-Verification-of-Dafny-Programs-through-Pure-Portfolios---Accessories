@@ -1,5 +1,6 @@
-from os.path import abspath
 import argparse
+from os.path import abspath
+
 from util import *
 
 
@@ -7,6 +8,7 @@ def make_command(args, call, results_filename):
     cmd = ""
     if not args.omit_sbatch:
         cmd += make_sbatch_prefix(args, call, results_filename)
+        cmd += " "
     cmd += make_container_command(args, call, results_filename)
 
     if args.skip_existing:
@@ -16,35 +18,43 @@ def make_command(args, call, results_filename):
 
 
 def make_sbatch_prefix(args, call, results_filename):
-    cmd = (
-        f"sbatch "
-        f"-o {prepend_base_path(args.results_base_path, results_filename)}.out "
-        f"--partition={args.partition} "
-        "--exclusive "
-    )
-    cmd += turn_key_errors_and_null_to_emptystring("--time {} ", call, "estimated_runtime")
-    cmd += turn_key_errors_and_null_to_emptystring("--mem {} ", call, "estimated_memory")
-    return cmd
+    return make_sbatch_prefix_string(make_sbatch_prefix_args(args, call, results_filename))
+
+
+def make_sbatch_prefix_args(args, call, results_filename):
+    result = [f"-o {prepend_base_path(args.results_base_path, results_filename)}.out", f"--partition={args.partition}",
+              "--exclusive", turn_key_errors_and_null_to_emptystring("--time {}", call, "estimated_runtime"),
+              turn_key_errors_and_null_to_emptystring("--mem {}", call, "estimated_memory")]
+    result = [arg for arg in result if arg != ""]
+    return result
+
+
+def make_sbatch_prefix_string(cmd_args):
+    return "sbatch " + " ".join(cmd_args)
 
 
 def make_container_command(args, call, results_filename):
+    return make_container_command_string(make_container_command_args(args, call, results_filename))
+
+
+def make_container_command_args(args, call, results_filename):
     results_base_path = abspath(args.results_base_path)
     dfy_base_path = abspath(args.dfy_base_path)
-    cmd = (
-        f"{make_container_start_command(args.container_framework)} "
-        f"{make_mount_argument(args.container_framework, results_base_path, '/result/', read_only=False)} "
-        f"{make_mount_argument(args.container_framework, dfy_base_path, '/benchmarks/', read_only=True)} "
-        f"{args.container} "
-        f"{prepend_base_path('/benchmarks/', call['dfy-path'])} "
-        f"{escape_procedurename(call)} "
-        f"{call['optionselector']} "
-        f"{prepend_base_path('/result/', results_filename)} "
-        "--dafny-cmd /opt/dafny/dafny "
-    )
-    cmd += turn_key_errors_and_null_to_emptystring("--num-instances {} ", call, "num_instances")
-    cmd += turn_key_errors_and_null_to_emptystring("--seed {} ", call, "seed")
-    cmd += turn_key_errors_and_null_to_emptystring("--only-instances {} ", call, "only_instances")
-    return cmd
+    cmd_args = [f"{make_container_start_command(args.container_framework)}",
+                f"{make_mount_argument(args.container_framework, results_base_path, '/result/', read_only=False)}",
+                f"{make_mount_argument(args.container_framework, dfy_base_path, '/benchmarks/', read_only=True)}",
+                f"{args.container}", f"{prepend_base_path('/benchmarks/', call['dfy-path'])}",
+                f"{escape_procedurename(call)}", f"{call['optionselector']}",
+                f"{prepend_base_path('/result/', results_filename)}", "--dafny-cmd /opt/dafny/dafny",
+                turn_key_errors_and_null_to_emptystring("--num-instances {} ", call, "num_instances"),
+                turn_key_errors_and_null_to_emptystring("--seed {} ", call, "seed"),
+                turn_key_errors_and_null_to_emptystring("--only-instances {} ", call, "only_instances")]
+    cmd_args = [arg for arg in cmd_args if arg != ""]
+    return cmd_args
+
+
+def make_container_command_string(cmd_args):
+    return " ".join(cmd_args)
 
 
 def make_container_start_command(framework):
