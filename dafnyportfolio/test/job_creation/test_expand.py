@@ -55,5 +55,15 @@ class ExpandTest(unittest.TestCase):
         expectation = [{"y": 1}]
         self.assertCountEqual(expectation, resolve_includes(example))
 
+    def test_include_no_overwrite(self):
+        example = {"[include]x": {"y": 1}}
+        expectation = {"y": 1}
+        self.assertCountEqual(expectation, resolve_includes(example))
+
+    def test_nested_include(self):
+        example = [{"[include]": {"[include]": {"y": 0}}}]
+        expectation = [{"y": 0}]
+        self.assertCountEqual(expectation, resolve_includes(example))
+
     if __name__ == '__main__':
         unittest.main()
