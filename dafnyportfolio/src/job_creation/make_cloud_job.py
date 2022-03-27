@@ -5,15 +5,20 @@ from util import *
 
 
 def make_command(args, call, results_filename):
+    path = prepend_base_path(args.results_base_path, results_filename)
     cmd = ""
-    if not args.omit_sbatch:
-        cmd += make_sbatch_prefix(args, call, results_filename)
-        cmd += " "
-    cmd += make_container_command(args, call, results_filename)
-
     if args.skip_existing:
-        path = prepend_base_path(args.results_base_path, results_filename)
-        cmd = f"if [[ ! -e '{path}' ]]; then {cmd}; else echo skipping '{path}'; fi"
+        cmd = f"if [[ ! -e '{path}' ]]; then\n"
+    if not args.omit_sbatch:
+        cmd += f"{make_sbatch_prefix(args, call, results_filename)}"
+    cmd += f"{make_container_command(args, call, results_filename)}"
+    cmd += "\n"
+    if args.skip_existing:
+        cmd += "else\n"
+        cmd += f"echo skipping '{path}'\n"
+        cmd += "fi\n"
+    if not args.omit_sbatch:
+        cmd += make_sbatch_suffix_string()
     return cmd
 
 
@@ -31,6 +36,10 @@ def make_sbatch_prefix_args(args, call, results_filename):
 
 def make_sbatch_prefix_string(cmd_args):
     return "sbatch " + " ".join(cmd_args)
+
+
+def make_sbatch_suffix_string():
+    return "EOF"
 
 
 def make_container_command(args, call, results_filename):
