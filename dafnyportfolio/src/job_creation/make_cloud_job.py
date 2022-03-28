@@ -1,41 +1,84 @@
 import argparse
+import datetime
+import re
+import time
 from os.path import abspath
 
 from util import *
 
 
-def make_command(args, call, results_filename):
-    path = prepend_base_path(args.results_base_path, results_filename)
+def make_commands(args, calls):
+    time_sum = sum_times(calls)
+    mem_max = max_mems(calls)
+
     cmd = ""
-    if args.skip_existing:
-        cmd = f"if [[ ! -e '{path}' ]]; then\n"
     if not args.omit_sbatch:
-        cmd += f"{make_sbatch_prefix(args, call, results_filename)}"
-    cmd += f"{make_container_command(args, call, results_filename)}"
-    cmd += "\n"
-    if args.skip_existing:
-        cmd += "else\n"
-        cmd += f"echo skipping '{path}'\n"
-        cmd += "fi\n"
+        cmd += f"{make_sbatch_prefix(args, 'job', runtime=time_sum, mem=mem_max)}"
+    for call, results_filename in calls:
+        if args.skip_existing:
+            path = prepend_base_path(args.results_base_path, results_filename)
+            cmd += f"if [[ ! -e '{path}' ]]; then\n"
+        cmd += f"{make_container_command(args, call, results_filename)}"
+        cmd += "\n"
+        if args.skip_existing:
+            cmd += "else\n"
+            cmd += f"echo skipping '{path}'\n"
+            cmd += "fi\n"
     if not args.omit_sbatch:
         cmd += make_sbatch_suffix_string()
     return cmd
 
 
-def make_sbatch_prefix(args, call, results_filename):
-    return make_sbatch_prefix_string(make_sbatch_prefix_args(args, call, results_filename))
+def max_mems(calls):
+    memory_estimates = [parse_memory_value(call["estimated_memory"]) for call, _ in calls if "estimated_memory" in call]
+
+    if len(memory_estimates) > 0:
+        return max([0] + memory_estimates)
+    else:
+        return None
 
 
-def make_sbatch_prefix_args(args, call, results_filename):
-    result = [f"-o {prepend_base_path(args.results_base_path, results_filename)}.out", f"--partition={args.partition}",
-              "--exclusive", turn_key_errors_and_null_to_emptystring("--time {}", call, "estimated_runtime"),
-              turn_key_errors_and_null_to_emptystring("--mem {}", call, "estimated_memory")]
+def parse_memory_value(memory_value):
+    match = re.search("^([0-9]+)M$", memory_value)
+    if match is None:
+        raise RuntimeError("Value at 'memory' is invalid. Has to be i.e. '123M'.")
+    mem = int(match.group(1))
+    return mem
+
+
+def sum_times(calls):
+    runtimes = [parse_runtime_value_to_seconds(call["estimated_runtime"]) for call, _ in calls if
+                "estimated_runtime" in call]
+    if len(runtimes) > 0:
+        return str(datetime.timedelta(seconds=(sum(runtimes))))
+    else:
+        return None
+
+
+def parse_runtime_value_to_seconds(runtime_value):
+    t = time.strptime(runtime_value, "%H:%M:%S")
+    return datetime.timedelta(hours=t.tm_hour, minutes=t.tm_min, seconds=t.tm_sec).total_seconds()
+
+
+def make_sbatch_prefix(args, output_filename, runtime=None, mem=None):
+    return make_sbatch_prefix_string(make_sbatch_prefix_args(args, output_filename, runtime, mem))
+
+
+def make_sbatch_prefix_args(args, output_filename, runtime=None, mem=None):
+    result = [f"-o {prepend_base_path(args.results_base_path, output_filename)}.out",
+              f"--partition={args.partition}",
+              "--exclusive",
+              turn_null_to_emptystring("--time {}", runtime),
+              turn_null_to_emptystring("--mem {}", mem)]
     result = [arg for arg in result if arg != ""]
     return result
 
 
 def make_sbatch_prefix_string(cmd_args):
-    return "sbatch " + " ".join(cmd_args)
+    cmd = "sbatch << EOF\n#!/bin/sh\n"
+    for arg in cmd_args:
+        cmd += f"#SBATCH {arg}\n"
+    return cmd
 
 
 def make_sbatch_suffix_string():
@@ -95,5 +138,6 @@ if __name__ == '__main__':
 
     print("#!/bin/sh")
 
-    for_all_calls(args.filename,
-                  lambda call, results_file: print(make_command(args, call, results_file)))
+    calls = []
+    for_all_calls(args.filename, lambda call, results_file: calls.append((call, results_file)))
+    print(make_commands(args, calls))
