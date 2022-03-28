@@ -1,5 +1,6 @@
 import argparse
 import datetime
+import math
 import re
 import time
 from os.path import abspath
@@ -8,25 +9,39 @@ from util import *
 
 
 def make_commands(args, calls):
-    time_sum = sum_times(calls)
-    mem_max = max_mems(calls)
+    if len(calls) == 0:
+        return ""
 
     cmd = ""
-    if not args.omit_sbatch:
-        cmd += f"{make_sbatch_prefix(args, 'job', runtime=time_sum, mem=mem_max)}"
-    for call, results_filename in calls:
-        if args.skip_existing:
-            path = prepend_base_path(args.results_base_path, results_filename)
-            cmd += f"if [[ ! -e '{path}' ]]; then\n"
-        cmd += f"{make_container_command(args, call, results_filename)}"
-        cmd += "\n"
-        if args.skip_existing:
-            cmd += "else\n"
-            cmd += f"echo skipping '{path}'\n"
-            cmd += "fi\n"
-    if not args.omit_sbatch:
-        cmd += make_sbatch_suffix_string()
+    assert args.max_jobs is None or args.max_jobs > 0
+    chunk_size = math.ceil(len(calls) / args.max_jobs) if args.max_jobs is not None else len(calls)
+    for i, job_calls in enumerate(chunk(calls, chunk_size)):
+        time_sum = sum_times(job_calls)
+        mem_max = max_mems(job_calls)
+
+        if not args.omit_sbatch:
+            cmd += make_sbatch_prefix(args, f"job_{i}", runtime=time_sum, mem=mem_max)
+        for call, results_filename in job_calls:
+            if args.skip_existing:
+                path = prepend_base_path(args.results_base_path, results_filename)
+                cmd += f"if [[ ! -e '{path}' ]]; then\n"
+            cmd += f"{make_container_command(args, call, results_filename)}"
+            cmd += "\n"
+            if args.skip_existing:
+                cmd += "else\n"
+                cmd += f"echo skipping '{path}'\n"
+                cmd += "fi\n"
+        if not args.omit_sbatch:
+            cmd += make_sbatch_suffix_string()
+            cmd += "\n"
     return cmd
+
+
+def chunk(values, chunk_size):
+    result = []
+    for chunk_start in range(0, len(values), chunk_size):
+        result.append(values[chunk_start:(chunk_start + chunk_size)])
+    return result
 
 
 def max_mems(calls):
@@ -134,6 +149,7 @@ if __name__ == '__main__':
     parser.add_argument("--results-base-path", dest="results_base_path", type=str, default=".")
     parser.add_argument("--omit-sbatch", dest="omit_sbatch", action='store_true')
     parser.add_argument("--skip-existing", dest="skip_existing", action='store_true')
+    parser.add_argument("--max-jobs", dest="max_jobs", type=int, default=None)
     args = parser.parse_args()
 
     print("#!/bin/sh")
