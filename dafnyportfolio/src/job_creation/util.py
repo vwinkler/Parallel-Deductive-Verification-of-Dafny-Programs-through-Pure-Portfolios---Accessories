@@ -16,7 +16,7 @@ def turn_null_to_emptystring(format_string, value):
     if value is None:
         return ""
     else:
-        format_string.format(value)
+        return format_string.format(value)
 
 
 def make_result_filename(call):
