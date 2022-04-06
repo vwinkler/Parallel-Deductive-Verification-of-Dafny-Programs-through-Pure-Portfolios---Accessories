@@ -8,4 +8,4 @@ fi
 for filename in "$@"
 do
     cat $filename | sed -r "s/^./$filename\t&/g"
-done | sort --key=3 --numeric-sort --reverse | column --table
+done | sort --key=3 --general-numeric-sort --reverse | column --table
