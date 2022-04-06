@@ -1,50 +1,127 @@
-from os.path import abspath
 import argparse
+import datetime
+import math
+import re
+import time
+from os.path import abspath
+
 from util import *
 
 
-def make_command(args, call, results_filename):
+def make_commands(args, calls):
+    if len(calls) == 0:
+        return ""
+
     cmd = ""
-    if not args.omit_sbatch:
-        cmd += make_sbatch_prefix(args, call, results_filename)
-    cmd += make_container_command(args, call, results_filename)
+    assert args.max_jobs is None or args.max_jobs > 0
+    chunk_size = math.ceil(len(calls) / args.max_jobs) if args.max_jobs is not None else len(calls)
+    for i, job_calls in enumerate(chunk(calls, chunk_size)):
+        time_sum = sum_times(job_calls)
+        mem_max = max_mems(job_calls)
 
-    if args.skip_existing:
-        path = prepend_base_path(args.results_base_path, results_filename)
-        cmd = f"if [[ ! -e '{path}' ]]; then {cmd}; else echo skipping '{path}'; fi"
+        if not args.omit_sbatch:
+            cmd += make_sbatch_prefix(args, f"job_{i}", runtime=time_sum, mem=mem_max)
+        for call, results_filename in job_calls:
+            if args.skip_existing:
+                path = prepend_base_path(args.results_base_path, results_filename)
+                cmd += f"if [[ ! -e '{path}' ]]; then\n"
+            cmd += f"{make_container_command(args, call, results_filename)}"
+            cmd += "\n"
+            if args.skip_existing:
+                cmd += "else\n"
+                cmd += f"echo skipping '{path}'\n"
+                cmd += "fi\n"
+        if not args.omit_sbatch:
+            cmd += make_sbatch_suffix_string()
+            cmd += "\n"
     return cmd
 
 
-def make_sbatch_prefix(args, call, results_filename):
-    cmd = (
-        f"sbatch "
-        f"-o {prepend_base_path(args.results_base_path, results_filename)}.out "
-        f"--partition={args.partition} "
-        "--exclusive "
-    )
-    cmd += turn_key_errors_and_null_to_emptystring("--time {} ", call, "estimated_runtime")
-    cmd += turn_key_errors_and_null_to_emptystring("--mem {} ", call, "estimated_memory")
+def chunk(values, chunk_size):
+    result = []
+    for chunk_start in range(0, len(values), chunk_size):
+        result.append(values[chunk_start:(chunk_start + chunk_size)])
+    return result
+
+
+def max_mems(calls):
+    memory_estimates = [parse_memory_value(call["estimated_memory"]) for call, _ in calls if "estimated_memory" in call]
+
+    if len(memory_estimates) > 0:
+        return max([0] + memory_estimates)
+    else:
+        return None
+
+
+def parse_memory_value(memory_value):
+    match = re.search("^([0-9]+)M$", memory_value)
+    if match is None:
+        raise RuntimeError("Value at 'memory' is invalid. Has to be i.e. '123M'.")
+    mem = int(match.group(1))
+    return mem
+
+
+def sum_times(calls):
+    runtimes = [parse_runtime_value_to_seconds(call["estimated_runtime"]) for call, _ in calls if
+                "estimated_runtime" in call]
+    if len(runtimes) > 0:
+        return str(datetime.timedelta(seconds=(sum(runtimes))))
+    else:
+        return None
+
+
+def parse_runtime_value_to_seconds(runtime_value):
+    t = time.strptime(runtime_value, "%H:%M:%S")
+    return datetime.timedelta(hours=t.tm_hour, minutes=t.tm_min, seconds=t.tm_sec).total_seconds()
+
+
+def make_sbatch_prefix(args, output_filename, runtime=None, mem=None):
+    return make_sbatch_prefix_string(make_sbatch_prefix_args(args, output_filename, runtime, mem))
+
+
+def make_sbatch_prefix_args(args, output_filename, runtime=None, mem=None):
+    result = [f"-o {prepend_base_path(args.results_base_path, output_filename)}.out",
+              f"--partition={args.partition}",
+              "--exclusive",
+              turn_null_to_emptystring("--time {}", runtime),
+              turn_null_to_emptystring("--mem {}", mem)]
+    result = [arg for arg in result if arg != ""]
+    return result
+
+
+def make_sbatch_prefix_string(cmd_args):
+    cmd = "sbatch << EOF\n#!/bin/sh\n"
+    for arg in cmd_args:
+        cmd += f"#SBATCH {arg}\n"
     return cmd
+
+
+def make_sbatch_suffix_string():
+    return "EOF"
 
 
 def make_container_command(args, call, results_filename):
+    return make_container_command_string(make_container_command_args(args, call, results_filename))
+
+
+def make_container_command_args(args, call, results_filename):
     results_base_path = abspath(args.results_base_path)
     dfy_base_path = abspath(args.dfy_base_path)
-    cmd = (
-        f"{make_container_start_command(args.container_framework)} "
-        f"{make_mount_argument(args.container_framework, results_base_path, '/result/', read_only=False)} "
-        f"{make_mount_argument(args.container_framework, dfy_base_path, '/benchmarks/', read_only=True)} "
-        f"{args.container} "
-        f"{prepend_base_path('/benchmarks/', call['dfy-path'])} "
-        f"{escape_procedurename(call)} "
-        f"{call['optionselector']} "
-        f"{prepend_base_path('/result/', results_filename)} "
-        "--dafny-cmd /opt/dafny/dafny "
-    )
-    cmd += turn_key_errors_and_null_to_emptystring("--num-instances {} ", call, "num_instances")
-    cmd += turn_key_errors_and_null_to_emptystring("--seed {} ", call, "seed")
-    cmd += turn_key_errors_and_null_to_emptystring("--only-instances {} ", call, "only_instances")
-    return cmd
+    cmd_args = [f"{make_container_start_command(args.container_framework)}",
+                f"{make_mount_argument(args.container_framework, results_base_path, '/result/', read_only=False)}",
+                f"{make_mount_argument(args.container_framework, dfy_base_path, '/benchmarks/', read_only=True)}",
+                f"{args.container}", f"{prepend_base_path('/benchmarks/', call['dfy-path'])}",
+                f"{escape_procedurename(call)}", f"{call['optionselector']}",
+                f"{prepend_base_path('/result/', results_filename)}", "--dafny-cmd /opt/dafny/dafny",
+                turn_key_errors_and_null_to_emptystring("--num-instances {} ", call, "num_instances"),
+                turn_key_errors_and_null_to_emptystring("--seed {} ", call, "seed"),
+                turn_key_errors_and_null_to_emptystring("--only-instances {} ", call, "only_instances")]
+    cmd_args = [arg for arg in cmd_args if arg != ""]
+    return cmd_args
+
+
+def make_container_command_string(cmd_args):
+    return " ".join(cmd_args)
 
 
 def make_container_start_command(framework):
@@ -72,9 +149,11 @@ if __name__ == '__main__':
     parser.add_argument("--results-base-path", dest="results_base_path", type=str, default=".")
     parser.add_argument("--omit-sbatch", dest="omit_sbatch", action='store_true')
     parser.add_argument("--skip-existing", dest="skip_existing", action='store_true')
+    parser.add_argument("--max-jobs", dest="max_jobs", type=int, default=None)
     args = parser.parse_args()
 
     print("#!/bin/sh")
 
-    for_all_calls(args.filename,
-                  lambda call, results_file: print(make_command(args, call, results_file)))
+    calls = []
+    for_all_calls(args.filename, lambda call, results_file: calls.append((call, results_file)))
+    print(make_commands(args, calls))
