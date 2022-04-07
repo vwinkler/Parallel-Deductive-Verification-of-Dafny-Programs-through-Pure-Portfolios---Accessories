@@ -1,3 +1,4 @@
+import sys
 import argparse
 from time import time
 from multiprocessing import cpu_count
@@ -12,7 +13,8 @@ option_selectors = {
     "sat-seed-diversification": SatSeedDiversificationOptionSelector(),
     "smt-seed-diversification": SmtSeedDiversificationOptionSelector(),
     "split-limit-diversification": SplitLimitDiversificationOptionSelector(),
-    "dynamic-split-limit-diversification": DynamicSplitLimitDiversificationOptionSelector()
+    "dynamic-split-limit-diversification": DynamicSplitLimitDiversificationOptionSelector(),
+    "stdin": CustomOptionsOptionSelector(sys.stdin)
 }
 
 
