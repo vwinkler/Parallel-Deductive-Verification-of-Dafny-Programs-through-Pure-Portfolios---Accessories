@@ -1,3 +1,4 @@
+import re
 from itertools import product
 
 
@@ -17,10 +18,50 @@ def process(dict_tree):
 
 
 def expand_dict(dict_to_expand):
-    keys = dict_to_expand.keys()
-    values = dict_to_expand.values()
-    expanded_values = [expand(v) for v in values]
-    value_combinations = product(*expanded_values)
+    return combine_all_value_options_of_dict(expand_values_of_dict(dict_to_expand))
+
+
+def expand_value_if_allowed(k, v):
+    return [v] if k.startswith("[noexpand]") else expand(v)
+
+
+def expand_values_of_dict(dict_to_expand):
+    result = {}
+
+    for k, v in dict_to_expand.items():
+        k, v = expand_key_value_pair(k, v)
+        result[k] = v
+
+    return result
+
+
+def expand_key_value_pair(original_key, original_value):
+    search_result = search_for_expand_directive(original_key)
+    if has_match(search_result):
+        new_key = get_key_without_expand_directive(search_result)
+        new_value = [expand(original_value)]
+    else:
+        new_key = original_key
+        new_value = expand(original_value)
+    return new_key, new_value
+
+
+def get_key_without_expand_directive(search_result):
+    return search_result.group(1)
+
+
+def search_for_expand_directive(k):
+    return re.search("^\[noexpand\](.*)$", k)
+
+
+def has_match(match):
+    return match is not None
+
+
+def combine_all_value_options_of_dict(dict_with_expanded_values):
+    keys = dict_with_expanded_values.keys()
+    values = dict_with_expanded_values.values()
+    value_combinations = product(*values)
     return [dict(zip(keys, vc)) for vc in value_combinations]
 
 
