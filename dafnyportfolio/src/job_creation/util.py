@@ -3,6 +3,7 @@ import json
 import sys
 from slugify import slugify
 import expand
+import zlib
 
 
 def turn_key_errors_and_null_to_emptystring(format_string, container, key):
@@ -20,13 +21,19 @@ def turn_null_to_emptystring(format_string, value):
 
 
 def make_result_filename(call):
-    return slugify(" ".join(make_arg_strings(call))) + ".json"
+    return slugify(" ".join(list_filename_parts(call))) + ".json"
 
 
-def make_arg_strings(call):
+def list_filename_parts(call):
     result_file_identifier = [call['dfy-path'], call['procedurename'], call['optionselector'], call['num_instances'],
                               call['only_instances'], call['seed']]
+    if "stdin" in call:
+        result_file_identifier.append(make_checksum(call['stdin']))
     return [str(v) for v in result_file_identifier]
+
+
+def make_checksum(string):
+    return zlib.crc32(string.encode("UTF-8"))
 
 
 def print_error_if_duplicate(seen_filenames, filename):
@@ -56,3 +63,18 @@ def prepend_base_path(base, rest):
 
 def escape_procedurename(call):
     return f"'{call['procedurename']}'"
+
+
+def make_stdin_heredoc(call):
+    if "stdin" in call:
+        return f"<< EOFCALL\n{make_stdin_string(call)}\nEOFCALL"
+    else:
+        return ""
+
+
+def make_stdin_string(call):
+    if isinstance(call["stdin"], list):
+        stdin_string = "\n".join(call["stdin"])
+    else:
+        stdin_string = call["stdin"]
+    return stdin_string
