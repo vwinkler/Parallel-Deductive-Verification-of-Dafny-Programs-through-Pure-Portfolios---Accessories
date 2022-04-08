@@ -24,10 +24,35 @@ class ExpandTest(unittest.TestCase):
         expectation = [{"x": 1, "y": 0}, {"x": 2, "y": 0}, {"x": 3, "y": 0}]
         self.assertCountEqual(expectation, expand(example))
 
+    def test_dict_with_noexpand_list(self):
+        example = {"[noexpand]x": [1, 2, 3], "y": 0}
+        expectation = [{"x": [1, 2, 3], "y": 0}]
+        self.assertCountEqual(expectation, expand(example))
+
+    def test_noexpand_on_dict(self):
+        example = {"[noexpand]x": {"y": 0}}
+        expectation = [{"x": [{"y": 0}]}]
+        self.assertCountEqual(expectation, expand(example))
+
+    def test_noexpand_on_dict_with_list(self):
+        example = {"[noexpand]x": {"y": [0, 1]}}
+        expectation = [{"x": [{"y": 0}, {"y": 1}]}]
+        self.assertCountEqual(expectation, expand(example))
+
     def test_dict_with_multiple_lists(self):
         example = {"x": [1, 2, 3], "y": [4, 5]}
         expectation = [{"x": 1, "y": 4}, {"x": 2, "y": 4}, {"x": 3, "y": 4}, {"x": 1, "y": 5}, {"x": 2, "y": 5},
                        {"x": 3, "y": 5}]
+        self.assertCountEqual(expectation, expand(example))
+
+    def test_dict_with_list_and_noexpand_list(self):
+        example = {"x": [1, 2, 3], "[noexpand]y": [4, 5]}
+        expectation = [{"x": 1, "y": [4, 5]}, {"x": 2, "y": [4, 5]}, {"x": 3, "y": [4, 5]}]
+        self.assertCountEqual(expectation, expand(example))
+
+    def test_dict_with_noexpand_list_with_dict_with_list(self):
+        example = {"[noexpand]x": [{"x": [1, 2, 3]}, {"x": [4, 5, 6]}]}
+        expectation = [{"x": [{"x": 1}, {"x": 2}, {"x": 3}, {"x": 4}, {"x": 5}, {"x": 6}]}]
         self.assertCountEqual(expectation, expand(example))
 
     def test_list_with_list(self):
