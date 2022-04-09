@@ -14,4 +14,5 @@ cd ..
     
 mkdir -p cluster && cd cluster &&
 python ../make_runtime_boxplot.py ../../../results/dafny/experiments/*.json
+python ../make_matrix.py ../../../results/dafny/experiments/*.json
 cd ..
