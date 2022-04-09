@@ -1,19 +1,9 @@
-import os
-from os.path import basename
 import argparse
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from slugify import slugify
 from collect import *
-
-
-def save_plot(boxplot, filename):
-    try:
-        os.makedirs(os.path.dirname(filename))
-    except FileExistsError:
-        pass
-    boxplot.get_figure().savefig(filename)
-
+from util import save_plot
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Plot boxplots displaying runtime")
