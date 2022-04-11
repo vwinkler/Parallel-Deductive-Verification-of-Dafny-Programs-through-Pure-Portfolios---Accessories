@@ -16,6 +16,7 @@ if __name__ == '__main__':
     df = df[["configuration", "problem", "procedure", "score"]]
     df = df.groupby(["configuration", "problem", "procedure"], as_index=False).agg("mean")
     df = df.pivot(index=["problem", "procedure"], columns="configuration", values="score")
+    df.loc["[total]"] = df.sum()
 
     rcParams.update({'figure.autolayout': True})
     basename = "matrix/01"
@@ -25,7 +26,7 @@ if __name__ == '__main__':
         f.write("\n".join([f"{k}\t{r}" for k, r in enumerate(df.index)]))
         f.write("\n\n")
         f.write("\n".join([f"{k}\t{c}" for k, c in enumerate(df.columns)]))
-    save_plot(plt.matshow(df), "matrix/01.svg")
+    save_plot(plt.matshow(df.drop("[total]")), "matrix/01.svg")
     plt.close()
 
     with open(f"{basename}.html", "w") as f:
