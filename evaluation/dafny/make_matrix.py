@@ -27,3 +27,12 @@ if __name__ == '__main__':
         f.write("\n".join([f"{k}\t{c}" for k, c in enumerate(df.columns)]))
     save_plot(plt.matshow(df), "matrix/01.svg")
     plt.close()
+
+    with open(f"{basename}.html", "w") as f:
+        df.to_html(f)
+
+    with open(f"{basename}.ods", "wb") as f:
+        try:
+            df.to_excel(f, engine="odf")
+        except ModuleNotFoundError as e:
+            print(f"Could not save as '{f.name}': {e}")
