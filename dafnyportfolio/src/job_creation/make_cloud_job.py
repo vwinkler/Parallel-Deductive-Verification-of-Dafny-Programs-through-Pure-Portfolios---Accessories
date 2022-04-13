@@ -26,6 +26,7 @@ def make_commands(args, calls):
                 path = prepend_base_path(args.results_base_path, results_filename)
                 cmd += f"if [[ ! -e '{path}' ]]; then\n"
             cmd += f"{make_container_command(args, call, results_filename)}"
+            cmd += f" {make_stdin_heredoc(call)}"
             cmd += "\n"
             if args.skip_existing:
                 cmd += "else\n"
