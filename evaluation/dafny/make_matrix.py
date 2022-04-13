@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from collect import *
 from util import save_plot, ensure_surrounding_directory_exists
+import seaborn
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Plot matrix displaying runtime")
@@ -17,6 +18,7 @@ if __name__ == '__main__':
     df = df.groupby(["configuration", "problem", "procedure"], as_index=False).agg("mean")
     df = df.pivot(index=["problem", "procedure"], columns="configuration", values="score")
     df.loc["[total]"] = df.sum()
+    df = df.apply(lambda row: row / row.min(), axis=1)
 
     rcParams.update({'figure.autolayout': True})
     basename = "matrix/01"
@@ -26,7 +28,11 @@ if __name__ == '__main__':
         f.write("\n".join([f"{k}\t{r}" for k, r in enumerate(df.index)]))
         f.write("\n\n")
         f.write("\n".join([f"{k}\t{c}" for k, c in enumerate(df.columns)]))
-    save_plot(plt.matshow(df.drop("[total]")), "matrix/01.svg")
+    save_plot(plt.matshow(df.drop("[total]")), "matrix/01.svg")  # it breaks if this is not here
+    plotted_df = df.drop("[total]")
+    plotted_df.index = range(len(plotted_df.index))
+    plotted_df.columns = range(len(plotted_df.columns))
+    save_plot(seaborn.heatmap(plotted_df), "matrix/01.svg")
     plt.close()
 
     with open(f"{basename}.html", "w") as f:
