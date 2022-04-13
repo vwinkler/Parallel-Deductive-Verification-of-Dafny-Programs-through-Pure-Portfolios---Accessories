@@ -2,13 +2,14 @@ import json
 from tempfile import NamedTemporaryFile
 from ProcessCollection import *
 from XmlResultParser import *
+import multiprocessing
 
 
 class Portfolio:
     def __init__(self, filename, procedure_name, num_instances, active_instances, option_selector, dafny_command):
         self.option_selector = option_selector
         self.dafny_instance_factory = DafnyInstanceFactory(dafny_command, filename, procedure_name)
-        self.process_collection = ProcessCollection()
+        self.process_collection = ProcessCollection(range(multiprocessing.cpu_count()))
         self.xml_parser = XmlResultParser()
 
         dynamic_args = self.select_dynamic_args(num_instances)

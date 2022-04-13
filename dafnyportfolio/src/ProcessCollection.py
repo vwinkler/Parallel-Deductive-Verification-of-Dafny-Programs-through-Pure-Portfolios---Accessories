@@ -1,16 +1,28 @@
 import os
 from subprocess import Popen, PIPE
 
+any_cpu = None
+
 
 class ProcessCollection:
-    def __init__(self):
+    def __init__(self, cpus=None):
         self.processesMarkedTerminated = set()
         self.processes = dict()
+        self.free_cpus = set(cpus) if cpus is not None else None
 
     def start_process(self, args, stdin=PIPE, stdout=PIPE, stderr=PIPE):
-        process = Process(args, stdin=stdin, stdout=stdout, stderr=stderr)
+        cpu = self._get_cpu_from_pool()
+        print(cpu)
+        process = Process(args, cpu, stdin=stdin, stdout=stdout, stderr=stderr)
         self.processes[process.get_pid()] = process
         return process
+
+    def _get_cpu_from_pool(self):
+        if not self._cpu_assignment_is_enabled():
+            return any_cpu
+        if len(self.free_cpus) < 1:
+            raise RuntimeError("No CPU left for this process")
+        return self.free_cpus.pop()
 
     def kill_all(self):
         for process in self.processes.values():
@@ -35,6 +47,7 @@ class ProcessCollection:
     def await_termination_of_any_process(self):
         self._raise_if_empty()
         process = self._try_await_next_termination()
+        self._clean_up_after_terminated_process(process)
         self.processesMarkedTerminated.add(process)
         return process
 
@@ -64,13 +77,30 @@ class ProcessCollection:
     def _find_unmarked_terminated_processes(self):
         return set.difference(self.find_terminated_processes(), self.processesMarkedTerminated)
 
+    def _clean_up_after_terminated_process(self, process):
+        cpu = process.get_assigned_cpu()
+        self.return_cpu_to_pool(cpu)
+
+    def return_cpu_to_pool(self, cpu):
+        if cpu == any_cpu and self._cpu_assignment_is_enabled():
+            self.free_cpus.add(cpu)
+
+    def _cpu_assignment_is_enabled(self):
+        return self.free_cpus is not None
+
 
 class Process:
-    def __init__(self, args, stdin=PIPE, stdout=PIPE, stderr=PIPE):
+    def __init__(self, args, cpu=any_cpu, stdin=PIPE, stdout=PIPE, stderr=PIPE):
         self.stdin_is_pipe = stdin == PIPE
         self.stdout_is_pipe = stdout == PIPE
         self.stderr_is_pipe = stderr == PIPE
         self.wrapped_process = Popen(args, stdin=stdin, stdout=stdout, stderr=stderr, text=True)
+        self.assigned_cpu = cpu
+        self._establish_cpu_assignment()
+
+    def _establish_cpu_assignment(self):
+        if self.assigned_cpu is not any_cpu:
+            os.sched_setaffinity(self.wrapped_process.pid, [self.assigned_cpu])
 
     def __del__(self):
         try:
@@ -85,6 +115,9 @@ class Process:
 
     def get_pid(self):
         return self.wrapped_process.pid
+
+    def get_assigned_cpu(self):
+        return self.assigned_cpu
 
     def is_running(self):
         return self.wrapped_process.poll() is None
