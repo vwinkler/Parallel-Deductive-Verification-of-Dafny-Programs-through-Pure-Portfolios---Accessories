@@ -28,7 +28,7 @@ def list_filename_parts(call):
     result_file_identifier = [call['dfy-path'], call['procedurename'], call['optionselector'], call['num_instances'],
                               call['only_instances'], call['seed']]
     if "stdin" in call:
-        result_file_identifier.append(make_checksum(call['stdin']))
+        result_file_identifier.append(make_checksum("\n".join(call['stdin'])))
     return [str(v) for v in result_file_identifier]
 
 
