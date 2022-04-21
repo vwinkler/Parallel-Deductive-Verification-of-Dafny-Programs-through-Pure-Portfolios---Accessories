@@ -12,7 +12,6 @@ class ProcessCollection:
 
     def start_process(self, args, stdin=PIPE, stdout=PIPE, stderr=PIPE):
         cpu = self._get_cpu_from_pool()
-        print(cpu)
         process = Process(args, cpu, stdin=stdin, stdout=stdout, stderr=stderr)
         self.processes[process.get_pid()] = process
         return process
