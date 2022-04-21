@@ -91,7 +91,7 @@ def make_sbatch_prefix_args(args, output_filename, runtime=None, mem=None):
 
 
 def make_sbatch_prefix_string(cmd_args):
-    cmd = "sbatch << EOF\n#!/bin/sh\n"
+    cmd = "sbatch << 'EOF'\n#!/bin/sh\n"
     for arg in cmd_args:
         cmd += f"#SBATCH {arg}\n"
     return cmd
