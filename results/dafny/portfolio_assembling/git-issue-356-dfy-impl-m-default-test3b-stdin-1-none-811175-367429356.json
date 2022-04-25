@@ -1,7 +1,7 @@
 {
     "args": {
         "dafny_file": "/benchmarks/git-issue-356.dfy",
-        "procedure_name": "Impl3691487M.__default.Test3b",
+        "procedure_name": "Impl$$M.__default.Test3b",
         "option_selector_name": "stdin",
         "results_filename": "/result/git-issue-356-dfy-impl-m-default-test3b-stdin-1-none-811175-367429356.json",
         "seed": "811175",
@@ -12,11 +12,11 @@
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1650197249.0636005,
-        "start_readable": "2022-04-17T14:07:29.063601",
-        "end": 1650197250.6602612,
-        "end_readable": "2022-04-17T14:07:30.660261",
-        "duration": "1.5966606140"
+        "start": 1650623166.0997026,
+        "start_readable": "2022-04-22T12:26:06.099703",
+        "end": 1650623175.3103943,
+        "end_readable": "2022-04-22T12:26:15.310394",
+        "duration": "9.2106916904"
     },
     "instances": [
         {
@@ -24,8 +24,8 @@
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/git-issue-356.dfy",
-                "/proc:Impl3691487M.__default.Test3b",
-                "/xml:/tmp/tmpv6j3sk70.xml",
+                "/proc:Impl$$M.__default.Test3b",
+                "/xml:/tmp/tmpll0idnli.xml",
                 "/vcsMaxKeepGoingSplits:2",
                 "/vcsKeepGoingTimeout:1"
             ],
@@ -34,14 +34,30 @@
                 "/vcsKeepGoingTimeout:1"
             ],
             "stdout": [
+                "b'/benchmarks/git-issue-356.dfy(292,33): Error: assertion violation'",
+                "b'Execution trace:'",
+                "b'    (0,0): anon0'",
+                "b'    /benchmarks/git-issue-356.dfy(289,5): anon16_Else'",
+                "b'    /benchmarks/git-issue-356.dfy(291,5): anon17_Else'",
+                "b'    (0,0): anon18_Then'",
+                "b'    (0,0): anon6'",
                 "b''",
-                "b'Dafny program verifier finished with 0 verified, 0 errors'"
+                "b'Dafny program verifier finished with 0 verified, 1 error'"
             ],
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue-356.dfy /proc:Impl3691487M.__default.Test3b /xml:/tmp/tmpv6j3sk70.xml /vcsMaxKeepGoingSplits:2 /vcsKeepGoingTimeout:1",
-                "methods": []
+                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue-356.dfy /proc:Impl$$M.__default.Test3b /xml:/tmp/tmpll0idnli.xml /vcsMaxKeepGoingSplits:2 /vcsKeepGoingTimeout:1",
+                "methods": [
+                    {
+                        "name": "Impl$$M.__default.Test3b",
+                        "startTime": "2022-04-22 10:26:07+00:00",
+                        "finished": true,
+                        "endTime": "2022-04-22 10:26:15+00:00",
+                        "duration": 7.6302985,
+                        "outcome": "errors"
+                    }
+                ]
             }
         }
     ]

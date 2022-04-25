@@ -1,7 +1,7 @@
 {
     "args": {
         "dafny_file": "/benchmarks/git-issue106.dfy",
-        "procedure_name": "Impl527946_module.__default.L",
+        "procedure_name": "Impl$$_module.__default.L",
         "option_selector_name": "stdin",
         "results_filename": "/result/git-issue106-dfy-impl-module-default-l-stdin-1-none-522591-2667232489.json",
         "seed": "522591",
@@ -12,11 +12,11 @@
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1650304717.3019564,
-        "start_readable": "2022-04-18T19:58:37.301956",
-        "end": 1650304718.704268,
-        "end_readable": "2022-04-18T19:58:38.704268",
-        "duration": "1.4023115635"
+        "start": 1650623682.7707574,
+        "start_readable": "2022-04-22T12:34:42.770757",
+        "end": 1650623687.1198652,
+        "end_readable": "2022-04-22T12:34:47.119865",
+        "duration": "4.3491077423"
     },
     "instances": [
         {
@@ -24,22 +24,32 @@
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/git-issue106.dfy",
-                "/proc:Impl527946_module.__default.L",
-                "/xml:/tmp/tmps51opjrj.xml",
+                "/proc:Impl$$_module.__default.L",
+                "/xml:/tmp/tmp2cu4179e.xml",
                 "/proverOpt:O:smt.mbqi=false"
             ],
             "diversification": [
                 "/proverOpt:O:smt.mbqi=false"
             ],
             "stdout": [
+                "b'/benchmarks/git-issue106.dfy(6,21): Verification out of resource (Impl$$_module.__default.L)'",
                 "b''",
-                "b'Dafny program verifier finished with 0 verified, 0 errors'"
+                "b'Dafny program verifier finished with 0 verified, 0 errors, 1 out of resource'"
             ],
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue106.dfy /proc:Impl527946_module.__default.L /xml:/tmp/tmps51opjrj.xml /proverOpt:O:smt.mbqi=false",
-                "methods": []
+                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue106.dfy /proc:Impl$$_module.__default.L /xml:/tmp/tmp2cu4179e.xml /proverOpt:O:smt.mbqi=false",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.L",
+                        "startTime": "2022-04-22 10:34:44+00:00",
+                        "finished": true,
+                        "endTime": "2022-04-22 10:34:46+00:00",
+                        "duration": 2.8417794,
+                        "outcome": "outofresource"
+                    }
+                ]
             }
         }
     ]
