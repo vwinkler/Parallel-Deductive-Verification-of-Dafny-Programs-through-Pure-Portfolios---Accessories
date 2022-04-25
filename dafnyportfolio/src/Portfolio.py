@@ -6,33 +6,33 @@ import multiprocessing
 
 
 class Portfolio:
-    def __init__(self, filename, procedure_name, num_instances, active_instances, option_selector, dafny_command):
+    def __init__(self, filename, procedure_name, num_instances, active_instances, option_selector, cmd, extra_args):
         self.option_selector = option_selector
-        self.dafny_instance_factory = DafnyInstanceFactory(dafny_command, filename, procedure_name)
+        self.instance_factory = InstanceFactory(cmd, filename, procedure_name, extra_args)
         self.process_collection = ProcessCollection(range(multiprocessing.cpu_count()))
         self.xml_parser = XmlResultParser()
 
         dynamic_args = self.select_dynamic_args(num_instances)
-        self.instances = self.filter_active_instances(self.create_dafny_instances(dynamic_args), active_instances)
+        self.instances = self.filter_active_instances(self.create_instances(dynamic_args), active_instances)
 
     def filter_active_instances(self, instances, active_ids):
         return {id: instance for id, instance in instances.items() if id in active_ids}
 
     def run(self):
-        self.start_dafny_instances(self.instances)
+        self.start_instances(self.instances)
         self.wait_for_termination()
         return self.collect_results(self.instances)
 
     def select_dynamic_args(self, num_processes):
         return self.option_selector.create_arguments(num_processes)
 
-    def create_dafny_instances(self, dynamic_args_selection):
+    def create_instances(self, dynamic_args_selection):
         instances = dict()
         for id, dynamic_args in enumerate(dynamic_args_selection):
-            instances[id] = self.dafny_instance_factory.create_dafny_instance(dynamic_args)
+            instances[id] = self.instance_factory.create_instance(dynamic_args)
         return instances
 
-    def start_dafny_instances(self, instances):
+    def start_instances(self, instances):
         for instance in instances.values():
             instance.start(self.process_collection)
 
@@ -62,24 +62,25 @@ class Portfolio:
         return xml_results
 
 
-class DafnyInstanceFactory:
-    def __init__(self, dafny_command, dfy_filename, procedure_name):
-        self.dafny_command = dafny_command
+class InstanceFactory:
+    def __init__(self, cmd, dfy_filename, procedure_name, extra_args):
+        self.cmd = cmd
         self.dfy_filename = dfy_filename
         self.procedure_name = procedure_name
+        self.extra_args = extra_args
 
-    def create_dafny_instance(self, dynamic_args):
-        return DafnyInstance(self.dafny_command, self.dfy_filename, self.procedure_name, dynamic_args)
+    def create_instance(self, dynamic_args):
+        return Instance(self.cmd, self.dfy_filename, self.procedure_name, dynamic_args, self.extra_args)
 
 
-class DafnyInstance:
-    def __init__(self, dafny_command, dfy_filename, procedure_name, dynamic_args):
+class Instance:
+    def __init__(self, cmd, dfy_filename, procedure_name, dynamic_args, extra_args):
         self._output_file = NamedTemporaryFile("w+b", suffix=".out")
         self._error_file = NamedTemporaryFile("w+b", suffix=".err")
         self._xml_file = NamedTemporaryFile("r", suffix=".xml")
 
         proc_argument = "/proc:{}".format(procedure_name)
-        static_args = [dafny_command, dfy_filename, proc_argument]
+        static_args = [cmd, dfy_filename, proc_argument] + extra_args
         xml_argument = "/xml:{}".format(self._xml_file.name)
         self._dynamic_args = dynamic_args
         self._cmd = static_args + [xml_argument] + self._dynamic_args
