@@ -12,7 +12,11 @@ python ../make_runtime_boxplot.py \
     ../../../results/dafny/with_instance_selection/dynamic-split-limit-diversification/*.json
 cd ..
     
-mkdir -p cluster && cd cluster &&
+mkdir -p cluster_old && cd cluster_old &&
 python ../make_runtime_boxplot.py ../../../results/dafny/experiments/*.json
 python ../make_matrix.py ../../../results/dafny/experiments/*.json
+cd ..
+
+mkdir -p cluster && cd cluster &&
+python ../make_matrix.py ../../../results/dafny/portfolio_assembling/*.json
 cd ..
