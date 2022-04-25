@@ -17,8 +17,9 @@ if __name__ == '__main__':
     df = df[["configuration", "problem", "procedure", "score"]]
     df = df.groupby(["configuration", "problem", "procedure"], as_index=False).agg("mean")
     df = df.pivot(index=["problem", "procedure"], columns="configuration", values="score")
+    df["[vbs]"] = df.min(axis=1)
     df.loc["[total]"] = df.sum()
-    df = df.apply(lambda row: row / row.min(), axis=1)
+    relative_df = df.apply(lambda row: row / row.min(), axis=1)
 
     rcParams.update({'figure.autolayout': True})
     basename = "matrix/01"
@@ -28,8 +29,8 @@ if __name__ == '__main__':
         f.write("\n".join([f"{k}\t{r}" for k, r in enumerate(df.index)]))
         f.write("\n\n")
         f.write("\n".join([f"{k}\t{c}" for k, c in enumerate(df.columns)]))
-    save_plot(plt.matshow(df.drop("[total]")), "matrix/01.svg")  # it breaks if this is not here
-    plotted_df = df.drop("[total]")
+    save_plot(plt.matshow(relative_df.drop("[total]")), "matrix/01.svg")  # it breaks if this is not here
+    plotted_df = relative_df.drop("[total]")
     plotted_df.index = range(len(plotted_df.index))
     plotted_df.columns = range(len(plotted_df.columns))
     save_plot(seaborn.heatmap(plotted_df), "matrix/01.svg")
