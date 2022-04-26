@@ -129,7 +129,7 @@ def make_container_start_command(framework):
     if framework == "enroot":
         return "enroot start"
     if framework == "docker":
-        return "docker run"
+        return "docker run -i"
 
 
 def make_mount_argument(framework, host_dir, container_dir, read_only):
