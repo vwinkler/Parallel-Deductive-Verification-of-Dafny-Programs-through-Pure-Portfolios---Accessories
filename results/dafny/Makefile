@@ -6,7 +6,7 @@ container_image=vwinkler/dafnyportfolio-evaluation
 all : run.sh run_cloud_dev_single.sh run_cloud_single.sh run_local_container.sh
 
 run.sh : $(make_job) job.json
-	python $(make_job) --dfy-base-path ../../../benchmarks/dafny/ job.json $(solve_script) > $@
+	python $(make_job) --dafny-cmd boogie --dfy-base-path ../../../benchmarks/dafny/ job.json $(solve_script) > $@
 	
 run_cloud_dev_single.sh : print_warning.sh $(make_cloud_job) job.json
 	cat print_warning.sh > $@
