@@ -35,7 +35,11 @@ if __name__ == '__main__':
     plotted_df.index = range(len(plotted_df.index))
     plotted_df.columns = range(len(plotted_df.columns))
     colormap = seaborn.color_palette("dark:salmon_r", as_cmap=True)
-    save_plot(seaborn.heatmap(plotted_df, vmin=0, vmax=10, cmap=colormap), "matrix/01.svg")
+    heatmap = seaborn.heatmap(plotted_df, vmin=0, vmax=10, cmap=colormap, cbar_kws={"shrink": 0.8})
+    heatmap.set_title("Runtime Difference to VBS in Seconds")
+    heatmap.set_xlabel("Configuration")
+    heatmap.set_ylabel("Benchmark")
+    save_plot(heatmap, "matrix/01.svg")
     plt.close()
 
     with open(f"{basename}.html", "w") as f:
