@@ -19,7 +19,7 @@ if __name__ == '__main__':
     df = df.pivot(index=["problem", "procedure"], columns="configuration", values="score")
     df["[vbs]"] = df.min(axis=1)
     df.loc["[total]"] = df.sum()
-    relative_df = df.apply(lambda row: row / row.min(), axis=1)
+    relative_df = df.apply(lambda row: row - row.min(), axis=1)
 
     rcParams.update({'figure.autolayout': True})
     basename = "matrix/01"
@@ -31,9 +31,15 @@ if __name__ == '__main__':
         f.write("\n".join([f"{k}\t{c}" for k, c in enumerate(df.columns)]))
     save_plot(plt.matshow(relative_df.drop("[total]")), "matrix/01.svg")  # it breaks if this is not here
     plotted_df = relative_df.drop("[total]")
+    plotted_df = plotted_df.drop("[vbs]", axis=1)
     plotted_df.index = range(len(plotted_df.index))
     plotted_df.columns = range(len(plotted_df.columns))
-    save_plot(seaborn.heatmap(plotted_df), "matrix/01.svg")
+    colormap = seaborn.color_palette("dark:salmon_r", as_cmap=True)
+    heatmap = seaborn.heatmap(plotted_df, vmin=0, vmax=10, cmap=colormap, cbar_kws={"shrink": 0.8})
+    heatmap.set_title("Runtime Difference to VBS in Seconds")
+    heatmap.set_xlabel("Configuration")
+    heatmap.set_ylabel("Benchmark")
+    save_plot(heatmap, "matrix/01.svg")
     plt.close()
 
     with open(f"{basename}.html", "w") as f:
