@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from slugify import slugify
 from collect import *
+from penalize_runtimes import *
 from util import save_plot
 
 if __name__ == '__main__':
@@ -12,6 +13,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     df = collect_runtimes(args.result_filenames)
+    penalize(df)
 
     rcParams.update({'figure.autolayout': True})
 

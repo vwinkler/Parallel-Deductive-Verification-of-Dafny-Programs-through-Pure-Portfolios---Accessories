@@ -2,6 +2,7 @@ import argparse
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from collect import *
+from penalize_runtimes import *
 from util import save_plot, ensure_surrounding_directory_exists
 import seaborn
 
@@ -11,6 +12,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     df = collect_runtimes(args.result_filenames)
+    penalize(df)
+
     df = df[df["num_running_instances"] == 1]
     df["configuration"] = df[("diversification", 0)]
     df["score"] = df["runtime"]
