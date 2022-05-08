@@ -1,3 +1,4 @@
+import sys
 import argparse
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
@@ -24,10 +25,14 @@ def plot(relative_df, title, vmax):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Plot matrix displaying runtime")
-    parser.add_argument(metavar="RESULTFILE", dest="result_filenames", type=str, nargs="+")
+    parser.add_argument(metavar="RESULTFILE", dest="result_filenames", type=str, nargs="+",
+                        help="or '-' to read from stdin (one filename per line)")
     args = parser.parse_args()
 
-    df = collect_runtimes(args.result_filenames)
+    if args.result_filenames == ["-"]:
+        df = collect_runtimes([filename for filename in sys.stdin.read().splitlines()])
+    else:
+        df = collect_runtimes(args.result_filenames)
     penalize(df)
 
     df = df[df["num_running_instances"] == 1]
