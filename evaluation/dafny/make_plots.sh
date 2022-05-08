@@ -20,3 +20,7 @@ cd ..
 mkdir -p cluster && cd cluster &&
 python ../make_matrix.py ../../../results/dafny/portfolio_assembling/*.json
 cd ..
+
+mkdir -p assess_bool_parameters && cd assess_bool_parameters &&
+python ../make_matrix.py ../../../results/dafny/bool_params/*.json
+cd ..

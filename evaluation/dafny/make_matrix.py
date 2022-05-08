@@ -2,8 +2,25 @@ import argparse
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from collect import *
+from penalize_runtimes import *
 from util import save_plot, ensure_surrounding_directory_exists
 import seaborn
+
+
+def plot(relative_df, title, vmax):
+    plotted_df = relative_df.drop("[total]")
+    plotted_df = plotted_df.drop("[vbs]", axis=1)
+    plotted_df.index = range(len(plotted_df.index))
+    plotted_df.columns = range(len(plotted_df.columns))
+    colormap = seaborn.color_palette("dark:salmon_r", as_cmap=True)
+    fig, ax = plt.subplots(figsize=(len(plotted_df.columns) / 10, len(plotted_df.index) / 10))
+    heatmap = seaborn.heatmap(plotted_df, vmin=0, vmax=vmax, cmap=colormap, cbar_kws={"shrink": 0.8}, square=True,
+                              ax=ax)
+    heatmap.set_title(title)
+    heatmap.set_xlabel("Configuration")
+    heatmap.set_ylabel("Benchmark")
+    return heatmap
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Plot matrix displaying runtime")
@@ -11,6 +28,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     df = collect_runtimes(args.result_filenames)
+    penalize(df)
+
     df = df[df["num_running_instances"] == 1]
     df["configuration"] = df[("diversification", 0)]
     df["score"] = df["runtime"]
@@ -29,17 +48,11 @@ if __name__ == '__main__':
         f.write("\n".join([f"{k}\t{r}" for k, r in enumerate(df.index)]))
         f.write("\n\n")
         f.write("\n".join([f"{k}\t{c}" for k, c in enumerate(df.columns)]))
-    save_plot(plt.matshow(relative_df.drop("[total]")), "matrix/01.svg")  # it breaks if this is not here
-    plotted_df = relative_df.drop("[total]")
-    plotted_df = plotted_df.drop("[vbs]", axis=1)
-    plotted_df.index = range(len(plotted_df.index))
-    plotted_df.columns = range(len(plotted_df.columns))
-    colormap = seaborn.color_palette("dark:salmon_r", as_cmap=True)
-    heatmap = seaborn.heatmap(plotted_df, vmin=0, vmax=10, cmap=colormap, cbar_kws={"shrink": 0.8})
-    heatmap.set_title("Runtime Difference to VBS in Seconds")
-    heatmap.set_xlabel("Configuration")
-    heatmap.set_ylabel("Benchmark")
+    heatmap = plot(df, "Runtime in Seconds", 1200)
     save_plot(heatmap, "matrix/01.svg")
+    plt.close()
+    relative_heatmap = plot(relative_df, "Runtime Difference to VBS in Seconds", 10)
+    save_plot(relative_heatmap, "matrix/relative_01.svg")
     plt.close()
 
     with open(f"{basename}.html", "w") as f:
