@@ -76,6 +76,8 @@ def check_file(file):
                     print_error(filename, 'at least one instance has more than one method')
                     return False
                 if len(methods) == 1:
+                    if methods[0]["outcome"] not in {"correct"}:
+                        print(methods[0]["outcome"])
                     num_instances_with_at_least_once_method += 1
             except TypeError:
                 print_error(filename, 'syntax error, ill-formed method')

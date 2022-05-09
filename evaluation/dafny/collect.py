@@ -42,7 +42,8 @@ def collect_runtime_from_file(filename, max_num_instances):
                          "num_instances": get_arg("num_instances", results),
                          "only_instances": format_only_instances_arg(get_arg("only_instances", results)),
                          "runtime": [results["total_runtime"]["duration"]],
-                         "finished": [has_finished(results)]})
+                         "finished": [has_finished(results)],
+                         "correct": [is_correct(results)]})
 
     div_cells = make_diversification_cells(results, max_num_instances)
     for k, v in div_cells.items():
@@ -56,6 +57,11 @@ def collect_runtime_from_file(filename, max_num_instances):
 def has_finished(results):
     instances_finished = [instance["xml"]["methods"][0]["finished"] for instance in results["instances"]]
     return any(instances_finished)
+
+
+def is_correct(results):
+    instances_outcome = [instance["xml"]["methods"][0]["outcome"] for instance in results["instances"]]
+    return any([outcome == "correct" for outcome in instances_outcome])
 
 
 def make_diversification_cells(results, num_cells):
