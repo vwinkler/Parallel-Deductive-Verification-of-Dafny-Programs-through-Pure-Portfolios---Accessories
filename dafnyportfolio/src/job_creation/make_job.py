@@ -24,15 +24,30 @@ def make_normal_command(args, call, results_filename):
     return cmd
 
 
+def admit_call_if_result_new(call, results_filename):
+    if not os.path.isfile(results_filename):
+        print(make_self_announcing_normal_command(args, call, results_filename))
+
+
+def admit_call(call, results_filename):
+    print(make_self_announcing_normal_command(args, call, results_filename))
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Turn some job.json into a shell script")
     parser.add_argument(metavar="FILE", dest="filename", type=str)
     parser.add_argument(metavar="CMD", dest="command", type=str)
     parser.add_argument("--dafny-cmd", dest="dafny_cmd", type=str, default=None)
     parser.add_argument("--dfy-base-path", dest="dfy_base_path", type=str, default=None)
+    parser.add_argument("--omit-existing", dest="omit_existing", action='store_true')
     args = parser.parse_args()
 
     print("#!/bin/sh")
 
+    if args.omit_existing:
+        admit_call_appropriately = admit_call_if_result_new
+    else:
+        admit_call_appropriately = admit_call
+
     for_all_calls(args.filename,
-                  lambda call, results_file: print(make_self_announcing_normal_command(args, call, results_file)))
+                  lambda call, results_file: admit_call_appropriately(call, results_file))

@@ -140,6 +140,15 @@ def make_mount_argument(framework, host_dir, container_dir, read_only):
         return f"--volume={host_dir}:{container_dir}:{modifier}"
 
 
+def admit_call_if_result_new(call, results_filename, calls, results_base_path):
+    if not os.path.isfile(prepend_base_path(results_base_path, results_filename)):
+        calls.append((call, results_filename))
+
+
+def admit_call(call, results_filename, calls):
+    calls.append((call, results_filename))
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Turn some job.json into a shell script")
     parser.add_argument(metavar="FILE", dest="filename", type=str)
@@ -150,11 +159,17 @@ if __name__ == '__main__':
     parser.add_argument("--results-base-path", dest="results_base_path", type=str, default=".")
     parser.add_argument("--omit-sbatch", dest="omit_sbatch", action='store_true')
     parser.add_argument("--skip-existing", dest="skip_existing", action='store_true')
+    parser.add_argument("--omit-existing", dest="omit_existing", action='store_true')
     parser.add_argument("--max-jobs", dest="max_jobs", type=int, default=None)
     args = parser.parse_args()
 
     print("#!/bin/sh")
 
+    if args.omit_existing:
+        admit_call_appropriately = lambda call, results_filename, calls: \
+            admit_call_if_result_new(call, results_filename, calls, args.results_base_path)
+    else:
+        admit_call_appropriately = admit_call
     calls = []
-    for_all_calls(args.filename, lambda call, results_file: calls.append((call, results_file)))
+    for_all_calls(args.filename, lambda call, results_file: admit_call_appropriately(call, results_file, calls))
     print(make_commands(args, calls))

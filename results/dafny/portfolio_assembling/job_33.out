@@ -1,16 +1,35 @@
-slurmstepd: error: *** JOB 20654881 ON uc2n431 CANCELLED AT 2022-04-22T21:14:53 DUE TO TIME LIMIT ***
+Traceback (most recent call last):
+  File "/dafnyportfolio/src/solve.py", line 50, in <module>
+    portfolio = Portfolio(args.dafny_file, args.procedure_name, args.num_instances, instances, chosen_option_selector,
+  File "/dafnyportfolio/src/Portfolio.py", line 15, in __init__
+    dynamic_args = self.select_dynamic_args(num_instances)
+  File "/dafnyportfolio/src/Portfolio.py", line 27, in select_dynamic_args
+    return self.option_selector.create_arguments(num_processes)
+  File "/dafnyportfolio/src/diversification/CustomOptionsOptionSelector.py", line 15, in create_arguments
+    raise RuntimeError("Stated number of calls and number of provided argument lists do not match")
+RuntimeError: Stated number of calls and number of provided argument lists do not match
+Traceback (most recent call last):
+  File "/dafnyportfolio/src/solve.py", line 50, in <module>
+    portfolio = Portfolio(args.dafny_file, args.procedure_name, args.num_instances, instances, chosen_option_selector,
+  File "/dafnyportfolio/src/Portfolio.py", line 15, in __init__
+    dynamic_args = self.select_dynamic_args(num_instances)
+  File "/dafnyportfolio/src/Portfolio.py", line 27, in select_dynamic_args
+    return self.option_selector.create_arguments(num_processes)
+  File "/dafnyportfolio/src/diversification/CustomOptionsOptionSelector.py", line 15, in create_arguments
+    raise RuntimeError("Stated number of calls and number of provided argument lists do not match")
+RuntimeError: Stated number of calls and number of provided argument lists do not match
 
 ============================= JOB FEEDBACK =============================
 
-NodeName=uc2n431
-Job ID: 20654881
+NodeName=uc2n469
+Job ID: 20697004
 Cluster: uc2
 User/Group: da1877/iti
-State: TIMEOUT (exit code 0)
+State: COMPLETED (exit code 0)
 Nodes: 1
 Cores per node: 80
-CPU Utilized: 12:08:37
-CPU Efficiency: 1.14% of 44-11:58:40 core-walltime
-Job Wall-clock time: 13:20:59
-Memory Utilized: 900.55 MB
-Memory Efficiency: 1.00% of 87.89 GB
+CPU Utilized: 00:01:41
+CPU Efficiency: 0.99% of 02:50:40 core-walltime
+Job Wall-clock time: 00:02:08
+Memory Utilized: 387.78 MB
+Memory Efficiency: 0.43% of 87.89 GB
