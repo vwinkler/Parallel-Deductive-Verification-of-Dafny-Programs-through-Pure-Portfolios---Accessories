@@ -1,0 +1,30 @@
+--- Basics.dfy	2022-05-12 19:41:23.794857557 +0200
++++ _Basics.noassert.dfy	2022-05-12 23:13:07.604258114 +0200
+@@ -74,9 +74,8 @@
+ method Explies(s: seq<int>, i: nat)
+   requires forall x :: x in s ==> x > 0
+ {
+-  var a, b, c;
+   assert a <== b <== c <== false;   // OK, because <== is left-associative
+-  assert s[i] > 0 <== i < |s| by { assert i < |s| ==> s[i] in s; }      // OK, because <== is short-circuiting from the right
++  assert true;      // OK, because <== is short-circuiting from the right
+ }
+ 
+ method ExpliesAssociativityM(A: bool, B: bool, C: bool) {
+@@ -406,11 +405,11 @@
+ 
+   method K<T>(s: multiset<T>, t: multiset<T>)
+   {
+-    assert |s * t|    +    |t * s|
+-                      +
+-              |s - t| + |t - s|
+-                     ==
+-                   |s + t|;
++    //assert |s * t|    +    |t * s|
++    //                  +
++    //          |s - t| + |t - s|
++    //                 ==
++    //               |s + t|;
+   }
+ }
+ 
