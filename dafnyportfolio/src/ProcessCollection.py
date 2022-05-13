@@ -1,4 +1,5 @@
 import os
+import signal
 from subprocess import Popen, PIPE
 
 any_cpu = None
@@ -29,7 +30,7 @@ class ProcessCollection:
 
     def await_termination_of_all_processes(self):
         while self.count_running_processes() > 0:
-            self.await_termination_of_any_process()
+            self.await_termination_of_any_process(timeout=2 ** 31 - 1)
 
     def count_running_processes(self):
         return len(self.find_running_processes())
@@ -43,9 +44,9 @@ class ProcessCollection:
     def find_terminated_processes(self):
         return {p for p in self.get_all_processes() if not p.is_running()}
 
-    def await_termination_of_any_process(self):
+    def await_termination_of_any_process(self, timeout=2 ** 31 - 1):
         self._raise_if_empty()
-        process = self._try_await_next_termination()
+        process = self._try_await_next_termination(timeout)
         self._clean_up_after_terminated_process(process)
         self.processesMarkedTerminated.add(process)
         return process
@@ -54,12 +55,28 @@ class ProcessCollection:
         if self.get_all_processes() == self.processesMarkedTerminated:
             raise RuntimeError("All processes have terminated.")
 
-    def _try_await_next_termination(self):
+    def _try_await_next_termination(self, timeout):
         try:
-            process = self._await_next_termination()
+            process = self._await_next_termination_with_timelimit(timeout)
         except ChildProcessError:
             process = self._select_any_unmarked_terminated_process()
         return process
+
+    def _await_next_termination_with_timelimit(self, timeout):
+        self._set_timeout(timeout)
+        terminated_pid = self._await_next_termination()
+        self._unset_timeout()
+        return terminated_pid
+
+    def _unset_timeout(self):
+        signal.alarm(0)
+
+    def _set_timeout(self, timeout):
+        def handle_timeout(signum, frame):
+            raise TimeoutError()
+
+        signal.signal(signal.SIGALRM, handle_timeout)
+        signal.alarm(timeout)
 
     def _await_next_termination(self):
         pid = -1
