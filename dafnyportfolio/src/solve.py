@@ -42,13 +42,14 @@ if __name__ == '__main__':
     parser.add_argument("--dafny-cmd", dest="dafny_command", type=str, default="dafny")
     parser.add_argument("--only-instances", dest="only_instances", type=int, nargs="*")
     parser.add_argument("--commit-hash", dest="commit_hash", type=str)
+    parser.add_argument("--timeout", dest="timeout", type=int, default=2 ** 31 - 1)
     args = parser.parse_args()
 
     chosen_option_selector = option_selectors[args.option_selector_name]
     chosen_option_selector.set_rand(Random(args.seed))
     instances = determine_instance_ids(args)
     portfolio = Portfolio(args.dafny_file, args.procedure_name, args.num_instances, instances, chosen_option_selector,
-                          args.dafny_command)
+                          args.dafny_command, args.timeout)
 
     start_time = time()
     instances_results = portfolio.run()
@@ -56,6 +57,7 @@ if __name__ == '__main__':
     portfolio_results = {"args": vars(args),
                          "commit_hash": get_commit_hash(),
                          "total_runtime": util.format_timediff(start_time, end_time),
+                         "termination_reason": portfolio.termination_reason,
                          "instances": instances_results}
 
     json.dump(portfolio_results, open(args.results_filename, "w"), indent=4, default=str)

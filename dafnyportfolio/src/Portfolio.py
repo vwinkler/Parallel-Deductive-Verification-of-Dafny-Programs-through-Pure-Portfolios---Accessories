@@ -6,11 +6,14 @@ import multiprocessing
 
 
 class Portfolio:
-    def __init__(self, filename, procedure_name, num_instances, active_instances, option_selector, dafny_command):
+    def __init__(self, filename, procedure_name, num_instances, active_instances, option_selector, dafny_command,
+                 timeout):
         self.option_selector = option_selector
-        self.dafny_instance_factory = DafnyInstanceFactory(dafny_command, filename, procedure_name)
+        self.dafny_instance_factory = DafnyInstanceFactory(dafny_command, filename, procedure_name, timeout)
         self.process_collection = ProcessCollection(range(multiprocessing.cpu_count()))
         self.xml_parser = XmlResultParser()
+        self.timeout = timeout
+        self.termination_reason = "unknown"
 
         dynamic_args = self.select_dynamic_args(num_instances)
         self.instances = self.filter_active_instances(self.create_dafny_instances(dynamic_args), active_instances)
@@ -38,7 +41,11 @@ class Portfolio:
 
     def wait_for_termination(self):
         if self.process_collection.count_running_processes() > 0:
-            self.process_collection.await_termination_of_any_process()
+            try:
+                self.process_collection.await_termination_of_any_process(self.timeout)
+                self.termination_reason = "instance termination"
+            except TimeoutError:
+                self.termination_reason = "portfolio timeout"
         self.process_collection.kill_all()
         self.process_collection.await_termination_of_all_processes()
 
@@ -63,17 +70,18 @@ class Portfolio:
 
 
 class DafnyInstanceFactory:
-    def __init__(self, dafny_command, dfy_filename, procedure_name):
+    def __init__(self, dafny_command, dfy_filename, procedure_name, timeout):
+        self.timeout = timeout
         self.dafny_command = dafny_command
         self.dfy_filename = dfy_filename
         self.procedure_name = procedure_name
 
     def create_dafny_instance(self, dynamic_args):
-        return DafnyInstance(self.dafny_command, self.dfy_filename, self.procedure_name, dynamic_args)
+        return DafnyInstance(self.dafny_command, self.dfy_filename, self.procedure_name, dynamic_args, self.timeout)
 
 
 class DafnyInstance:
-    def __init__(self, dafny_command, dfy_filename, procedure_name, dynamic_args):
+    def __init__(self, dafny_command, dfy_filename, procedure_name, dynamic_args, timeout):
         self._output_file = NamedTemporaryFile("w+b", suffix=".out")
         self._error_file = NamedTemporaryFile("w+b", suffix=".err")
         self._xml_file = NamedTemporaryFile("r", suffix=".xml")
