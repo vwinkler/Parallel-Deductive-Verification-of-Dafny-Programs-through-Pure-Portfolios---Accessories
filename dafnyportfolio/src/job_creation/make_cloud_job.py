@@ -114,6 +114,7 @@ def make_container_command_args(args, call, results_filename):
                 f"{args.container}", f"{prepend_base_path('/benchmarks/', call['dfy-path'])}",
                 f"{escape_procedurename(call)}", f"{call['optionselector']}",
                 f"{prepend_base_path('/result/', results_filename)}", "--dafny-cmd /opt/dafny/dafny",
+                "--timeout 600",
                 turn_key_errors_and_null_to_emptystring("--num-instances {} ", call, "num_instances"),
                 turn_key_errors_and_null_to_emptystring("--seed {} ", call, "seed"),
                 turn_key_errors_and_null_to_emptystring("--only-instances {} ", call, "only_instances")]
