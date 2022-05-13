@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/dafnyportfolio/src/solve.py", line 50, in <module>
+    portfolio = Portfolio(args.dafny_file, args.procedure_name, args.num_instances, instances, chosen_option_selector,
+  File "/dafnyportfolio/src/Portfolio.py", line 15, in __init__
+    dynamic_args = self.select_dynamic_args(num_instances)
+  File "/dafnyportfolio/src/Portfolio.py", line 27, in select_dynamic_args
+    return self.option_selector.create_arguments(num_processes)
+  File "/dafnyportfolio/src/diversification/CustomOptionsOptionSelector.py", line 15, in create_arguments
+    raise RuntimeError("Stated number of calls and number of provided argument lists do not match")
+RuntimeError: Stated number of calls and number of provided argument lists do not match
+slurmstepd: error: *** JOB 20696981 ON uc2n437 CANCELLED AT 2022-05-09T02:29:38 DUE TO TIME LIMIT ***
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc2n437
+Job ID: 20696981
+Cluster: uc2
+User/Group: da1877/iti
+State: TIMEOUT (exit code 0)
+Nodes: 1
+Cores per node: 80
+CPU Utilized: 00:25:26
+CPU Efficiency: 0.91% of 1-22:45:20 core-walltime
+Job Wall-clock time: 00:35:04
+Memory Utilized: 2.96 GB
+Memory Efficiency: 3.37% of 87.89 GB
