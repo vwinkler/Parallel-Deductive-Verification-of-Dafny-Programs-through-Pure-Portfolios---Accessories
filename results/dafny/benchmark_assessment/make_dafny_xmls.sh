@@ -6,7 +6,7 @@ do
     filename=${basename%.*}.xml
     if [ ! -f $filename ]
     then
-        (set -x; dafny /xml:"$filename" /compile:0 $benchmark)
+        (set -x; timeout 600 dafny /xml:"$filename" /compile:0 $benchmark)
     else
         echo "skipping $filename"
     fi
