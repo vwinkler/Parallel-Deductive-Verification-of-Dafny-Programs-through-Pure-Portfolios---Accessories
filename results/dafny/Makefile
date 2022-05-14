@@ -39,3 +39,6 @@ all : \
 
 $(cluster_container_target) $(dev_cluster_container_target_dirs) :
 	mkdir -p $@
+
+%/ : 
+	mkdir -p %/
