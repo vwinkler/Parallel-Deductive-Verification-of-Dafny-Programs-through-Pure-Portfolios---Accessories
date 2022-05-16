@@ -1,0 +1,65 @@
+--- LetExpr.dfy	2022-05-12 20:23:15.974864066 +0200
++++ _LetExpr.noassert.dfy	2022-05-12 23:25:44.992816306 +0200
+@@ -11,12 +11,10 @@
+ 
+ method M1()
+ {
+-  assert var f := 54; var g := f + 1; g == 55;
+ }
+ 
+ method M2()
+ {
+-  assert var f := 54; var f := f + 1; f == 55;
+ }
+ 
+ function method Fib(n: nat): nat
+@@ -54,16 +52,16 @@
+   ensures (r + var t := r; t*2) == 3*r;
+ {
+   assert Fib(2) + Fib(4) == Fib(0) + Fib(1) + Fib(2) + Fib(3);
+-  assert
+-    var x,y := Fib(8), Fib(11);
+-    assume x == 21;
+-    assert Fib(7) == 3 ==> Fib(9) == 24;
+-    assume Fib(1000) == 1000;
+-    assume Fib(9) - Fib(8) == 13;
+-    assert Fib(9) <= Fib(10);
+-    y == 89;
++  //assert
++  //  var x,y := Fib(8), Fib(11);
++  //  assume x == 21;
++  //  assert Fib(7) == 3 ==> Fib(9) == 24;
++  //  assume Fib(1000) == 1000;
++  //  assume Fib(9) - Fib(8) == 13;
++  //  assert Fib(9) <= Fib(10);
++  //  y == 89;
+   assert Fib(1000) == 1000;  // still known, because the assume was on the path here
+-  assert forall i :: 0 <= i < a.Length ==> var j := i+1; j < a.Length ==> a[i] == a[j];
++  assert true;
+ }
+ 
+ class AClass {
+@@ -212,10 +210,10 @@
+   {
+     this.v := this.v + 1;
+     this.w := this.w + 10;
+-    assert 6 ==
+-      var f := this.v + x;  // 4
+-      var g :| old(f + this.w) == g;  // 6
+-      g;
++    //assert 6 ==
++    //  var f := this.v + x;  // 4
++    //  var g :| old(f + this.w) == g;  // 6
++    //  g;
+   }
+ 
+   method N() returns (ghost r: int, ghost s: int)
+@@ -365,7 +363,7 @@
+     {
+       assert Id(this) == this;
+       var e := Id(this).x;
+-      assert (var c: C :| c == this; c) == this;
++      assert true;
+       var d := (var c: C :| c == this; c).x;  // this once used to fail with a non-deref error, because of a missing CanCall assumption
+     }
+   }

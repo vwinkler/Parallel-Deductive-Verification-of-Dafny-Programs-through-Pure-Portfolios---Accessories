@@ -1,0 +1,90 @@
+--- NumberRepresentations.dfy	2022-04-06 22:19:32.370488379 +0200
++++ _NumberRepresentations.noassert.dfy	2022-05-13 00:26:16.127256714 +0200
+@@ -138,22 +138,6 @@
+     b := [lowDigit] + b';
+     assert IsSkewNumber(b, lowDigit, base);
+ 
+-    calc {
+-      eval(b, base);
+-    ==  // def. eval
+-      b[0] + base * eval(b[1..], base);
+-    ==  { assert b[0] == lowDigit; }
+-      lowDigit + base * eval(b[1..], base);
+-    ==  { assert b[1..] == b'; }
+-      lowDigit + base * eval(b', base);
+-    ==  { assert eval(b', base) == eval(a', base) + 1; }
+-      lowDigit + base * (eval(a', base) + 1);
+-      lowDigit + base * eval(a', base) + base;
+-    ==  { reveal A; }
+-      a[0] + base * eval(a', base) + 1;
+-    ==  // def. eval
+-      eval(a, base) + 1;
+-    }
+   }
+ }
+ 
+@@ -274,10 +258,7 @@
+     var b := base * a1;
+     assert a[0] + b == eval(a, base);
+ 
+-    assert R: -base < lowDigit <= a[0] < lowDigit + base <= base by {
+-      assert a[0] in a;
+-    }
+-
++    assert true;
+     // next, consider three cases: a1 is negative, a1 is 0, a1 is positive
+ 
+     calc {
+@@ -292,7 +273,7 @@
+       0 <= a[0] - base;
+     ==
+       base <= a[0];
+-    ==>  { reveal R; }
++    ==>  { }
+       false;
+     }
+ 
+@@ -308,21 +289,21 @@
+       a[0] + base <= 0;
+     ==
+       a[0] <= -base;
+-    ==>  { reveal R; }
++    ==>  { }
+       false;
+     }
+ 
+     if a1 == 0 {
+-      assert |a| == 1 by {
+-        assert IsSkewNumber(a[1..], lowDigit, base) by {
+-          assert forall d :: d in a[1..] ==> d in a;
+-        }
+-        assert a[1..] == trim(a[1..]) by {
+-          reveal T;
+-          TrimProperty(a);
+-        }
+-        ZeroIsUnique(a[1..], lowDigit, base);
+-      }
++      //assert |a| == 1 by {
++      //  assert IsSkewNumber(a[1..], lowDigit, base) by {
++      //    assert forall d :: d in a[1..] ==> d in a;
++      //  }
++      //  assert a[1..] == trim(a[1..]) by {
++      //    reveal T;
++      //    TrimProperty(a);
++      //  }
++      //  ZeroIsUnique(a[1..], lowDigit, base);
++      //}
+ 
+       calc {
+         true;
+@@ -431,9 +412,7 @@
+   assert base * d' + m' == n';
+   assert R': 0 <= m' < base;
+ 
+-  assert -base < m' - m < base by {
+-    reveal R, R';
+-  }
++  assert true;
+ 
+   var y := m' - base * k;
+   var p := MulProperty(base, d, m, d', y);
