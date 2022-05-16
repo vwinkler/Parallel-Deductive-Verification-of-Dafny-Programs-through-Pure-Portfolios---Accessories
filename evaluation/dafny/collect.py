@@ -55,13 +55,27 @@ def collect_runtime_from_file(filename, max_num_instances):
 
 
 def has_finished(results):
+    if has_portfolio_timed_out(results):
+        return False
     instances_finished = [instance["xml"]["methods"][0]["finished"] for instance in results["instances"]]
     return any(instances_finished)
 
 
 def is_correct(results):
+    if has_portfolio_timed_out(results):
+        return False
     instances_outcome = [instance["xml"]["methods"][0]["outcome"] for instance in results["instances"]]
     return any([outcome == "correct" for outcome in instances_outcome])
+
+
+def has_portfolio_timed_out(results):
+    portfolio_terminated = False
+    try:
+        if results["termination_reason"] == "portfolio timeout":
+            portfolio_terminated = True
+    except:
+        pass
+    return portfolio_terminated
 
 
 def make_diversification_cells(results, num_cells):

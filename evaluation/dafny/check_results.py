@@ -41,6 +41,17 @@ def check_file(file):
         return False
 
     try:
+        termination_reason = results["termination_reason"]
+    except KeyError:
+        print_error(filename, 'syntax error, missing termination reason')
+
+    try:
+        if termination_reason == "portfolio timeout":
+            return True
+    except TypeError:
+        pass
+
+    try:
         instances = results["instances"]
     except KeyError:
         print_error(filename, 'syntax error, missing instances')
