@@ -1,3 +1,6 @@
+import argparse
+import sys
+
 import pandas as pd
 import json
 
@@ -100,3 +103,19 @@ def get_arg(arg_name, results):
         return [results["args"][arg_name]]
     else:
         return [None]
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Collect runtimes")
+    parser.add_argument(metavar="OUTFILE", dest="results_collection_filename", type=str)
+    parser.add_argument(metavar="RESULTFILE", dest="result_filenames", type=str, nargs="+",
+                        help="or '-' to read from stdin (one filename per line)")
+    args = parser.parse_args()
+    if args.result_filenames == ["-"]:
+        df = collect_runtimes([filename for filename in sys.stdin.read().splitlines()])
+    else:
+        df = collect_runtimes(args.result_filenames)
+
+    store = pd.HDFStore(args.results_collection_filename)
+    store['df'] = df
+    store.close()

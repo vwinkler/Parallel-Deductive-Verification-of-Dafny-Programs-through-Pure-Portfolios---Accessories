@@ -25,14 +25,14 @@ def plot(relative_df, title, vmax):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Plot matrix displaying runtime")
-    parser.add_argument(metavar="RESULTFILE", dest="result_filenames", type=str, nargs="+",
-                        help="or '-' to read from stdin (one filename per line)")
+    parser.add_argument(metavar="COLLECTION", dest="results_collection", type=str)
+    parser.add_argument("--target-dir", dest="target_dir", type=str, default=".")
     args = parser.parse_args()
 
-    if args.result_filenames == ["-"]:
-        df = collect_runtimes([filename for filename in sys.stdin.read().splitlines()])
-    else:
-        df = collect_runtimes(args.result_filenames)
+    store = pd.HDFStore(args.results_collection)
+    df = store['df']
+    store.close()
+
     penalize(df)
 
     df = df[df["num_running_instances"] == 1]
@@ -46,7 +46,7 @@ if __name__ == '__main__':
     relative_df = df.apply(lambda row: row - row.min(), axis=1)
 
     rcParams.update({'figure.autolayout': True})
-    basename = "matrix/01"
+    basename = f"{args.target_dir}/01"
     print(f"{basename}.svg")
     ensure_surrounding_directory_exists(basename)
     with open(f"{basename}.txt", "w") as f:
@@ -54,10 +54,10 @@ if __name__ == '__main__':
         f.write("\n\n")
         f.write("\n".join([f"{k}\t{c}" for k, c in enumerate(df.columns)]))
     heatmap = plot(df, "Runtime in Seconds", 1200)
-    save_plot(heatmap, "matrix/01.svg")
+    save_plot(heatmap, f"{basename}.svg")
     plt.close()
     relative_heatmap = plot(relative_df, "Runtime Difference to VBS in Seconds", 10)
-    save_plot(relative_heatmap, "matrix/relative_01.svg")
+    save_plot(relative_heatmap, f"{basename}_relative.svg")
     plt.close()
 
     with open(f"{basename}.html", "w") as f:
