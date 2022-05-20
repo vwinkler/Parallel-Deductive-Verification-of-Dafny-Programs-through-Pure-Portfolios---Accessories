@@ -16,5 +16,6 @@ noassert_results_list.txt : $(NOASSERT_RESULTS)
 %_evaluation : %_collection.h5 make_matrix.py
 	mkdir -p $@
 	python make_matrix.py $< --target-dir $@
+	touch $@ # make sure timestamp is updated
 
 .PRECIOUS: %_collection.h5
