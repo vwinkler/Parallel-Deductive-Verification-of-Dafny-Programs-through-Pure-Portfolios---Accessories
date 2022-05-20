@@ -1,8 +1,7 @@
-import sys
-import argparse
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from collect import *
+from find_empty_matrix_cells import *
 from penalize_runtimes import *
 from util import save_plot, ensure_surrounding_directory_exists
 import seaborn
@@ -23,6 +22,33 @@ def plot(relative_df, title, vmax):
     return heatmap
 
 
+def turn_into_benchmark_x_config_matrix(df):
+    df = df.copy()
+    df = df[df["num_running_instances"] == 1]
+    df["configuration"] = df[("diversification", 0)]
+    df["score"] = df["runtime"]
+    df = df[["configuration", "problem", "procedure", "score"]]
+    df = df.groupby(["configuration", "problem", "procedure"], as_index=False).agg("mean")
+    df = df.pivot(index=["problem", "procedure"], columns="configuration", values="score")
+    df["[vbs]"] = df.min(axis=1)
+    df.loc["[total]"] = df.sum()
+    return df
+
+
+def warn_about_empty_cells(df):
+    for cell in sorted(find_empty_cells(df), key=lambda cell: cell.row_index):
+        warn_about_empty_cell(cell)
+
+
+def warn_about_empty_cell(cell):
+    index = cell.column_index
+    configuration = cell.column_name
+    (benchmark_file, benchmark_method) = cell.row_name
+    print((f"Runtime for {benchmark_file} {benchmark_method} (row {cell.row_index}) "
+           f"with {configuration} (column {index}) "
+           f"is empty"))
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Plot matrix displaying runtime")
     parser.add_argument(metavar="COLLECTION", dest="results_collection", type=str)
@@ -33,16 +59,13 @@ if __name__ == '__main__':
     df = store['df']
     store.close()
 
-    penalize(df)
+    penalize_results_table(df)
+    df = turn_into_benchmark_x_config_matrix(df)
+    warn_about_empty_cells(df)
 
-    df = df[df["num_running_instances"] == 1]
-    df["configuration"] = df[("diversification", 0)]
-    df["score"] = df["runtime"]
-    df = df[["configuration", "problem", "procedure", "score"]]
-    df = df.groupby(["configuration", "problem", "procedure"], as_index=False).agg("mean")
-    df = df.pivot(index=["problem", "procedure"], columns="configuration", values="score")
-    df["[vbs]"] = df.min(axis=1)
-    df.loc["[total]"] = df.sum()
+    penalize_runtime_matrix(df)
+
+    find_empty_cells(df)
     relative_df = df.apply(lambda row: row - row.min(), axis=1)
 
     rcParams.update({'figure.autolayout': True})

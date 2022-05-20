@@ -1,4 +1,4 @@
-def penalize(df, max_runtime=600, penalty_runtime=1200):
+def penalize_results_table(df, max_runtime=600, penalty_runtime=1200):
     penalize_overtime(df, max_runtime, penalty_runtime)
     penalize_unfinished(df, max_runtime, penalty_runtime)
     penalize_incorrect(df, max_runtime, penalty_runtime)
@@ -14,3 +14,11 @@ def penalize_unfinished(df, max_runtime=600, penalty_runtime=1200):
 
 def penalize_incorrect(df, max_runtime, penalty_runtime):
     df["runtime"] = df.apply(lambda row: penalty_runtime if not row["correct"] else row["runtime"], axis=1)
+
+
+def penalize_runtime_matrix(df, penalty_runtime=1200):
+    penalize_missing_values(df, penalty_runtime)
+
+
+def penalize_missing_values(df, penalty_runtime):
+    df.fillna(value=penalty_runtime, inplace=True)
