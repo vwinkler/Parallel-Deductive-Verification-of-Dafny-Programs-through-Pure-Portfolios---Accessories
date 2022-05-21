@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
-import seaborn
 from matplotlib import rcParams
+import seaborn
 
 from collect import *
 from collection_persistence import load_collection

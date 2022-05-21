@@ -107,7 +107,7 @@ def get_arg(arg_name, results):
         return [None]
 
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser(description="Collect runtimes")
     parser.add_argument(metavar="OUTFILE", dest="results_collection_filename", type=str)
     parser.add_argument(metavar="RESULTFILE", dest="result_filenames", type=str, nargs="+",
@@ -117,5 +117,8 @@ if __name__ == '__main__':
         df = collect_runtimes([filename for filename in sys.stdin.read().splitlines()])
     else:
         df = collect_runtimes(args.result_filenames)
-
     store_collection(args.results_collection_filename, df)
+
+
+if __name__ == '__main__':
+    main()
