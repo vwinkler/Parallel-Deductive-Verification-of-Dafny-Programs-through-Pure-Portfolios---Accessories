@@ -72,7 +72,6 @@ def main():
     args = parser.parse_args()
 
     df = load_collection(args.results_collection)
-    penalize_results_table(df)
     df = make_matrix(df)
     warn_about_empty_cells(df)
     penalize_runtime_matrix(df)

@@ -12,8 +12,11 @@ noassert_results_list.txt : $(NOASSERT_RESULTS)
 
 %_collection.h5 : %_results_list.txt collect.py
 	python collect.py $@ - < $<
+	
+%_penalized_collection.h5 : %_collection.h5
+	python penalize_results.py $< $@
 
-%_evaluation : %_collection.h5 make_matrix.py
+%_evaluation : %_penalized_collection.h5 make_matrix.py
 	mkdir -p $@
 	python make_matrix.py $< --target-dir $@
 	touch $@ # make sure timestamp is updated
