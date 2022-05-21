@@ -7,7 +7,6 @@ from collection_persistence import load_collection
 from util import *
 
 
-
 def plot_as_heatmap(filename, relative_df, max_value, title):
     rcParams.update({'figure.autolayout': True})
     relative_heatmap = plot(relative_df, title, max_value)
@@ -30,54 +29,29 @@ def plot(relative_df, title, vmax):
     return heatmap
 
 
-def export_to_html(filename, df):
-    with open(filename, "w") as f:
-        df.to_html(f)
+def plot_heatmap_with_absolute_runtimes(df, filename, max_value):
+    plot_as_heatmap(filename, df, max_value, "Runtime in Seconds")
 
 
-def export_to_ods(filename, df):
-    with open(filename, "wb") as f:
-        try:
-            df.to_excel(f, engine="odf")
-        except ModuleNotFoundError as e:
-            print(f"Could not save as '{f.name}': {e}")
-
-
-def export_axis_labels(filename, df):
-    ensure_surrounding_directory_exists(filename)
-    with open(filename, "w") as f:
-        f.write("\n".join([f"{k}\t{r}" for k, r in enumerate(df.index)]))
-        f.write("\n\n")
-        f.write("\n".join([f"{k}\t{c}" for k, c in enumerate(df.columns)]))
-
-
-def plot_as_heatmap(filename, relative_df, max_value, title):
-    rcParams.update({'figure.autolayout': True})
-    relative_heatmap = plot(relative_df, title, max_value)
-    save_plot(relative_heatmap, filename)
-    plt.close()
+def plot_heatmap_with_runtime_differences(filename, df, max_value):
+    relative_matrix = df.apply(lambda row: row - row.min(), axis=1)
+    plot_as_heatmap(filename, relative_matrix, max_value, "Runtime Difference to VBS in Seconds")
 
 
 def main():
     parser = argparse.ArgumentParser(description="Plot matrix displaying runtime")
     parser.add_argument(metavar="COLLECTION", dest="results_collection", type=str)
-    parser.add_argument("--target-dir", dest="target_dir", type=str, default=".")
+    parser.add_argument(metavar="OUTFILE", dest="output_file", type=str)
+    parser.add_argument("--plot-differences", dest="plot_differences", action='store_true')
+    parser.add_argument("--max-value", dest="max_value", type=float)
     args = parser.parse_args()
 
     df = load_collection(args.results_collection)
 
-    relative_matrix = df.apply(lambda row: row - row.min(), axis=1)
-
-    basename = f"{args.target_dir}/01"
-
-    print(f"{basename}.svg")
-
-    export_axis_labels(f"{basename}.txt", df)
-    plot_as_heatmap(f"{basename}.svg", df, 1200, "Runtime in Seconds")
-    plot_as_heatmap(f"{basename}_relative.svg", relative_matrix, 10, "Runtime Difference to VBS in Seconds")
-
-    export_to_html(f"{basename}.html", df)
-    export_to_ods(f"{basename}.ods", df)
+    if args.plot_differences:
+        plot_heatmap_with_runtime_differences(args.output_file, df, args.max_value)
+    else:
+        plot_heatmap_with_absolute_runtimes(df, args.output_file, args.max_value)
 
 
 if __name__ == '__main__':
