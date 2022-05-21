@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from collect import *
+from collection_persistence import load_collection
 from find_empty_matrix_cells import *
 from penalize_runtimes import *
 from util import save_plot, ensure_surrounding_directory_exists
@@ -55,9 +56,7 @@ if __name__ == '__main__':
     parser.add_argument("--target-dir", dest="target_dir", type=str, default=".")
     args = parser.parse_args()
 
-    store = pd.HDFStore(args.results_collection)
-    df = store['df']
-    store.close()
+    df = load_collection(args.results_collection)
 
     penalize_results_table(df)
     df = turn_into_benchmark_x_config_matrix(df)
