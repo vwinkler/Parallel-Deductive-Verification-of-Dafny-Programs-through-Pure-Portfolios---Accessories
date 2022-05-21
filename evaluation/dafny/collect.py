@@ -4,6 +4,8 @@ import sys
 import pandas as pd
 import json
 
+from collection_persistence import store_collection
+
 
 def collect_runtimes(result_filenames) -> pd.DataFrame:
     df = collect_runtime_files(result_filenames)
@@ -116,6 +118,4 @@ if __name__ == '__main__':
     else:
         df = collect_runtimes(args.result_filenames)
 
-    store = pd.HDFStore(args.results_collection_filename)
-    store['df'] = df
-    store.close()
+    store_collection(args.results_collection_filename, df)
