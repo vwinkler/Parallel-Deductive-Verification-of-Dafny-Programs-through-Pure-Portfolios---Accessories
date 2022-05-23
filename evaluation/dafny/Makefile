@@ -26,10 +26,10 @@ noassert_results_list.txt : $(NOASSERT_RESULTS)
 	python collect.py $@ - < $<
 	
 %_penalized_collection.h5 : %_collection.h5
-	python penalize_results.py $< $@
+	python penalize_results.py $< $@ --max-runtime 600 --penalty-runtime 1200
 	
 %_matrix.h5 : %_penalized_collection.h5
-	python make_matrix.py $< $@
+	python make_matrix.py $< $@ --penalty-runtime 1200
 
 %_evaluation/01.txt : %_matrix.h5
 	mkdir -p $(@D)

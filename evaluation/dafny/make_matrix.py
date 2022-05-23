@@ -25,13 +25,14 @@ def main():
     parser.add_argument(metavar="COLLECTION_IN", dest="results_collection_in", type=str)
     parser.add_argument(metavar="COLLECTION_OUT", dest="results_collection_out", type=str)
     parser.add_argument("--supress-empty-cell-warnings", dest="supress_empty_cell_warnings", action='store_true')
+    parser.add_argument("--penalty-runtime", dest="penalty_runtime", type=float, default=1200)
     args = parser.parse_args()
 
     df = load_collection(args.results_collection_in)
     df = make_matrix(df)
     if not args.supress_empty_cell_warnings:
         warn_about_empty_cells(df)
-    penalize_runtime_matrix(df)
+    penalize_runtime_matrix(df, penalty_runtime=args.penalty_runtime)
     store_collection(args.results_collection_out, df)
 
 
