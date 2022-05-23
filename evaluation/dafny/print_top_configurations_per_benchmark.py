@@ -1,7 +1,5 @@
 import argparse
 
-import pandas as pd
-
 from collection_persistence import load_collection
 
 
@@ -14,11 +12,13 @@ def main():
 
     df = df.drop("[vbs]", axis=1)
 
-    result_df = pd.DataFrame(index=df.index)
-    result_df["1st"] = df.idxmin(axis=1)
-    result_df["t of 1st"] = df.min(axis=1)
-
-    print(result_df.to_string())
+    melted_df = df.melt(value_name="runtime", ignore_index=False).reset_index().rename(columns={"index": "benchmark"})
+    melted_df["problem"] = melted_df.apply(lambda row: row["benchmark"][0], axis=1)
+    melted_df["procedure"] = melted_df.apply(lambda row: row["benchmark"][1], axis=1)
+    melted_df = melted_df.drop(columns=["benchmark"], axis=1)
+    melted_df = melted_df.sort_values("runtime").groupby(["problem", "procedure"]).head(3)
+    melted_df = melted_df.set_index(["problem", "procedure", "configuration"])
+    print(melted_df.sort_values(["problem", "procedure"], kind="stable").to_string())
 
 
 if __name__ == '__main__':
