@@ -15,7 +15,8 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01_relative.svg \
 	%_evaluation/01.html \
 	%_evaluation/01.ods \
-	%_evaluation/01_configuration_ranking.txt
+	%_evaluation/01_configuration_ranking.txt \
+	%_evaluation/01_top_configurations_per_benchmark.txt
 
 
 primary_results_list.txt : $(PORTFOLIO_ASSEMBLING_RESULTS) $(BOOL_PARAMS_RESULTS)
@@ -51,6 +52,9 @@ noassert_results_list.txt : $(NOASSERT_RESULTS)
 	
 %_evaluation/01_configuration_ranking.txt : %_matrix.h5
 	$(PYTHON) rank_configurations.py $< > $@ --max-runtime 600
+	
+%_evaluation/01_top_configurations_per_benchmark.txt : %_matrix.h5
+	$(PYTHON) print_top_configurations_per_benchmark.py $< > $@
 
 .PRECIOUS: %.h5
 .PHONY: all $(evaluations)
