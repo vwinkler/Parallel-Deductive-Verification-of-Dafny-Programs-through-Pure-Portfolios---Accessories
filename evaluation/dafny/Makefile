@@ -13,7 +13,8 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01.svg \
 	%_evaluation/01_relative.svg \
 	%_evaluation/01.html \
-	%_evaluation/01.ods
+	%_evaluation/01.ods \
+	%_evaluation/01_configuration_ranking.txt
 
 
 primary_results_list.txt : $(PORTFOLIO_ASSEMBLING_RESULTS) $(BOOL_PARAMS_RESULTS)
@@ -46,6 +47,9 @@ noassert_results_list.txt : $(NOASSERT_RESULTS)
 	
 %_evaluation/01_relative.svg : %_matrix.h5
 	python plot_matrix.py $< $@ --max-value 10 --plot-differences
+	
+%_evaluation/01_configuration_ranking.txt : %_matrix.h5
+	python rank_configurations.py $< > $@ --max-runtime 600
 
 .PRECIOUS: %.h5
 .PHONY: all $(evaluations)
