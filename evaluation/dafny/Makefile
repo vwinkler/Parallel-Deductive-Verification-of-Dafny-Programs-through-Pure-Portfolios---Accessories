@@ -16,8 +16,9 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01.html \
 	%_evaluation/01.ods \
 	%_evaluation/01_configuration_ranking.txt \
-	%_evaluation/01_top_configurations_per_benchmark.txt
-
+	%_evaluation/01_top_configurations_per_benchmark.txt \
+	%_evaluation/01_heuristic_cascading_n_vbs_matrix.html \
+	%_evaluation/01_heuristic_cascading_n_vbs_matrix.ods
 
 primary_results_list.txt : $(PORTFOLIO_ASSEMBLING_RESULTS)
 	find $^ -name '*.json' > $@
@@ -58,6 +59,15 @@ bool_params_results_list.txt : $(BOOL_PARAMS_RESULTS)
 	
 %_evaluation/01_top_configurations_per_benchmark.txt : %_matrix.h5
 	$(PYTHON) print_top_configurations_per_benchmark.py $< > $@
+	
+%_cascading_n_vbs_matrix.h5  : %_matrix.h5
+	$(PYTHON) make_n_vbs_matrix.py $< $@ 16
+
+%_evaluation/01_heuristic_cascading_n_vbs_matrix.html : %_cascading_n_vbs_matrix.h5
+	$(PYTHON) export_html.py $< $@
+	
+%_evaluation/01_heuristic_cascading_n_vbs_matrix.ods : %_cascading_n_vbs_matrix.h5
+	$(PYTHON) export_ods.py $< $@
 
 .PRECIOUS: %.h5
 .PHONY: all $(evaluations)
