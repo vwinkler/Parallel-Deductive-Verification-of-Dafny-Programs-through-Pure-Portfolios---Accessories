@@ -1,6 +1,6 @@
 import unittest
 
-from dafnyportfolio.src.job_creation.expand import expand, resolve_includes
+from dafnyportfolio.src.job_creation.expand import expand, resolve_includes, resolve_cartesian
 
 
 class ExpandTest(unittest.TestCase):
@@ -90,5 +90,46 @@ class ExpandTest(unittest.TestCase):
         expectation = [{"y": 0}]
         self.assertCountEqual(expectation, resolve_includes(example))
 
-    if __name__ == '__main__':
-        unittest.main()
+    def test_cartesian(self):
+        example = [{"[cartesian]x": [[0], [1, 2, 3]]}]
+        expectation = [{"x": [0, 1]}, {"x": [0, 2]}, {"x": [0, 3]}]
+        self.assertCountEqual(expectation, expand(example))
+
+    def test_cartesian_empty(self):
+        example = [{"[cartesian]x": [["[empty]"], [1, 2, 3]]}]
+        expectation = [{"x": [1]}, {"x": [2]}, {"x": [3]}]
+        self.assertCountEqual(expectation, expand(example))
+
+    def test_cartesian_single(self):
+        example = [{"[cartesian]x": [0, [1, 2, 3]]}]
+        expectation = [{"x": [0, 1]}, {"x": [0, 2]}, {"x": [0, 3]}]
+        self.assertCountEqual(expectation, expand(example))
+
+    def test_nested_cartesian(self):
+        example = [
+            {
+                "[cartesian]x": [
+                    {
+                        "[cartesian]x": [
+                            [0],
+                            [1, 2, 3]
+                        ]
+                    },
+                    [4, 5, 6]
+                ]
+            }
+        ]
+        expectation = [
+            {
+                "x": [
+                    [{"x": [[0, 1], [0, 2], [0, 3]]}, 4],
+                    [{"x": [[0, 1], [0, 2], [0, 3]]}, 5],
+                    [{"x": [[0, 1], [0, 2], [0, 3]]}, 6]
+                ]
+            }
+        ]
+        self.assertCountEqual(expectation, resolve_cartesian(example))
+
+
+if __name__ == '__main__':
+    unittest.main()
