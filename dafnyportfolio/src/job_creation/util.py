@@ -28,8 +28,17 @@ def list_filename_parts(call):
     result_file_identifier = [call['dfy-path'], call['procedurename'], call['optionselector'], call['num_instances'],
                               call['only_instances'], call['seed']]
     if "stdin" in call:
-        result_file_identifier.append(make_checksum("\n".join(call['stdin'])))
+        result_file_identifier.append(make_checksum(make_stdin_checksum_input_string(call)))
     return [str(v) for v in result_file_identifier]
+
+
+def make_stdin_checksum_input_string(call):
+    # This is done for compatibility with misguided legacy checksum calculation of old non-list stdin values
+    stdin = call['stdin']
+    if len(stdin) != 1 or not isinstance(stdin, list):
+        return "\n".join(stdin)
+    else:
+        return "\n".join(stdin[0])
 
 
 def make_checksum(string):
