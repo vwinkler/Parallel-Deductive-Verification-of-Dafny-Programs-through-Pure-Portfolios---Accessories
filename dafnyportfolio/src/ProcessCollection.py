@@ -5,11 +5,30 @@ from subprocess import Popen, PIPE
 any_cpu = None
 
 
+class CpuQueueBwUniClusterSinglePartition:
+    def __init__(self):
+        self.queue = self.get_preferred_cpu_order()
+
+    def get_preferred_cpu_order(self):
+        first_hyperthreads = [cpu for k in range(0, 9) for cpu in list(range(0 + k, 31 + k, 10))]
+        second_hyperthreads = [cpu for k in range(0, 9) for cpu in list(range(40 + k, 71 + k, 10))]
+        return first_hyperthreads + second_hyperthreads
+
+    def pop(self):
+        try:
+            return self.queue.pop(0)
+        except IndexError:
+            raise RuntimeError("No CPU left for this process")
+
+    def add(self, cpu):
+        self.queue.append(cpu)
+
+
 class ProcessCollection:
-    def __init__(self, cpus=None):
+    def __init__(self, cpu_pool=None):
         self.processesMarkedTerminated = set()
         self.processes = dict()
-        self.free_cpus = set(cpus) if cpus is not None else None
+        self.cpu_pool = cpu_pool
 
     def start_process(self, args, stdin=PIPE, stdout=PIPE, stderr=PIPE):
         cpu = self._get_cpu_from_pool()
@@ -20,9 +39,7 @@ class ProcessCollection:
     def _get_cpu_from_pool(self):
         if not self._cpu_assignment_is_enabled():
             return any_cpu
-        if len(self.free_cpus) < 1:
-            raise RuntimeError("No CPU left for this process")
-        return self.free_cpus.pop()
+        return self.cpu_pool.pop()
 
     def kill_all(self):
         for process in self.processes.values():
@@ -99,10 +116,10 @@ class ProcessCollection:
 
     def return_cpu_to_pool(self, cpu):
         if cpu == any_cpu and self._cpu_assignment_is_enabled():
-            self.free_cpus.add(cpu)
+            self.cpu_pool.add(cpu)
 
     def _cpu_assignment_is_enabled(self):
-        return self.free_cpus is not None
+        return self.cpu_pool is not None
 
 
 class Process:
@@ -116,6 +133,7 @@ class Process:
 
     def _establish_cpu_assignment(self):
         if self.assigned_cpu is not any_cpu:
+            print(self.assigned_cpu)
             os.sched_setaffinity(self.wrapped_process.pid, [self.assigned_cpu])
 
     def __del__(self):
