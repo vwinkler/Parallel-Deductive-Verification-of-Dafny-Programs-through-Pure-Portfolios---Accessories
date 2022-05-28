@@ -33,14 +33,14 @@ def expand_values_of_dict(dict_to_expand):
 
 def expand_key_value_pair(original_key, original_value):
     noexpand_directive_search = search_for_noexpand_directive(original_key)
-    cartesian_directive_search = search_for_cartesian_directive(original_key)
+    cartconcat_directive_search = search_for_cartconcat_directive(original_key)
     if has_match(noexpand_directive_search):
         new_key = get_key_without_directive(noexpand_directive_search)
         new_value = [expand(original_value)]
-    elif has_match(cartesian_directive_search):
+    elif has_match(cartconcat_directive_search):
         assert isinstance(original_value, list)
-        new_key = get_key_without_directive(cartesian_directive_search)
-        new_value = resolve_cartesian_directive_value(original_value)
+        new_key = get_key_without_directive(cartconcat_directive_search)
+        new_value = resolve_cartconcat_directive_value(original_value)
     else:
         new_key = original_key
         new_value = expand(original_value)
@@ -55,8 +55,8 @@ def search_for_noexpand_directive(k):
     return re.search("^\[noexpand\](.*)$", k)
 
 
-def search_for_cartesian_directive(k):
-    return re.search("^\[cartesian\](.*)$", k)
+def search_for_cartconcat_directive(k):
+    return re.search("^\[cartconcat\](.*)$", k)
 
 
 def has_match(match):
@@ -101,29 +101,29 @@ def resolve_includes_in_dict_keep_values(dict_with_resolved_values):
     return result
 
 
-def resolve_cartesian(dict_tree):
+def resolve_cartconcat(dict_tree):
     if isinstance(dict_tree, dict):
-        return resolve_cartesian_in_dict(dict_tree)
+        return resolve_cartconcat_in_dict(dict_tree)
     elif isinstance(dict_tree, list):
-        return [resolve_cartesian(v) for v in dict_tree]
+        return [resolve_cartconcat(v) for v in dict_tree]
     else:
         return dict_tree
 
 
-def resolve_cartesian_in_dict(dict_tree):
-    return resolve_cartesian_in_dict_keep_values(resolve_cartesian_in_dict_values(dict_tree))
+def resolve_cartconcat_in_dict(dict_tree):
+    return resolve_cartconcat_in_dict_keep_values(resolve_cartconcat_in_dict_values(dict_tree))
 
 
-def resolve_cartesian_in_dict_values(dict_tree):
-    return {k: resolve_cartesian(v) for k, v in dict_tree.items()}
+def resolve_cartconcat_in_dict_values(dict_tree):
+    return {k: resolve_cartconcat(v) for k, v in dict_tree.items()}
 
 
-def resolve_cartesian_in_dict_keep_values(dict_tree):
+def resolve_cartconcat_in_dict_keep_values(dict_tree):
     result = dict()
     for key, value in dict_tree.items():
-        search_result = search_for_cartesian_directive(key)
+        search_result = search_for_cartconcat_directive(key)
         if has_match(search_result):
-            value_combinations_without_empty = resolve_cartesian_directive_value(value)
+            value_combinations_without_empty = resolve_cartconcat_directive_value(value)
             result[get_key_without_directive(search_result)] = value_combinations_without_empty
         else:
             if key not in result:
@@ -131,9 +131,17 @@ def resolve_cartesian_in_dict_keep_values(dict_tree):
     return result
 
 
-def resolve_cartesian_directive_value(value):
+def resolve_cartconcat_directive_value(value):
     assert isinstance(value, list)
-    padded_values = [inner_value if isinstance(inner_value, list) else [inner_value] for inner_value in value]
-    value_combinations = [list(vc) for vc in (list(product(*padded_values)))]
-    value_combinations_without_empty = [[v for v in vc if v != "[empty]"] for vc in value_combinations]
-    return value_combinations_without_empty
+    padded_values = pad_list_elements(value)
+    double_padded_values = [pad_list_elements(inner_value) for inner_value in padded_values]
+    value_combinations = [list(vc) for vc in (list(product(*double_padded_values)))]
+    # value_combinations_without_empty = [[v for v in vc if v != "[empty]"] for vc in value_combinations]
+    # value_combinations_without_empty = [for vc in value_combinations if isinstance(vc, list)]
+    # [vc if isinstance(vc, list) else list(vc) for vc in value_combinations]
+    value_combinations_unionized = [[x for v in vc for x in v] for vc in value_combinations]
+    return value_combinations_unionized
+
+
+def pad_list_elements(value):
+    return [inner_value if isinstance(inner_value, list) else [inner_value] for inner_value in value]
