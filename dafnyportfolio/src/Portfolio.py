@@ -10,7 +10,7 @@ class Portfolio:
                  timeout):
         self.option_selector = option_selector
         self.dafny_instance_factory = DafnyInstanceFactory(dafny_command, filename, procedure_name, timeout)
-        self.process_collection = ProcessCollection(range(multiprocessing.cpu_count()))
+        self.process_collection = ProcessCollection(CpuQueueBwUniClusterSinglePartition())
         self.xml_parser = XmlResultParser()
         self.timeout = timeout
         self.termination_reason = "unknown"
@@ -53,6 +53,7 @@ class Portfolio:
         instances_results = []
         for id, instance in instances.items():
             instance_results = {"id": id,
+                                "cpu": instance.get_assigned_cpu(),
                                 "cmd": instance.get_command(),
                                 "diversification": instance.get_dynamic_args(),
                                 "stdout": instance.open_output_file().read().splitlines(),
@@ -82,6 +83,7 @@ class DafnyInstanceFactory:
 
 class DafnyInstance:
     def __init__(self, dafny_command, dfy_filename, procedure_name, dynamic_args, timeout):
+        self._process = None
         self._output_file = NamedTemporaryFile("w+b", suffix=".out")
         self._error_file = NamedTemporaryFile("w+b", suffix=".err")
         self._xml_file = NamedTemporaryFile("r", suffix=".xml")
@@ -93,7 +95,7 @@ class DafnyInstance:
         self._cmd = static_args + [xml_argument] + self._dynamic_args
 
     def start(self, process_collection):
-        return process_collection.start_process(self._cmd, stdout=self._output_file, stderr=self._error_file)
+        self._process = process_collection.start_process(self._cmd, stdout=self._output_file, stderr=self._error_file)
 
     def get_command(self):
         return self._cmd
@@ -109,3 +111,6 @@ class DafnyInstance:
 
     def open_error_file(self):
         return open(self._error_file.name, "rb")
+
+    def get_assigned_cpu(self):
+        return self._process.get_assigned_cpu() if self._process is not None else None
