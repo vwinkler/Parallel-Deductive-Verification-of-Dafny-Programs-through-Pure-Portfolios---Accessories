@@ -19,11 +19,7 @@ option_selectors = {
 
 
 def determine_instance_ids(args):
-    if args.only_instances is None:
-        result = range(args.num_instances)
-    else:
-        result = set.intersection(set(range(args.num_instances)), set(args.only_instances))
-    return result
+    return range(args.num_instances)
 
 
 def get_commit_hash():
@@ -40,7 +36,6 @@ if __name__ == '__main__':
     parser.add_argument("--seed", dest="seed", type=str, default="")
     parser.add_argument("--num-instances", dest="num_instances", type=int, default=cpu_count())
     parser.add_argument("--dafny-cmd", dest="dafny_command", type=str, default="dafny")
-    parser.add_argument("--only-instances", dest="only_instances", type=int, nargs="*")
     parser.add_argument("--commit-hash", dest="commit_hash", type=str)
     parser.add_argument("--timeout", dest="timeout", type=int, default=2 ** 31 - 1)
     args = parser.parse_args()
