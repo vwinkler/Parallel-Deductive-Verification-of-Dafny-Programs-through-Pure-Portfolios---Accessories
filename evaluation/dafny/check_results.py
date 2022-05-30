@@ -1,5 +1,7 @@
 import argparse
 import json
+import sys
+
 from progress.bar import Bar
 from enum import Enum
 
@@ -43,10 +45,10 @@ def check_file(file):
     try:
         termination_reason = results["termination_reason"]
     except KeyError:
-        print_error(filename, 'syntax error, missing termination reason')
+        termination_reason = None
 
     try:
-        if termination_reason == "portfolio timeout":
+        if termination_reason is not None and termination_reason == "portfolio timeout":
             return True
     except TypeError:
         pass
@@ -79,16 +81,13 @@ def check_file(file):
                 print_error(filename, 'syntax error, missing methods')
                 return False
             except TypeError:
-                print_error(filename, 'syntax error, ill-formed xml')
-                return False
+                continue
 
             try:
                 if len(methods) > 1:
                     print_error(filename, 'at least one instance has more than one method')
                     return False
                 if len(methods) == 1:
-                    if methods[0]["outcome"] not in {"correct"}:
-                        print(methods[0]["outcome"])
                     num_instances_with_at_least_once_method += 1
             except TypeError:
                 print_error(filename, 'syntax error, ill-formed method')
@@ -110,7 +109,11 @@ def print_error(filename, message):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Plot matrix displaying runtime")
-    parser.add_argument(metavar="RESULTFILE", dest="result_filenames", type=str, nargs="+")
+    parser.add_argument(metavar="RESULTFILE", dest="result_filenames", type=str, nargs="+",
+                        help="or '-' to read from stdin (one filename per line)")
     args = parser.parse_args()
 
-    check_files(args.result_filenames)
+    if args.result_filenames != ["-"]:
+        check_files(args.result_filenames)
+    else:
+        check_files([filename for filename in sys.stdin.read().splitlines()])

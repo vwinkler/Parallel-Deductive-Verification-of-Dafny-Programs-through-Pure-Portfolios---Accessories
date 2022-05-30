@@ -1,5 +1,6 @@
 import argparse
 import sys
+from typing import Union
 
 import pandas as pd
 import json
@@ -53,6 +54,7 @@ def collect_runtime_from_file(filename, max_num_instances):
     div_cells = make_diversification_cells(results, max_num_instances)
     for k, v in div_cells.items():
         data[("diversification", k)] = v
+    data["diversification_string"] = "; ".join([str(x) for x in div_cells.values()])
     data["num_running_instances"] = len([div for div in div_cells.values() if div is not None])
 
     data = data.astype({"runtime": "float64"})
@@ -62,15 +64,29 @@ def collect_runtime_from_file(filename, max_num_instances):
 def has_finished(results):
     if has_portfolio_timed_out(results):
         return False
-    instances_finished = [instance["xml"]["methods"][0]["finished"] for instance in results["instances"]]
+    instances_finished = [has_instance_finished(instance) for instance in results["instances"]]
     return any(instances_finished)
+
+
+def has_instance_finished(instance):
+    try:
+        return instance["xml"]["methods"][0]["finished"]
+    except (TypeError, IndexError):
+        return False
 
 
 def is_correct(results):
     if has_portfolio_timed_out(results):
         return False
-    instances_outcome = [instance["xml"]["methods"][0]["outcome"] for instance in results["instances"]]
-    return any([outcome == "correct" for outcome in instances_outcome])
+    instances_correct = [is_instance_correct(instance) for instance in results["instances"]]
+    return any(instances_correct)
+
+
+def is_instance_correct(instance):
+    try:
+        return instance["xml"]["methods"][0]["outcome"] == "correct"
+    except (TypeError, IndexError):
+        return False
 
 
 def has_portfolio_timed_out(results):
