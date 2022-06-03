@@ -6,7 +6,7 @@ import multiprocessing
 
 
 class Portfolio:
-    def __init__(self, filename, procedure_name, num_instances, active_instances, option_selector, dafny_command,
+    def __init__(self, filename, procedure_name, num_instances, _, option_selector, dafny_command,
                  timeout):
         self.option_selector = option_selector
         self.dafny_instance_factory = DafnyInstanceFactory(dafny_command, filename, procedure_name, timeout)
@@ -16,7 +16,7 @@ class Portfolio:
         self.termination_reason = "unknown"
 
         dynamic_args = self.select_dynamic_args(num_instances)
-        self.instances = self.filter_active_instances(self.create_dafny_instances(dynamic_args), active_instances)
+        self.instances = self.create_dafny_instances(dynamic_args)
 
     def filter_active_instances(self, instances, active_ids):
         return {id: instance for id, instance in instances.items() if id in active_ids}

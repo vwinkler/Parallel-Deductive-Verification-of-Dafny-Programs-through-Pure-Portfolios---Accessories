@@ -17,6 +17,7 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01.ods \
 	%_evaluation/01_configuration_ranking.txt \
 	%_evaluation/01_top_configurations_per_benchmark.txt \
+	%_evaluation/01_gaps.txt \
 	%_evaluation/01_heuristic_cascading_n_vbs_matrix.html \
 	%_evaluation/01_heuristic_cascading_n_vbs_matrix.ods
 
@@ -35,8 +36,14 @@ bool_params_results_list.txt : $(BOOL_PARAMS_RESULTS)
 %_penalized_collection.h5 : %_collection.h5
 	$(PYTHON) penalize_results.py $< $@ --max-runtime 600 --penalty-runtime 1200
 	
-%_matrix.h5 : %_penalized_collection.h5
-	$(PYTHON) make_matrix.py $< $@ --penalty-runtime 1200
+%_unpenalized_matrix.h5 : %_penalized_collection.h5
+	$(PYTHON) make_matrix.py $< $@
+	
+%_matrix.h5 : %_unpenalized_matrix.h5
+	$(PYTHON) penalize_empty_cells.py $< $@ --penalty-runtime 1200
+
+%_evaluation/01_gaps.txt : %_unpenalized_matrix.h5
+	$(PYTHON) report_empty_cells.py $< > $@
 
 %_evaluation/01.txt : %_matrix.h5
 	mkdir -p $(@D)

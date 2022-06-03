@@ -133,7 +133,6 @@ class Process:
 
     def _establish_cpu_assignment(self):
         if self.assigned_cpu is not any_cpu:
-            print(self.assigned_cpu)
             os.sched_setaffinity(self.wrapped_process.pid, [self.assigned_cpu])
 
     def __del__(self):

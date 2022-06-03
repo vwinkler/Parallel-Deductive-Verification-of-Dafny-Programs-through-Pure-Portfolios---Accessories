@@ -1,6 +1,6 @@
 import unittest
 
-from dafnyportfolio.src.job_creation.expand import expand, resolve_includes
+from dafnyportfolio.src.job_creation.expand import expand, resolve_includes, resolve_cartconcat
 
 
 class ExpandTest(unittest.TestCase):
@@ -90,5 +90,72 @@ class ExpandTest(unittest.TestCase):
         expectation = [{"y": 0}]
         self.assertCountEqual(expectation, resolve_includes(example))
 
-    if __name__ == '__main__':
-        unittest.main()
+    def test_cartconcat(self):
+        example = [{"[cartconcat]x": [[0], [1, 2, 3]]}]
+        expectation = [{"x": [0, 1]}, {"x": [0, 2]}, {"x": [0, 3]}]
+        self.assertCountEqual(expectation, expand(example))
+
+    def test_cartconcat_empty(self):
+        example = [{"[cartconcat]x": [[[]], [1, 2, 3]]}]
+        expectation = [{"x": [1]}, {"x": [2]}, {"x": [3]}]
+        self.assertCountEqual(expectation, expand(example))
+
+    def test_cartconcat_single(self):
+        example = [{"[cartconcat]x": [0, [1, 2, 3]]}]
+        expectation = [{"x": [0, 1]}, {"x": [0, 2]}, {"x": [0, 3]}]
+        self.assertCountEqual(expectation, expand(example))
+
+    def test_cartconcat_multiple(self):
+        example = [{"[cartconcat]x": [[[0, 1]], [[2], [3]]]}]
+        expectation = [{"x": [0, 1, 2]}, {"x": [0, 1, 3]}]
+        self.assertCountEqual(expectation, expand(example))
+
+    def test_cartconcat_practice(self):
+        example = {"[cartconcat]stdin": [
+            [
+                [],
+                ["/proverOpt:O:smt.qi.eager_threshold=30"]
+            ],
+            [
+                "",
+                "/vcsMaxKeepGoingSplits:2 /vcsKeepGoingTimeout:1"
+            ]
+        ]}
+
+        expectation = [
+            {"stdin": [""]},
+            {"stdin": ["/vcsMaxKeepGoingSplits:2 /vcsKeepGoingTimeout:1"]},
+            {"stdin": ["/proverOpt:O:smt.qi.eager_threshold=30", ""]},
+            {"stdin": ["/proverOpt:O:smt.qi.eager_threshold=30", "/vcsMaxKeepGoingSplits:2 /vcsKeepGoingTimeout:1"]}
+        ]
+        self.assertCountEqual(expectation, expand(example))
+
+
+def test_nested_cartconcat(self):
+    example = [
+        {
+            "[cartconcat]x": [
+                {
+                    "[cartconcat]x": [
+                        [0],
+                        [1, 2, 3]
+                    ]
+                },
+                [4, 5, 6]
+            ]
+        }
+    ]
+    expectation = [
+        {
+            "x": [
+                [{"x": [[0, 1], [0, 2], [0, 3]]}, 4],
+                [{"x": [[0, 1], [0, 2], [0, 3]]}, 5],
+                [{"x": [[0, 1], [0, 2], [0, 3]]}, 6]
+            ]
+        }
+    ]
+    self.assertCountEqual(expectation, resolve_cartconcat(example))
+
+
+if __name__ == '__main__':
+    unittest.main()
