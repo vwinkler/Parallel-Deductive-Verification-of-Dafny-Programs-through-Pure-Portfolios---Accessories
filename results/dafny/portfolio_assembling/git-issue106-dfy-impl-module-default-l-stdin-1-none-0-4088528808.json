@@ -1,0 +1,94 @@
+{
+    "args": {
+        "dafny_file": "/benchmarks/git-issue106.dfy",
+        "procedure_name": "Impl$$_module.__default.L",
+        "option_selector_name": "stdin",
+        "results_filename": "/result/git-issue106-dfy-impl-module-default-l-stdin-1-none-0-4088528808.json",
+        "seed": "0",
+        "num_instances": 1,
+        "dafny_command": "/opt/dafny/dafny",
+        "commit_hash": "",
+        "timeout": 600
+    },
+    "commit_hash": "",
+    "total_runtime": {
+        "start": 1654285769.8780422,
+        "start_readable": "2022-06-03T21:49:29.878042",
+        "end": 1654285771.7772079,
+        "end_readable": "2022-06-03T21:49:31.777208",
+        "duration": "1.8991656303"
+    },
+    "termination_reason": "instance termination",
+    "instances": [
+        {
+            "id": 0,
+            "cpu": 0,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/git-issue106.dfy",
+                "/proc:Impl$$_module.__default.L",
+                "/xml:/tmp/tmppqbezv0k.xml",
+                "/proverOpt:O:rewriter.arith_lhs=true"
+            ],
+            "diversification": [
+                "/proverOpt:O:rewriter.arith_lhs=true"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
+        },
+        {
+            "id": 1,
+            "cpu": 10,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/git-issue106.dfy",
+                "/proc:Impl$$_module.__default.L",
+                "/xml:/tmp/tmpq64rjtun.xml",
+                "/proverOpt:O:rewriter.eq2ineq=true"
+            ],
+            "diversification": [
+                "/proverOpt:O:rewriter.eq2ineq=true"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
+        },
+        {
+            "id": 2,
+            "cpu": 20,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/git-issue106.dfy",
+                "/proc:Impl$$_module.__default.L",
+                "/xml:/tmp/tmpf0wolcl4.xml",
+                "/proverOpt:O:smt.qi.eager_threshold=5"
+            ],
+            "diversification": [
+                "/proverOpt:O:smt.qi.eager_threshold=5"
+            ],
+            "stdout": [
+                "b'/benchmarks/git-issue106.dfy(8,18): Error: assertion violation'",
+                "b'Execution trace:'",
+                "b'    (0,0): anon0'",
+                "b''",
+                "b'Dafny program verifier finished with 0 verified, 1 error'"
+            ],
+            "stderr": [],
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue106.dfy /proc:Impl$$_module.__default.L /xml:/tmp/tmpf0wolcl4.xml /proverOpt:O:smt.qi.eager_threshold=5",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.L",
+                        "startTime": "2022-06-03 19:49:31+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-03 19:49:31+00:00",
+                        "duration": 0.4017888,
+                        "outcome": "errors"
+                    }
+                ]
+            }
+        }
+    ]
+}
