@@ -2,8 +2,9 @@ PYTHON=python3
 PORTFOLIO_ASSEMBLING_RESULTS=../../results/dafny/portfolio_assembling/
 BOOL_PARAMS_RESULTS=../../results/dafny/bool_params/
 NOASSERT_RESULTS=../../results/dafny/noassert/
+VALIDATION_RESULTS=../../results/dafny/validation/
 
-evaluation_prefixes := primary noassert bool_params
+evaluation_prefixes := primary noassert bool_params validation
 
 evaluations := $(patsubst %, %_evaluation, $(evaluation_prefixes))
 
@@ -28,6 +29,9 @@ noassert_results_list.txt : $(NOASSERT_RESULTS)
 	find $^ -name '*.json' > $@
 	
 bool_params_results_list.txt : $(BOOL_PARAMS_RESULTS)
+	find $^ -name '*.json' > $@
+	
+validation_results_list.txt : $(VALIDATION_RESULTS)
 	find $^ -name '*.json' > $@
 
 %_collection.h5 : %_results_list.txt
