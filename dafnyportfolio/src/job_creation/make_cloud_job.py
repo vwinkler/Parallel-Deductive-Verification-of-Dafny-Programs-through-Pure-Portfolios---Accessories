@@ -66,9 +66,16 @@ def sum_times(calls):
     runtimes = [parse_runtime_value_to_seconds(call["estimated_runtime"]) for call, _ in calls if
                 "estimated_runtime" in call]
     if len(runtimes) > 0:
-        return str(datetime.timedelta(seconds=(sum(runtimes))))
+        return seconds_to_hours_minutes_seconds(int(sum(runtimes)))
     else:
         return None
+
+
+def seconds_to_hours_minutes_seconds(total_seconds):
+    hours = total_seconds // 3600
+    minutes = (total_seconds - hours * 3600) // 60
+    seconds = (total_seconds - hours * 3600) - (minutes * 60)
+    return f"{hours}:{minutes:02d}:{seconds:02d}"
 
 
 def parse_runtime_value_to_seconds(runtime_value):
