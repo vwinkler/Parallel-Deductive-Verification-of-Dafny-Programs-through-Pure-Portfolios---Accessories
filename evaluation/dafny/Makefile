@@ -76,5 +76,8 @@ bool_params_results_list.txt : $(BOOL_PARAMS_RESULTS)
 %_evaluation/01_heuristic_cascading_n_vbs_matrix.ods : %_cascading_n_vbs_matrix.h5
 	$(PYTHON) export_ods.py $< $@
 
+%_evaluation/01_best_speedup.svg : %_penalized_collection.h5
+	$(PYTHON) plot_best_speedup.py $< $@
+
 .PRECIOUS: %_collection.h5 %_matrix.h5
 .PHONY: all $(evaluations)
