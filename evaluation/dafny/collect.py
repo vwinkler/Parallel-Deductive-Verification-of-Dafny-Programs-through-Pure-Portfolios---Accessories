@@ -21,11 +21,10 @@ def add_is_portfolio_column(df):
 
 def collect_runtime_files(result_filenames):
     max_num_instances = count_max_num_instances(result_filenames)
-    df = pd.DataFrame()
+    data_frames_from_json_files = []
     for filename in result_filenames:
-        data = collect_runtime_from_file(filename, max_num_instances)
-        df = pd.concat([df, data])
-    return df
+        data_frames_from_json_files.append(collect_runtime_from_file(filename, max_num_instances))
+    return pd.concat(data_frames_from_json_files)
 
 
 def count_max_num_instances(result_filenames):
