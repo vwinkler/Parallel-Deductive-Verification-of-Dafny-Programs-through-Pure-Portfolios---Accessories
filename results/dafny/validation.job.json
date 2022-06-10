@@ -1,0 +1,99 @@
+[
+  {
+    "[include]problem": [
+      {
+        "dfy-path": "deposit-sc/trees/MerkleTrees.dfy",
+        "procedurename": "Impl$$MerkleTrees.__default.computeNewLeftIsCorrect",
+        "estimated_runtime": "00:02:00"
+      },
+      {
+        "dfy-path": "deposit-sc/synthattribute/ComputeRootPath.dfy",
+        "procedurename": "Impl$$ComputeRootPath.__default.computeAllIsCorrectInATree",
+        "estimated_runtime": "00:02:00"
+      },
+      {
+        "dfy-path": "deposit-sc/synthattribute/RightSiblings.dfy",
+        "procedurename": "Impl$$RSiblings.__default.siblingsRightOfPathAreConstant",
+        "estimated_runtime": "00:02:00"
+      },
+      {
+        "dfy-path": "deposit-sc/synthattribute/Siblings.dfy",
+        "procedurename": "Impl$$Siblings.__default.siblingsInEquivTreesAreEqual",
+        "estimated_runtime": "00:02:00"
+      },
+      {
+        "dfy-path": "deposit-sc/synthattribute/SiblingsPlus.dfy",
+        "[include]": [
+          {
+            "procedurename": "Impl$$SiblingsPlus.__default.siblingsInEquivTreesNonBaseCaseFirstLeft",
+            "estimated_runtime": "00:02:00"
+          },
+          {
+            "procedurename": "Impl$$SiblingsPlus.__default.siblingsInEquivTreesBaseCase",
+            "estimated_runtime": "00:02:00"
+          }
+        ]
+      }
+    ],
+    "seed": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "optionselector": "stdin",
+    "[cartconcat]stdin": [
+      [
+        [
+          ""
+        ],
+        [
+          "/proverOpt:O:rewriter.arith_lhs=true"
+        ],
+        [
+          "/proverOpt:O:rewriter.arith_lhs=true",
+          "/proverOpt:O:rewriter.eq2ineq=true"
+        ],
+        [
+          "/proverOpt:O:rewriter.arith_lhs=true",
+          "/proverOpt:O:rewriter.eq2ineq=true",
+          "/proverOpt:O:rewriter.flat=false"
+        ],
+        [
+          "/proverOpt:O:rewriter.arith_lhs=true",
+          "/proverOpt:O:rewriter.eq2ineq=true",
+          "/proverOpt:O:rewriter.flat=false",
+          "/vcsMaxKeepGoingSplits:4 /vcsKeepGoingTimeout:20"
+        ],
+        [
+          "/proverOpt:O:rewriter.arith_lhs=true",
+          "/proverOpt:O:rewriter.eq2ineq=true",
+          "/proverOpt:O:rewriter.flat=false",
+          "/vcsMaxKeepGoingSplits:4 /vcsKeepGoingTimeout:20",
+          "/proverOpt:O:smt.qi.eager_threshold=30"
+        ],
+        [
+          "/proverOpt:O:rewriter.arith_lhs=true",
+          "/proverOpt:O:rewriter.eq2ineq=true",
+          "/proverOpt:O:rewriter.flat=false",
+          "/vcsMaxKeepGoingSplits:4 /vcsKeepGoingTimeout:20",
+          "/proverOpt:O:smt.qi.eager_threshold=30",
+          "/proverOpt:O:rewriter.bit2bool=false"
+        ],
+        [
+          "/proverOpt:O:rewriter.arith_lhs=true",
+          "/proverOpt:O:rewriter.eq2ineq=true",
+          "/proverOpt:O:rewriter.flat=false",
+          "/vcsMaxKeepGoingSplits:4 /vcsKeepGoingTimeout:20",
+          "/proverOpt:O:smt.qi.eager_threshold=30",
+          "/proverOpt:O:rewriter.bit2bool=false",
+          "/proverOpt:O:rewriter.arith_lhs=true",
+          "/proverOpt:O:rewriter.arith_lhs=true"
+        ]
+      ]
+    ],
+    "num_instances": "1",
+    "only_instances": null
+  }
+]
