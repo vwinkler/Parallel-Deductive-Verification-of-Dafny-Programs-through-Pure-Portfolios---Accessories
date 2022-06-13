@@ -22,7 +22,8 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01_gaps.txt \
 	%_evaluation/01_heuristic_cascading_n_vbs_matrix.html \
 	%_evaluation/01_heuristic_cascading_n_vbs_matrix.ods \
-	%_evaluation/01_best_speedup.svg \
+	%_evaluation/01_best_speedup_lineplot.svg \
+	%_evaluation/01_best_speedup_boxplot.svg \
 	%_evaluation/01_best_speedup.txt
 
 primary_results_list.txt : $(PORTFOLIO_ASSEMBLING_RESULTS)
@@ -86,8 +87,11 @@ more_iterations_results_list.txt : $(MORE_ITERATIONS)
 %_evaluation/01_heuristic_cascading_n_vbs_matrix.ods : %_cascading_n_vbs_matrix.h5
 	$(PYTHON) export_ods.py $< $@
 
-%_evaluation/01_best_speedup.svg : %_penalized_collection.h5
+%_evaluation/01_best_speedup_lineplot.svg : %_penalized_collection.h5
 	$(PYTHON) plot_best_speedup.py $< --plot-file $@
+	
+%_evaluation/01_best_speedup_boxplot.svg : %_penalized_collection.h5
+	$(PYTHON) plot_best_speedup.py --boxplot $< --plot-file $@
 	
 %_evaluation/01_best_speedup.txt : %_penalized_collection.h5
 	$(PYTHON) plot_best_speedup.py $< --info-file $@
