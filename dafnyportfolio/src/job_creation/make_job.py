@@ -17,6 +17,7 @@ def make_normal_command(args, call, results_filename):
     cmd += turn_key_errors_and_null_to_emptystring("--num-instances {} ", call, "num_instances")
     cmd += turn_key_errors_and_null_to_emptystring("--seed {} ", call, "seed")
     cmd += turn_key_errors_and_null_to_emptystring("--only-instances {} ", call, "only_instances")
+    cmd += turn_key_errors_and_null_to_emptystring("--cpu-queue {} ", call, "cpu_queue")
     cmd += turn_null_to_emptystring("--dafny-cmd {} ", args.dafny_cmd)
     cmd += make_stdin_heredoc(call)
     cmd += "\n"

@@ -1,8 +1,10 @@
+import json
 import sys
 import argparse
 from time import time
 from multiprocessing import cpu_count
 from Portfolio import *
+from CpuQueue import CpuQueueBwUniClusterSinglePartition, NoCpuQueue
 from diversification import *
 import util
 
@@ -15,6 +17,12 @@ option_selectors = {
     "split-limit-diversification": SplitLimitDiversificationOptionSelector(),
     "dynamic-split-limit-diversification": DynamicSplitLimitDiversificationOptionSelector(),
     "stdin": CustomOptionsOptionSelector(sys.stdin)
+}
+
+default_cpu_queue = "bw-uni-cluster-single"
+cpu_queue = {
+    "no-assignment": NoCpuQueue(),
+    default_cpu_queue: CpuQueueBwUniClusterSinglePartition(),
 }
 
 
@@ -38,13 +46,14 @@ if __name__ == '__main__':
     parser.add_argument("--dafny-cmd", dest="dafny_command", type=str, default="dafny")
     parser.add_argument("--commit-hash", dest="commit_hash", type=str)
     parser.add_argument("--timeout", dest="timeout", type=int, default=2 ** 31 - 1)
+    parser.add_argument("--cpu-queue", dest="cpu_queue", choices=cpu_queue.keys(), default=default_cpu_queue)
     args = parser.parse_args()
 
     chosen_option_selector = option_selectors[args.option_selector_name]
     chosen_option_selector.set_rand(Random(args.seed))
     instances = determine_instance_ids(args)
     portfolio = Portfolio(args.dafny_file, args.procedure_name, args.num_instances, instances, chosen_option_selector,
-                          args.dafny_command, args.timeout)
+                          args.dafny_command, args.timeout, cpu_queue[args.cpu_queue])
 
     start_time = time()
     instances_results = portfolio.run()
