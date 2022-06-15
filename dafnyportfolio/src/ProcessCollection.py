@@ -2,7 +2,7 @@ import os
 import signal
 from subprocess import Popen, PIPE
 
-import CpuQueue
+import dafnyportfolio.src.CpuQueue as CpuQueue
 
 
 class ProcessCollection:
