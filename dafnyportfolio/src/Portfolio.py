@@ -1,3 +1,4 @@
+import signal
 from tempfile import NamedTemporaryFile
 
 from ProcessCollection import *
@@ -6,6 +7,7 @@ from XmlResultParser import *
 
 class Portfolio:
     def __init__(self, filename, procedure_name, num_instances, _, option_selector, dafny_command, timeout, cpu_queue):
+        self.has_terminated_forcefully = False
         self.option_selector = option_selector
         self.dafny_instance_factory = DafnyInstanceFactory(dafny_command, filename, procedure_name, timeout)
         self.process_collection = ProcessCollection(cpu_queue)
@@ -20,8 +22,12 @@ class Portfolio:
         return {id: instance for id, instance in instances.items() if id in active_ids}
 
     def run(self):
+        assert not self.has_terminated_forcefully
+
         self.start_dafny_instances(self.instances)
+        self._set_timeout(self.timeout)
         self.wait_for_termination()
+        self._unset_timeout()
         return self.collect_results(self.instances)
 
     def select_dynamic_args(self, num_processes):
@@ -38,14 +44,35 @@ class Portfolio:
             instance.start(self.process_collection)
 
     def wait_for_termination(self):
-        if self.process_collection.count_running_processes() > 0:
-            try:
-                self.process_collection.await_termination_of_any_process(self.timeout)
-                self.termination_reason = "instance termination"
-            except TimeoutError:
-                self.termination_reason = "portfolio timeout"
-        self.process_collection.kill_all()
-        self.process_collection.await_termination_of_all_processes()
+        while self.process_collection.count_running_processes() > 0:
+            terminated_process = self.process_collection.await_termination_of_any_process()
+            terminated_instance = self._find_instance_with_process(terminated_process)
+            if terminated_instance is not None:
+                if self._is_instance_outcome_correct(terminated_instance):
+                    self.has_terminated_forcefully = True
+                    self.termination_reason = "instance termination"
+                    self.process_collection.kill_all()
+                    self.process_collection.await_termination_of_all_processes()
+        if not self.has_terminated_forcefully:
+            self.termination_reason = "all instances terminated unsuccessfully"
+
+    def _is_instance_outcome_correct(self, terminated_instance):
+        is_correct = False
+        try:
+            parsed_xml = self.xml_parser.parse(terminated_instance.open_xml_file())
+            outcome = parsed_xml["methods"][0]["outcome"]
+            if outcome == "correct":
+                is_correct = True
+        except Exception as e:
+            pass
+        return is_correct
+
+    def _find_instance_with_process(self, terminated_process):
+        terminated_instance = None
+        for _, instance in self.instances.items():
+            if instance.get_process() == terminated_process:
+                terminated_instance = instance
+        return terminated_instance
 
     def collect_results(self, instances):
         instances_results = []
@@ -66,6 +93,18 @@ class Portfolio:
         except Exception as e:
             xml_results = str(e)
         return xml_results
+
+    def _unset_timeout(self):
+        signal.alarm(0)
+
+    def _set_timeout(self, timeout):
+        def handle_timeout(signum, frame):
+            self.has_terminated_forcefully = True
+            self.termination_reason = "portfolio timeout"
+            self.process_collection.kill_all()
+
+        signal.signal(signal.SIGALRM, handle_timeout)
+        signal.alarm(timeout)
 
 
 class DafnyInstanceFactory:
@@ -114,3 +153,6 @@ class DafnyInstance:
 
     def get_assigned_cpu(self):
         return self._process.get_assigned_cpu() if self._process is not None else None
+
+    def get_process(self):
+        return self._process
