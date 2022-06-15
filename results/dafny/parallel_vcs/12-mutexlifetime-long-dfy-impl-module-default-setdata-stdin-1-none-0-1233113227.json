@@ -8,26 +8,27 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "no-assignment"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654999600.065398,
-        "start_readable": "2022-06-12T04:06:40.065398",
-        "end": 1655000200.9548905,
-        "end_readable": "2022-06-12T04:16:40.954890",
-        "duration": "600.8894925117"
+        "start": 1655269505.5344746,
+        "start_readable": "2022-06-15T07:05:05.534475",
+        "end": 1655270092.5154438,
+        "end_readable": "2022-06-15T07:14:52.515444",
+        "duration": "586.9809691906"
     },
-    "termination_reason": "portfolio timeout",
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
-            "cpu": 0,
+            "cpu": null,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.__default.SetData",
-                "/xml:/tmp/tmp2m5fsmvh.xml",
+                "/xml:/tmp/tmp9crdnpup.xml",
                 "/vcsMaxKeepGoingSplits:2",
                 "/vcsKeepGoingTimeout:50",
                 "/vcsCores:6"
@@ -37,9 +38,54 @@
                 "/vcsKeepGoingTimeout:50",
                 "/vcsCores:6"
             ],
-            "stdout": [],
+            "stdout": [
+                "b'/benchmarks/12-MutexLifetime-long.dfy(1144,21): Error: assertion violation'",
+                "b'/benchmarks/12-MutexLifetime-long.dfy(445,7): Related location'",
+                "b'/benchmarks/12-MutexLifetime-long.dfy(302,100): Related location'",
+                "b'/benchmarks/12-MutexLifetime-long.dfy(18,8): Related location'",
+                "b'/benchmarks/12-MutexLifetime-long.dfy(19,17): Related location'",
+                "b'Execution trace:'",
+                "b'    (0,0): anon0'",
+                "b'    /benchmarks/12-MutexLifetime-long.dfy(1092,32): anon4_Else'",
+                "b'    (0,0): anon3'",
+                "b'/benchmarks/12-MutexLifetime-long.dfy(1144,21): Error: assertion violation'",
+                "b'/benchmarks/12-MutexLifetime-long.dfy(445,7): Related location'",
+                "b'/benchmarks/12-MutexLifetime-long.dfy(302,100): Related location'",
+                "b'/benchmarks/12-MutexLifetime-long.dfy(18,8): Related location'",
+                "b'/benchmarks/12-MutexLifetime-long.dfy(19,17): Related location'",
+                "b'Execution trace:'",
+                "b'    (0,0): anon0'",
+                "b'    (0,0): anon3'",
+                "b'    (0,0): anon4_Then'",
+                "b'    (0,0): anon5_Then'",
+                "b'/benchmarks/12-MutexLifetime-long.dfy(1144,21): Error: assertion violation'",
+                "b'/benchmarks/12-MutexLifetime-long.dfy(445,7): Related location'",
+                "b'/benchmarks/12-MutexLifetime-long.dfy(302,100): Related location'",
+                "b'/benchmarks/12-MutexLifetime-long.dfy(18,8): Related location'",
+                "b'/benchmarks/12-MutexLifetime-long.dfy(19,17): Related location'",
+                "b'Execution trace:'",
+                "b'    (0,0): anon0'",
+                "b'    (0,0): anon3'",
+                "b'    (0,0): anon4_Then'",
+                "b'    /benchmarks/12-MutexLifetime-long.dfy(1092,32): anon5_Else'",
+                "b''",
+                "b'Dafny program verifier finished with 0 verified, 3 errors'"
+            ],
             "stderr": [],
-            "xml": "unclosed token: line 227, column 16"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default.SetData /xml:/tmp/tmp9crdnpup.xml /vcsMaxKeepGoingSplits:2 /vcsKeepGoingTimeout:50 /vcsCores:6",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.SetData",
+                        "startTime": "2022-06-15 05:05:08+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-15 05:14:51+00:00",
+                        "duration": 583.1517683,
+                        "outcome": "errors"
+                    }
+                ]
+            }
         }
     ]
 }

@@ -8,26 +8,27 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "no-assignment"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654997798.3618004,
-        "start_readable": "2022-06-12T03:36:38.361800",
-        "end": 1654997930.6535242,
-        "end_readable": "2022-06-12T03:38:50.653524",
-        "duration": "132.2917237282"
+        "start": 1655284582.183715,
+        "start_readable": "2022-06-15T11:16:22.183715",
+        "end": 1655284625.4983811,
+        "end_readable": "2022-06-15T11:17:05.498381",
+        "duration": "43.3146660328"
     },
     "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
-            "cpu": 0,
+            "cpu": null,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.__default.Acquire",
-                "/xml:/tmp/tmpj_7w7ys4.xml",
+                "/xml:/tmp/tmpniki4icj.xml",
                 "/vcsMaxKeepGoingSplits:16",
                 "/vcsKeepGoingTimeout:50",
                 "/vcsCores:3"
@@ -37,25 +38,25 @@
                 "/vcsKeepGoingTimeout:50",
                 "/vcsCores:3"
             ],
-            "stdout": [],
-            "stderr": [
-                "b'Unhandled exception. System.AggregateException: One or more errors occurred. (Object reference not set to an instance of an object.) (Object reference not set to an instance of an object.)'",
-                "b' ---> System.NullReferenceException: Object reference not set to an instance of an object.'",
-                "b'   at VC.Split.ReleaseChecker()'",
-                "b'   at VC.SplitAndVerifyWorker.DoWork(Split split)'",
-                "b'   at VC.SplitAndVerifyWorker.WorkUntilDone()'",
-                "b'   --- End of inner exception stack trace ---'",
-                "b'   at System.AggregateException.Handle(Func`2 predicate)'",
-                "b'   at Microsoft.Boogie.ExecutionEngine.InferAndVerify(Program program, PipelineStatistics stats, String programId, ErrorReporterDelegate er, String requestId)'",
-                "b'   at Microsoft.Dafny.Main.BoogiePipelineWithRerun(Program program, String bplFileName, PipelineStatistics& stats, String programId) in /Users/fmadge/Documents/dafny/Source/Dafny/DafnyMain.cs:line 314'",
-                "b'   at Microsoft.Dafny.Main.BoogieOnce(String baseFile, String moduleName, Program boogieProgram, String programId, PipelineStatistics& stats, PipelineOutcome& oc) in /Users/fmadge/Documents/dafny/Source/Dafny/DafnyMain.cs:line 252'",
-                "b'   at Microsoft.Dafny.DafnyDriver.Boogie(String baseName, IEnumerable`1 boogiePrograms, String programId, Dictionary`2& statss, PipelineOutcome& outcome) in /Users/fmadge/Documents/dafny/Source/DafnyDriver/DafnyDriver.cs:line 373'",
-                "b'   at Microsoft.Dafny.DafnyDriver.ProcessFiles(IList`1 dafnyFiles, ReadOnlyCollection`1 otherFileNames, ErrorReporter reporter, Boolean lookForSnapshots, String programId) in /Users/fmadge/Documents/dafny/Source/DafnyDriver/DafnyDriver.cs:line 295'",
-                "b'   at Microsoft.Dafny.DafnyDriver.ThreadMain(String[] args) in /Users/fmadge/Documents/dafny/Source/DafnyDriver/DafnyDriver.cs:line 55'",
-                "b'   at Microsoft.Dafny.DafnyDriver.<>c__DisplayClass1_0.<Main>b__0() in /Users/fmadge/Documents/dafny/Source/DafnyDriver/DafnyDriver.cs:line 36'",
-                "b'   at System.Threading.Thread.StartCallback()'"
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
             ],
-            "xml": "not well-formed (invalid token): line 127, column 27"
+            "stderr": [],
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default.Acquire /xml:/tmp/tmpniki4icj.xml /vcsMaxKeepGoingSplits:16 /vcsKeepGoingTimeout:50 /vcsCores:3",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.Acquire",
+                        "startTime": "2022-06-15 09:16:25+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-15 09:17:05+00:00",
+                        "duration": 40.0570311,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         }
     ]
 }

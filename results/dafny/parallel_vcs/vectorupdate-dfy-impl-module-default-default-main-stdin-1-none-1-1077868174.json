@@ -8,26 +8,27 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "no-assignment"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654994941.301681,
-        "start_readable": "2022-06-12T02:49:01.301681",
-        "end": 1654995014.5572047,
-        "end_readable": "2022-06-12T02:50:14.557205",
-        "duration": "73.2555236816"
+        "start": 1655268997.5273836,
+        "start_readable": "2022-06-15T06:56:37.527384",
+        "end": 1655269070.1101656,
+        "end_readable": "2022-06-15T06:57:50.110166",
+        "duration": "72.5827820301"
     },
     "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
-            "cpu": 0,
+            "cpu": null,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/VectorUpdate.dfy",
                 "/proc:Impl$$_module.__default._default_Main",
-                "/xml:/tmp/tmpxn8fer4b.xml",
+                "/xml:/tmp/tmphfde2nnv.xml",
                 "/vcsMaxKeepGoingSplits:8",
                 "/vcsKeepGoingTimeout:50",
                 "/vcsCores:4"
@@ -37,25 +38,25 @@
                 "/vcsKeepGoingTimeout:50",
                 "/vcsCores:4"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            "stdout": [],
+            "stderr": [
+                "b'Unhandled exception. System.AggregateException: One or more errors occurred. (Object reference not set to an instance of an object.) (Object reference not set to an instance of an object.)'",
+                "b' ---> System.NullReferenceException: Object reference not set to an instance of an object.'",
+                "b'   at VC.Split.ReleaseChecker()'",
+                "b'   at VC.SplitAndVerifyWorker.DoWork(Split split)'",
+                "b'   at VC.SplitAndVerifyWorker.WorkUntilDone()'",
+                "b'   --- End of inner exception stack trace ---'",
+                "b'   at System.AggregateException.Handle(Func`2 predicate)'",
+                "b'   at Microsoft.Boogie.ExecutionEngine.InferAndVerify(Program program, PipelineStatistics stats, String programId, ErrorReporterDelegate er, String requestId)'",
+                "b'   at Microsoft.Dafny.Main.BoogiePipelineWithRerun(Program program, String bplFileName, PipelineStatistics& stats, String programId) in /Users/fmadge/Documents/dafny/Source/Dafny/DafnyMain.cs:line 314'",
+                "b'   at Microsoft.Dafny.Main.BoogieOnce(String baseFile, String moduleName, Program boogieProgram, String programId, PipelineStatistics& stats, PipelineOutcome& oc) in /Users/fmadge/Documents/dafny/Source/Dafny/DafnyMain.cs:line 252'",
+                "b'   at Microsoft.Dafny.DafnyDriver.Boogie(String baseName, IEnumerable`1 boogiePrograms, String programId, Dictionary`2& statss, PipelineOutcome& outcome) in /Users/fmadge/Documents/dafny/Source/DafnyDriver/DafnyDriver.cs:line 373'",
+                "b'   at Microsoft.Dafny.DafnyDriver.ProcessFiles(IList`1 dafnyFiles, ReadOnlyCollection`1 otherFileNames, ErrorReporter reporter, Boolean lookForSnapshots, String programId) in /Users/fmadge/Documents/dafny/Source/DafnyDriver/DafnyDriver.cs:line 295'",
+                "b'   at Microsoft.Dafny.DafnyDriver.ThreadMain(String[] args) in /Users/fmadge/Documents/dafny/Source/DafnyDriver/DafnyDriver.cs:line 55'",
+                "b'   at Microsoft.Dafny.DafnyDriver.<>c__DisplayClass1_0.<Main>b__0() in /Users/fmadge/Documents/dafny/Source/DafnyDriver/DafnyDriver.cs:line 36'",
+                "b'   at System.Threading.Thread.StartCallback()'"
             ],
-            "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/VectorUpdate.dfy /proc:Impl$$_module.__default._default_Main /xml:/tmp/tmpxn8fer4b.xml /vcsMaxKeepGoingSplits:8 /vcsKeepGoingTimeout:50 /vcsCores:4",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.__default._default_Main",
-                        "startTime": "2022-06-12 00:49:02+00:00",
-                        "finished": true,
-                        "endTime": "2022-06-12 00:50:14+00:00",
-                        "duration": 71.4201658,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }
