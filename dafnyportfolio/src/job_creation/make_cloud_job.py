@@ -124,7 +124,8 @@ def make_container_command_args(args, call, results_filename):
                 "--timeout 600",
                 turn_key_errors_and_null_to_emptystring("--num-instances {} ", call, "num_instances"),
                 turn_key_errors_and_null_to_emptystring("--seed {} ", call, "seed"),
-                turn_key_errors_and_null_to_emptystring("--only-instances {} ", call, "only_instances")]
+                turn_key_errors_and_null_to_emptystring("--only-instances {} ", call, "only_instances"),
+                turn_key_errors_and_null_to_emptystring("--cpu-queue {} ", call, "cpu_queue")]
     cmd_args = [arg for arg in cmd_args if arg != ""]
     return cmd_args
 

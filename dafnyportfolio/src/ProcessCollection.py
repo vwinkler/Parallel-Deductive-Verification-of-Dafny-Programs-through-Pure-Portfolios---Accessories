@@ -2,26 +2,7 @@ import os
 import signal
 from subprocess import Popen, PIPE
 
-any_cpu = None
-
-
-class CpuQueueBwUniClusterSinglePartition:
-    def __init__(self):
-        self.queue = self.get_preferred_cpu_order()
-
-    def get_preferred_cpu_order(self):
-        first_hyperthreads = [cpu for k in range(0, 9) for cpu in list(range(0 + k, 31 + k, 10))]
-        second_hyperthreads = [cpu for k in range(0, 9) for cpu in list(range(40 + k, 71 + k, 10))]
-        return first_hyperthreads + second_hyperthreads
-
-    def pop(self):
-        try:
-            return self.queue.pop(0)
-        except IndexError:
-            raise RuntimeError("No CPU left for this process")
-
-    def add(self, cpu):
-        self.queue.append(cpu)
+import CpuQueue
 
 
 class ProcessCollection:
@@ -38,7 +19,7 @@ class ProcessCollection:
 
     def _get_cpu_from_pool(self):
         if not self._cpu_assignment_is_enabled():
-            return any_cpu
+            return CpuQueue.any_cpu
         return self.cpu_pool.pop()
 
     def kill_all(self):
@@ -115,7 +96,7 @@ class ProcessCollection:
         self.return_cpu_to_pool(cpu)
 
     def return_cpu_to_pool(self, cpu):
-        if cpu == any_cpu and self._cpu_assignment_is_enabled():
+        if cpu == CpuQueue.any_cpu and self._cpu_assignment_is_enabled():
             self.cpu_pool.add(cpu)
 
     def _cpu_assignment_is_enabled(self):
@@ -123,7 +104,7 @@ class ProcessCollection:
 
 
 class Process:
-    def __init__(self, args, cpu=any_cpu, stdin=PIPE, stdout=PIPE, stderr=PIPE):
+    def __init__(self, args, cpu=CpuQueue.any_cpu, stdin=PIPE, stdout=PIPE, stderr=PIPE):
         self.stdin_is_pipe = stdin == PIPE
         self.stdout_is_pipe = stdout == PIPE
         self.stderr_is_pipe = stderr == PIPE
@@ -132,7 +113,7 @@ class Process:
         self._establish_cpu_assignment()
 
     def _establish_cpu_assignment(self):
-        if self.assigned_cpu is not any_cpu:
+        if self.assigned_cpu is not CpuQueue.any_cpu:
             os.sched_setaffinity(self.wrapped_process.pid, [self.assigned_cpu])
 
     def __del__(self):

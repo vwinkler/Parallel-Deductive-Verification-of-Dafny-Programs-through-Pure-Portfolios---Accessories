@@ -1,16 +1,14 @@
-import json
 from tempfile import NamedTemporaryFile
+
 from ProcessCollection import *
 from XmlResultParser import *
-import multiprocessing
 
 
 class Portfolio:
-    def __init__(self, filename, procedure_name, num_instances, _, option_selector, dafny_command,
-                 timeout):
+    def __init__(self, filename, procedure_name, num_instances, _, option_selector, dafny_command, timeout, cpu_queue):
         self.option_selector = option_selector
         self.dafny_instance_factory = DafnyInstanceFactory(dafny_command, filename, procedure_name, timeout)
-        self.process_collection = ProcessCollection(CpuQueueBwUniClusterSinglePartition())
+        self.process_collection = ProcessCollection(cpu_queue)
         self.xml_parser = XmlResultParser()
         self.timeout = timeout
         self.termination_reason = "unknown"
