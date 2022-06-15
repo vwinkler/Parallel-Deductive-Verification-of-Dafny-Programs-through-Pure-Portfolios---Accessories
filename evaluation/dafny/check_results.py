@@ -13,15 +13,18 @@ def shorten_string(num_characters, string):
         return string[:(num_characters - 3)] + "..."
 
 
-def check_files(filenames):
-    bar = Bar("Processing", max=len(filenames), suffix='%(percent)d%%    ')
+def check_files(filenames, show_progressbar):
+    if show_progressbar:
+        bar = Bar("Processing", max=len(filenames), suffix='%(percent)d%%    ')
     successes = 0
     for filename in filenames:
         if check_file_by_name(filename):
             successes += 1
-        bar.next()
+        if show_progressbar:
+            bar.next()
 
-    bar.finish()
+    if show_progressbar:
+        bar.finish()
     print(f"{successes}/{len(filenames)}")
 
 
@@ -111,9 +114,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Plot matrix displaying runtime")
     parser.add_argument(metavar="RESULTFILE", dest="result_filenames", type=str, nargs="+",
                         help="or '-' to read from stdin (one filename per line)")
+    parser.add_argument("--no-progressbar", dest="show_progressbar", action='store_false')
     args = parser.parse_args()
 
     if args.result_filenames != ["-"]:
-        check_files(args.result_filenames)
+        check_files(args.result_filenames, args.show_progressbar)
     else:
-        check_files([filename for filename in sys.stdin.read().splitlines()])
+        check_files([filename for filename in sys.stdin.read().splitlines()], args.show_progressbar)
