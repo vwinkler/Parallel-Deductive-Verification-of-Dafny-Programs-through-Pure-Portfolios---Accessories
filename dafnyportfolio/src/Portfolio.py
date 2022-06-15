@@ -89,7 +89,8 @@ class DafnyInstance:
         self._xml_file = NamedTemporaryFile("r", suffix=".xml")
 
         proc_argument = "/proc:{}".format(procedure_name)
-        static_args = [dafny_command, dfy_filename, proc_argument]
+        rlimit_argument = "/rlimit:9999999"
+        static_args = [dafny_command, dfy_filename, proc_argument, rlimit_argument]
         xml_argument = "/xml:{}".format(self._xml_file.name)
         self._dynamic_args = dynamic_args
         self._cmd = static_args + [xml_argument] + self._dynamic_args
