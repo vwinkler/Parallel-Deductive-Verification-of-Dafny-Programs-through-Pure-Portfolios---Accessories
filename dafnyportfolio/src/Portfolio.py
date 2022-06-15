@@ -1,3 +1,4 @@
+import signal
 from tempfile import NamedTemporaryFile
 
 from ProcessCollection import *
@@ -21,7 +22,9 @@ class Portfolio:
 
     def run(self):
         self.start_dafny_instances(self.instances)
+        self._set_timeout(self.timeout)
         self.wait_for_termination()
+        self._unset_timeout()
         return self.collect_results(self.instances)
 
     def select_dynamic_args(self, num_processes):
@@ -39,11 +42,8 @@ class Portfolio:
 
     def wait_for_termination(self):
         if self.process_collection.count_running_processes() > 0:
-            try:
-                self.process_collection.await_termination_of_any_process(self.timeout)
-                self.termination_reason = "instance termination"
-            except TimeoutError:
-                self.termination_reason = "portfolio timeout"
+            self.process_collection.await_termination_of_any_process()
+            self.termination_reason = "instance termination"
         self.process_collection.kill_all()
         self.process_collection.await_termination_of_all_processes()
 
@@ -66,6 +66,17 @@ class Portfolio:
         except Exception as e:
             xml_results = str(e)
         return xml_results
+
+    def _unset_timeout(self):
+        signal.alarm(0)
+
+    def _set_timeout(self, timeout):
+        def handle_timeout(signum, frame):
+            self.termination_reason = "portfolio timeout"
+            self.process_collection.kill_all()
+
+        signal.signal(signal.SIGALRM, handle_timeout)
+        signal.alarm(timeout)
 
 
 class DafnyInstanceFactory:
