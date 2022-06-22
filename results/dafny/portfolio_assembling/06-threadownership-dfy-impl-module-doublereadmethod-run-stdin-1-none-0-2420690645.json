@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654816614.8819036,
-        "start_readable": "2022-06-10T01:16:54.881904",
-        "end": 1654816632.9554622,
-        "end_readable": "2022-06-10T01:17:12.955462",
-        "duration": "18.0735585690"
+        "start": 1655828065.1764262,
+        "start_readable": "2022-06-21T18:14:25.176426",
+        "end": 1655828084.3409307,
+        "end_readable": "2022-06-21T18:14:44.340931",
+        "duration": "19.1645045280"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/06-ThreadOwnership.dfy",
                 "/proc:Impl$$_module.DoubleReadMethod.Run",
-                "/xml:/tmp/tmpr664kl0t.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpj__7nwvu.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,7 +47,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/06-ThreadOwnership.dfy",
                 "/proc:Impl$$_module.DoubleReadMethod.Run",
-                "/xml:/tmp/tmpfs4amqbe.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp3qizdbev.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,15 +66,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/06-ThreadOwnership.dfy",
                 "/proc:Impl$$_module.DoubleReadMethod.Run",
-                "/xml:/tmp/tmpabe9e5ts.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpqitd8sau.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.flat=false"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/06-ThreadOwnership.dfy /proc:Impl$$_module.DoubleReadMethod.Run /compile:0 /rlimit:9999999 /xml:/tmp/tmpqitd8sau.xml /proverOpt:O:rewriter.flat=false",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.DoubleReadMethod.Run",
+                        "startTime": "2022-06-21 16:14:27+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-21 16:14:43+00:00",
+                        "duration": 15.8877303,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 3,
@@ -78,7 +101,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/06-ThreadOwnership.dfy",
                 "/proc:Impl$$_module.DoubleReadMethod.Run",
-                "/xml:/tmp/tmpjs98_4qt.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpoit3rhlr.xml",
                 "/vcsMaxKeepGoingSplits:4",
                 "/vcsKeepGoingTimeout:20"
             ],
@@ -97,7 +122,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/06-ThreadOwnership.dfy",
                 "/proc:Impl$$_module.DoubleReadMethod.Run",
-                "/xml:/tmp/tmpzeiiu317.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpwm96k65b.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=30"
             ],
             "diversification": [
@@ -114,7 +141,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/06-ThreadOwnership.dfy",
                 "/proc:Impl$$_module.DoubleReadMethod.Run",
-                "/xml:/tmp/tmp4tc7_3k1.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp_lc4w9x5.xml",
                 "/proverOpt:O:rewriter.bit2bool=false"
             ],
             "diversification": [
@@ -131,7 +160,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/06-ThreadOwnership.dfy",
                 "/proc:Impl$$_module.DoubleReadMethod.Run",
-                "/xml:/tmp/tmpex8eom1r.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp2okgnefc.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -148,35 +179,17 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/06-ThreadOwnership.dfy",
                 "/proc:Impl$$_module.DoubleReadMethod.Run",
-                "/xml:/tmp/tmp6d964r46.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpcrhbj7bk.xml",
                 "/proverOpt:O:ackermannization.at_backend=true"
             ],
             "diversification": [
                 "/proverOpt:O:ackermannization.at_backend=true"
             ],
-            "stdout": [
-                "b\"Prover error: line 6 column 41: unknown parameter 'at_backend' at module 'ackermannization'\"",
-                "b'Legal parameters are:'",
-                "b'  eager (bool) (default: true)'",
-                "b'  inc_sat_backend (bool) (default: false)'",
-                "b'  sat_backend (bool) (default: false)'",
-                "b''",
-                "b'Fatal Error: ProverException: Prover died with no further output, perhaps it ran out of memory or was killed.'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/06-ThreadOwnership.dfy /proc:Impl$$_module.DoubleReadMethod.Run /xml:/tmp/tmp6d964r46.xml /proverOpt:O:ackermannization.at_backend=true",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.DoubleReadMethod.Run",
-                        "startTime": "2022-06-09 23:17:09+00:00",
-                        "finished": false,
-                        "endTime": null,
-                        "outcome": null
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

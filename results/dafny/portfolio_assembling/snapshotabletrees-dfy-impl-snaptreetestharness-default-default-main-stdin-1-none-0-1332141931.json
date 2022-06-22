@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654284216.572612,
-        "start_readable": "2022-06-03T21:23:36.572612",
-        "end": 1654284226.7458816,
-        "end_readable": "2022-06-03T21:23:46.745882",
-        "duration": "10.1732695103"
+        "start": 1655872846.8450768,
+        "start_readable": "2022-06-22T06:40:46.845077",
+        "end": 1655872858.6786082,
+        "end_readable": "2022-06-22T06:40:58.678608",
+        "duration": "11.8335313797"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,15 +28,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/SnapshotableTrees.dfy",
                 "/proc:Impl$$SnapTreeTestHarness.__default._default_Main",
-                "/xml:/tmp/tmp8gmjom5x.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp3liuaqkq.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/SnapshotableTrees.dfy /proc:Impl$$SnapTreeTestHarness.__default._default_Main /compile:0 /rlimit:9999999 /xml:/tmp/tmp3liuaqkq.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$SnapTreeTestHarness.__default._default_Main",
+                        "startTime": "2022-06-22 04:40:49+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 04:40:57+00:00",
+                        "duration": 8.7289247,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -44,7 +63,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/SnapshotableTrees.dfy",
                 "/proc:Impl$$SnapTreeTestHarness.__default._default_Main",
-                "/xml:/tmp/tmpkjcqio1d.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp5ez3p9ml.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,31 +82,17 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/SnapshotableTrees.dfy",
                 "/proc:Impl$$SnapTreeTestHarness.__default._default_Main",
-                "/xml:/tmp/tmpw06ekyhn.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp5550cbgn.xml",
                 "/proverOpt:O:fp.datalog.unbound_compressor=false"
             ],
             "diversification": [
                 "/proverOpt:O:fp.datalog.unbound_compressor=false"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/SnapshotableTrees.dfy /proc:Impl$$SnapTreeTestHarness.__default._default_Main /xml:/tmp/tmpw06ekyhn.xml /proverOpt:O:fp.datalog.unbound_compressor=false",
-                "methods": [
-                    {
-                        "name": "Impl$$SnapTreeTestHarness.__default._default_Main",
-                        "startTime": "2022-06-03 19:23:38+00:00",
-                        "finished": true,
-                        "endTime": "2022-06-03 19:23:46+00:00",
-                        "duration": 7.2560012,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654365431.1089976,
-        "start_readable": "2022-06-04T19:57:11.108998",
-        "end": 1654365485.8119304,
-        "end_readable": "2022-06-04T19:58:05.811930",
-        "duration": "54.7029328346"
+        "start": 1655843152.077474,
+        "start_readable": "2022-06-21T22:25:52.077474",
+        "end": 1655843190.5563204,
+        "end_readable": "2022-06-21T22:26:30.556320",
+        "duration": "38.4788463116"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/11-MutexGuard2.dfy",
                 "/proc:Impl$$_module.__default.SetData",
-                "/xml:/tmp/tmpfwva0kma.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpkrk0g65a.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,15 +47,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/11-MutexGuard2.dfy",
                 "/proc:Impl$$_module.__default.SetData",
-                "/xml:/tmp/tmpuctf8t97.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpjbs9ogq2.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/11-MutexGuard2.dfy /proc:Impl$$_module.__default.SetData /compile:0 /rlimit:9999999 /xml:/tmp/tmpjbs9ogq2.xml /proverOpt:O:rewriter.eq2ineq=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.SetData",
+                        "startTime": "2022-06-21 20:25:54+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-21 20:26:29+00:00",
+                        "duration": 35.1613712,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 2,
@@ -61,7 +82,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/11-MutexGuard2.dfy",
                 "/proc:Impl$$_module.__default.SetData",
-                "/xml:/tmp/tmpm2ytwbr5.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpwpmz72l_.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -78,7 +101,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/11-MutexGuard2.dfy",
                 "/proc:Impl$$_module.__default.SetData",
-                "/xml:/tmp/tmp_g2329t2.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpvwapiucc.xml",
                 "/vcsMaxKeepGoingSplits:4",
                 "/vcsKeepGoingTimeout:1"
             ],
@@ -86,25 +111,9 @@
                 "/vcsMaxKeepGoingSplits:4",
                 "/vcsKeepGoingTimeout:1"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/11-MutexGuard2.dfy /proc:Impl$$_module.__default.SetData /xml:/tmp/tmp_g2329t2.xml /vcsMaxKeepGoingSplits:4 /vcsKeepGoingTimeout:1",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.__default.SetData",
-                        "startTime": "2022-06-04 17:57:13+00:00",
-                        "finished": true,
-                        "endTime": "2022-06-04 17:58:04+00:00",
-                        "duration": 51.3522865,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

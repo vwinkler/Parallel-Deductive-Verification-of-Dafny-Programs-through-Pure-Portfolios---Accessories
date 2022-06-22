@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653782506.1026158,
-        "start_readable": "2022-05-29T02:01:46.102616",
-        "end": 1653782514.5376494,
-        "end_readable": "2022-05-29T02:01:54.537649",
-        "duration": "8.4350335598"
+        "start": 1655832698.353316,
+        "start_readable": "2022-06-21T19:31:38.353316",
+        "end": 1655832707.647773,
+        "end_readable": "2022-06-21T19:31:47.647773",
+        "duration": "9.2944569588"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,28 +28,13 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/07-CounterThreadOwnership.dfy",
                 "/proc:Impl$$_module.IncrementerMethod.RunLoopBody",
-                "/xml:/tmp/tmpxm0hants.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpv5udr028.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 1,
-            "cpu": 10,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/07-CounterThreadOwnership.dfy",
-                "/proc:Impl$$_module.IncrementerMethod.RunLoopBody",
-                "/xml:/tmp/tmp_t4yzjwh.xml",
-                "/proverOpt:O:fp.datalog.output_profile=true"
-            ],
-            "diversification": [
-                "/proverOpt:O:fp.datalog.output_profile=true"
             ],
             "stdout": [
                 "b''",
@@ -57,18 +43,37 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /xml:/tmp/tmp_t4yzjwh.xml /proverOpt:O:fp.datalog.output_profile=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /compile:0 /rlimit:9999999 /xml:/tmp/tmpv5udr028.xml /proverOpt:O:rewriter.arith_lhs=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.IncrementerMethod.RunLoopBody",
-                        "startTime": "2022-05-29 00:01:48+00:00",
+                        "startTime": "2022-06-21 17:31:41+00:00",
                         "finished": true,
-                        "endTime": "2022-05-29 00:01:54+00:00",
-                        "duration": 5.3366909,
+                        "endTime": "2022-06-21 17:31:47+00:00",
+                        "duration": 5.9056278,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 1,
+            "cpu": 10,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/07-CounterThreadOwnership.dfy",
+                "/proc:Impl$$_module.IncrementerMethod.RunLoopBody",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpigujq0dn.xml",
+                "/proverOpt:O:fp.datalog.output_profile=true"
+            ],
+            "diversification": [
+                "/proverOpt:O:fp.datalog.output_profile=true"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654363272.54385,
-        "start_readable": "2022-06-04T19:21:12.543850",
-        "end": 1654363302.2059355,
-        "end_readable": "2022-06-04T19:21:42.205935",
-        "duration": "29.6620855331"
+        "start": 1655838232.152718,
+        "start_readable": "2022-06-21T21:03:52.152718",
+        "end": 1655838262.4475474,
+        "end_readable": "2022-06-21T21:04:22.447547",
+        "duration": "30.2948293686"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,15 +28,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/10-SequenceInvariant.dfy",
                 "/proc:Impl$$_module.__default.Incrementer",
-                "/xml:/tmp/tmppyq6bzy7.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpb_3dbvqf.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/10-SequenceInvariant.dfy /proc:Impl$$_module.__default.Incrementer /compile:0 /rlimit:9999999 /xml:/tmp/tmpb_3dbvqf.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.Incrementer",
+                        "startTime": "2022-06-21 19:03:54+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-21 19:04:21+00:00",
+                        "duration": 27.0203542,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -44,7 +63,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/10-SequenceInvariant.dfy",
                 "/proc:Impl$$_module.__default.Incrementer",
-                "/xml:/tmp/tmpg300e71r.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpda_17k48.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,7 +82,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/10-SequenceInvariant.dfy",
                 "/proc:Impl$$_module.__default.Incrementer",
-                "/xml:/tmp/tmpcsj126hs.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpdq6itw_e.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -78,31 +101,17 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/10-SequenceInvariant.dfy",
                 "/proc:Impl$$_module.__default.Incrementer",
-                "/xml:/tmp/tmpzcucms_c.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpbgtc0g7h.xml",
                 "/proverOpt:O:rewriter.elim_and=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.elim_and=true"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/10-SequenceInvariant.dfy /proc:Impl$$_module.__default.Incrementer /xml:/tmp/tmpzcucms_c.xml /proverOpt:O:rewriter.elim_and=true",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.__default.Incrementer",
-                        "startTime": "2022-06-04 17:21:14+00:00",
-                        "finished": true,
-                        "endTime": "2022-06-04 17:21:41+00:00",
-                        "duration": 26.4590867,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

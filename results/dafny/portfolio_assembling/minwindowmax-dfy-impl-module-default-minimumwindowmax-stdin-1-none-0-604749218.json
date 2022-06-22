@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654364850.7410743,
-        "start_readable": "2022-06-04T19:47:30.741074",
-        "end": 1654364858.5459452,
-        "end_readable": "2022-06-04T19:47:38.545945",
-        "duration": "7.8048708439"
+        "start": 1655872572.5563297,
+        "start_readable": "2022-06-22T06:36:12.556330",
+        "end": 1655872581.477549,
+        "end_readable": "2022-06-22T06:36:21.477549",
+        "duration": "8.9212193489"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/MinWindowMax.dfy",
                 "/proc:Impl$$_module.__default.MinimumWindowMax",
-                "/xml:/tmp/tmpoyndphtz.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmps4tkmeaq.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,7 +47,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/MinWindowMax.dfy",
                 "/proc:Impl$$_module.__default.MinimumWindowMax",
-                "/xml:/tmp/tmp52298xgk.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp_7lqude_.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,15 +66,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/MinWindowMax.dfy",
                 "/proc:Impl$$_module.__default.MinimumWindowMax",
-                "/xml:/tmp/tmp1s1tp6kq.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp1_67oxsx.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.flat=false"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/MinWindowMax.dfy /proc:Impl$$_module.__default.MinimumWindowMax /compile:0 /rlimit:9999999 /xml:/tmp/tmp1_67oxsx.xml /proverOpt:O:rewriter.flat=false",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.MinimumWindowMax",
+                        "startTime": "2022-06-22 04:36:14+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 04:36:20+00:00",
+                        "duration": 6.3287454,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 3,
@@ -78,35 +101,17 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/MinWindowMax.dfy",
                 "/proc:Impl$$_module.__default.MinimumWindowMax",
-                "/xml:/tmp/tmp7z4i9rwf.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp4w9baos7.xml",
                 "/proverOpt:O:ackermannization.at_backend=true"
             ],
             "diversification": [
                 "/proverOpt:O:ackermannization.at_backend=true"
             ],
-            "stdout": [
-                "b\"Prover error: line 6 column 41: unknown parameter 'at_backend' at module 'ackermannization'\"",
-                "b'Legal parameters are:'",
-                "b'  eager (bool) (default: true)'",
-                "b'  inc_sat_backend (bool) (default: false)'",
-                "b'  sat_backend (bool) (default: false)'",
-                "b''",
-                "b'Fatal Error: ProverException: Prover died with no further output, perhaps it ran out of memory or was killed.'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/MinWindowMax.dfy /proc:Impl$$_module.__default.MinimumWindowMax /xml:/tmp/tmp7z4i9rwf.xml /proverOpt:O:ackermannization.at_backend=true",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.__default.MinimumWindowMax",
-                        "startTime": "2022-06-04 17:47:36+00:00",
-                        "finished": false,
-                        "endTime": null,
-                        "outcome": null
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

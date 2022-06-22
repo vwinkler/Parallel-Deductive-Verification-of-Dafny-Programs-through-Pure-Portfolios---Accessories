@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651366775.780611,
-        "start_readable": "2022-05-01T02:59:35.780611",
-        "end": 1651366787.1709032,
-        "end_readable": "2022-05-01T02:59:47.170903",
-        "duration": "11.3902921677"
+        "start": 1655870981.0230727,
+        "start_readable": "2022-06-22T06:09:41.023073",
+        "end": 1655870992.3543959,
+        "end_readable": "2022-06-22T06:09:52.354396",
+        "duration": "11.3313231468"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/RlimitMultiplier.dfy",
                 "/proc:Impl$$_module.__default.L",
-                "/xml:/tmp/tmp06n069ix.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp6rbmt4am.xml",
                 "/proverOpt:O:rewriter.elim_to_real=true"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/RlimitMultiplier.dfy /proc:Impl$$_module.__default.L /xml:/tmp/tmp06n069ix.xml /proverOpt:O:rewriter.elim_to_real=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/RlimitMultiplier.dfy /proc:Impl$$_module.__default.L /compile:0 /rlimit:9999999 /xml:/tmp/tmp6rbmt4am.xml /proverOpt:O:rewriter.elim_to_real=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.L",
-                        "startTime": "2022-05-01 00:59:37+00:00",
+                        "startTime": "2022-06-22 04:09:42+00:00",
                         "finished": true,
-                        "endTime": "2022-05-01 00:59:47+00:00",
-                        "duration": 9.8438266,
+                        "endTime": "2022-06-22 04:09:52+00:00",
+                        "duration": 9.7796071,
                         "outcome": "correct"
                     }
                 ]

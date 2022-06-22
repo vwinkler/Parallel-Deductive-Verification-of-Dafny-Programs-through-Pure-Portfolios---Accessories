@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654282535.644887,
-        "start_readable": "2022-06-03T20:55:35.644887",
-        "end": 1654282554.011775,
-        "end_readable": "2022-06-03T20:55:54.011775",
-        "duration": "18.3668880463"
+        "start": 1655865681.5994818,
+        "start_readable": "2022-06-22T04:41:21.599482",
+        "end": 1655865696.281717,
+        "end_readable": "2022-06-22T04:41:36.281717",
+        "duration": "14.6822352409"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/UnionFind.dfy",
                 "/proc:Impl$$M3.UnionFind.Join",
-                "/xml:/tmp/tmpe8pxstp2.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmphsm0_d0a.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,30 +47,13 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/UnionFind.dfy",
                 "/proc:Impl$$M3.UnionFind.Join",
-                "/xml:/tmp/tmpt6r_t79a.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpibish2d8.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.eq2ineq=true"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 2,
-            "cpu": 20,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/UnionFind.dfy",
-                "/proc:Impl$$M3.UnionFind.Join",
-                "/xml:/tmp/tmptiutv7ft.xml",
-                "/vcsMaxKeepGoingSplits:8",
-                "/vcsKeepGoingTimeout:50"
-            ],
-            "diversification": [
-                "/vcsMaxKeepGoingSplits:8",
-                "/vcsKeepGoingTimeout:50"
             ],
             "stdout": [
                 "b''",
@@ -76,18 +62,39 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/UnionFind.dfy /proc:Impl$$M3.UnionFind.Join /xml:/tmp/tmptiutv7ft.xml /vcsMaxKeepGoingSplits:8 /vcsKeepGoingTimeout:50",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/UnionFind.dfy /proc:Impl$$M3.UnionFind.Join /compile:0 /rlimit:9999999 /xml:/tmp/tmpibish2d8.xml /proverOpt:O:rewriter.eq2ineq=true",
                 "methods": [
                     {
                         "name": "Impl$$M3.UnionFind.Join",
-                        "startTime": "2022-06-03 18:55:38+00:00",
+                        "startTime": "2022-06-22 02:41:24+00:00",
                         "finished": true,
-                        "endTime": "2022-06-03 18:55:52+00:00",
-                        "duration": 14.4217994,
+                        "endTime": "2022-06-22 02:41:35+00:00",
+                        "duration": 10.841097,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 2,
+            "cpu": 20,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/UnionFind.dfy",
+                "/proc:Impl$$M3.UnionFind.Join",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp_ubxa4th.xml",
+                "/vcsMaxKeepGoingSplits:8",
+                "/vcsKeepGoingTimeout:50"
+            ],
+            "diversification": [
+                "/vcsMaxKeepGoingSplits:8",
+                "/vcsKeepGoingTimeout:50"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

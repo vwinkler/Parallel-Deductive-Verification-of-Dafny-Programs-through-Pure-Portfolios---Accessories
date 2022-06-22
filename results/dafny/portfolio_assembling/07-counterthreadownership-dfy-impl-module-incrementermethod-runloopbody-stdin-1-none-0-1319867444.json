@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654363192.9518678,
-        "start_readable": "2022-06-04T19:19:52.951868",
-        "end": 1654363201.6618762,
-        "end_readable": "2022-06-04T19:20:01.661876",
-        "duration": "8.7100083828"
+        "start": 1655827477.0776243,
+        "start_readable": "2022-06-21T18:04:37.077624",
+        "end": 1655827485.856807,
+        "end_readable": "2022-06-21T18:04:45.856807",
+        "duration": "8.7791826725"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,15 +28,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/07-CounterThreadOwnership.dfy",
                 "/proc:Impl$$_module.IncrementerMethod.RunLoopBody",
-                "/xml:/tmp/tmp7h66p8f7.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpw51dr_ib.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /compile:0 /rlimit:9999999 /xml:/tmp/tmpw51dr_ib.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.IncrementerMethod.RunLoopBody",
+                        "startTime": "2022-06-21 16:04:39+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-21 16:04:45+00:00",
+                        "duration": 5.8882892,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -44,7 +63,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/07-CounterThreadOwnership.dfy",
                 "/proc:Impl$$_module.IncrementerMethod.RunLoopBody",
-                "/xml:/tmp/tmp8ot_bu95.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp5_z08bc8.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,7 +82,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/07-CounterThreadOwnership.dfy",
                 "/proc:Impl$$_module.IncrementerMethod.RunLoopBody",
-                "/xml:/tmp/tmpdakdvfg5.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpl09538ux.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -78,31 +101,17 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/07-CounterThreadOwnership.dfy",
                 "/proc:Impl$$_module.IncrementerMethod.RunLoopBody",
-                "/xml:/tmp/tmptiaimluo.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpcar67rxd.xml",
                 "/proverOpt:O:fp.datalog.magic_sets_for_queries=true"
             ],
             "diversification": [
                 "/proverOpt:O:fp.datalog.magic_sets_for_queries=true"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /xml:/tmp/tmptiaimluo.xml /proverOpt:O:fp.datalog.magic_sets_for_queries=true",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.IncrementerMethod.RunLoopBody",
-                        "startTime": "2022-06-04 17:19:55+00:00",
-                        "finished": true,
-                        "endTime": "2022-06-04 17:20:00+00:00",
-                        "duration": 5.2554132,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

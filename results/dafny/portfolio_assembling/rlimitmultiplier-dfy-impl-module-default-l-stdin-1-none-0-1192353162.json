@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654364433.9561317,
-        "start_readable": "2022-06-04T19:40:33.956132",
-        "end": 1654364446.0733547,
-        "end_readable": "2022-06-04T19:40:46.073355",
-        "duration": "12.1172230244"
+        "start": 1655873843.6154206,
+        "start_readable": "2022-06-22T06:57:23.615421",
+        "end": 1655873856.1302886,
+        "end_readable": "2022-06-22T06:57:36.130289",
+        "duration": "12.5148680210"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/RlimitMultiplier.dfy",
                 "/proc:Impl$$_module.__default.L",
-                "/xml:/tmp/tmp5nqppabk.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmptc0wsxm7.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,7 +47,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/RlimitMultiplier.dfy",
                 "/proc:Impl$$_module.__default.L",
-                "/xml:/tmp/tmpjx0q2ssc.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpd3pnl2nn.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,28 +66,13 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/RlimitMultiplier.dfy",
                 "/proc:Impl$$_module.__default.L",
-                "/xml:/tmp/tmpu6qzdv7n.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpr_3jnwta.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.flat=false"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 3,
-            "cpu": 30,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/RlimitMultiplier.dfy",
-                "/proc:Impl$$_module.__default.L",
-                "/xml:/tmp/tmpgceyo56q.xml",
-                "/proverOpt:O:fp.xform.slice=false"
-            ],
-            "diversification": [
-                "/proverOpt:O:fp.xform.slice=false"
             ],
             "stdout": [
                 "b''",
@@ -91,18 +81,37 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/RlimitMultiplier.dfy /proc:Impl$$_module.__default.L /xml:/tmp/tmpgceyo56q.xml /proverOpt:O:fp.xform.slice=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/RlimitMultiplier.dfy /proc:Impl$$_module.__default.L /compile:0 /rlimit:9999999 /xml:/tmp/tmpr_3jnwta.xml /proverOpt:O:rewriter.flat=false",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.L",
-                        "startTime": "2022-06-04 17:40:35+00:00",
+                        "startTime": "2022-06-22 04:57:25+00:00",
                         "finished": true,
-                        "endTime": "2022-06-04 17:40:45+00:00",
-                        "duration": 9.7942414,
+                        "endTime": "2022-06-22 04:57:35+00:00",
+                        "duration": 10.0400723,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 3,
+            "cpu": 30,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/RlimitMultiplier.dfy",
+                "/proc:Impl$$_module.__default.L",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpon8pmeap.xml",
+                "/proverOpt:O:fp.xform.slice=false"
+            ],
+            "diversification": [
+                "/proverOpt:O:fp.xform.slice=false"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654285707.7891705,
-        "start_readable": "2022-06-03T21:48:27.789171",
-        "end": 1654285715.7869396,
-        "end_readable": "2022-06-03T21:48:35.786940",
-        "duration": "7.9977691174"
+        "start": 1655877110.3065,
+        "start_readable": "2022-06-22T07:51:50.306500",
+        "end": 1655877117.5212417,
+        "end_readable": "2022-06-22T07:51:57.521242",
+        "duration": "7.2147417068"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmpn76jrf89.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmplyg2ed7r.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,28 +47,13 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmpkhyp4z1l.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp94148sye.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.eq2ineq=true"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 2,
-            "cpu": 20,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/TreeBarrier.dfy",
-                "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmpejbgwcvo.xml",
-                "/proverOpt:O:pi.pull_quantifiers=false"
-            ],
-            "diversification": [
-                "/proverOpt:O:pi.pull_quantifiers=false"
             ],
             "stdout": [
                 "b''",
@@ -74,18 +62,37 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/TreeBarrier.dfy /proc:Impl$$_module.Node.barrier /xml:/tmp/tmpejbgwcvo.xml /proverOpt:O:pi.pull_quantifiers=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/TreeBarrier.dfy /proc:Impl$$_module.Node.barrier /compile:0 /rlimit:9999999 /xml:/tmp/tmp94148sye.xml /proverOpt:O:rewriter.eq2ineq=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.Node.barrier",
-                        "startTime": "2022-06-03 19:48:29+00:00",
+                        "startTime": "2022-06-22 05:51:51+00:00",
                         "finished": true,
-                        "endTime": "2022-06-03 19:48:35+00:00",
-                        "duration": 5.5086026,
+                        "endTime": "2022-06-22 05:51:57+00:00",
+                        "duration": 5.2856477,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 2,
+            "cpu": 20,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/TreeBarrier.dfy",
+                "/proc:Impl$$_module.Node.barrier",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpb2qdh734.xml",
+                "/proverOpt:O:pi.pull_quantifiers=false"
+            ],
+            "diversification": [
+                "/proverOpt:O:pi.pull_quantifiers=false"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

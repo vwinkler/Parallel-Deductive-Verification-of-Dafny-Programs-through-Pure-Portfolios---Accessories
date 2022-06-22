@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654363328.6287124,
-        "start_readable": "2022-06-04T19:22:08.628712",
-        "end": 1654363366.5539386,
-        "end_readable": "2022-06-04T19:22:46.553939",
-        "duration": "37.9252262115"
+        "start": 1655838930.7458603,
+        "start_readable": "2022-06-21T21:15:30.745860",
+        "end": 1655838972.8344073,
+        "end_readable": "2022-06-21T21:16:12.834407",
+        "duration": "42.0885469913"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,15 +28,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/09-CounterNoStateMachine.dfy",
                 "/proc:Impl$$_module.__default.Incrementer",
-                "/xml:/tmp/tmpnkr2zq_f.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp5spytjsa.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/09-CounterNoStateMachine.dfy /proc:Impl$$_module.__default.Incrementer /compile:0 /rlimit:9999999 /xml:/tmp/tmp5spytjsa.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.Incrementer",
+                        "startTime": "2022-06-21 19:15:33+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-21 19:16:11+00:00",
+                        "duration": 38.6092056,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -44,7 +63,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/09-CounterNoStateMachine.dfy",
                 "/proc:Impl$$_module.__default.Incrementer",
-                "/xml:/tmp/tmp081a5afu.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpvljeo2pt.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,7 +82,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/09-CounterNoStateMachine.dfy",
                 "/proc:Impl$$_module.__default.Incrementer",
-                "/xml:/tmp/tmpjly7z2ae.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp754wos5a.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -78,31 +101,17 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/09-CounterNoStateMachine.dfy",
                 "/proc:Impl$$_module.__default.Incrementer",
-                "/xml:/tmp/tmpd04gcd77.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmptu13nwll.xml",
                 "/proverOpt:O:rewriter.hi_fp_unspecified=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.hi_fp_unspecified=true"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/09-CounterNoStateMachine.dfy /proc:Impl$$_module.__default.Incrementer /xml:/tmp/tmpd04gcd77.xml /proverOpt:O:rewriter.hi_fp_unspecified=true",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.__default.Incrementer",
-                        "startTime": "2022-06-04 17:22:11+00:00",
-                        "finished": true,
-                        "endTime": "2022-06-04 17:22:46+00:00",
-                        "duration": 35.3182584,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654283063.414197,
-        "start_readable": "2022-06-03T21:04:23.414197",
-        "end": 1654283068.2651591,
-        "end_readable": "2022-06-03T21:04:28.265159",
-        "duration": "4.8509621620"
+        "start": 1655866664.2708204,
+        "start_readable": "2022-06-22T04:57:44.270820",
+        "end": 1655866668.4233978,
+        "end_readable": "2022-06-22T04:57:48.423398",
+        "duration": "4.1525774002"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,15 +28,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/b4.dfy",
                 "/proc:Impl$$_module.Map.Add",
-                "/xml:/tmp/tmp59qc19vz.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp1mun7t2p.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/b4.dfy /proc:Impl$$_module.Map.Add /compile:0 /rlimit:9999999 /xml:/tmp/tmp1mun7t2p.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.Map.Add",
+                        "startTime": "2022-06-22 02:57:46+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 02:57:48+00:00",
+                        "duration": 2.1607093,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -44,7 +63,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/b4.dfy",
                 "/proc:Impl$$_module.Map.Add",
-                "/xml:/tmp/tmp7y5gfjtf.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp2bj8lrue.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,31 +82,17 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/b4.dfy",
                 "/proc:Impl$$_module.Map.Add",
-                "/xml:/tmp/tmpnauaizrj.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpoms6c7zx.xml",
                 "/proverOpt:O:rewriter.algebraic_number_evaluator=false"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.algebraic_number_evaluator=false"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/b4.dfy /proc:Impl$$_module.Map.Add /xml:/tmp/tmpnauaizrj.xml /proverOpt:O:rewriter.algebraic_number_evaluator=false",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.Map.Add",
-                        "startTime": "2022-06-03 19:04:25+00:00",
-                        "finished": true,
-                        "endTime": "2022-06-03 19:04:27+00:00",
-                        "duration": 2.1815404,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

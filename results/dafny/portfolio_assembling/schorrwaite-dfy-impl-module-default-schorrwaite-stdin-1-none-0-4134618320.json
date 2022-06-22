@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652923452.0337784,
-        "start_readable": "2022-05-19T03:24:12.033778",
-        "end": 1652923482.8947308,
-        "end_readable": "2022-05-19T03:24:42.894731",
-        "duration": "30.8609523773"
+        "start": 1655878206.356895,
+        "start_readable": "2022-06-22T08:10:06.356895",
+        "end": 1655878237.1231995,
+        "end_readable": "2022-06-22T08:10:37.123199",
+        "duration": "30.7663044930"
     },
     "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/SchorrWaite.dfy",
                 "/proc:Impl$$_module.__default.SchorrWaite",
-                "/xml:/tmp/tmpw7j21w8a.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpsmt5sr7u.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=40",
                 "/proverOpt:O:smt.qi.quick_checker=2"
             ],
@@ -42,14 +45,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/SchorrWaite.dfy /proc:Impl$$_module.__default.SchorrWaite /xml:/tmp/tmpw7j21w8a.xml /proverOpt:O:smt.qi.eager_threshold=40 /proverOpt:O:smt.qi.quick_checker=2",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/SchorrWaite.dfy /proc:Impl$$_module.__default.SchorrWaite /compile:0 /rlimit:9999999 /xml:/tmp/tmpsmt5sr7u.xml /proverOpt:O:smt.qi.eager_threshold=40 /proverOpt:O:smt.qi.quick_checker=2",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.SchorrWaite",
-                        "startTime": "2022-05-19 01:24:13+00:00",
+                        "startTime": "2022-06-22 06:10:08+00:00",
                         "finished": true,
-                        "endTime": "2022-05-19 01:24:42+00:00",
-                        "duration": 28.896108,
+                        "endTime": "2022-06-22 06:10:37+00:00",
+                        "duration": 28.7782798,
                         "outcome": "correct"
                     }
                 ]

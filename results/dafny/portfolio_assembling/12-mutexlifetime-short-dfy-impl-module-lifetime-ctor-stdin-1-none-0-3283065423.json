@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654363218.231039,
-        "start_readable": "2022-06-04T19:20:18.231039",
-        "end": 1654363230.4176507,
-        "end_readable": "2022-06-04T19:20:30.417651",
-        "duration": "12.1866116524"
+        "start": 1655837926.1054068,
+        "start_readable": "2022-06-21T20:58:46.105407",
+        "end": 1655837938.7941825,
+        "end_readable": "2022-06-21T20:58:58.794183",
+        "duration": "12.6887757778"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.Lifetime.__ctor",
-                "/xml:/tmp/tmpbuj87d7_.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpw1az2dt7.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,15 +47,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.Lifetime.__ctor",
-                "/xml:/tmp/tmpe421l99r.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpbmvy8n4i.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.Lifetime.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmpbmvy8n4i.xml /proverOpt:O:rewriter.eq2ineq=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.Lifetime.__ctor",
+                        "startTime": "2022-06-21 18:58:49+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-21 18:58:58+00:00",
+                        "duration": 8.9085307,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 2,
@@ -61,7 +82,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.Lifetime.__ctor",
-                "/xml:/tmp/tmpqri8rg_4.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp27jih3y7.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -78,31 +101,17 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.Lifetime.__ctor",
-                "/xml:/tmp/tmp5iz6wult.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpv__m5pqh.xml",
                 "/proverOpt:O:fp.datalog.output_profile=true"
             ],
             "diversification": [
                 "/proverOpt:O:fp.datalog.output_profile=true"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.Lifetime.__ctor /xml:/tmp/tmp5iz6wult.xml /proverOpt:O:fp.datalog.output_profile=true",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.Lifetime.__ctor",
-                        "startTime": "2022-06-04 17:20:21+00:00",
-                        "finished": true,
-                        "endTime": "2022-06-04 17:20:29+00:00",
-                        "duration": 8.4406047,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

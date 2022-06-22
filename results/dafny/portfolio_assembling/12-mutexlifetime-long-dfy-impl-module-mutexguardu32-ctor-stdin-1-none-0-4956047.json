@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653786528.4472654,
-        "start_readable": "2022-05-29T03:08:48.447265",
-        "end": 1653786592.9630253,
-        "end_readable": "2022-05-29T03:09:52.963025",
-        "duration": "64.5157599449"
+        "start": 1655873639.3667996,
+        "start_readable": "2022-06-22T06:53:59.366800",
+        "end": 1655873711.6424375,
+        "end_readable": "2022-06-22T06:55:11.642437",
+        "duration": "72.2756378651"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,15 +28,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
-                "/xml:/tmp/tmpwu2ybfos.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp5f0ovno5.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmp5f0ovno5.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.MutexGuardU32.__ctor",
+                        "startTime": "2022-06-22 04:54:02+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 04:55:10+00:00",
+                        "duration": 68.3195617,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -44,7 +63,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
-                "/xml:/tmp/tmps8i7kdv1.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpc6nizj_f.xml",
                 "/proverOpt:O:ackermannization.at_backend=true"
             ],
             "diversification": [
@@ -72,33 +93,10 @@
                 "b'  eager (bool) (default: true)'",
                 "b'  inc_sat_backend (bool) (default: false)'",
                 "b'  sat_backend (bool) (default: false)'",
-                "b''",
-                "b'Prover error: Invalid PING response from the prover: unsat'",
-                "b''",
-                "b'Prover error: Invalid PING response from the prover: (:rlimit 75320040)'",
-                "b''",
-                "b\"Prover error: line 11024 column 41: unknown parameter 'at_backend' at module 'ackermannization'\"",
-                "b'Legal parameters are:'",
-                "b'  eager (bool) (default: true)'",
-                "b'  inc_sat_backend (bool) (default: false)'",
-                "b'  sat_backend (bool) (default: false)'",
-                "b''",
-                "b'Fatal Error: ProverException: Prover died with no further output, perhaps it ran out of memory or was killed.'"
+                "b''"
             ],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /xml:/tmp/tmps8i7kdv1.xml /proverOpt:O:ackermannization.at_backend=true",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.MutexGuardU32.__ctor",
-                        "startTime": "2022-05-29 01:08:51+00:00",
-                        "finished": false,
-                        "endTime": null,
-                        "outcome": null
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

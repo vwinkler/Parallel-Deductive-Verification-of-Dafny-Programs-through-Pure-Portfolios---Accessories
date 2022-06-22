@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654365585.943574,
-        "start_readable": "2022-06-04T19:59:45.943574",
-        "end": 1654365633.8507667,
-        "end_readable": "2022-06-04T20:00:33.850767",
-        "duration": "47.9071927071"
+        "start": 1655835405.1843688,
+        "start_readable": "2022-06-21T20:16:45.184369",
+        "end": 1655835482.2240102,
+        "end_readable": "2022-06-21T20:18:02.224010",
+        "duration": "77.0396413803"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,15 +28,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
-                "/xml:/tmp/tmp10a4qm7t.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpbeqb063e.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmpbeqb063e.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.MutexGuardU32.__ctor",
+                        "startTime": "2022-06-21 18:16:51+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-21 18:18:01+00:00",
+                        "duration": 69.4956068,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -44,7 +63,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
-                "/xml:/tmp/tmpmscbvcdi.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpy7vyamq4.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,7 +82,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
-                "/xml:/tmp/tmpp4oeffh8.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp_krc8_k4.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -78,7 +101,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
-                "/xml:/tmp/tmpwygiz6jf.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp4_ovc82e.xml",
                 "/proverOpt:O:smt.q.lift_ite=1"
             ],
             "diversification": [
@@ -383,9 +408,9 @@
                 "b'  theory_case_split (bool) (default: false)'",
                 "b'  timeout (unsigned int) (default: 4294967295)'",
                 "b''",
-                "b'Prover error: Invalid PING response from the prover: unknown'",
+                "b'Prover error: Invalid PING response from the prover: unsat'",
                 "b''",
-                "b'Prover error: Invalid PING response from the prover: (:rlimit 50207798)'",
+                "b'Prover error: Invalid PING response from the prover: (:rlimit 75320040)'",
                 "b''",
                 "b\"Prover error: line 11024 column 28: unknown parameter 'q.lift_ite' at module 'smt'\"",
                 "b'Legal parameters are:'",
@@ -490,11 +515,11 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /xml:/tmp/tmpwygiz6jf.xml /proverOpt:O:smt.q.lift_ite=1",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmp4_ovc82e.xml /proverOpt:O:smt.q.lift_ite=1",
                 "methods": [
                     {
                         "name": "Impl$$_module.MutexGuardU32.__ctor",
-                        "startTime": "2022-06-04 17:59:48+00:00",
+                        "startTime": "2022-06-21 18:16:48+00:00",
                         "finished": false,
                         "endTime": null,
                         "outcome": null

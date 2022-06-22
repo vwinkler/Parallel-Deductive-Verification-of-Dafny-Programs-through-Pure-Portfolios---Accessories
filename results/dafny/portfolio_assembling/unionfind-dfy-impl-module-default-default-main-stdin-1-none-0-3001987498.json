@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654364122.7597587,
-        "start_readable": "2022-06-04T19:35:22.759759",
-        "end": 1654364129.3736222,
-        "end_readable": "2022-06-04T19:35:29.373622",
-        "duration": "6.6138634682"
+        "start": 1655861965.4723823,
+        "start_readable": "2022-06-22T03:39:25.472382",
+        "end": 1655861973.1809506,
+        "end_readable": "2022-06-22T03:39:33.180951",
+        "duration": "7.7085683346"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/UnionFind.dfy",
                 "/proc:Impl$$_module.__default._default_Main",
-                "/xml:/tmp/tmpu96jppya.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpgscji9jf.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,15 +47,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/UnionFind.dfy",
                 "/proc:Impl$$_module.__default._default_Main",
-                "/xml:/tmp/tmpd17x1r3o.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpfabt93lz.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/UnionFind.dfy /proc:Impl$$_module.__default._default_Main /compile:0 /rlimit:9999999 /xml:/tmp/tmpfabt93lz.xml /proverOpt:O:rewriter.eq2ineq=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default._default_Main",
+                        "startTime": "2022-06-22 01:39:28+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 01:39:32+00:00",
+                        "duration": 4.1723994,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 2,
@@ -61,7 +82,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/UnionFind.dfy",
                 "/proc:Impl$$_module.__default._default_Main",
-                "/xml:/tmp/tmppd99nmvm.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpe3ck940n.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -78,7 +101,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/UnionFind.dfy",
                 "/proc:Impl$$_module.__default._default_Main",
-                "/xml:/tmp/tmpxjd7u78i.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpsuwnvwu4.xml",
                 "/vcsMaxKeepGoingSplits:16",
                 "/vcsKeepGoingTimeout:1"
             ],
@@ -86,25 +111,9 @@
                 "/vcsMaxKeepGoingSplits:16",
                 "/vcsKeepGoingTimeout:1"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/UnionFind.dfy /proc:Impl$$_module.__default._default_Main /xml:/tmp/tmpxjd7u78i.xml /vcsMaxKeepGoingSplits:16 /vcsKeepGoingTimeout:1",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.__default._default_Main",
-                        "startTime": "2022-06-04 17:35:25+00:00",
-                        "finished": true,
-                        "endTime": "2022-06-04 17:35:28+00:00",
-                        "duration": 3.1510779,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

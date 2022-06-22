@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653783507.9873378,
-        "start_readable": "2022-05-29T02:18:27.987338",
-        "end": 1653783548.3545966,
-        "end_readable": "2022-05-29T02:19:08.354597",
-        "duration": "40.3672587872"
+        "start": 1655837481.651792,
+        "start_readable": "2022-06-21T20:51:21.651792",
+        "end": 1655837519.4261491,
+        "end_readable": "2022-06-21T20:51:59.426149",
+        "duration": "37.7743570805"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,31 +28,17 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/09-CounterNoStateMachine.dfy",
                 "/proc:Impl$$_module.__default.Incrementer",
-                "/xml:/tmp/tmp8vynxwea.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp9qk2n54r.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/09-CounterNoStateMachine.dfy /proc:Impl$$_module.__default.Incrementer /xml:/tmp/tmp8vynxwea.xml /proverOpt:O:rewriter.arith_lhs=true",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.__default.Incrementer",
-                        "startTime": "2022-05-29 00:18:30+00:00",
-                        "finished": true,
-                        "endTime": "2022-05-29 00:19:08+00:00",
-                        "duration": 37.831794,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         },
         {
             "id": 1,
@@ -60,7 +47,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/09-CounterNoStateMachine.dfy",
                 "/proc:Impl$$_module.__default.Incrementer",
-                "/xml:/tmp/tmpm2hjry05.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpui4qseh4.xml",
                 "/vcsMaxKeepGoingSplits:16",
                 "/vcsKeepGoingTimeout:1"
             ],
@@ -68,9 +57,25 @@
                 "/vcsMaxKeepGoingSplits:16",
                 "/vcsKeepGoingTimeout:1"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "unclosed token: line 282, column 6"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/09-CounterNoStateMachine.dfy /proc:Impl$$_module.__default.Incrementer /compile:0 /rlimit:9999999 /xml:/tmp/tmpui4qseh4.xml /vcsMaxKeepGoingSplits:16 /vcsKeepGoingTimeout:1",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.Incrementer",
+                        "startTime": "2022-06-21 18:51:24+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-21 18:51:59+00:00",
+                        "duration": 35.2317309,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         }
     ]
 }

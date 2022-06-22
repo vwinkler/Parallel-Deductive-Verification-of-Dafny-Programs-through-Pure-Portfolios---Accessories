@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653786005.5347502,
-        "start_readable": "2022-05-29T03:00:05.534750",
-        "end": 1653786030.384451,
-        "end_readable": "2022-05-29T03:00:30.384451",
-        "duration": "24.8497006893"
+        "start": 1655864359.3599925,
+        "start_readable": "2022-06-22T04:19:19.359993",
+        "end": 1655864377.8450253,
+        "end_readable": "2022-06-22T04:19:37.845025",
+        "duration": "18.4850327969"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,28 +28,13 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/UnionFind.dfy",
                 "/proc:Impl$$M3.UnionFind.Join",
-                "/xml:/tmp/tmpy4znv63a.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpx1je5vub.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 1,
-            "cpu": 10,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/UnionFind.dfy",
-                "/proc:Impl$$M3.UnionFind.Join",
-                "/xml:/tmp/tmpj__8h235.xml",
-                "/proverOpt:O:rewriter.elim_ite=false"
-            ],
-            "diversification": [
-                "/proverOpt:O:rewriter.elim_ite=false"
             ],
             "stdout": [
                 "b''",
@@ -57,18 +43,37 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/UnionFind.dfy /proc:Impl$$M3.UnionFind.Join /xml:/tmp/tmpj__8h235.xml /proverOpt:O:rewriter.elim_ite=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/UnionFind.dfy /proc:Impl$$M3.UnionFind.Join /compile:0 /rlimit:9999999 /xml:/tmp/tmpx1je5vub.xml /proverOpt:O:rewriter.arith_lhs=true",
                 "methods": [
                     {
                         "name": "Impl$$M3.UnionFind.Join",
-                        "startTime": "2022-05-29 01:00:08+00:00",
+                        "startTime": "2022-06-22 02:19:21+00:00",
                         "finished": true,
-                        "endTime": "2022-05-29 01:00:29+00:00",
-                        "duration": 20.8780002,
+                        "endTime": "2022-06-22 02:19:36+00:00",
+                        "duration": 14.7403983,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 1,
+            "cpu": 10,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/UnionFind.dfy",
+                "/proc:Impl$$M3.UnionFind.Join",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpa81zx2yi.xml",
+                "/proverOpt:O:rewriter.elim_ite=false"
+            ],
+            "diversification": [
+                "/proverOpt:O:rewriter.elim_ite=false"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

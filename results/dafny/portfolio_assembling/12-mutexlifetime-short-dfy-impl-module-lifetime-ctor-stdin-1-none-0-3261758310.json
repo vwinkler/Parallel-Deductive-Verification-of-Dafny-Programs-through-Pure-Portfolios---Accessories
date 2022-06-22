@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654364660.09224,
-        "start_readable": "2022-06-04T19:44:20.092240",
-        "end": 1654364672.8563566,
-        "end_readable": "2022-06-04T19:44:32.856357",
-        "duration": "12.7641165257"
+        "start": 1655836371.6552496,
+        "start_readable": "2022-06-21T20:32:51.655250",
+        "end": 1655836383.6683664,
+        "end_readable": "2022-06-21T20:33:03.668366",
+        "duration": "12.0131168365"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.Lifetime.__ctor",
-                "/xml:/tmp/tmpcxczj0u6.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp2lkaki6c.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,31 +47,17 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.Lifetime.__ctor",
-                "/xml:/tmp/tmpw8a9ce__.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpl6guiy72.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.Lifetime.__ctor /xml:/tmp/tmpw8a9ce__.xml /proverOpt:O:rewriter.eq2ineq=true",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.Lifetime.__ctor",
-                        "startTime": "2022-06-04 17:44:23+00:00",
-                        "finished": true,
-                        "endTime": "2022-06-04 17:44:32+00:00",
-                        "duration": 8.952309,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         },
         {
             "id": 2,
@@ -77,7 +66,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.Lifetime.__ctor",
-                "/xml:/tmp/tmp4_vivte5.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpc8mwm9_9.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -94,7 +85,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.Lifetime.__ctor",
-                "/xml:/tmp/tmpygfncq_g.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpsvh9spzx.xml",
                 "/vcsMaxKeepGoingSplits:16",
                 "/vcsKeepGoingTimeout:10"
             ],
@@ -102,9 +95,25 @@
                 "/vcsMaxKeepGoingSplits:16",
                 "/vcsKeepGoingTimeout:10"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.Lifetime.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmpsvh9spzx.xml /vcsMaxKeepGoingSplits:16 /vcsKeepGoingTimeout:10",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.Lifetime.__ctor",
+                        "startTime": "2022-06-21 18:32:54+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-21 18:33:03+00:00",
+                        "duration": 8.4904232,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         }
     ]
 }

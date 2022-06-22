@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653788603.6647508,
-        "start_readable": "2022-05-29T03:43:23.664751",
-        "end": 1653788605.8527544,
-        "end_readable": "2022-05-29T03:43:25.852754",
-        "duration": "2.1880035400"
+        "start": 1655873530.6262555,
+        "start_readable": "2022-06-22T06:52:10.626256",
+        "end": 1655873539.873671,
+        "end_readable": "2022-06-22T06:52:19.873671",
+        "duration": "9.2474155426"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,17 +28,34 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/SmallestMissingNumber-functional.dfy",
                 "/proc:Impl$$_module.__default.SMN_k_k__Correct",
-                "/xml:/tmp/tmpaf6mgmlm.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp1xa29e_m.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "stdout": [
-                "b'/benchmarks/SmallestMissingNumber-functional.dfy(213,11): Warning: /!\\\\ No terms found to trigger on.'"
+                "b'/benchmarks/SmallestMissingNumber-functional.dfy(213,11): Warning: /!\\\\ No terms found to trigger on.'",
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
             ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/SmallestMissingNumber-functional.dfy /proc:Impl$$_module.__default.SMN_k_k__Correct /compile:0 /rlimit:9999999 /xml:/tmp/tmp1xa29e_m.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.SMN_k_k__Correct",
+                        "startTime": "2022-06-22 04:52:14+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 04:52:19+00:00",
+                        "duration": 5.299761,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -46,7 +64,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/SmallestMissingNumber-functional.dfy",
                 "/proc:Impl$$_module.__default.SMN_k_k__Correct",
-                "/xml:/tmp/tmpt4fvkvyt.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmphnbsfa14.xml",
                 "/proverOpt:O:ackermannization.at_backend=true"
             ],
             "diversification": [
@@ -65,11 +85,11 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/SmallestMissingNumber-functional.dfy /proc:Impl$$_module.__default.SMN_k_k__Correct /xml:/tmp/tmpt4fvkvyt.xml /proverOpt:O:ackermannization.at_backend=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/SmallestMissingNumber-functional.dfy /proc:Impl$$_module.__default.SMN_k_k__Correct /compile:0 /rlimit:9999999 /xml:/tmp/tmphnbsfa14.xml /proverOpt:O:ackermannization.at_backend=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.SMN_k_k__Correct",
-                        "startTime": "2022-05-29 01:43:25+00:00",
+                        "startTime": "2022-06-22 04:52:12+00:00",
                         "finished": false,
                         "endTime": null,
                         "outcome": null

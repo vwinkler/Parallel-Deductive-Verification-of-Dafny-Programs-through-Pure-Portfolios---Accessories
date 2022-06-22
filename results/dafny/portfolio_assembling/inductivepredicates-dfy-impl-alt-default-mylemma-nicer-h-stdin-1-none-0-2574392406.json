@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653786715.0881712,
-        "start_readable": "2022-05-29T03:11:55.088171",
-        "end": 1653786763.0364213,
-        "end_readable": "2022-05-29T03:12:43.036421",
-        "duration": "47.9482500553"
+        "start": 1655863638.9485598,
+        "start_readable": "2022-06-22T04:07:18.948560",
+        "end": 1655863673.1929598,
+        "end_readable": "2022-06-22T04:07:53.192960",
+        "duration": "34.2444000244"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,28 +28,13 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/InductivePredicates.dfy",
                 "/proc:Impl$$Alt.__default.MyLemma__Nicer_h",
-                "/xml:/tmp/tmp6267im15.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmprasa3is2.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 1,
-            "cpu": 10,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/InductivePredicates.dfy",
-                "/proc:Impl$$Alt.__default.MyLemma__Nicer_h",
-                "/xml:/tmp/tmpgt03m0q5.xml",
-                "/proverOpt:O:pi.block_loop_patterns=false"
-            ],
-            "diversification": [
-                "/proverOpt:O:pi.block_loop_patterns=false"
             ],
             "stdout": [
                 "b''",
@@ -57,18 +43,37 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/InductivePredicates.dfy /proc:Impl$$Alt.__default.MyLemma__Nicer_h /xml:/tmp/tmpgt03m0q5.xml /proverOpt:O:pi.block_loop_patterns=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/InductivePredicates.dfy /proc:Impl$$Alt.__default.MyLemma__Nicer_h /compile:0 /rlimit:9999999 /xml:/tmp/tmprasa3is2.xml /proverOpt:O:rewriter.arith_lhs=true",
                 "methods": [
                     {
                         "name": "Impl$$Alt.__default.MyLemma__Nicer_h",
-                        "startTime": "2022-05-29 01:11:56+00:00",
+                        "startTime": "2022-06-22 02:07:20+00:00",
                         "finished": true,
-                        "endTime": "2022-05-29 01:12:41+00:00",
-                        "duration": 45.0679212,
+                        "endTime": "2022-06-22 02:07:52+00:00",
+                        "duration": 31.3990776,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 1,
+            "cpu": 10,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/InductivePredicates.dfy",
+                "/proc:Impl$$Alt.__default.MyLemma__Nicer_h",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmptqm1jhb7.xml",
+                "/proverOpt:O:pi.block_loop_patterns=false"
+            ],
+            "diversification": [
+                "/proverOpt:O:pi.block_loop_patterns=false"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

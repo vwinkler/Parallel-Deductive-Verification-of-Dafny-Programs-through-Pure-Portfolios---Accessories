@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651363266.1026301,
-        "start_readable": "2022-05-01T02:01:06.102630",
-        "end": 1651363274.1915367,
-        "end_readable": "2022-05-01T02:01:14.191537",
-        "duration": "8.0889065266"
+        "start": 1655840539.7466702,
+        "start_readable": "2022-06-21T21:42:19.746670",
+        "end": 1655840548.0152755,
+        "end_readable": "2022-06-21T21:42:28.015275",
+        "duration": "8.2686052322"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.OutlivesClaim.__ctor",
-                "/xml:/tmp/tmpq0pau4g2.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpj4t3k1wa.xml",
                 "/proverOpt:O:fp.datalog.explanations_on_relation_level=true"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.OutlivesClaim.__ctor /xml:/tmp/tmpq0pau4g2.xml /proverOpt:O:fp.datalog.explanations_on_relation_level=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.OutlivesClaim.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmpj4t3k1wa.xml /proverOpt:O:fp.datalog.explanations_on_relation_level=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.OutlivesClaim.__ctor",
-                        "startTime": "2022-05-01 00:01:08+00:00",
+                        "startTime": "2022-06-21 19:42:22+00:00",
                         "finished": true,
-                        "endTime": "2022-05-01 00:01:14+00:00",
-                        "duration": 5.1784627,
+                        "endTime": "2022-06-21 19:42:27+00:00",
+                        "duration": 5.3237364,
                         "outcome": "correct"
                     }
                 ]

@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654283564.6740348,
-        "start_readable": "2022-06-03T21:12:44.674035",
-        "end": 1654283569.3758795,
-        "end_readable": "2022-06-03T21:12:49.375880",
-        "duration": "4.7018446922"
+        "start": 1655866250.0353768,
+        "start_readable": "2022-06-22T04:50:50.035377",
+        "end": 1655866254.2090526,
+        "end_readable": "2022-06-22T04:50:54.209053",
+        "duration": "4.1736757755"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,15 +28,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/b4.dfy",
                 "/proc:Impl$$_module.Map.Add",
-                "/xml:/tmp/tmpmcy0n0pk.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmprv9q_778.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/b4.dfy /proc:Impl$$_module.Map.Add /compile:0 /rlimit:9999999 /xml:/tmp/tmprv9q_778.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.Map.Add",
+                        "startTime": "2022-06-22 02:50:51+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 02:50:54+00:00",
+                        "duration": 2.1610227,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -44,7 +63,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/b4.dfy",
                 "/proc:Impl$$_module.Map.Add",
-                "/xml:/tmp/tmpobijrjwq.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp70j4ub0o.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,7 +82,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/b4.dfy",
                 "/proc:Impl$$_module.Map.Add",
-                "/xml:/tmp/tmp8xhlkmvh.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpki35geys.xml",
                 "/vcsMaxKeepGoingSplits:4",
                 "/vcsKeepGoingTimeout:30"
             ],
@@ -69,25 +92,9 @@
                 "/vcsMaxKeepGoingSplits:4",
                 "/vcsKeepGoingTimeout:30"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/b4.dfy /proc:Impl$$_module.Map.Add /xml:/tmp/tmp8xhlkmvh.xml /vcsMaxKeepGoingSplits:4 /vcsKeepGoingTimeout:30",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.Map.Add",
-                        "startTime": "2022-06-03 19:12:46+00:00",
-                        "finished": true,
-                        "endTime": "2022-06-03 19:12:48+00:00",
-                        "duration": 2.1977601,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

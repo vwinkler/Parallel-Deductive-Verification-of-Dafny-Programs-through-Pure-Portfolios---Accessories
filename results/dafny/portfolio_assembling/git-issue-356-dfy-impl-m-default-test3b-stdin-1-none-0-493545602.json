@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654365033.065457,
-        "start_readable": "2022-06-04T19:50:33.065457",
-        "end": 1654365038.275264,
-        "end_readable": "2022-06-04T19:50:38.275264",
-        "duration": "5.2098069191"
+        "start": 1655873162.243594,
+        "start_readable": "2022-06-22T06:46:02.243594",
+        "end": 1655873166.9383698,
+        "end_readable": "2022-06-22T06:46:06.938370",
+        "duration": "4.6947758198"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,15 +28,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/git-issue-356.dfy",
                 "/proc:Impl$$M.__default.Test3b",
-                "/xml:/tmp/tmphfekbisp.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpnv49hbgz.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue-356.dfy /proc:Impl$$M.__default.Test3b /compile:0 /rlimit:9999999 /xml:/tmp/tmpnv49hbgz.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$M.__default.Test3b",
+                        "startTime": "2022-06-22 04:46:03+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 04:46:06+00:00",
+                        "duration": 2.5830119,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -44,7 +63,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/git-issue-356.dfy",
                 "/proc:Impl$$M.__default.Test3b",
-                "/xml:/tmp/tmpic1y59qy.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpi79gj6oo.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,7 +82,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/git-issue-356.dfy",
                 "/proc:Impl$$M.__default.Test3b",
-                "/xml:/tmp/tmpvfj0fj90.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp27v6cydm.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -78,31 +101,17 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/git-issue-356.dfy",
                 "/proc:Impl$$M.__default.Test3b",
-                "/xml:/tmp/tmprj1sswzm.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp6bu0z23f.xml",
                 "/proverOpt:O:rewriter.algebraic_number_evaluator=false"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.algebraic_number_evaluator=false"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue-356.dfy /proc:Impl$$M.__default.Test3b /xml:/tmp/tmprj1sswzm.xml /proverOpt:O:rewriter.algebraic_number_evaluator=false",
-                "methods": [
-                    {
-                        "name": "Impl$$M.__default.Test3b",
-                        "startTime": "2022-06-04 17:50:34+00:00",
-                        "finished": true,
-                        "endTime": "2022-06-04 17:50:37+00:00",
-                        "duration": 2.8952688,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654285368.6478736,
-        "start_readable": "2022-06-03T21:42:48.647874",
-        "end": 1654285371.5862484,
-        "end_readable": "2022-06-03T21:42:51.586248",
-        "duration": "2.9383747578"
+        "start": 1655873295.7873085,
+        "start_readable": "2022-06-22T06:48:15.787308",
+        "end": 1655873300.0910914,
+        "end_readable": "2022-06-22T06:48:20.091091",
+        "duration": "4.3037829399"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/SmallestMissingNumber-functional.dfy",
                 "/proc:Impl$$_module.__default.SMN_k__Correct",
-                "/xml:/tmp/tmp1faiixbf.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpx306tr28.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -46,17 +49,34 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/SmallestMissingNumber-functional.dfy",
                 "/proc:Impl$$_module.__default.SMN_k__Correct",
-                "/xml:/tmp/tmpj9qh9zgm.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmproyo7lz9.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "stdout": [
-                "b'/benchmarks/SmallestMissingNumber-functional.dfy(213,11): Warning: /!\\\\ No terms found to trigger on.'"
+                "b'/benchmarks/SmallestMissingNumber-functional.dfy(213,11): Warning: /!\\\\ No terms found to trigger on.'",
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
             ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/SmallestMissingNumber-functional.dfy /proc:Impl$$_module.__default.SMN_k__Correct /compile:0 /rlimit:9999999 /xml:/tmp/tmproyo7lz9.xml /proverOpt:O:rewriter.eq2ineq=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.SMN_k__Correct",
+                        "startTime": "2022-06-22 04:48:17+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 04:48:19+00:00",
+                        "duration": 2.1012418,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 2,
@@ -65,7 +85,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/SmallestMissingNumber-functional.dfy",
                 "/proc:Impl$$_module.__default.SMN_k__Correct",
-                "/xml:/tmp/tmp39yi816o.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpth71c6z5.xml",
                 "/proverOpt:O:smt.bv.watch_diseq=true"
             ],
             "diversification": [
@@ -176,11 +198,11 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/SmallestMissingNumber-functional.dfy /proc:Impl$$_module.__default.SMN_k__Correct /xml:/tmp/tmp39yi816o.xml /proverOpt:O:smt.bv.watch_diseq=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/SmallestMissingNumber-functional.dfy /proc:Impl$$_module.__default.SMN_k__Correct /compile:0 /rlimit:9999999 /xml:/tmp/tmpth71c6z5.xml /proverOpt:O:smt.bv.watch_diseq=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.SMN_k__Correct",
-                        "startTime": "2022-06-03 19:42:50+00:00",
+                        "startTime": "2022-06-22 04:48:17+00:00",
                         "finished": false,
                         "endTime": null,
                         "outcome": null

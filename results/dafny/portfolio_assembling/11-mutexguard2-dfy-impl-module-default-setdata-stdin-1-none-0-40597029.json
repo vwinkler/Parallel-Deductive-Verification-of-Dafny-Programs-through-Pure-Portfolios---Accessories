@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654279735.6340714,
-        "start_readable": "2022-06-03T20:08:55.634071",
-        "end": 1654279784.4492922,
-        "end_readable": "2022-06-03T20:09:44.449292",
-        "duration": "48.8152208328"
+        "start": 1655836429.9932544,
+        "start_readable": "2022-06-21T20:33:49.993254",
+        "end": 1655836468.4352863,
+        "end_readable": "2022-06-21T20:34:28.435286",
+        "duration": "38.4420318604"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/11-MutexGuard2.dfy",
                 "/proc:Impl$$_module.__default.SetData",
-                "/xml:/tmp/tmpznhy5xl3.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmppbo04mef.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,30 +47,13 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/11-MutexGuard2.dfy",
                 "/proc:Impl$$_module.__default.SetData",
-                "/xml:/tmp/tmpj0tm4s9_.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpekl3n94a.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.eq2ineq=true"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 2,
-            "cpu": 20,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/11-MutexGuard2.dfy",
-                "/proc:Impl$$_module.__default.SetData",
-                "/xml:/tmp/tmp63sn8c80.xml",
-                "/vcsMaxKeepGoingSplits:2",
-                "/vcsKeepGoingTimeout:40"
-            ],
-            "diversification": [
-                "/vcsMaxKeepGoingSplits:2",
-                "/vcsKeepGoingTimeout:40"
             ],
             "stdout": [
                 "b''",
@@ -76,18 +62,39 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/11-MutexGuard2.dfy /proc:Impl$$_module.__default.SetData /xml:/tmp/tmp63sn8c80.xml /vcsMaxKeepGoingSplits:2 /vcsKeepGoingTimeout:40",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/11-MutexGuard2.dfy /proc:Impl$$_module.__default.SetData /compile:0 /rlimit:9999999 /xml:/tmp/tmpekl3n94a.xml /proverOpt:O:rewriter.eq2ineq=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.SetData",
-                        "startTime": "2022-06-03 18:09:01+00:00",
+                        "startTime": "2022-06-21 18:33:52+00:00",
                         "finished": true,
-                        "endTime": "2022-06-03 18:09:43+00:00",
-                        "duration": 42.1264405,
+                        "endTime": "2022-06-21 18:34:27+00:00",
+                        "duration": 35.1432233,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 2,
+            "cpu": 20,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/11-MutexGuard2.dfy",
+                "/proc:Impl$$_module.__default.SetData",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmphgricfgr.xml",
+                "/vcsMaxKeepGoingSplits:2",
+                "/vcsKeepGoingTimeout:40"
+            ],
+            "diversification": [
+                "/vcsMaxKeepGoingSplits:2",
+                "/vcsKeepGoingTimeout:40"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

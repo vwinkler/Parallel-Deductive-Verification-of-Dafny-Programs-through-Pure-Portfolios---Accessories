@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653783162.1324952,
-        "start_readable": "2022-05-29T02:12:42.132495",
-        "end": 1653783174.4502103,
-        "end_readable": "2022-05-29T02:12:54.450210",
-        "duration": "12.3177151680"
+        "start": 1655830255.2568686,
+        "start_readable": "2022-06-21T18:50:55.256869",
+        "end": 1655830274.1192524,
+        "end_readable": "2022-06-21T18:51:14.119252",
+        "duration": "18.8623838425"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,15 +28,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/06-ThreadOwnership.dfy",
                 "/proc:Impl$$_module.DoubleReadMethod.Run",
-                "/xml:/tmp/tmp2q4ns8bd.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpoik9w6ku.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/06-ThreadOwnership.dfy /proc:Impl$$_module.DoubleReadMethod.Run /compile:0 /rlimit:9999999 /xml:/tmp/tmpoik9w6ku.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.DoubleReadMethod.Run",
+                        "startTime": "2022-06-21 16:50:57+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-21 16:51:14+00:00",
+                        "duration": 16.5847861,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -44,7 +63,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/06-ThreadOwnership.dfy",
                 "/proc:Impl$$_module.DoubleReadMethod.Run",
-                "/xml:/tmp/tmp7rbfaejb.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmprmjlt8gd.xml",
                 "/proverOpt:O:smt.q.lite=true"
             ],
             "diversification": [
@@ -154,11 +175,11 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/06-ThreadOwnership.dfy /proc:Impl$$_module.DoubleReadMethod.Run /xml:/tmp/tmp7rbfaejb.xml /proverOpt:O:smt.q.lite=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/06-ThreadOwnership.dfy /proc:Impl$$_module.DoubleReadMethod.Run /compile:0 /rlimit:9999999 /xml:/tmp/tmprmjlt8gd.xml /proverOpt:O:smt.q.lite=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.DoubleReadMethod.Run",
-                        "startTime": "2022-05-29 00:12:51+00:00",
+                        "startTime": "2022-06-21 16:51:05+00:00",
                         "finished": false,
                         "endTime": null,
                         "outcome": null

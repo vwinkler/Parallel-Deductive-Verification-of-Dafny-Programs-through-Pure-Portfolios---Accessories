@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653788485.2600367,
-        "start_readable": "2022-05-29T03:41:25.260037",
-        "end": 1653788491.669112,
-        "end_readable": "2022-05-29T03:41:31.669112",
-        "duration": "6.4090752602"
+        "start": 1655876630.116487,
+        "start_readable": "2022-06-22T07:43:50.116487",
+        "end": 1655876636.6717029,
+        "end_readable": "2022-06-22T07:43:56.671703",
+        "duration": "6.5552158356"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,28 +28,13 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/Bitvectors.dfy",
                 "/proc:Impl$$_module.__default.Unary",
-                "/xml:/tmp/tmp74cc0nj1.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpu76ef_w1.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 1,
-            "cpu": 10,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/Bitvectors.dfy",
-                "/proc:Impl$$_module.__default.Unary",
-                "/xml:/tmp/tmpo6m_qsm1.xml",
-                "/proverOpt:O:rewriter.ignore_patterns_on_ground_qbody=false"
-            ],
-            "diversification": [
-                "/proverOpt:O:rewriter.ignore_patterns_on_ground_qbody=false"
             ],
             "stdout": [
                 "b''",
@@ -57,18 +43,37 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/Bitvectors.dfy /proc:Impl$$_module.__default.Unary /xml:/tmp/tmpo6m_qsm1.xml /proverOpt:O:rewriter.ignore_patterns_on_ground_qbody=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/Bitvectors.dfy /proc:Impl$$_module.__default.Unary /compile:0 /rlimit:9999999 /xml:/tmp/tmpu76ef_w1.xml /proverOpt:O:rewriter.arith_lhs=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.Unary",
-                        "startTime": "2022-05-29 01:41:26+00:00",
+                        "startTime": "2022-06-22 05:43:51+00:00",
                         "finished": true,
-                        "endTime": "2022-05-29 01:41:31+00:00",
-                        "duration": 4.7374141,
+                        "endTime": "2022-06-22 05:43:56+00:00",
+                        "duration": 4.8864463,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 1,
+            "cpu": 10,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/Bitvectors.dfy",
+                "/proc:Impl$$_module.__default.Unary",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp1a32j5v0.xml",
+                "/proverOpt:O:rewriter.ignore_patterns_on_ground_qbody=false"
+            ],
+            "diversification": [
+                "/proverOpt:O:rewriter.ignore_patterns_on_ground_qbody=false"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654364214.4535263,
-        "start_readable": "2022-06-04T19:36:54.453526",
-        "end": 1654364230.6043947,
-        "end_readable": "2022-06-04T19:37:10.604395",
-        "duration": "16.1508684158"
+        "start": 1655878715.1832807,
+        "start_readable": "2022-06-22T08:18:35.183281",
+        "end": 1655878730.8012881,
+        "end_readable": "2022-06-22T08:18:50.801288",
+        "duration": "15.6180074215"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/IMaps.dfy",
                 "/proc:Impl$$_module.__default.m8",
-                "/xml:/tmp/tmp19xxcemu.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpsc3rwr4g.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -49,7 +52,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/IMaps.dfy",
                 "/proc:Impl$$_module.__default.m8",
-                "/xml:/tmp/tmp4k12t2nk.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpy6wvg1e6.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -71,35 +76,13 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/IMaps.dfy",
                 "/proc:Impl$$_module.__default.m8",
-                "/xml:/tmp/tmp_z_cmd9q.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmppop5x9ar.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.flat=false"
-            ],
-            "stdout": [
-                "b'/benchmarks/IMaps.dfy(36,18): Warning: /!\\\\ No terms found to trigger on.'",
-                "b'/benchmarks/IMaps.dfy(36,49): Warning: /!\\\\ No terms found to trigger on.'",
-                "b'/benchmarks/IMaps.dfy(51,18): Warning: /!\\\\ No terms found to trigger on.'",
-                "b'/benchmarks/IMaps.dfy(79,33): Warning: /!\\\\ No terms found to trigger on.'"
-            ],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 3,
-            "cpu": 30,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/IMaps.dfy",
-                "/proc:Impl$$_module.__default.m8",
-                "/xml:/tmp/tmpxgep7j1k.xml",
-                "/vcsMaxKeepGoingSplits:32",
-                "/vcsKeepGoingTimeout:30"
-            ],
-            "diversification": [
-                "/vcsMaxKeepGoingSplits:32",
-                "/vcsKeepGoingTimeout:30"
             ],
             "stdout": [
                 "b'/benchmarks/IMaps.dfy(36,18): Warning: /!\\\\ No terms found to trigger on.'",
@@ -112,18 +95,44 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/IMaps.dfy /proc:Impl$$_module.__default.m8 /xml:/tmp/tmpxgep7j1k.xml /vcsMaxKeepGoingSplits:32 /vcsKeepGoingTimeout:30",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/IMaps.dfy /proc:Impl$$_module.__default.m8 /compile:0 /rlimit:9999999 /xml:/tmp/tmppop5x9ar.xml /proverOpt:O:rewriter.flat=false",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.m8",
-                        "startTime": "2022-06-04 17:36:56+00:00",
+                        "startTime": "2022-06-22 06:18:36+00:00",
                         "finished": true,
-                        "endTime": "2022-06-04 17:37:09+00:00",
-                        "duration": 13.6381109,
+                        "endTime": "2022-06-22 06:18:49+00:00",
+                        "duration": 13.0663266,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 3,
+            "cpu": 30,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/IMaps.dfy",
+                "/proc:Impl$$_module.__default.m8",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp8114ww4w.xml",
+                "/vcsMaxKeepGoingSplits:32",
+                "/vcsKeepGoingTimeout:30"
+            ],
+            "diversification": [
+                "/vcsMaxKeepGoingSplits:32",
+                "/vcsKeepGoingTimeout:30"
+            ],
+            "stdout": [
+                "b'/benchmarks/IMaps.dfy(36,18): Warning: /!\\\\ No terms found to trigger on.'",
+                "b'/benchmarks/IMaps.dfy(36,49): Warning: /!\\\\ No terms found to trigger on.'",
+                "b'/benchmarks/IMaps.dfy(51,18): Warning: /!\\\\ No terms found to trigger on.'",
+                "b'/benchmarks/IMaps.dfy(79,33): Warning: /!\\\\ No terms found to trigger on.'"
+            ],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

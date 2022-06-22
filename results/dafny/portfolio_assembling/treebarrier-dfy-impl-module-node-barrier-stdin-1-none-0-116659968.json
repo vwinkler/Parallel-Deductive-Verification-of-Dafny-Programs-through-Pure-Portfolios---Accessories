@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653788078.0652354,
-        "start_readable": "2022-05-29T03:34:38.065235",
-        "end": 1653788085.2635667,
-        "end_readable": "2022-05-29T03:34:45.263567",
-        "duration": "7.1983313560"
+        "start": 1655875872.9170566,
+        "start_readable": "2022-06-22T07:31:12.917057",
+        "end": 1655875880.0886867,
+        "end_readable": "2022-06-22T07:31:20.088687",
+        "duration": "7.1716301441"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,15 +28,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmpaau60gep.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp7qcnf751.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/TreeBarrier.dfy /proc:Impl$$_module.Node.barrier /compile:0 /rlimit:9999999 /xml:/tmp/tmp7qcnf751.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.Node.barrier",
+                        "startTime": "2022-06-22 05:31:14+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 05:31:20+00:00",
+                        "duration": 5.4493191,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -44,7 +63,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmpv0vrl248.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpa7n6j4c8.xml",
                 "/proverOpt:O:opt.elim_01=false"
             ],
             "diversification": [
@@ -57,14 +78,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/TreeBarrier.dfy /proc:Impl$$_module.Node.barrier /xml:/tmp/tmpv0vrl248.xml /proverOpt:O:opt.elim_01=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/TreeBarrier.dfy /proc:Impl$$_module.Node.barrier /compile:0 /rlimit:9999999 /xml:/tmp/tmpa7n6j4c8.xml /proverOpt:O:opt.elim_01=false",
                 "methods": [
                     {
                         "name": "Impl$$_module.Node.barrier",
-                        "startTime": "2022-05-29 01:34:39+00:00",
+                        "startTime": "2022-06-22 05:31:14+00:00",
                         "finished": true,
-                        "endTime": "2022-05-29 01:34:45+00:00",
-                        "duration": 5.3677677,
+                        "endTime": "2022-06-22 05:31:20+00:00",
+                        "duration": 5.4367251,
                         "outcome": "correct"
                     }
                 ]

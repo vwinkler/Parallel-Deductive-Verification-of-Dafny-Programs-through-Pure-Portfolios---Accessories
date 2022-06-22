@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653786967.578977,
-        "start_readable": "2022-05-29T03:16:07.578977",
-        "end": 1653786971.8749895,
-        "end_readable": "2022-05-29T03:16:11.874990",
-        "duration": "4.2960124016"
+        "start": 1655865514.6499152,
+        "start_readable": "2022-06-22T04:38:34.649915",
+        "end": 1655865518.7796302,
+        "end_readable": "2022-06-22T04:38:38.779630",
+        "duration": "4.1297149658"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/b4.dfy",
                 "/proc:Impl$$_module.Map.Add",
-                "/xml:/tmp/tmp3osd9opy.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp5_lxf9hx.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -40,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/b4.dfy /proc:Impl$$_module.Map.Add /xml:/tmp/tmp3osd9opy.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/b4.dfy /proc:Impl$$_module.Map.Add /compile:0 /rlimit:9999999 /xml:/tmp/tmp5_lxf9hx.xml /proverOpt:O:rewriter.arith_lhs=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.Map.Add",
-                        "startTime": "2022-05-29 01:16:09+00:00",
+                        "startTime": "2022-06-22 02:38:36+00:00",
                         "finished": true,
-                        "endTime": "2022-05-29 01:16:11+00:00",
-                        "duration": 2.1522215,
+                        "endTime": "2022-06-22 02:38:38+00:00",
+                        "duration": 2.1629882,
                         "outcome": "correct"
                     }
                 ]
@@ -60,7 +63,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/b4.dfy",
                 "/proc:Impl$$_module.Map.Add",
-                "/xml:/tmp/tmp7ubdvaip.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp32a56wh5.xml",
                 "/vcsMaxKeepGoingSplits:16",
                 "/vcsKeepGoingTimeout:1"
             ],
@@ -68,9 +73,25 @@
                 "/vcsMaxKeepGoingSplits:16",
                 "/vcsKeepGoingTimeout:1"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/b4.dfy /proc:Impl$$_module.Map.Add /compile:0 /rlimit:9999999 /xml:/tmp/tmp32a56wh5.xml /vcsMaxKeepGoingSplits:16 /vcsKeepGoingTimeout:1",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.Map.Add",
+                        "startTime": "2022-06-22 02:38:36+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 02:38:38+00:00",
+                        "duration": 2.1631912,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         }
     ]
 }

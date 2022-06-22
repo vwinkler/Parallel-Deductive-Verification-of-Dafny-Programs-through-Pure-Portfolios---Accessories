@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652923960.2990632,
-        "start_readable": "2022-05-19T03:32:40.299063",
-        "end": 1652923964.6093922,
-        "end_readable": "2022-05-19T03:32:44.609392",
-        "duration": "4.3103289604"
+        "start": 1655874611.6972039,
+        "start_readable": "2022-06-22T07:10:11.697204",
+        "end": 1655874616.0399835,
+        "end_readable": "2022-06-22T07:10:16.039984",
+        "duration": "4.3427796364"
     },
-    "termination_reason": "instance termination",
+    "termination_reason": "all instances terminated unsuccessfully",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/git-issue106.dfy",
                 "/proc:Impl$$_module.__default.L",
-                "/xml:/tmp/tmp1cpntbnd.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpq72nuhdp.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=40",
                 "/proverOpt:O:smt.qi.quick_checker=2"
             ],
@@ -43,14 +46,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue106.dfy /proc:Impl$$_module.__default.L /xml:/tmp/tmp1cpntbnd.xml /proverOpt:O:smt.qi.eager_threshold=40 /proverOpt:O:smt.qi.quick_checker=2",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue106.dfy /proc:Impl$$_module.__default.L /compile:0 /rlimit:9999999 /xml:/tmp/tmpq72nuhdp.xml /proverOpt:O:smt.qi.eager_threshold=40 /proverOpt:O:smt.qi.quick_checker=2",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.L",
-                        "startTime": "2022-05-19 01:32:41+00:00",
+                        "startTime": "2022-06-22 05:10:13+00:00",
                         "finished": true,
-                        "endTime": "2022-05-19 01:32:44+00:00",
-                        "duration": 2.8054828,
+                        "endTime": "2022-06-22 05:10:15+00:00",
+                        "duration": 2.8344106,
                         "outcome": "outofresource"
                     }
                 ]

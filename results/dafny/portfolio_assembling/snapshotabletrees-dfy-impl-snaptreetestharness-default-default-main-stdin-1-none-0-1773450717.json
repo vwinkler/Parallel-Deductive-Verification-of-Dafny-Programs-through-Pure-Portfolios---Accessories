@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653787081.6265182,
-        "start_readable": "2022-05-29T03:18:01.626518",
-        "end": 1653787091.6828923,
-        "end_readable": "2022-05-29T03:18:11.682892",
-        "duration": "10.0563740730"
+        "start": 1655876667.5419436,
+        "start_readable": "2022-06-22T07:44:27.541944",
+        "end": 1655876679.1801903,
+        "end_readable": "2022-06-22T07:44:39.180190",
+        "duration": "11.6382467747"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,28 +28,13 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/SnapshotableTrees.dfy",
                 "/proc:Impl$$SnapTreeTestHarness.__default._default_Main",
-                "/xml:/tmp/tmpqph0narh.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpw1s_5064.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 1,
-            "cpu": 10,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/SnapshotableTrees.dfy",
-                "/proc:Impl$$SnapTreeTestHarness.__default._default_Main",
-                "/xml:/tmp/tmpj2d2b8m5.xml",
-                "/proverOpt:O:smt.qi.quick_checker=2"
-            ],
-            "diversification": [
-                "/proverOpt:O:smt.qi.quick_checker=2"
             ],
             "stdout": [
                 "b''",
@@ -57,18 +43,37 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/SnapshotableTrees.dfy /proc:Impl$$SnapTreeTestHarness.__default._default_Main /xml:/tmp/tmpj2d2b8m5.xml /proverOpt:O:smt.qi.quick_checker=2",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/SnapshotableTrees.dfy /proc:Impl$$SnapTreeTestHarness.__default._default_Main /compile:0 /rlimit:9999999 /xml:/tmp/tmpw1s_5064.xml /proverOpt:O:rewriter.arith_lhs=true",
                 "methods": [
                     {
                         "name": "Impl$$SnapTreeTestHarness.__default._default_Main",
-                        "startTime": "2022-05-29 01:18:03+00:00",
+                        "startTime": "2022-06-22 05:44:29+00:00",
                         "finished": true,
-                        "endTime": "2022-05-29 01:18:10+00:00",
-                        "duration": 7.0653996,
+                        "endTime": "2022-06-22 05:44:38+00:00",
+                        "duration": 8.5665772,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 1,
+            "cpu": 10,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/SnapshotableTrees.dfy",
+                "/proc:Impl$$SnapTreeTestHarness.__default._default_Main",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp7prpqy3_.xml",
+                "/proverOpt:O:smt.qi.quick_checker=2"
+            ],
+            "diversification": [
+                "/proverOpt:O:smt.qi.quick_checker=2"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

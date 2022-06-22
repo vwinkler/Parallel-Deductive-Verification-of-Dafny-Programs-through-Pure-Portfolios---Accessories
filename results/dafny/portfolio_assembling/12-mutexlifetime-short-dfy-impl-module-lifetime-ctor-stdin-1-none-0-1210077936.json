@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654281648.959587,
-        "start_readable": "2022-06-03T20:40:48.959587",
-        "end": 1654281661.0376785,
-        "end_readable": "2022-06-03T20:41:01.037678",
-        "duration": "12.0780913830"
+        "start": 1655835388.6477802,
+        "start_readable": "2022-06-21T20:16:28.647780",
+        "end": 1655835400.3238468,
+        "end_readable": "2022-06-21T20:16:40.323847",
+        "duration": "11.6760666370"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.Lifetime.__ctor",
-                "/xml:/tmp/tmpnpej84lw.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpq5n8hc04.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,28 +47,13 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.Lifetime.__ctor",
-                "/xml:/tmp/tmp0g27v5xm.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmph6jkk7oa.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.eq2ineq=true"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 2,
-            "cpu": 20,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/12-MutexLifetime-short.dfy",
-                "/proc:Impl$$_module.Lifetime.__ctor",
-                "/xml:/tmp/tmp9qj1hlnp.xml",
-                "/proverOpt:O:rewriter.elim_and=true"
-            ],
-            "diversification": [
-                "/proverOpt:O:rewriter.elim_and=true"
             ],
             "stdout": [
                 "b''",
@@ -74,18 +62,37 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.Lifetime.__ctor /xml:/tmp/tmp9qj1hlnp.xml /proverOpt:O:rewriter.elim_and=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.Lifetime.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmph6jkk7oa.xml /proverOpt:O:rewriter.eq2ineq=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.Lifetime.__ctor",
-                        "startTime": "2022-06-03 18:40:51+00:00",
+                        "startTime": "2022-06-21 18:16:31+00:00",
                         "finished": true,
-                        "endTime": "2022-06-03 18:41:00+00:00",
-                        "duration": 8.5445145,
+                        "endTime": "2022-06-21 18:16:40+00:00",
+                        "duration": 8.6769376,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 2,
+            "cpu": 20,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/12-MutexLifetime-short.dfy",
+                "/proc:Impl$$_module.Lifetime.__ctor",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpjuuzpwmz.xml",
+                "/proverOpt:O:rewriter.elim_and=true"
+            ],
+            "diversification": [
+                "/proverOpt:O:rewriter.elim_and=true"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

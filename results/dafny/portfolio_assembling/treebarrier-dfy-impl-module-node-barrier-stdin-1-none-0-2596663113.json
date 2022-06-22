@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654365367.4604638,
-        "start_readable": "2022-06-04T19:56:07.460464",
-        "end": 1654365374.892139,
-        "end_readable": "2022-06-04T19:56:14.892139",
-        "duration": "7.4316751957"
+        "start": 1655873140.3419774,
+        "start_readable": "2022-06-22T06:45:40.341977",
+        "end": 1655873147.6861024,
+        "end_readable": "2022-06-22T06:45:47.686102",
+        "duration": "7.3441250324"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmpnciwh9eu.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpepscpupr.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,7 +47,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmppunz7z2q.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp7124s7fe.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -57,14 +62,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/TreeBarrier.dfy /proc:Impl$$_module.Node.barrier /xml:/tmp/tmppunz7z2q.xml /proverOpt:O:rewriter.eq2ineq=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/TreeBarrier.dfy /proc:Impl$$_module.Node.barrier /compile:0 /rlimit:9999999 /xml:/tmp/tmp7124s7fe.xml /proverOpt:O:rewriter.eq2ineq=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.Node.barrier",
-                        "startTime": "2022-06-04 17:56:09+00:00",
+                        "startTime": "2022-06-22 04:45:42+00:00",
                         "finished": true,
-                        "endTime": "2022-06-04 17:56:14+00:00",
-                        "duration": 5.3924505,
+                        "endTime": "2022-06-22 04:45:47+00:00",
+                        "duration": 5.3308112,
                         "outcome": "correct"
                     }
                 ]
@@ -77,7 +82,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmpa7vaxdfs.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpiclpl39b.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -94,15 +101,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmpwzf2c0cy.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpg0gengz0.xml",
                 "/proverOpt:O:pi.pull_quantifiers=false"
             ],
             "diversification": [
                 "/proverOpt:O:pi.pull_quantifiers=false"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/TreeBarrier.dfy /proc:Impl$$_module.Node.barrier /compile:0 /rlimit:9999999 /xml:/tmp/tmpg0gengz0.xml /proverOpt:O:pi.pull_quantifiers=false",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.Node.barrier",
+                        "startTime": "2022-06-22 04:45:42+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 04:45:47+00:00",
+                        "duration": 5.3990938,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         }
     ]
 }

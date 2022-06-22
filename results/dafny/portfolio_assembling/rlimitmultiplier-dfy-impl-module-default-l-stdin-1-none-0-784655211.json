@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654638756.1087089,
-        "start_readable": "2022-06-07T23:52:36.108709",
-        "end": 1654638769.908414,
-        "end_readable": "2022-06-07T23:52:49.908414",
-        "duration": "13.7997050285"
+        "start": 1655876587.356654,
+        "start_readable": "2022-06-22T07:43:07.356654",
+        "end": 1655876597.211575,
+        "end_readable": "2022-06-22T07:43:17.211575",
+        "duration": "9.8549211025"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/RlimitMultiplier.dfy",
                 "/proc:Impl$$_module.__default.L",
-                "/xml:/tmp/tmposj77ekg.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmptwtp9m6x.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,7 +47,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/RlimitMultiplier.dfy",
                 "/proc:Impl$$_module.__default.L",
-                "/xml:/tmp/tmp_ar2dr53.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp3q6afmu8.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,7 +66,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/RlimitMultiplier.dfy",
                 "/proc:Impl$$_module.__default.L",
-                "/xml:/tmp/tmp92nw2nj7.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp65llyfw0.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -78,7 +85,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/RlimitMultiplier.dfy",
                 "/proc:Impl$$_module.__default.L",
-                "/xml:/tmp/tmpc_g9cpe5.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp59f4jl6o.xml",
                 "/vcsMaxKeepGoingSplits:4",
                 "/vcsKeepGoingTimeout:20"
             ],
@@ -97,28 +106,13 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/RlimitMultiplier.dfy",
                 "/proc:Impl$$_module.__default.L",
-                "/xml:/tmp/tmpf7pq9cbz.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpzeihzb6z.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=30"
             ],
             "diversification": [
                 "/proverOpt:O:smt.qi.eager_threshold=30"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 5,
-            "cpu": 11,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/RlimitMultiplier.dfy",
-                "/proc:Impl$$_module.__default.L",
-                "/xml:/tmp/tmpwri9uwj9.xml",
-                "/proverOpt:O:smt.qi.eager_threshold=40"
-            ],
-            "diversification": [
-                "/proverOpt:O:smt.qi.eager_threshold=40"
             ],
             "stdout": [
                 "b''",
@@ -127,18 +121,37 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/RlimitMultiplier.dfy /proc:Impl$$_module.__default.L /xml:/tmp/tmpwri9uwj9.xml /proverOpt:O:smt.qi.eager_threshold=40",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/RlimitMultiplier.dfy /proc:Impl$$_module.__default.L /compile:0 /rlimit:9999999 /xml:/tmp/tmpzeihzb6z.xml /proverOpt:O:smt.qi.eager_threshold=30",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.L",
-                        "startTime": "2022-06-07 21:52:37+00:00",
+                        "startTime": "2022-06-22 05:43:08+00:00",
                         "finished": true,
-                        "endTime": "2022-06-07 21:52:48+00:00",
-                        "duration": 11.3350145,
+                        "endTime": "2022-06-22 05:43:16+00:00",
+                        "duration": 7.4529514,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 5,
+            "cpu": 11,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/RlimitMultiplier.dfy",
+                "/proc:Impl$$_module.__default.L",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpwh2_kdkw.xml",
+                "/proverOpt:O:smt.qi.eager_threshold=40"
+            ],
+            "diversification": [
+                "/proverOpt:O:smt.qi.eager_threshold=40"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

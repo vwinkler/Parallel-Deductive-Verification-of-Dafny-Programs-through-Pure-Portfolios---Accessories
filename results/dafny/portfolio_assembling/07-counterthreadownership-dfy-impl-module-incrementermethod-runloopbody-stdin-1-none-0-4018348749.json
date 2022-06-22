@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651330400.1877196,
-        "start_readable": "2022-04-30T16:53:20.187720",
-        "end": 1651330408.183077,
-        "end_readable": "2022-04-30T16:53:28.183077",
-        "duration": "7.9953575134"
+        "start": 1655830693.2725797,
+        "start_readable": "2022-06-21T18:58:13.272580",
+        "end": 1655830701.28879,
+        "end_readable": "2022-06-21T18:58:21.288790",
+        "duration": "8.0162103176"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/07-CounterThreadOwnership.dfy",
                 "/proc:Impl$$_module.IncrementerMethod.RunLoopBody",
-                "/xml:/tmp/tmpbdqzbf53.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpjgvpqczx.xml",
                 "/proverOpt:O:model_evaluator.array_as_stores=false"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /xml:/tmp/tmpbdqzbf53.xml /proverOpt:O:model_evaluator.array_as_stores=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /compile:0 /rlimit:9999999 /xml:/tmp/tmpjgvpqczx.xml /proverOpt:O:model_evaluator.array_as_stores=false",
                 "methods": [
                     {
                         "name": "Impl$$_module.IncrementerMethod.RunLoopBody",
-                        "startTime": "2022-04-30 14:53:22+00:00",
+                        "startTime": "2022-06-21 16:58:15+00:00",
                         "finished": true,
-                        "endTime": "2022-04-30 14:53:28+00:00",
-                        "duration": 5.2755036,
+                        "endTime": "2022-06-21 16:58:21+00:00",
+                        "duration": 5.2996183,
                         "outcome": "correct"
                     }
                 ]

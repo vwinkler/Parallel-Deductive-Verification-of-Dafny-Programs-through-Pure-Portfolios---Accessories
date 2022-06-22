@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654282984.3530567,
-        "start_readable": "2022-06-03T21:03:04.353057",
-        "end": 1654282999.0906765,
-        "end_readable": "2022-06-03T21:03:19.090677",
-        "duration": "14.7376198769"
+        "start": 1655866099.037663,
+        "start_readable": "2022-06-22T04:48:19.037663",
+        "end": 1655866117.252238,
+        "end_readable": "2022-06-22T04:48:37.252238",
+        "duration": "18.2145750523"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/UnionFind.dfy",
                 "/proc:Impl$$M3.UnionFind.Join",
-                "/xml:/tmp/tmpsyv2ajby.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpy0d6mo0z.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,31 +47,17 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/UnionFind.dfy",
                 "/proc:Impl$$M3.UnionFind.Join",
-                "/xml:/tmp/tmp5zcrpi1i.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpc_s9bc6l.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/UnionFind.dfy /proc:Impl$$M3.UnionFind.Join /xml:/tmp/tmp5zcrpi1i.xml /proverOpt:O:rewriter.eq2ineq=true",
-                "methods": [
-                    {
-                        "name": "Impl$$M3.UnionFind.Join",
-                        "startTime": "2022-06-03 19:03:06+00:00",
-                        "finished": true,
-                        "endTime": "2022-06-03 19:03:17+00:00",
-                        "duration": 10.9359398,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         },
         {
             "id": 2,
@@ -77,15 +66,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/UnionFind.dfy",
                 "/proc:Impl$$M3.UnionFind.Join",
-                "/xml:/tmp/tmpmi8l1nr8.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp8u03q4ma.xml",
                 "/proverOpt:O:smt.qi.lazy_threshold=20"
             ],
             "diversification": [
                 "/proverOpt:O:smt.qi.lazy_threshold=20"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/UnionFind.dfy /proc:Impl$$M3.UnionFind.Join /compile:0 /rlimit:9999999 /xml:/tmp/tmp8u03q4ma.xml /proverOpt:O:smt.qi.lazy_threshold=20",
+                "methods": [
+                    {
+                        "name": "Impl$$M3.UnionFind.Join",
+                        "startTime": "2022-06-22 02:48:21+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 02:48:36+00:00",
+                        "duration": 14.4305139,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         }
     ]
 }

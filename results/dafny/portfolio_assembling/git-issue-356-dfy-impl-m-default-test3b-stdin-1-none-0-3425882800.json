@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654285698.6875424,
-        "start_readable": "2022-06-03T21:48:18.687542",
-        "end": 1654285702.8687286,
-        "end_readable": "2022-06-03T21:48:22.868729",
-        "duration": "4.1811861992"
+        "start": 1655875028.1908908,
+        "start_readable": "2022-06-22T07:17:08.190891",
+        "end": 1655875032.8854754,
+        "end_readable": "2022-06-22T07:17:12.885475",
+        "duration": "4.6945846081"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,15 +28,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/git-issue-356.dfy",
                 "/proc:Impl$$M.__default.Test3b",
-                "/xml:/tmp/tmpau2qtczv.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpnayc2794.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue-356.dfy /proc:Impl$$M.__default.Test3b /compile:0 /rlimit:9999999 /xml:/tmp/tmpnayc2794.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$M.__default.Test3b",
+                        "startTime": "2022-06-22 05:17:09+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 05:17:12+00:00",
+                        "duration": 2.5835009,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -44,7 +63,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/git-issue-356.dfy",
                 "/proc:Impl$$M.__default.Test3b",
-                "/xml:/tmp/tmpnu1h6dd7.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmppkxg9vyb.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,7 +82,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/git-issue-356.dfy",
                 "/proc:Impl$$M.__default.Test3b",
-                "/xml:/tmp/tmp21drerd8.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpl5ibjhcq.xml",
                 "/vcsMaxKeepGoingSplits:16",
                 "/vcsKeepGoingTimeout:1"
             ],
@@ -69,32 +92,9 @@
                 "/vcsMaxKeepGoingSplits:16",
                 "/vcsKeepGoingTimeout:1"
             ],
-            "stdout": [
-                "b'/benchmarks/git-issue-356.dfy(292,33): Error: assertion violation'",
-                "b'Execution trace:'",
-                "b'    (0,0): anon0'",
-                "b'    /benchmarks/git-issue-356.dfy(289,5): anon16_Else'",
-                "b'    /benchmarks/git-issue-356.dfy(291,5): anon17_Else'",
-                "b'    (0,0): anon18_Then'",
-                "b'    (0,0): anon6'",
-                "b''",
-                "b'Dafny program verifier finished with 0 verified, 1 error'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue-356.dfy /proc:Impl$$M.__default.Test3b /xml:/tmp/tmp21drerd8.xml /vcsMaxKeepGoingSplits:16 /vcsKeepGoingTimeout:1",
-                "methods": [
-                    {
-                        "name": "Impl$$M.__default.Test3b",
-                        "startTime": "2022-06-03 19:48:20+00:00",
-                        "finished": true,
-                        "endTime": "2022-06-03 19:48:22+00:00",
-                        "duration": 2.1700714,
-                        "outcome": "errors"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651366305.9396954,
-        "start_readable": "2022-05-01T02:51:45.939695",
-        "end": 1651366310.3349636,
-        "end_readable": "2022-05-01T02:51:50.334964",
-        "duration": "4.3952682018"
+        "start": 1655869221.0162032,
+        "start_readable": "2022-06-22T05:40:21.016203",
+        "end": 1655869225.4085495,
+        "end_readable": "2022-06-22T05:40:25.408550",
+        "duration": "4.3923463821"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/COST-verif-comp-2011-4-FloydCycleDetect.dfy",
                 "/proc:Impl$$_module.Node.AnalyzeList",
-                "/xml:/tmp/tmp13jyae_0.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpzmf28peg.xml",
                 "/proverOpt:O:rewriter.expand_select_store=true"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/COST-verif-comp-2011-4-FloydCycleDetect.dfy /proc:Impl$$_module.Node.AnalyzeList /xml:/tmp/tmp13jyae_0.xml /proverOpt:O:rewriter.expand_select_store=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/COST-verif-comp-2011-4-FloydCycleDetect.dfy /proc:Impl$$_module.Node.AnalyzeList /compile:0 /rlimit:9999999 /xml:/tmp/tmpzmf28peg.xml /proverOpt:O:rewriter.expand_select_store=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.Node.AnalyzeList",
-                        "startTime": "2022-05-01 00:51:47+00:00",
+                        "startTime": "2022-06-22 03:40:22+00:00",
                         "finished": true,
-                        "endTime": "2022-05-01 00:51:50+00:00",
-                        "duration": 2.4319437,
+                        "endTime": "2022-06-22 03:40:25+00:00",
+                        "duration": 2.4325372,
                         "outcome": "correct"
                     }
                 ]

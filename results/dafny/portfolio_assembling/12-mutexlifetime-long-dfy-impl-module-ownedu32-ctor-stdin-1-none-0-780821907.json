@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652921863.3670447,
-        "start_readable": "2022-05-19T02:57:43.367045",
-        "end": 1652921868.9640577,
-        "end_readable": "2022-05-19T02:57:48.964058",
-        "duration": "5.5970129967"
+        "start": 1655827498.5557737,
+        "start_readable": "2022-06-21T18:04:58.555774",
+        "end": 1655827504.148609,
+        "end_readable": "2022-06-21T18:05:04.148609",
+        "duration": "5.5928351879"
     },
     "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.OwnedU32.__ctor",
-                "/xml:/tmp/tmpfuuap0ko.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmptzr3a11x.xml",
                 "/proverOpt:O:smt.mbqi.max_cexs=100",
                 "/proverOpt:O:smt.qi.quick_checker=2"
             ],
@@ -42,14 +45,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.OwnedU32.__ctor /xml:/tmp/tmpfuuap0ko.xml /proverOpt:O:smt.mbqi.max_cexs=100 /proverOpt:O:smt.qi.quick_checker=2",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.OwnedU32.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmptzr3a11x.xml /proverOpt:O:smt.mbqi.max_cexs=100 /proverOpt:O:smt.qi.quick_checker=2",
                 "methods": [
                     {
                         "name": "Impl$$_module.OwnedU32.__ctor",
-                        "startTime": "2022-05-19 00:57:46+00:00",
+                        "startTime": "2022-06-21 16:05:01+00:00",
                         "finished": true,
-                        "endTime": "2022-05-19 00:57:48+00:00",
-                        "duration": 2.4523389,
+                        "endTime": "2022-06-21 16:05:04+00:00",
+                        "duration": 2.4419646,
                         "outcome": "correct"
                     }
                 ]

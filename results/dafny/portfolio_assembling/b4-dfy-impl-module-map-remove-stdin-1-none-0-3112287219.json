@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652909995.122084,
-        "start_readable": "2022-05-18T23:39:55.122084",
-        "end": 1652910595.8439465,
-        "end_readable": "2022-05-18T23:49:55.843946",
-        "duration": "600.7218625546"
+        "start": 1655865063.8717163,
+        "start_readable": "2022-06-22T04:31:03.871716",
+        "end": 1655865080.678111,
+        "end_readable": "2022-06-22T04:31:20.678111",
+        "duration": "16.8063948154"
     },
-    "termination_reason": "portfolio timeout",
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/b4.dfy",
                 "/proc:Impl$$_module.Map.Remove",
-                "/xml:/tmp/tmpf3cb8xfi.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpn4n6c00_.xml",
                 "/vcsMaxKeepGoingSplits:4",
                 "/vcsKeepGoingTimeout:1"
             ],
@@ -35,9 +38,25 @@
                 "/vcsMaxKeepGoingSplits:4",
                 "/vcsKeepGoingTimeout:1"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "unclosed token: line 567, column 6"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/b4.dfy /proc:Impl$$_module.Map.Remove /compile:0 /rlimit:9999999 /xml:/tmp/tmpn4n6c00_.xml /vcsMaxKeepGoingSplits:4 /vcsKeepGoingTimeout:1",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.Map.Remove",
+                        "startTime": "2022-06-22 02:31:05+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 02:31:20+00:00",
+                        "duration": 14.5767051,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         }
     ]
 }

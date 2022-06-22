@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651331231.665875,
-        "start_readable": "2022-04-30T17:07:11.665875",
-        "end": 1651331239.6530523,
-        "end_readable": "2022-04-30T17:07:19.653052",
-        "duration": "7.9871773720"
+        "start": 1655831162.614995,
+        "start_readable": "2022-06-21T19:06:02.614995",
+        "end": 1655831170.6092455,
+        "end_readable": "2022-06-21T19:06:10.609246",
+        "duration": "7.9942505360"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/07-CounterThreadOwnership.dfy",
                 "/proc:Impl$$_module.IncrementerMethod.RunLoopBody",
-                "/xml:/tmp/tmp7j8tx0ae.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpqaru_014.xml",
                 "/proverOpt:O:fp.xform.array_blast_full=true"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /xml:/tmp/tmp7j8tx0ae.xml /proverOpt:O:fp.xform.array_blast_full=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /compile:0 /rlimit:9999999 /xml:/tmp/tmpqaru_014.xml /proverOpt:O:fp.xform.array_blast_full=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.IncrementerMethod.RunLoopBody",
-                        "startTime": "2022-04-30 15:07:14+00:00",
+                        "startTime": "2022-06-21 17:06:05+00:00",
                         "finished": true,
-                        "endTime": "2022-04-30 15:07:19+00:00",
-                        "duration": 5.2700947,
+                        "endTime": "2022-06-21 17:06:10+00:00",
+                        "duration": 5.2769522,
                         "outcome": "correct"
                     }
                 ]

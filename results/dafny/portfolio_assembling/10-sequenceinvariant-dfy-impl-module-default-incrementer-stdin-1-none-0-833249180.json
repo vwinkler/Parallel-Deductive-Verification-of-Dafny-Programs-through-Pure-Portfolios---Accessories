@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651336794.7016463,
-        "start_readable": "2022-04-30T18:39:54.701646",
-        "end": 1651336823.4035246,
-        "end_readable": "2022-04-30T18:40:23.403525",
-        "duration": "28.7018783092"
+        "start": 1655848752.635267,
+        "start_readable": "2022-06-21T23:59:12.635267",
+        "end": 1655848781.5166667,
+        "end_readable": "2022-06-21T23:59:41.516667",
+        "duration": "28.8813996315"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/10-SequenceInvariant.dfy",
                 "/proc:Impl$$_module.__default.Incrementer",
-                "/xml:/tmp/tmpu7262p9f.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpdd9ls2k5.xml",
                 "/proverOpt:O:fp.xform.instantiate_arrays.enforce=true"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/10-SequenceInvariant.dfy /proc:Impl$$_module.__default.Incrementer /xml:/tmp/tmpu7262p9f.xml /proverOpt:O:fp.xform.instantiate_arrays.enforce=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/10-SequenceInvariant.dfy /proc:Impl$$_module.__default.Incrementer /compile:0 /rlimit:9999999 /xml:/tmp/tmpdd9ls2k5.xml /proverOpt:O:fp.xform.instantiate_arrays.enforce=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.Incrementer",
-                        "startTime": "2022-04-30 16:39:57+00:00",
+                        "startTime": "2022-06-21 21:59:15+00:00",
                         "finished": true,
-                        "endTime": "2022-04-30 16:40:23+00:00",
-                        "duration": 26.2592989,
+                        "endTime": "2022-06-21 21:59:41+00:00",
+                        "duration": 26.4453505,
                         "outcome": "correct"
                     }
                 ]

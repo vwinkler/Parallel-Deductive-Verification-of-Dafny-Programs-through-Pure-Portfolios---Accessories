@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651369303.543609,
-        "start_readable": "2022-05-01T03:41:43.543609",
-        "end": 1651369307.8438427,
-        "end_readable": "2022-05-01T03:41:47.843843",
-        "duration": "4.3002338409"
+        "start": 1655875042.6521091,
+        "start_readable": "2022-06-22T07:17:22.652109",
+        "end": 1655875046.997337,
+        "end_readable": "2022-06-22T07:17:26.997337",
+        "duration": "4.3452279568"
     },
+    "termination_reason": "all instances terminated unsuccessfully",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/git-issue106.dfy",
                 "/proc:Impl$$_module.__default.L",
-                "/xml:/tmp/tmpx9rrvm8f.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpcbjwnroy.xml",
                 "/proverOpt:O:fp.datalog.subsumption=false"
             ],
             "diversification": [
@@ -39,14 +44,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue106.dfy /proc:Impl$$_module.__default.L /xml:/tmp/tmpx9rrvm8f.xml /proverOpt:O:fp.datalog.subsumption=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue106.dfy /proc:Impl$$_module.__default.L /compile:0 /rlimit:9999999 /xml:/tmp/tmpcbjwnroy.xml /proverOpt:O:fp.datalog.subsumption=false",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.L",
-                        "startTime": "2022-05-01 01:41:44+00:00",
+                        "startTime": "2022-06-22 05:17:24+00:00",
                         "finished": true,
-                        "endTime": "2022-05-01 01:41:47+00:00",
-                        "duration": 2.8015231,
+                        "endTime": "2022-06-22 05:17:26+00:00",
+                        "duration": 2.8343545,
                         "outcome": "outofresource"
                     }
                 ]

@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654280531.5057895,
-        "start_readable": "2022-06-03T20:22:11.505790",
-        "end": 1654280539.9744606,
-        "end_readable": "2022-06-03T20:22:19.974461",
-        "duration": "8.4686710835"
+        "start": 1655828020.2941995,
+        "start_readable": "2022-06-21T18:13:40.294199",
+        "end": 1655828028.855248,
+        "end_readable": "2022-06-21T18:13:48.855248",
+        "duration": "8.5610485077"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.OutlivesClaim.__ctor",
-                "/xml:/tmp/tmpr1p8bsri.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmprgfr5mx4.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,15 +47,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.OutlivesClaim.__ctor",
-                "/xml:/tmp/tmpk1jntgn5.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp1gr0hkr9.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.OutlivesClaim.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmp1gr0hkr9.xml /proverOpt:O:rewriter.eq2ineq=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.OutlivesClaim.__ctor",
+                        "startTime": "2022-06-21 16:13:43+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-21 16:13:48+00:00",
+                        "duration": 5.2790503,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 2,
@@ -61,7 +82,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.OutlivesClaim.__ctor",
-                "/xml:/tmp/tmpiwcn8xa0.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmputor17v8.xml",
                 "/proverOpt:O:smt.q.lift_ite=2"
             ],
             "diversification": [
@@ -371,11 +394,11 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.OutlivesClaim.__ctor /xml:/tmp/tmpiwcn8xa0.xml /proverOpt:O:smt.q.lift_ite=2",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.OutlivesClaim.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmputor17v8.xml /proverOpt:O:smt.q.lift_ite=2",
                 "methods": [
                     {
                         "name": "Impl$$_module.OutlivesClaim.__ctor",
-                        "startTime": "2022-06-03 18:22:14+00:00",
+                        "startTime": "2022-06-21 16:13:43+00:00",
                         "finished": false,
                         "endTime": null,
                         "outcome": null

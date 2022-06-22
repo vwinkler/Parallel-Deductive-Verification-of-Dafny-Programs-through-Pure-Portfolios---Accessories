@@ -7,47 +7,51 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651366114.7102902,
-        "start_readable": "2022-05-01T02:48:34.710290",
-        "end": 1651366146.8076944,
-        "end_readable": "2022-05-01T02:49:06.807694",
-        "duration": "32.0974042416"
+        "start": 1655878830.9573553,
+        "start_readable": "2022-06-22T08:20:30.957355",
+        "end": 1655878890.6292021,
+        "end_readable": "2022-06-22T08:21:30.629202",
+        "duration": "59.6718468666"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/VectorUpdate.dfy",
                 "/proc:Impl$$_module.__default._default_Main",
-                "/xml:/tmp/tmpjkl2bbo1.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpnvtv3gb_.xml",
                 "/proverOpt:O:fp.xform.slice=false"
             ],
             "diversification": [
                 "/proverOpt:O:fp.xform.slice=false"
             ],
             "stdout": [
-                "b\"/benchmarks/VectorUpdate.dfy(54,32): Verification of 'Impl$$_module.__default._default_Main' timed out after 30 seconds\"",
                 "b''",
-                "b'Dafny program verifier finished with 0 verified, 0 errors, 1 time out'"
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
             ],
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/VectorUpdate.dfy /proc:Impl$$_module.__default._default_Main /xml:/tmp/tmpjkl2bbo1.xml /proverOpt:O:fp.xform.slice=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/VectorUpdate.dfy /proc:Impl$$_module.__default._default_Main /compile:0 /rlimit:9999999 /xml:/tmp/tmpnvtv3gb_.xml /proverOpt:O:fp.xform.slice=false",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default._default_Main",
-                        "startTime": "2022-05-01 00:48:36+00:00",
+                        "startTime": "2022-06-22 06:20:32+00:00",
                         "finished": true,
-                        "endTime": "2022-05-01 00:49:06+00:00",
-                        "duration": 30.3652985,
-                        "outcome": "timedout"
+                        "endTime": "2022-06-22 06:21:30+00:00",
+                        "duration": 57.8763219,
+                        "outcome": "correct"
                     }
                 ]
             }

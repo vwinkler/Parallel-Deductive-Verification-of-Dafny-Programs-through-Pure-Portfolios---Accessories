@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654366319.744705,
-        "start_readable": "2022-06-04T20:11:59.744705",
-        "end": 1654366373.6209016,
-        "end_readable": "2022-06-04T20:12:53.620902",
-        "duration": "53.8761966228"
+        "start": 1655836344.7824404,
+        "start_readable": "2022-06-21T20:32:24.782440",
+        "end": 1655836414.2629306,
+        "end_readable": "2022-06-21T20:33:34.262931",
+        "duration": "69.4804902077"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
-                "/xml:/tmp/tmplzpk7c1d.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpd4t6l_9y.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,7 +47,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
-                "/xml:/tmp/tmps5kkpgb8.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp9ud0da88.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,7 +66,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
-                "/xml:/tmp/tmptvk04t4w.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpbcargjm4.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -78,29 +85,30 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
-                "/xml:/tmp/tmp4pxp9b4f.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmphs1gaq4p.xml",
                 "/proverOpt:O:smt.qi.lazy_threshold=30"
             ],
             "diversification": [
                 "/proverOpt:O:smt.qi.lazy_threshold=30"
             ],
             "stdout": [
-                "b\"/benchmarks/12-MutexLifetime-short.dfy(892,2): Verification of 'Impl$$_module.MutexGuardU32.__ctor' timed out after 30 seconds\"",
                 "b''",
-                "b'Dafny program verifier finished with 0 verified, 0 errors, 1 time out'"
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
             ],
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /xml:/tmp/tmp4pxp9b4f.xml /proverOpt:O:smt.qi.lazy_threshold=30",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmphs1gaq4p.xml /proverOpt:O:smt.qi.lazy_threshold=30",
                 "methods": [
                     {
                         "name": "Impl$$_module.MutexGuardU32.__ctor",
-                        "startTime": "2022-06-04 18:12:02+00:00",
+                        "startTime": "2022-06-21 18:32:27+00:00",
                         "finished": true,
-                        "endTime": "2022-06-04 18:12:52+00:00",
-                        "duration": 50.1716027,
-                        "outcome": "timedout"
+                        "endTime": "2022-06-21 18:33:33+00:00",
+                        "duration": 65.7747284,
+                        "outcome": "correct"
                     }
                 ]
             }

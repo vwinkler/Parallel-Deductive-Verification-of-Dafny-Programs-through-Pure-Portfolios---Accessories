@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654285412.0277112,
-        "start_readable": "2022-06-03T21:43:32.027711",
-        "end": 1654285423.711394,
-        "end_readable": "2022-06-03T21:43:43.711394",
-        "duration": "11.6836829185"
+        "start": 1655876088.229245,
+        "start_readable": "2022-06-22T07:34:48.229245",
+        "end": 1655876098.5616865,
+        "end_readable": "2022-06-22T07:34:58.561687",
+        "duration": "10.3324415684"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,15 +28,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/MinWindowMax.dfy",
                 "/proc:Impl$$_module.__default.MinimumWindowMax",
-                "/xml:/tmp/tmpzlhnqah7.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpwirzp4c3.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/MinWindowMax.dfy /proc:Impl$$_module.__default.MinimumWindowMax /compile:0 /rlimit:9999999 /xml:/tmp/tmpwirzp4c3.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.MinimumWindowMax",
+                        "startTime": "2022-06-22 05:34:50+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 05:34:57+00:00",
+                        "duration": 7.7024372,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -44,7 +63,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/MinWindowMax.dfy",
                 "/proc:Impl$$_module.__default.MinimumWindowMax",
-                "/xml:/tmp/tmpasf6djk8.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmprz2bsofw.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,31 +82,17 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/MinWindowMax.dfy",
                 "/proc:Impl$$_module.__default.MinimumWindowMax",
-                "/xml:/tmp/tmpheem9scp.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmphoyd46b1.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=10"
             ],
             "diversification": [
                 "/proverOpt:O:smt.qi.eager_threshold=10"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/MinWindowMax.dfy /proc:Impl$$_module.__default.MinimumWindowMax /xml:/tmp/tmpheem9scp.xml /proverOpt:O:smt.qi.eager_threshold=10",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.__default.MinimumWindowMax",
-                        "startTime": "2022-06-03 19:43:33+00:00",
-                        "finished": true,
-                        "endTime": "2022-06-03 19:43:43+00:00",
-                        "duration": 9.2098269,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

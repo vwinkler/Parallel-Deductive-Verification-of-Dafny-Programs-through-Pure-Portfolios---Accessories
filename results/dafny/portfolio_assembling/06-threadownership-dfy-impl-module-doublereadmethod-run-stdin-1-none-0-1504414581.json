@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652916987.683708,
-        "start_readable": "2022-05-19T01:36:27.683708",
-        "end": 1652916990.2634845,
-        "end_readable": "2022-05-19T01:36:30.263484",
-        "duration": "2.5797765255"
+        "start": 1655826376.881278,
+        "start_readable": "2022-06-21T17:46:16.881278",
+        "end": 1655826379.4693413,
+        "end_readable": "2022-06-21T17:46:19.469341",
+        "duration": "2.5880632401"
     },
-    "termination_reason": "instance termination",
+    "termination_reason": "all instances terminated unsuccessfully",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/06-ThreadOwnership.dfy",
                 "/proc:Impl$$_module.DoubleReadMethod.Run",
-                "/xml:/tmp/tmpy5y9ltjl.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpep3qqtem.xml",
                 "/proverOpt:O:smt.q.lift_ite=2"
             ],
             "diversification": [
@@ -137,11 +140,11 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/06-ThreadOwnership.dfy /proc:Impl$$_module.DoubleReadMethod.Run /xml:/tmp/tmpy5y9ltjl.xml /proverOpt:O:smt.q.lift_ite=2",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/06-ThreadOwnership.dfy /proc:Impl$$_module.DoubleReadMethod.Run /compile:0 /rlimit:9999999 /xml:/tmp/tmpep3qqtem.xml /proverOpt:O:smt.q.lift_ite=2",
                 "methods": [
                     {
                         "name": "Impl$$_module.DoubleReadMethod.Run",
-                        "startTime": "2022-05-18 23:36:29+00:00",
+                        "startTime": "2022-06-21 15:46:18+00:00",
                         "finished": false,
                         "endTime": null,
                         "outcome": null

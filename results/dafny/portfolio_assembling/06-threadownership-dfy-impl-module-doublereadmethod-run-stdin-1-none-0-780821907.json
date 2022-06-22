@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652917274.5088797,
-        "start_readable": "2022-05-19T01:41:14.508880",
-        "end": 1652917298.2650099,
-        "end_readable": "2022-05-19T01:41:38.265010",
-        "duration": "23.7561302185"
+        "start": 1655826964.4358878,
+        "start_readable": "2022-06-21T17:56:04.435888",
+        "end": 1655826988.302035,
+        "end_readable": "2022-06-21T17:56:28.302035",
+        "duration": "23.8661472797"
     },
     "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/06-ThreadOwnership.dfy",
                 "/proc:Impl$$_module.DoubleReadMethod.Run",
-                "/xml:/tmp/tmpzfgdetn5.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp2v4pp72r.xml",
                 "/proverOpt:O:smt.mbqi.max_cexs=100",
                 "/proverOpt:O:smt.qi.quick_checker=2"
             ],
@@ -42,14 +45,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/06-ThreadOwnership.dfy /proc:Impl$$_module.DoubleReadMethod.Run /xml:/tmp/tmpzfgdetn5.xml /proverOpt:O:smt.mbqi.max_cexs=100 /proverOpt:O:smt.qi.quick_checker=2",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/06-ThreadOwnership.dfy /proc:Impl$$_module.DoubleReadMethod.Run /compile:0 /rlimit:9999999 /xml:/tmp/tmp2v4pp72r.xml /proverOpt:O:smt.mbqi.max_cexs=100 /proverOpt:O:smt.qi.quick_checker=2",
                 "methods": [
                     {
                         "name": "Impl$$_module.DoubleReadMethod.Run",
-                        "startTime": "2022-05-18 23:41:16+00:00",
+                        "startTime": "2022-06-21 15:56:06+00:00",
                         "finished": true,
-                        "endTime": "2022-05-18 23:41:38+00:00",
-                        "duration": 21.5857091,
+                        "endTime": "2022-06-21 15:56:28+00:00",
+                        "duration": 21.69689,
                         "outcome": "correct"
                     }
                 ]

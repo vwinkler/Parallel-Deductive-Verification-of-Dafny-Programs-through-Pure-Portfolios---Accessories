@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654364995.4263604,
-        "start_readable": "2022-06-04T19:49:55.426360",
-        "end": 1654365003.1370013,
-        "end_readable": "2022-06-04T19:50:03.137001",
-        "duration": "7.7106409073"
+        "start": 1655873356.4016762,
+        "start_readable": "2022-06-22T06:49:16.401676",
+        "end": 1655873364.1753206,
+        "end_readable": "2022-06-22T06:49:24.175321",
+        "duration": "7.7736444473"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmpmvvtbgon.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmph2fi3pmu.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,15 +47,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmpc4pj6j0s.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp9esemd66.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/TreeBarrier.dfy /proc:Impl$$_module.Node.barrier /compile:0 /rlimit:9999999 /xml:/tmp/tmp9esemd66.xml /proverOpt:O:rewriter.eq2ineq=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.Node.barrier",
+                        "startTime": "2022-06-22 04:49:18+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 04:49:23+00:00",
+                        "duration": 5.4145527,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 2,
@@ -61,7 +82,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmp_o0vwm6g.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp7rri0n3z.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -78,7 +101,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmp5xar0cgd.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp0dm4heu5.xml",
                 "/proverOpt:O:model_evaluator.array_equalities=false"
             ],
             "diversification": [
@@ -91,14 +116,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/TreeBarrier.dfy /proc:Impl$$_module.Node.barrier /xml:/tmp/tmp5xar0cgd.xml /proverOpt:O:model_evaluator.array_equalities=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/TreeBarrier.dfy /proc:Impl$$_module.Node.barrier /compile:0 /rlimit:9999999 /xml:/tmp/tmp0dm4heu5.xml /proverOpt:O:model_evaluator.array_equalities=false",
                 "methods": [
                     {
                         "name": "Impl$$_module.Node.barrier",
-                        "startTime": "2022-06-04 17:49:57+00:00",
+                        "startTime": "2022-06-22 04:49:18+00:00",
                         "finished": true,
-                        "endTime": "2022-06-04 17:50:02+00:00",
-                        "duration": 5.392052,
+                        "endTime": "2022-06-22 04:49:23+00:00",
+                        "duration": 5.465266,
                         "outcome": "correct"
                     }
                 ]

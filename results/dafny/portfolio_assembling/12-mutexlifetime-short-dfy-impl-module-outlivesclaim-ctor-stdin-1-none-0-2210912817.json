@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653784785.1364121,
-        "start_readable": "2022-05-29T02:39:45.136412",
-        "end": 1653784793.3829694,
-        "end_readable": "2022-05-29T02:39:53.382969",
-        "duration": "8.2465572357"
+        "start": 1655841817.8185413,
+        "start_readable": "2022-06-21T22:03:37.818541",
+        "end": 1655841826.021763,
+        "end_readable": "2022-06-21T22:03:46.021763",
+        "duration": "8.2032217979"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,15 +28,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.OutlivesClaim.__ctor",
-                "/xml:/tmp/tmph8sbp6dt.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpcmv4qssq.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.OutlivesClaim.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmpcmv4qssq.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.OutlivesClaim.__ctor",
+                        "startTime": "2022-06-21 20:03:40+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-21 20:03:45+00:00",
+                        "duration": 5.2499572,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -44,7 +63,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.OutlivesClaim.__ctor",
-                "/xml:/tmp/tmpduu6vn2e.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpv1lr4ofr.xml",
                 "/proverOpt:O:rewriter.bv_le_extra=true"
             ],
             "diversification": [
@@ -57,14 +78,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.OutlivesClaim.__ctor /xml:/tmp/tmpduu6vn2e.xml /proverOpt:O:rewriter.bv_le_extra=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.OutlivesClaim.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmpv1lr4ofr.xml /proverOpt:O:rewriter.bv_le_extra=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.OutlivesClaim.__ctor",
-                        "startTime": "2022-05-29 00:39:48+00:00",
+                        "startTime": "2022-06-21 20:03:40+00:00",
                         "finished": true,
-                        "endTime": "2022-05-29 00:39:53+00:00",
-                        "duration": 5.2286169,
+                        "endTime": "2022-06-21 20:03:45+00:00",
+                        "duration": 5.2367333,
                         "outcome": "correct"
                     }
                 ]

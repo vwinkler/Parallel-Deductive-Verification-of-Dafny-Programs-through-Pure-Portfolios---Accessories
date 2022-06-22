@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654282819.3355541,
-        "start_readable": "2022-06-03T21:00:19.335554",
-        "end": 1654282837.4708078,
-        "end_readable": "2022-06-03T21:00:37.470808",
-        "duration": "18.1352536678"
+        "start": 1655865906.6170576,
+        "start_readable": "2022-06-22T04:45:06.617058",
+        "end": 1655865921.232756,
+        "end_readable": "2022-06-22T04:45:21.232756",
+        "duration": "14.6156983376"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/UnionFind.dfy",
                 "/proc:Impl$$M3.UnionFind.Join",
-                "/xml:/tmp/tmpssr03cv5.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpm7_ysq5u.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,28 +47,13 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/UnionFind.dfy",
                 "/proc:Impl$$M3.UnionFind.Join",
-                "/xml:/tmp/tmp1pqa6fro.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpwupzk39x.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.eq2ineq=true"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 2,
-            "cpu": 20,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/UnionFind.dfy",
-                "/proc:Impl$$M3.UnionFind.Join",
-                "/xml:/tmp/tmpcqc50unc.xml",
-                "/vcsPathJoinMult:0.6"
-            ],
-            "diversification": [
-                "/vcsPathJoinMult:0.6"
             ],
             "stdout": [
                 "b''",
@@ -74,18 +62,37 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/UnionFind.dfy /proc:Impl$$M3.UnionFind.Join /xml:/tmp/tmpcqc50unc.xml /vcsPathJoinMult:0.6",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/UnionFind.dfy /proc:Impl$$M3.UnionFind.Join /compile:0 /rlimit:9999999 /xml:/tmp/tmpwupzk39x.xml /proverOpt:O:rewriter.eq2ineq=true",
                 "methods": [
                     {
                         "name": "Impl$$M3.UnionFind.Join",
-                        "startTime": "2022-06-03 19:00:21+00:00",
+                        "startTime": "2022-06-22 02:45:09+00:00",
                         "finished": true,
-                        "endTime": "2022-06-03 19:00:36+00:00",
-                        "duration": 14.2671397,
+                        "endTime": "2022-06-22 02:45:20+00:00",
+                        "duration": 10.8092102,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 2,
+            "cpu": 20,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/UnionFind.dfy",
+                "/proc:Impl$$M3.UnionFind.Join",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp8al3_zb6.xml",
+                "/vcsPathJoinMult:0.6"
+            ],
+            "diversification": [
+                "/vcsPathJoinMult:0.6"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

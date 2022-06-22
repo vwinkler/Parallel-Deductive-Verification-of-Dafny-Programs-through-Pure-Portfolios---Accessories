@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654285180.5028458,
-        "start_readable": "2022-06-03T21:39:40.502846",
-        "end": 1654285187.7511652,
-        "end_readable": "2022-06-03T21:39:47.751165",
-        "duration": "7.2483193874"
+        "start": 1655872858.671373,
+        "start_readable": "2022-06-22T06:40:58.671373",
+        "end": 1655872865.1213746,
+        "end_readable": "2022-06-22T06:41:05.121375",
+        "duration": "6.4500017166"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/Bitvectors.dfy",
                 "/proc:Impl$$_module.__default.Unary",
-                "/xml:/tmp/tmp9f95gmcv.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpbekwyrn9.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,28 +47,13 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/Bitvectors.dfy",
                 "/proc:Impl$$_module.__default.Unary",
-                "/xml:/tmp/tmpwzqj7g39.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpuc_tw7zv.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.eq2ineq=true"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 2,
-            "cpu": 20,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/Bitvectors.dfy",
-                "/proc:Impl$$_module.__default.Unary",
-                "/xml:/tmp/tmpnfxzrhdz.xml",
-                "/proverOpt:O:pi.block_loop_patterns=false"
-            ],
-            "diversification": [
-                "/proverOpt:O:pi.block_loop_patterns=false"
             ],
             "stdout": [
                 "b''",
@@ -74,18 +62,37 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/Bitvectors.dfy /proc:Impl$$_module.__default.Unary /xml:/tmp/tmpnfxzrhdz.xml /proverOpt:O:pi.block_loop_patterns=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/Bitvectors.dfy /proc:Impl$$_module.__default.Unary /compile:0 /rlimit:9999999 /xml:/tmp/tmpuc_tw7zv.xml /proverOpt:O:rewriter.eq2ineq=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.Unary",
-                        "startTime": "2022-06-03 19:39:42+00:00",
+                        "startTime": "2022-06-22 04:41:00+00:00",
                         "finished": true,
-                        "endTime": "2022-06-03 19:39:47+00:00",
-                        "duration": 4.9359356,
+                        "endTime": "2022-06-22 04:41:05+00:00",
+                        "duration": 4.8049436,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 2,
+            "cpu": 20,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/Bitvectors.dfy",
+                "/proc:Impl$$_module.__default.Unary",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpc5vn1ank.xml",
+                "/proverOpt:O:pi.block_loop_patterns=false"
+            ],
+            "diversification": [
+                "/proverOpt:O:pi.block_loop_patterns=false"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

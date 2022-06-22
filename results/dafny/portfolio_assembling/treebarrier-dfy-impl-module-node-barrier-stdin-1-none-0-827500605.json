@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654365211.5916786,
-        "start_readable": "2022-06-04T19:53:31.591679",
-        "end": 1654365219.3532531,
-        "end_readable": "2022-06-04T19:53:39.353253",
-        "duration": "7.7615745068"
+        "start": 1655872979.4078305,
+        "start_readable": "2022-06-22T06:42:59.407830",
+        "end": 1655872986.835231,
+        "end_readable": "2022-06-22T06:43:06.835231",
+        "duration": "7.4274005890"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmpkda93v_w.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpa1uo2o6e.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,7 +47,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmpdf5q2gtd.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpdcgppdk7.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -57,14 +62,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/TreeBarrier.dfy /proc:Impl$$_module.Node.barrier /xml:/tmp/tmpdf5q2gtd.xml /proverOpt:O:rewriter.eq2ineq=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/TreeBarrier.dfy /proc:Impl$$_module.Node.barrier /compile:0 /rlimit:9999999 /xml:/tmp/tmpdcgppdk7.xml /proverOpt:O:rewriter.eq2ineq=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.Node.barrier",
-                        "startTime": "2022-06-04 17:53:33+00:00",
+                        "startTime": "2022-06-22 04:43:01+00:00",
                         "finished": true,
-                        "endTime": "2022-06-04 17:53:38+00:00",
-                        "duration": 5.3890048,
+                        "endTime": "2022-06-22 04:43:06+00:00",
+                        "duration": 5.3831161,
                         "outcome": "correct"
                     }
                 ]
@@ -77,7 +82,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmp3ont8c9f.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp_wg3sq4e.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -94,15 +101,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmpcgy68k1q.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpg_isqdko.xml",
                 "/proverOpt:O:smt.qi.lazy_threshold=30"
             ],
             "diversification": [
                 "/proverOpt:O:smt.qi.lazy_threshold=30"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/TreeBarrier.dfy /proc:Impl$$_module.Node.barrier /compile:0 /rlimit:9999999 /xml:/tmp/tmpg_isqdko.xml /proverOpt:O:smt.qi.lazy_threshold=30",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.Node.barrier",
+                        "startTime": "2022-06-22 04:43:01+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 04:43:06+00:00",
+                        "duration": 5.4305063,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         }
     ]
 }

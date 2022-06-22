@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651357103.3114972,
-        "start_readable": "2022-05-01T00:18:23.311497",
-        "end": 1651357172.3404536,
-        "end_readable": "2022-05-01T00:19:32.340454",
-        "duration": "69.0289564133"
+        "start": 1655864283.635927,
+        "start_readable": "2022-06-22T04:18:03.635927",
+        "end": 1655864353.4298916,
+        "end_readable": "2022-06-22T04:19:13.429892",
+        "duration": "69.7939646244"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
-                "/xml:/tmp/tmpadpptm7e.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpcoj46yid.xml",
                 "/proverOpt:O:fp.datalog.dbg_fpr_nonempty_relation_signature=true"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /xml:/tmp/tmpadpptm7e.xml /proverOpt:O:fp.datalog.dbg_fpr_nonempty_relation_signature=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmpcoj46yid.xml /proverOpt:O:fp.datalog.dbg_fpr_nonempty_relation_signature=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.MutexGuardU32.__ctor",
-                        "startTime": "2022-04-30 22:18:26+00:00",
+                        "startTime": "2022-06-22 02:18:06+00:00",
                         "finished": true,
-                        "endTime": "2022-04-30 22:19:32+00:00",
-                        "duration": 65.8587735,
+                        "endTime": "2022-06-22 02:19:13+00:00",
+                        "duration": 66.6151178,
                         "outcome": "correct"
                     }
                 ]

@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652923341.3811018,
-        "start_readable": "2022-05-19T03:22:21.381102",
-        "end": 1652923350.7010539,
-        "end_readable": "2022-05-19T03:22:30.701054",
-        "duration": "9.3199520111"
+        "start": 1655874198.4901915,
+        "start_readable": "2022-06-22T07:03:18.490191",
+        "end": 1655874207.8526056,
+        "end_readable": "2022-06-22T07:03:27.852606",
+        "duration": "9.3624141216"
     },
     "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/SnapshotableTrees.dfy",
                 "/proc:Impl$$SnapTreeTestHarness.__default._default_Main",
-                "/xml:/tmp/tmpsaomj_7e.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmprcmorgeg.xml",
                 "/proverOpt:O:smt.mbqi.max_cexs=100",
                 "/proverOpt:O:smt.qi.quick_checker=2"
             ],
@@ -42,14 +45,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/SnapshotableTrees.dfy /proc:Impl$$SnapTreeTestHarness.__default._default_Main /xml:/tmp/tmpsaomj_7e.xml /proverOpt:O:smt.mbqi.max_cexs=100 /proverOpt:O:smt.qi.quick_checker=2",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/SnapshotableTrees.dfy /proc:Impl$$SnapTreeTestHarness.__default._default_Main /compile:0 /rlimit:9999999 /xml:/tmp/tmprcmorgeg.xml /proverOpt:O:smt.mbqi.max_cexs=100 /proverOpt:O:smt.qi.quick_checker=2",
                 "methods": [
                     {
                         "name": "Impl$$SnapTreeTestHarness.__default._default_Main",
-                        "startTime": "2022-05-19 01:22:23+00:00",
+                        "startTime": "2022-06-22 05:03:20+00:00",
                         "finished": true,
-                        "endTime": "2022-05-19 01:22:30+00:00",
-                        "duration": 7.0856198,
+                        "endTime": "2022-06-22 05:03:27+00:00",
+                        "duration": 7.0977622,
                         "outcome": "correct"
                     }
                 ]

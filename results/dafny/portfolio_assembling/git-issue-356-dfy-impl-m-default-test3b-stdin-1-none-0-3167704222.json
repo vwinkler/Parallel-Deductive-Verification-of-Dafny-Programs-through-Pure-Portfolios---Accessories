@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653788584.699095,
-        "start_readable": "2022-05-29T03:43:04.699095",
-        "end": 1653788590.070959,
-        "end_readable": "2022-05-29T03:43:10.070959",
-        "duration": "5.3718640804"
+        "start": 1655874086.9972563,
+        "start_readable": "2022-06-22T07:01:26.997256",
+        "end": 1655874091.4989257,
+        "end_readable": "2022-06-22T07:01:31.498926",
+        "duration": "4.5016694069"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,15 +28,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/git-issue-356.dfy",
                 "/proc:Impl$$M.__default.Test3b",
-                "/xml:/tmp/tmpj80dgtcv.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp2t1flvxy.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue-356.dfy /proc:Impl$$M.__default.Test3b /compile:0 /rlimit:9999999 /xml:/tmp/tmp2t1flvxy.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$M.__default.Test3b",
+                        "startTime": "2022-06-22 05:01:28+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 05:01:31+00:00",
+                        "duration": 2.5908958,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -44,28 +63,14 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/git-issue-356.dfy",
                 "/proc:Impl$$M.__default.Test3b",
-                "/xml:/tmp/tmph69rzcjh.xml"
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpyw_s5tx9.xml"
             ],
             "diversification": [],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue-356.dfy /proc:Impl$$M.__default.Test3b /xml:/tmp/tmph69rzcjh.xml",
-                "methods": [
-                    {
-                        "name": "Impl$$M.__default.Test3b",
-                        "startTime": "2022-05-29 01:43:06+00:00",
-                        "finished": true,
-                        "endTime": "2022-05-29 01:43:09+00:00",
-                        "duration": 2.9722539,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

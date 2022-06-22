@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652921856.7479687,
-        "start_readable": "2022-05-19T02:57:36.747969",
-        "end": 1652921903.8527925,
-        "end_readable": "2022-05-19T02:58:23.852793",
-        "duration": "47.1048238277"
+        "start": 1655834365.4699452,
+        "start_readable": "2022-06-21T19:59:25.469945",
+        "end": 1655834428.7719238,
+        "end_readable": "2022-06-21T20:00:28.771924",
+        "duration": "63.3019785881"
     },
-    "termination_reason": "instance termination",
+    "termination_reason": "all instances terminated unsuccessfully",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
-                "/xml:/tmp/tmp4msqnktx.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp2s6i89ir.xml",
                 "/proverOpt:O:smt.q.lift_ite=2"
             ],
             "diversification": [
@@ -332,9 +335,9 @@
                 "b'  theory_case_split (bool) (default: false)'",
                 "b'  timeout (unsigned int) (default: 4294967295)'",
                 "b''",
-                "b'Prover error: Invalid PING response from the prover: unknown'",
+                "b'Prover error: Invalid PING response from the prover: unsat'",
                 "b''",
-                "b'Prover error: Invalid PING response from the prover: (:rlimit 49949411)'",
+                "b'Prover error: Invalid PING response from the prover: (:rlimit 75320040)'",
                 "b''",
                 "b\"Prover error: line 11024 column 28: unknown parameter 'q.lift_ite' at module 'smt'\"",
                 "b'Legal parameters are:'",
@@ -439,11 +442,11 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /xml:/tmp/tmp4msqnktx.xml /proverOpt:O:smt.q.lift_ite=2",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmp2s6i89ir.xml /proverOpt:O:smt.q.lift_ite=2",
                 "methods": [
                     {
                         "name": "Impl$$_module.MutexGuardU32.__ctor",
-                        "startTime": "2022-05-19 00:57:39+00:00",
+                        "startTime": "2022-06-21 17:59:28+00:00",
                         "finished": false,
                         "endTime": null,
                         "outcome": null

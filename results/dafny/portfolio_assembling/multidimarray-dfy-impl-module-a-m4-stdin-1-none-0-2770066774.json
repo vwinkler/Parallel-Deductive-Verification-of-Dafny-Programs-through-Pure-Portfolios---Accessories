@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653787719.9818087,
-        "start_readable": "2022-05-29T03:28:39.981809",
-        "end": 1653787723.3555293,
-        "end_readable": "2022-05-29T03:28:43.355529",
-        "duration": "3.3737206459"
+        "start": 1655868847.953342,
+        "start_readable": "2022-06-22T05:34:07.953342",
+        "end": 1655868851.305472,
+        "end_readable": "2022-06-22T05:34:11.305472",
+        "duration": "3.3521299362"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/MultiDimArray.dfy",
                 "/proc:Impl$$_module.A.M4",
-                "/xml:/tmp/tmp5gsg8530.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpnjgyn90s.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -40,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/MultiDimArray.dfy /proc:Impl$$_module.A.M4 /xml:/tmp/tmp5gsg8530.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/MultiDimArray.dfy /proc:Impl$$_module.A.M4 /compile:0 /rlimit:9999999 /xml:/tmp/tmpnjgyn90s.xml /proverOpt:O:rewriter.arith_lhs=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.A.M4",
-                        "startTime": "2022-05-29 01:28:42+00:00",
+                        "startTime": "2022-06-22 03:34:10+00:00",
                         "finished": true,
-                        "endTime": "2022-05-29 01:28:43+00:00",
-                        "duration": 0.297228,
+                        "endTime": "2022-06-22 03:34:11+00:00",
+                        "duration": 0.2925959,
                         "outcome": "correct"
                     }
                 ]
@@ -60,15 +63,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/MultiDimArray.dfy",
                 "/proc:Impl$$_module.A.M4",
-                "/xml:/tmp/tmpfzo0j1le.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpvqh2zcbg.xml",
                 "/proverOpt:O:fp.validate=true"
             ],
             "diversification": [
                 "/proverOpt:O:fp.validate=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/MultiDimArray.dfy /proc:Impl$$_module.A.M4 /compile:0 /rlimit:9999999 /xml:/tmp/tmpvqh2zcbg.xml /proverOpt:O:fp.validate=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.A.M4",
+                        "startTime": "2022-06-22 03:34:10+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 03:34:11+00:00",
+                        "duration": 0.295517,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         }
     ]
 }

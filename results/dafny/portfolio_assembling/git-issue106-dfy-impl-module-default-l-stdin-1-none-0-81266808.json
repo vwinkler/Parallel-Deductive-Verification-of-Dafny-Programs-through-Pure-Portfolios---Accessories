@@ -8,17 +8,18 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653788547.795559,
-        "start_readable": "2022-05-29T03:42:27.795559",
-        "end": 1653788552.9386976,
-        "end_readable": "2022-05-29T03:42:32.938698",
-        "duration": "5.1431386471"
+        "start": 1655876226.6676748,
+        "start_readable": "2022-06-22T07:37:06.667675",
+        "end": 1655876232.2709541,
+        "end_readable": "2022-06-22T07:37:12.270954",
+        "duration": "5.6032793522"
     },
-    "termination_reason": "instance termination",
+    "termination_reason": "all instances terminated unsuccessfully",
     "instances": [
         {
             "id": 0,
@@ -27,15 +28,34 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/git-issue106.dfy",
                 "/proc:Impl$$_module.__default.L",
-                "/xml:/tmp/tmp95cw9m2e.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmphjoyk9sg.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b'/benchmarks/git-issue106.dfy(6,21): Verification out of resource (Impl$$_module.__default.L)'",
+                "b''",
+                "b'Dafny program verifier finished with 0 verified, 0 errors, 1 out of resource'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue106.dfy /proc:Impl$$_module.__default.L /compile:0 /rlimit:9999999 /xml:/tmp/tmphjoyk9sg.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.L",
+                        "startTime": "2022-06-22 05:37:08+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 05:37:12+00:00",
+                        "duration": 4.0727799,
+                        "outcome": "outofresource"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -44,7 +64,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/git-issue106.dfy",
                 "/proc:Impl$$_module.__default.L",
-                "/xml:/tmp/tmpp3vzw5zk.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp1b4gwowk.xml",
                 "/proverOpt:O:fp.xform.scale=true"
             ],
             "diversification": [
@@ -58,14 +80,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue106.dfy /proc:Impl$$_module.__default.L /xml:/tmp/tmpp3vzw5zk.xml /proverOpt:O:fp.xform.scale=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue106.dfy /proc:Impl$$_module.__default.L /compile:0 /rlimit:9999999 /xml:/tmp/tmp1b4gwowk.xml /proverOpt:O:fp.xform.scale=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.L",
-                        "startTime": "2022-05-29 01:42:29+00:00",
+                        "startTime": "2022-06-22 05:37:08+00:00",
                         "finished": true,
-                        "endTime": "2022-05-29 01:42:32+00:00",
-                        "duration": 2.8624822,
+                        "endTime": "2022-06-22 05:37:10+00:00",
+                        "duration": 2.7956278,
                         "outcome": "outofresource"
                     }
                 ]

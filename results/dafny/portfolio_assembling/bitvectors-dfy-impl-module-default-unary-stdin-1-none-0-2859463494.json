@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654639577.440949,
-        "start_readable": "2022-06-08T00:06:17.440949",
-        "end": 1654639580.1098204,
-        "end_readable": "2022-06-08T00:06:20.109820",
-        "duration": "2.6688714027"
+        "start": 1655872346.2712116,
+        "start_readable": "2022-06-22T06:32:26.271212",
+        "end": 1655872348.9501374,
+        "end_readable": "2022-06-22T06:32:28.950137",
+        "duration": "2.6789257526"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/Bitvectors.dfy",
                 "/proc:Impl$$_module.__default.Unary",
-                "/xml:/tmp/tmpnbfjv280.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp60h5bfrp.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,7 +47,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/Bitvectors.dfy",
                 "/proc:Impl$$_module.__default.Unary",
-                "/xml:/tmp/tmp9_9mepsi.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpeh13l3uj.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,7 +66,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/Bitvectors.dfy",
                 "/proc:Impl$$_module.__default.Unary",
-                "/xml:/tmp/tmp25ck9093.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpx5afmlmz.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -74,14 +81,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/Bitvectors.dfy /proc:Impl$$_module.__default.Unary /xml:/tmp/tmp25ck9093.xml /proverOpt:O:rewriter.flat=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/Bitvectors.dfy /proc:Impl$$_module.__default.Unary /compile:0 /rlimit:9999999 /xml:/tmp/tmpx5afmlmz.xml /proverOpt:O:rewriter.flat=false",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.Unary",
-                        "startTime": "2022-06-07 22:06:19+00:00",
+                        "startTime": "2022-06-22 04:32:27+00:00",
                         "finished": true,
-                        "endTime": "2022-06-07 22:06:19+00:00",
-                        "duration": 0.2735651,
+                        "endTime": "2022-06-22 04:32:28+00:00",
+                        "duration": 0.277693,
                         "outcome": "correct"
                     }
                 ]
@@ -94,7 +101,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/Bitvectors.dfy",
                 "/proc:Impl$$_module.__default.Unary",
-                "/xml:/tmp/tmpl3sntgp2.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp6kf_csea.xml",
                 "/vcsMaxKeepGoingSplits:4",
                 "/vcsKeepGoingTimeout:20"
             ],
@@ -113,7 +122,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/Bitvectors.dfy",
                 "/proc:Impl$$_module.__default.Unary",
-                "/xml:/tmp/tmpkpnbmqzs.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpfbxjsg6u.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=30"
             ],
             "diversification": [
@@ -130,13 +141,22 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/Bitvectors.dfy",
                 "/proc:Impl$$_module.__default.Unary",
-                "/xml:/tmp/tmpc90zh8n7.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpk8po1hnh.xml",
                 "/proverOpt:O:ackermannization.at_backend=true"
             ],
             "diversification": [
                 "/proverOpt:O:ackermannization.at_backend=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b\"Prover error: line 6 column 41: unknown parameter 'at_backend' at module 'ackermannization'\"",
+                "b'Legal parameters are:'",
+                "b'  eager (bool) (default: true)'",
+                "b'  inc_sat_backend (bool) (default: false)'",
+                "b'  sat_backend (bool) (default: false)'",
+                "b''"
+            ],
             "stderr": [],
             "xml": "no element found: line 1, column 0"
         }

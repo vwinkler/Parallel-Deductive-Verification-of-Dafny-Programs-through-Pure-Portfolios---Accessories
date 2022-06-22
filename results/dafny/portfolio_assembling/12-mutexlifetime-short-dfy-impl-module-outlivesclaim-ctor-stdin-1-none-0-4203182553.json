@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654363247.1299386,
-        "start_readable": "2022-06-04T19:20:47.129939",
-        "end": 1654363255.9941123,
-        "end_readable": "2022-06-04T19:20:55.994112",
-        "duration": "8.8641736507"
+        "start": 1655844400.6747303,
+        "start_readable": "2022-06-21T22:46:40.674730",
+        "end": 1655844408.9848523,
+        "end_readable": "2022-06-21T22:46:48.984852",
+        "duration": "8.3101220131"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.OutlivesClaim.__ctor",
-                "/xml:/tmp/tmpsmpmxi17.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpbq4zng9g.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,15 +47,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.OutlivesClaim.__ctor",
-                "/xml:/tmp/tmpmmphabbb.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp35d8_vf5.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.OutlivesClaim.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmp35d8_vf5.xml /proverOpt:O:rewriter.eq2ineq=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.OutlivesClaim.__ctor",
+                        "startTime": "2022-06-21 20:46:43+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-21 20:46:48+00:00",
+                        "duration": 5.2980195,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 2,
@@ -61,7 +82,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.OutlivesClaim.__ctor",
-                "/xml:/tmp/tmppvxoqo1p.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp94dv4uy6.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -78,7 +101,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.OutlivesClaim.__ctor",
-                "/xml:/tmp/tmpm07bu6mo.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmps8rmebup.xml",
                 "/proverOpt:O:smt.mbqi.force_template=0"
             ],
             "diversification": [
@@ -91,14 +116,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.OutlivesClaim.__ctor /xml:/tmp/tmpm07bu6mo.xml /proverOpt:O:smt.mbqi.force_template=0",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.OutlivesClaim.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmps8rmebup.xml /proverOpt:O:smt.mbqi.force_template=0",
                 "methods": [
                     {
                         "name": "Impl$$_module.OutlivesClaim.__ctor",
-                        "startTime": "2022-06-04 17:20:50+00:00",
+                        "startTime": "2022-06-21 20:46:43+00:00",
                         "finished": true,
-                        "endTime": "2022-06-04 17:20:55+00:00",
-                        "duration": 5.2032208,
+                        "endTime": "2022-06-21 20:46:48+00:00",
+                        "duration": 5.2999426,
                         "outcome": "correct"
                     }
                 ]

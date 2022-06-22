@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652739036.829991,
-        "start_readable": "2022-05-17T00:10:36.829991",
-        "end": 1652739090.1948156,
-        "end_readable": "2022-05-17T00:11:30.194816",
-        "duration": "53.3648245335"
+        "start": 1655869741.6423755,
+        "start_readable": "2022-06-22T05:49:01.642375",
+        "end": 1655869801.4480326,
+        "end_readable": "2022-06-22T05:50:01.448033",
+        "duration": "59.8056571484"
     },
     "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/VectorUpdate.dfy",
                 "/proc:Impl$$_module.__default._default_Main",
-                "/xml:/tmp/tmpdi3_nwn6.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpag8b_uw_.xml",
                 "/vcsMaxKeepGoingSplits:16",
                 "/vcsKeepGoingTimeout:10"
             ],
@@ -36,29 +39,21 @@
                 "/vcsKeepGoingTimeout:10"
             ],
             "stdout": [
-                "b'/benchmarks/VectorUpdate.dfy(73,14): Error: assertion violation'",
-                "b'Execution trace:'",
-                "b'    (0,0): anon0'",
-                "b'    /benchmarks/VectorUpdate.dfy(58,23): anon28_Else'",
-                "b'    /benchmarks/VectorUpdate.dfy(60,23): anon30_Else'",
-                "b'    /benchmarks/VectorUpdate.dfy(63,23): anon32_Else'",
-                "b'    /benchmarks/VectorUpdate.dfy(67,23): anon35_Else'",
-                "b'    /benchmarks/VectorUpdate.dfy(71,22): anon39_Else'",
                 "b''",
-                "b'Dafny program verifier finished with 0 verified, 1 error'"
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
             ],
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/VectorUpdate.dfy /proc:Impl$$_module.__default._default_Main /xml:/tmp/tmpdi3_nwn6.xml /vcsMaxKeepGoingSplits:16 /vcsKeepGoingTimeout:10",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/VectorUpdate.dfy /proc:Impl$$_module.__default._default_Main /compile:0 /rlimit:9999999 /xml:/tmp/tmpag8b_uw_.xml /vcsMaxKeepGoingSplits:16 /vcsKeepGoingTimeout:10",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default._default_Main",
-                        "startTime": "2022-05-16 22:10:38+00:00",
+                        "startTime": "2022-06-22 03:49:03+00:00",
                         "finished": true,
-                        "endTime": "2022-05-16 22:11:30+00:00",
-                        "duration": 51.70956,
-                        "outcome": "errors"
+                        "endTime": "2022-06-22 03:50:01+00:00",
+                        "duration": 58.0159671,
+                        "outcome": "correct"
                     }
                 ]
             }

@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654364920.9380498,
-        "start_readable": "2022-06-04T19:48:40.938050",
-        "end": 1654364923.5222478,
-        "end_readable": "2022-06-04T19:48:43.522248",
-        "duration": "2.5841979980"
+        "start": 1655873867.601863,
+        "start_readable": "2022-06-22T06:57:47.601863",
+        "end": 1655873870.2123141,
+        "end_readable": "2022-06-22T06:57:50.212314",
+        "duration": "2.6104512215"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/Bitvectors.dfy",
                 "/proc:Impl$$_module.__default.Unary",
-                "/xml:/tmp/tmpd4scg_mq.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpwpsro8hn.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,7 +47,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/Bitvectors.dfy",
                 "/proc:Impl$$_module.__default.Unary",
-                "/xml:/tmp/tmpqix_wh2k.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpxljaxfon.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,7 +66,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/Bitvectors.dfy",
                 "/proc:Impl$$_module.__default.Unary",
-                "/xml:/tmp/tmpi4fyuki7.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp3uop7s10.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -74,14 +81,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/Bitvectors.dfy /proc:Impl$$_module.__default.Unary /xml:/tmp/tmpi4fyuki7.xml /proverOpt:O:rewriter.flat=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/Bitvectors.dfy /proc:Impl$$_module.__default.Unary /compile:0 /rlimit:9999999 /xml:/tmp/tmp3uop7s10.xml /proverOpt:O:rewriter.flat=false",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.Unary",
-                        "startTime": "2022-06-04 17:48:42+00:00",
+                        "startTime": "2022-06-22 04:57:49+00:00",
                         "finished": true,
-                        "endTime": "2022-06-04 17:48:42+00:00",
-                        "duration": 0.2736487,
+                        "endTime": "2022-06-22 04:57:49+00:00",
+                        "duration": 0.2728802,
                         "outcome": "correct"
                     }
                 ]
@@ -94,15 +101,37 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/Bitvectors.dfy",
                 "/proc:Impl$$_module.__default.Unary",
-                "/xml:/tmp/tmp4v6598q7.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpnldvxzm9.xml",
                 "/proverOpt:O:ackermannization.at_backend=true"
             ],
             "diversification": [
                 "/proverOpt:O:ackermannization.at_backend=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b\"Prover error: line 6 column 41: unknown parameter 'at_backend' at module 'ackermannization'\"",
+                "b'Legal parameters are:'",
+                "b'  eager (bool) (default: true)'",
+                "b'  inc_sat_backend (bool) (default: false)'",
+                "b'  sat_backend (bool) (default: false)'",
+                "b''",
+                "b'Fatal Error: ProverException: Prover died with no further output, perhaps it ran out of memory or was killed.'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/Bitvectors.dfy /proc:Impl$$_module.__default.Unary /compile:0 /rlimit:9999999 /xml:/tmp/tmpnldvxzm9.xml /proverOpt:O:ackermannization.at_backend=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.Unary",
+                        "startTime": "2022-06-22 04:57:49+00:00",
+                        "finished": false,
+                        "endTime": null,
+                        "outcome": null
+                    }
+                ]
+            }
         }
     ]
 }

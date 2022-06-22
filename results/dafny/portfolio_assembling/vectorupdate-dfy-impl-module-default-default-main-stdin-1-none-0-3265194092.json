@@ -7,47 +7,51 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651366343.5646477,
-        "start_readable": "2022-05-01T02:52:23.564648",
-        "end": 1651366375.6604028,
-        "end_readable": "2022-05-01T02:52:55.660403",
-        "duration": "32.0957551003"
+        "start": 1655876062.4983108,
+        "start_readable": "2022-06-22T07:34:22.498311",
+        "end": 1655876122.1425705,
+        "end_readable": "2022-06-22T07:35:22.142570",
+        "duration": "59.6442596912"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/VectorUpdate.dfy",
                 "/proc:Impl$$_module.__default._default_Main",
-                "/xml:/tmp/tmp5ob3y6kj.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpy_2ry201.xml",
                 "/proverOpt:O:rewriter.expand_tan=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.expand_tan=true"
             ],
             "stdout": [
-                "b\"/benchmarks/VectorUpdate.dfy(54,32): Verification of 'Impl$$_module.__default._default_Main' timed out after 30 seconds\"",
                 "b''",
-                "b'Dafny program verifier finished with 0 verified, 0 errors, 1 time out'"
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
             ],
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/VectorUpdate.dfy /proc:Impl$$_module.__default._default_Main /xml:/tmp/tmp5ob3y6kj.xml /proverOpt:O:rewriter.expand_tan=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/VectorUpdate.dfy /proc:Impl$$_module.__default._default_Main /compile:0 /rlimit:9999999 /xml:/tmp/tmpy_2ry201.xml /proverOpt:O:rewriter.expand_tan=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default._default_Main",
-                        "startTime": "2022-05-01 00:52:25+00:00",
+                        "startTime": "2022-06-22 05:34:24+00:00",
                         "finished": true,
-                        "endTime": "2022-05-01 00:52:55+00:00",
-                        "duration": 30.3646099,
-                        "outcome": "timedout"
+                        "endTime": "2022-06-22 05:35:21+00:00",
+                        "duration": 57.8543029,
+                        "outcome": "correct"
                     }
                 ]
             }

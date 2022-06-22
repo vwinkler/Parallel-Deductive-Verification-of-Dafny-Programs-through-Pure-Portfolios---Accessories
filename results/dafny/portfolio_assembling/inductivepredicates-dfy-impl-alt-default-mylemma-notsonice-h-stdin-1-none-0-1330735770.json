@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654746706.6958878,
-        "start_readable": "2022-06-09T05:51:46.695888",
-        "end": 1654746710.3553936,
-        "end_readable": "2022-06-09T05:51:50.355394",
-        "duration": "3.6595058441"
+        "start": 1655859044.6657884,
+        "start_readable": "2022-06-22T02:50:44.665788",
+        "end": 1655859048.30326,
+        "end_readable": "2022-06-22T02:50:48.303260",
+        "duration": "3.6374716759"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/InductivePredicates.dfy",
                 "/proc:Impl$$Alt.__default.MyLemma__NotSoNice_h",
-                "/xml:/tmp/tmpi3lief_d.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpgbyebs2e.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,7 +47,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/InductivePredicates.dfy",
                 "/proc:Impl$$Alt.__default.MyLemma__NotSoNice_h",
-                "/xml:/tmp/tmps9641_4h.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpl5rg6hf4.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,7 +66,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/InductivePredicates.dfy",
                 "/proc:Impl$$Alt.__default.MyLemma__NotSoNice_h",
-                "/xml:/tmp/tmpedh8qjlo.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpiedrgl2b.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -78,7 +85,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/InductivePredicates.dfy",
                 "/proc:Impl$$Alt.__default.MyLemma__NotSoNice_h",
-                "/xml:/tmp/tmphjm_g6eb.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp91dmirug.xml",
                 "/vcsMaxKeepGoingSplits:4",
                 "/vcsKeepGoingTimeout:20"
             ],
@@ -97,7 +106,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/InductivePredicates.dfy",
                 "/proc:Impl$$Alt.__default.MyLemma__NotSoNice_h",
-                "/xml:/tmp/tmpg_0_1_j3.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp0qxdbtpa.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=30"
             ],
             "diversification": [
@@ -110,14 +121,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/InductivePredicates.dfy /proc:Impl$$Alt.__default.MyLemma__NotSoNice_h /xml:/tmp/tmpg_0_1_j3.xml /proverOpt:O:smt.qi.eager_threshold=30",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/InductivePredicates.dfy /proc:Impl$$Alt.__default.MyLemma__NotSoNice_h /compile:0 /rlimit:9999999 /xml:/tmp/tmp0qxdbtpa.xml /proverOpt:O:smt.qi.eager_threshold=30",
                 "methods": [
                     {
                         "name": "Impl$$Alt.__default.MyLemma__NotSoNice_h",
-                        "startTime": "2022-06-09 03:51:48+00:00",
+                        "startTime": "2022-06-22 00:50:46+00:00",
                         "finished": true,
-                        "endTime": "2022-06-09 03:51:49+00:00",
-                        "duration": 0.6994172,
+                        "endTime": "2022-06-22 00:50:47+00:00",
+                        "duration": 0.7016157,
                         "outcome": "correct"
                     }
                 ]
@@ -130,7 +141,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/InductivePredicates.dfy",
                 "/proc:Impl$$Alt.__default.MyLemma__NotSoNice_h",
-                "/xml:/tmp/tmp7jwcm4cn.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpuxb6ns2z.xml",
                 "/proverOpt:O:rewriter.bit2bool=false"
             ],
             "diversification": [
@@ -147,15 +160,37 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/InductivePredicates.dfy",
                 "/proc:Impl$$Alt.__default.MyLemma__NotSoNice_h",
-                "/xml:/tmp/tmp4ber84cf.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp1w9b3ein.xml",
                 "/proverOpt:O:ackermannization.at_backend=true"
             ],
             "diversification": [
                 "/proverOpt:O:ackermannization.at_backend=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b\"Prover error: line 6 column 41: unknown parameter 'at_backend' at module 'ackermannization'\"",
+                "b'Legal parameters are:'",
+                "b'  eager (bool) (default: true)'",
+                "b'  inc_sat_backend (bool) (default: false)'",
+                "b'  sat_backend (bool) (default: false)'",
+                "b''",
+                "b'Fatal Error: ProverException: Prover died with no further output, perhaps it ran out of memory or was killed.'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/InductivePredicates.dfy /proc:Impl$$Alt.__default.MyLemma__NotSoNice_h /compile:0 /rlimit:9999999 /xml:/tmp/tmp1w9b3ein.xml /proverOpt:O:ackermannization.at_backend=true",
+                "methods": [
+                    {
+                        "name": "Impl$$Alt.__default.MyLemma__NotSoNice_h",
+                        "startTime": "2022-06-22 00:50:46+00:00",
+                        "finished": false,
+                        "endTime": null,
+                        "outcome": null
+                    }
+                ]
+            }
         }
     ]
 }

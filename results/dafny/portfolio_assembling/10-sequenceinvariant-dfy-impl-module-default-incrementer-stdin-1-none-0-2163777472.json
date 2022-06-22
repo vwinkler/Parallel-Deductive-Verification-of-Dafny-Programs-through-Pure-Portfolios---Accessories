@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652918228.7634814,
-        "start_readable": "2022-05-19T01:57:08.763481",
-        "end": 1652918257.8704064,
-        "end_readable": "2022-05-19T01:57:37.870406",
-        "duration": "29.1069250107"
+        "start": 1655845584.5109632,
+        "start_readable": "2022-06-21T23:06:24.510963",
+        "end": 1655845613.4588249,
+        "end_readable": "2022-06-21T23:06:53.458825",
+        "duration": "28.9478616714"
     },
     "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/10-SequenceInvariant.dfy",
                 "/proc:Impl$$_module.__default.Incrementer",
-                "/xml:/tmp/tmpxdla1wl6.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp9gkro48r.xml",
                 "/proverOpt:O:smt.qi.max_multi_patterns=10",
                 "/proverOpt:O:smt.qi.quick_checker=2"
             ],
@@ -42,14 +45,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/10-SequenceInvariant.dfy /proc:Impl$$_module.__default.Incrementer /xml:/tmp/tmpxdla1wl6.xml /proverOpt:O:smt.qi.max_multi_patterns=10 /proverOpt:O:smt.qi.quick_checker=2",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/10-SequenceInvariant.dfy /proc:Impl$$_module.__default.Incrementer /compile:0 /rlimit:9999999 /xml:/tmp/tmp9gkro48r.xml /proverOpt:O:smt.qi.max_multi_patterns=10 /proverOpt:O:smt.qi.quick_checker=2",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.Incrementer",
-                        "startTime": "2022-05-18 23:57:11+00:00",
+                        "startTime": "2022-06-21 21:06:26+00:00",
                         "finished": true,
-                        "endTime": "2022-05-18 23:57:37+00:00",
-                        "duration": 26.6633513,
+                        "endTime": "2022-06-21 21:06:53+00:00",
+                        "duration": 26.4932818,
                         "outcome": "correct"
                     }
                 ]

@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651333077.6186345,
-        "start_readable": "2022-04-30T17:37:57.618634",
-        "end": 1651333115.037639,
-        "end_readable": "2022-04-30T17:38:35.037639",
-        "duration": "37.4190044403"
+        "start": 1655835088.766177,
+        "start_readable": "2022-06-21T20:11:28.766177",
+        "end": 1655835126.379798,
+        "end_readable": "2022-06-21T20:12:06.379798",
+        "duration": "37.6136209965"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/09-CounterNoStateMachine.dfy",
                 "/proc:Impl$$_module.__default.Incrementer",
-                "/xml:/tmp/tmpi0smscni.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmphgxywy48.xml",
                 "/proverOpt:O:rewriter.ignore_patterns_on_ground_qbody=false"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/09-CounterNoStateMachine.dfy /proc:Impl$$_module.__default.Incrementer /xml:/tmp/tmpi0smscni.xml /proverOpt:O:rewriter.ignore_patterns_on_ground_qbody=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/09-CounterNoStateMachine.dfy /proc:Impl$$_module.__default.Incrementer /compile:0 /rlimit:9999999 /xml:/tmp/tmphgxywy48.xml /proverOpt:O:rewriter.ignore_patterns_on_ground_qbody=false",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.Incrementer",
-                        "startTime": "2022-04-30 15:38:00+00:00",
+                        "startTime": "2022-06-21 18:11:31+00:00",
                         "finished": true,
-                        "endTime": "2022-04-30 15:38:34+00:00",
-                        "duration": 34.9094961,
+                        "endTime": "2022-06-21 18:12:06+00:00",
+                        "duration": 35.1097055,
                         "outcome": "correct"
                     }
                 ]

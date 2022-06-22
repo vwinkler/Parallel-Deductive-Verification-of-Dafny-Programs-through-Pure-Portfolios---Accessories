@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654364624.5526912,
-        "start_readable": "2022-06-04T19:43:44.552691",
-        "end": 1654364628.8301806,
-        "end_readable": "2022-06-04T19:43:48.830181",
-        "duration": "4.2774894238"
+        "start": 1655867044.8396115,
+        "start_readable": "2022-06-22T05:04:04.839612",
+        "end": 1655867048.948408,
+        "end_readable": "2022-06-22T05:04:08.948408",
+        "duration": "4.1087963581"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/b4.dfy",
                 "/proc:Impl$$_module.Map.Add",
-                "/xml:/tmp/tmp55y3b7f7.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpgfmqs879.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,7 +47,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/b4.dfy",
                 "/proc:Impl$$_module.Map.Add",
-                "/xml:/tmp/tmp7da41n_t.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmph55_ancn.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,30 +66,13 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/b4.dfy",
                 "/proc:Impl$$_module.Map.Add",
-                "/xml:/tmp/tmpkofoau_l.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpgf4sc3nq.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.flat=false"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 3,
-            "cpu": 30,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/b4.dfy",
-                "/proc:Impl$$_module.Map.Add",
-                "/xml:/tmp/tmp7dmbrnf6.xml",
-                "/vcsMaxKeepGoingSplits:4",
-                "/vcsKeepGoingTimeout:50"
-            ],
-            "diversification": [
-                "/vcsMaxKeepGoingSplits:4",
-                "/vcsKeepGoingTimeout:50"
             ],
             "stdout": [
                 "b''",
@@ -93,18 +81,39 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/b4.dfy /proc:Impl$$_module.Map.Add /xml:/tmp/tmp7dmbrnf6.xml /vcsMaxKeepGoingSplits:4 /vcsKeepGoingTimeout:50",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/b4.dfy /proc:Impl$$_module.Map.Add /compile:0 /rlimit:9999999 /xml:/tmp/tmpgf4sc3nq.xml /proverOpt:O:rewriter.flat=false",
                 "methods": [
                     {
                         "name": "Impl$$_module.Map.Add",
-                        "startTime": "2022-06-04 17:43:46+00:00",
+                        "startTime": "2022-06-22 03:04:06+00:00",
                         "finished": true,
-                        "endTime": "2022-06-04 17:43:48+00:00",
-                        "duration": 2.1524199,
+                        "endTime": "2022-06-22 03:04:08+00:00",
+                        "duration": 1.8685041,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 3,
+            "cpu": 30,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/b4.dfy",
+                "/proc:Impl$$_module.Map.Add",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp8ohcli1b.xml",
+                "/vcsMaxKeepGoingSplits:4",
+                "/vcsKeepGoingTimeout:50"
+            ],
+            "diversification": [
+                "/vcsMaxKeepGoingSplits:4",
+                "/vcsKeepGoingTimeout:50"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

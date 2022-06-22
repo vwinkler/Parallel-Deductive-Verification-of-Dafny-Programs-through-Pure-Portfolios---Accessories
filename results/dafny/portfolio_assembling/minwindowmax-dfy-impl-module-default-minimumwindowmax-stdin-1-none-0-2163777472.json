@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652923740.6962435,
-        "start_readable": "2022-05-19T03:29:00.696244",
-        "end": 1652923751.0594501,
-        "end_readable": "2022-05-19T03:29:11.059450",
-        "duration": "10.3632066250"
+        "start": 1655872643.073115,
+        "start_readable": "2022-06-22T06:37:23.073115",
+        "end": 1655872653.375277,
+        "end_readable": "2022-06-22T06:37:33.375277",
+        "duration": "10.3021619320"
     },
     "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/MinWindowMax.dfy",
                 "/proc:Impl$$_module.__default.MinimumWindowMax",
-                "/xml:/tmp/tmpit9ezoe4.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp527c4rwj.xml",
                 "/proverOpt:O:smt.qi.max_multi_patterns=10",
                 "/proverOpt:O:smt.qi.quick_checker=2"
             ],
@@ -42,14 +45,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/MinWindowMax.dfy /proc:Impl$$_module.__default.MinimumWindowMax /xml:/tmp/tmpit9ezoe4.xml /proverOpt:O:smt.qi.max_multi_patterns=10 /proverOpt:O:smt.qi.quick_checker=2",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/MinWindowMax.dfy /proc:Impl$$_module.__default.MinimumWindowMax /compile:0 /rlimit:9999999 /xml:/tmp/tmp527c4rwj.xml /proverOpt:O:smt.qi.max_multi_patterns=10 /proverOpt:O:smt.qi.quick_checker=2",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.MinimumWindowMax",
-                        "startTime": "2022-05-19 01:29:02+00:00",
+                        "startTime": "2022-06-22 04:37:24+00:00",
                         "finished": true,
-                        "endTime": "2022-05-19 01:29:11+00:00",
-                        "duration": 8.5465405,
+                        "endTime": "2022-06-22 04:37:33+00:00",
+                        "duration": 8.4822883,
                         "outcome": "correct"
                     }
                 ]

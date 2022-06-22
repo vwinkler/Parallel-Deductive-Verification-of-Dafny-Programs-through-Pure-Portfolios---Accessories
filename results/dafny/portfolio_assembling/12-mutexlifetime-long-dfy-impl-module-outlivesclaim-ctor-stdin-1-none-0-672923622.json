@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651358972.7751741,
-        "start_readable": "2022-05-01T00:49:32.775174",
-        "end": 1651358981.1412606,
-        "end_readable": "2022-05-01T00:49:41.141261",
-        "duration": "8.3660864830"
+        "start": 1655825864.1728442,
+        "start_readable": "2022-06-21T17:37:44.172844",
+        "end": 1655825872.5502079,
+        "end_readable": "2022-06-21T17:37:52.550208",
+        "duration": "8.3773636818"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.OutlivesClaim.__ctor",
-                "/xml:/tmp/tmp7gkahimb.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpxrwmrdt3.xml",
                 "/proverOpt:O:fp.datalog.dbg_fpr_nonempty_relation_signature=true"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.OutlivesClaim.__ctor /xml:/tmp/tmp7gkahimb.xml /proverOpt:O:fp.datalog.dbg_fpr_nonempty_relation_signature=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.OutlivesClaim.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmpxrwmrdt3.xml /proverOpt:O:fp.datalog.dbg_fpr_nonempty_relation_signature=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.OutlivesClaim.__ctor",
-                        "startTime": "2022-04-30 22:49:35+00:00",
+                        "startTime": "2022-06-21 15:37:47+00:00",
                         "finished": true,
-                        "endTime": "2022-04-30 22:49:41+00:00",
-                        "duration": 5.2287808,
+                        "endTime": "2022-06-21 15:37:52+00:00",
+                        "duration": 5.2301883,
                         "outcome": "correct"
                     }
                 ]

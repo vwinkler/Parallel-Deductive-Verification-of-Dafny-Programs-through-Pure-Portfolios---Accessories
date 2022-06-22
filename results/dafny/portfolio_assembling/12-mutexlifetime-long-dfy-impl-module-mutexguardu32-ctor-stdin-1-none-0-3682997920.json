@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653786387.8527834,
-        "start_readable": "2022-05-29T03:06:27.852783",
-        "end": 1653786457.5914562,
-        "end_readable": "2022-05-29T03:07:37.591456",
-        "duration": "69.7386727333"
+        "start": 1655873493.792582,
+        "start_readable": "2022-06-22T06:51:33.792582",
+        "end": 1655873566.0520449,
+        "end_readable": "2022-06-22T06:52:46.052045",
+        "duration": "72.2594628334"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,28 +28,13 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
-                "/xml:/tmp/tmpwdfwwdag.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp197_t5tv.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 1,
-            "cpu": 10,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/12-MutexLifetime-long.dfy",
-                "/proc:Impl$$_module.MutexGuardU32.__ctor",
-                "/xml:/tmp/tmptlhq1bjy.xml",
-                "/proverOpt:O:model_evaluator.completion=true"
-            ],
-            "diversification": [
-                "/proverOpt:O:model_evaluator.completion=true"
             ],
             "stdout": [
                 "b''",
@@ -57,18 +43,37 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /xml:/tmp/tmptlhq1bjy.xml /proverOpt:O:model_evaluator.completion=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmp197_t5tv.xml /proverOpt:O:rewriter.arith_lhs=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.MutexGuardU32.__ctor",
-                        "startTime": "2022-05-29 01:06:30+00:00",
+                        "startTime": "2022-06-22 04:51:37+00:00",
                         "finished": true,
-                        "endTime": "2022-05-29 01:07:37+00:00",
-                        "duration": 66.4839928,
+                        "endTime": "2022-06-22 04:52:45+00:00",
+                        "duration": 68.2961118,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 1,
+            "cpu": 10,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/12-MutexLifetime-long.dfy",
+                "/proc:Impl$$_module.MutexGuardU32.__ctor",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpmeqr3ej0.xml",
+                "/proverOpt:O:model_evaluator.completion=true"
+            ],
+            "diversification": [
+                "/proverOpt:O:model_evaluator.completion=true"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

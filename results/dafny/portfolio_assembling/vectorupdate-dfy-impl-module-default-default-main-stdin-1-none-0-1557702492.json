@@ -7,47 +7,51 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651365592.4669843,
-        "start_readable": "2022-05-01T02:39:52.466984",
-        "end": 1651365624.5588255,
-        "end_readable": "2022-05-01T02:40:24.558825",
-        "duration": "32.0918412209"
+        "start": 1655874789.269129,
+        "start_readable": "2022-06-22T07:13:09.269129",
+        "end": 1655874849.3442335,
+        "end_readable": "2022-06-22T07:14:09.344234",
+        "duration": "60.0751044750"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/VectorUpdate.dfy",
                 "/proc:Impl$$_module.__default._default_Main",
-                "/xml:/tmp/tmpds0vcp1g.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp_qhmgz7v.xml",
                 "/proverOpt:O:ackermannization.inc_sat_backend=true"
             ],
             "diversification": [
                 "/proverOpt:O:ackermannization.inc_sat_backend=true"
             ],
             "stdout": [
-                "b\"/benchmarks/VectorUpdate.dfy(54,32): Verification of 'Impl$$_module.__default._default_Main' timed out after 30 seconds\"",
                 "b''",
-                "b'Dafny program verifier finished with 0 verified, 0 errors, 1 time out'"
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
             ],
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/VectorUpdate.dfy /proc:Impl$$_module.__default._default_Main /xml:/tmp/tmpds0vcp1g.xml /proverOpt:O:ackermannization.inc_sat_backend=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/VectorUpdate.dfy /proc:Impl$$_module.__default._default_Main /compile:0 /rlimit:9999999 /xml:/tmp/tmp_qhmgz7v.xml /proverOpt:O:ackermannization.inc_sat_backend=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default._default_Main",
-                        "startTime": "2022-05-01 00:39:54+00:00",
+                        "startTime": "2022-06-22 05:13:10+00:00",
                         "finished": true,
-                        "endTime": "2022-05-01 00:40:24+00:00",
-                        "duration": 30.3612202,
-                        "outcome": "timedout"
+                        "endTime": "2022-06-22 05:14:09+00:00",
+                        "duration": 58.2874922,
+                        "outcome": "correct"
                     }
                 ]
             }

@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653788330.2942328,
-        "start_readable": "2022-05-29T03:38:50.294233",
-        "end": 1653788339.8535805,
-        "end_readable": "2022-05-29T03:38:59.853580",
-        "duration": "9.5593476295"
+        "start": 1655872975.935959,
+        "start_readable": "2022-06-22T06:42:55.935959",
+        "end": 1655872981.1122472,
+        "end_readable": "2022-06-22T06:43:01.112247",
+        "duration": "5.1762881279"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,11 +28,36 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/SmallestMissingNumber-functional.dfy",
                 "/proc:Impl$$_module.__default.SMN_k_k__Correct",
-                "/xml:/tmp/tmprwqe7l54.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpcwu79jcm.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
+            ],
+            "stdout": [
+                "b'/benchmarks/SmallestMissingNumber-functional.dfy(213,11): Warning: /!\\\\ No terms found to trigger on.'"
+            ],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
+        },
+        {
+            "id": 1,
+            "cpu": 10,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/SmallestMissingNumber-functional.dfy",
+                "/proc:Impl$$_module.__default.SMN_k_k__Correct",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpkyvpd4d_.xml",
+                "/vcsMaxKeepGoingSplits:2",
+                "/vcsKeepGoingTimeout:1"
+            ],
+            "diversification": [
+                "/vcsMaxKeepGoingSplits:2",
+                "/vcsKeepGoingTimeout:1"
             ],
             "stdout": [
                 "b'/benchmarks/SmallestMissingNumber-functional.dfy(213,11): Warning: /!\\\\ No terms found to trigger on.'",
@@ -41,39 +67,18 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/SmallestMissingNumber-functional.dfy /proc:Impl$$_module.__default.SMN_k_k__Correct /xml:/tmp/tmprwqe7l54.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/SmallestMissingNumber-functional.dfy /proc:Impl$$_module.__default.SMN_k_k__Correct /compile:0 /rlimit:9999999 /xml:/tmp/tmpkyvpd4d_.xml /vcsMaxKeepGoingSplits:2 /vcsKeepGoingTimeout:1",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.SMN_k_k__Correct",
-                        "startTime": "2022-05-29 01:38:54+00:00",
+                        "startTime": "2022-06-22 04:42:57+00:00",
                         "finished": true,
-                        "endTime": "2022-05-29 01:38:59+00:00",
-                        "duration": 5.4069061,
+                        "endTime": "2022-06-22 04:43:00+00:00",
+                        "duration": 2.5354224,
                         "outcome": "correct"
                     }
                 ]
             }
-        },
-        {
-            "id": 1,
-            "cpu": 10,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/SmallestMissingNumber-functional.dfy",
-                "/proc:Impl$$_module.__default.SMN_k_k__Correct",
-                "/xml:/tmp/tmpx4an_npz.xml",
-                "/vcsMaxKeepGoingSplits:2",
-                "/vcsKeepGoingTimeout:1"
-            ],
-            "diversification": [
-                "/vcsMaxKeepGoingSplits:2",
-                "/vcsKeepGoingTimeout:1"
-            ],
-            "stdout": [
-                "b'/benchmarks/SmallestMissingNumber-functional.dfy(213,11): Warning: /!\\\\ No terms found to trigger on.'"
-            ],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
         }
     ]
 }

@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654364971.1995955,
-        "start_readable": "2022-06-04T19:49:31.199595",
-        "end": 1654364978.4224603,
-        "end_readable": "2022-06-04T19:49:38.422460",
-        "duration": "7.2228648663"
+        "start": 1655872723.4139059,
+        "start_readable": "2022-06-22T06:38:43.413906",
+        "end": 1655872731.1973639,
+        "end_readable": "2022-06-22T06:38:51.197364",
+        "duration": "7.7834579945"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmpc7q6uiiu.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpueq2mf6o.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,7 +47,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmpzf4j4lzr.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp57pla0gq.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -57,14 +62,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/TreeBarrier.dfy /proc:Impl$$_module.Node.barrier /xml:/tmp/tmpzf4j4lzr.xml /proverOpt:O:rewriter.eq2ineq=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/TreeBarrier.dfy /proc:Impl$$_module.Node.barrier /compile:0 /rlimit:9999999 /xml:/tmp/tmp57pla0gq.xml /proverOpt:O:rewriter.eq2ineq=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.Node.barrier",
-                        "startTime": "2022-06-04 17:49:32+00:00",
+                        "startTime": "2022-06-22 04:38:45+00:00",
                         "finished": true,
-                        "endTime": "2022-06-04 17:49:38+00:00",
-                        "duration": 5.3874658,
+                        "endTime": "2022-06-22 04:38:50+00:00",
+                        "duration": 5.4088597,
                         "outcome": "correct"
                     }
                 ]
@@ -77,7 +82,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmpmjrn2ein.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp252qh2sp.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -94,7 +101,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/TreeBarrier.dfy",
                 "/proc:Impl$$_module.Node.barrier",
-                "/xml:/tmp/tmp_12_ru27.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp85086gce.xml",
                 "/vcsMaxKeepGoingSplits:8",
                 "/vcsKeepGoingTimeout:40"
             ],
@@ -102,9 +111,25 @@
                 "/vcsMaxKeepGoingSplits:8",
                 "/vcsKeepGoingTimeout:40"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/TreeBarrier.dfy /proc:Impl$$_module.Node.barrier /compile:0 /rlimit:9999999 /xml:/tmp/tmp85086gce.xml /vcsMaxKeepGoingSplits:8 /vcsKeepGoingTimeout:40",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.Node.barrier",
+                        "startTime": "2022-06-22 04:38:45+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 04:38:50+00:00",
+                        "duration": 5.456074,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         }
     ]
 }

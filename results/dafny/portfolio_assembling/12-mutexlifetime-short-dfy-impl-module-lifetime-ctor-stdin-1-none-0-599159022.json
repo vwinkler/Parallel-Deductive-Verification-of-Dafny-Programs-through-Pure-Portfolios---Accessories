@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653784202.3681371,
-        "start_readable": "2022-05-29T02:30:02.368137",
-        "end": 1653784214.0246866,
-        "end_readable": "2022-05-29T02:30:14.024687",
-        "duration": "11.6565494537"
+        "start": 1655854091.751674,
+        "start_readable": "2022-06-22T01:28:11.751674",
+        "end": 1655854104.5046692,
+        "end_readable": "2022-06-22T01:28:24.504669",
+        "duration": "12.7529952526"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,28 +28,13 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.Lifetime.__ctor",
-                "/xml:/tmp/tmp8c0af73q.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpbvssrhbh.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 1,
-            "cpu": 10,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/12-MutexLifetime-short.dfy",
-                "/proc:Impl$$_module.Lifetime.__ctor",
-                "/xml:/tmp/tmp_00ruoat.xml",
-                "/proverOpt:O:fp.datalog.dbg_fpr_nonempty_relation_signature=true"
-            ],
-            "diversification": [
-                "/proverOpt:O:fp.datalog.dbg_fpr_nonempty_relation_signature=true"
             ],
             "stdout": [
                 "b''",
@@ -57,18 +43,37 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.Lifetime.__ctor /xml:/tmp/tmp_00ruoat.xml /proverOpt:O:fp.datalog.dbg_fpr_nonempty_relation_signature=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.Lifetime.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmpbvssrhbh.xml /proverOpt:O:rewriter.arith_lhs=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.Lifetime.__ctor",
-                        "startTime": "2022-05-29 00:30:05+00:00",
+                        "startTime": "2022-06-21 23:28:14+00:00",
                         "finished": true,
-                        "endTime": "2022-05-29 00:30:13+00:00",
-                        "duration": 8.5383285,
+                        "endTime": "2022-06-21 23:28:23+00:00",
+                        "duration": 8.9778509,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 1,
+            "cpu": 10,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/12-MutexLifetime-short.dfy",
+                "/proc:Impl$$_module.Lifetime.__ctor",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpjskgli10.xml",
+                "/proverOpt:O:fp.datalog.dbg_fpr_nonempty_relation_signature=true"
+            ],
+            "diversification": [
+                "/proverOpt:O:fp.datalog.dbg_fpr_nonempty_relation_signature=true"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

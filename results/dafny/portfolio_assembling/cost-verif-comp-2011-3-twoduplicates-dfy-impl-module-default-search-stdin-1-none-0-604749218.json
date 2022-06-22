@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654365234.8418217,
-        "start_readable": "2022-06-04T19:53:54.841822",
-        "end": 1654365238.0398958,
-        "end_readable": "2022-06-04T19:53:58.039896",
-        "duration": "3.1980741024"
+        "start": 1655875211.09962,
+        "start_readable": "2022-06-22T07:20:11.099620",
+        "end": 1655875214.057055,
+        "end_readable": "2022-06-22T07:20:14.057055",
+        "duration": "2.9574348927"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/COST-verif-comp-2011-3-TwoDuplicates.dfy",
                 "/proc:Impl$$_module.__default.Search",
-                "/xml:/tmp/tmpv3o2g1g3.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpxszyion9.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -44,7 +47,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/COST-verif-comp-2011-3-TwoDuplicates.dfy",
                 "/proc:Impl$$_module.__default.Search",
-                "/xml:/tmp/tmph5q59xzk.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpje1x8e6n.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,7 +66,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/COST-verif-comp-2011-3-TwoDuplicates.dfy",
                 "/proc:Impl$$_module.__default.Search",
-                "/xml:/tmp/tmpirdk9iy4.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp6fi9yi_s.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -74,14 +81,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/COST-verif-comp-2011-3-TwoDuplicates.dfy /proc:Impl$$_module.__default.Search /xml:/tmp/tmpirdk9iy4.xml /proverOpt:O:rewriter.flat=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/COST-verif-comp-2011-3-TwoDuplicates.dfy /proc:Impl$$_module.__default.Search /compile:0 /rlimit:9999999 /xml:/tmp/tmp6fi9yi_s.xml /proverOpt:O:rewriter.flat=false",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.Search",
-                        "startTime": "2022-06-04 17:53:56+00:00",
+                        "startTime": "2022-06-22 05:20:12+00:00",
                         "finished": true,
-                        "endTime": "2022-06-04 17:53:57+00:00",
-                        "duration": 0.7339157,
+                        "endTime": "2022-06-22 05:20:13+00:00",
+                        "duration": 0.7243268,
                         "outcome": "correct"
                     }
                 ]
@@ -94,15 +101,37 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/COST-verif-comp-2011-3-TwoDuplicates.dfy",
                 "/proc:Impl$$_module.__default.Search",
-                "/xml:/tmp/tmpk7dc8_rq.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp2arax32b.xml",
                 "/proverOpt:O:ackermannization.at_backend=true"
             ],
             "diversification": [
                 "/proverOpt:O:ackermannization.at_backend=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b\"Prover error: line 6 column 41: unknown parameter 'at_backend' at module 'ackermannization'\"",
+                "b'Legal parameters are:'",
+                "b'  eager (bool) (default: true)'",
+                "b'  inc_sat_backend (bool) (default: false)'",
+                "b'  sat_backend (bool) (default: false)'",
+                "b''",
+                "b'Fatal Error: ProverException: Prover died with no further output, perhaps it ran out of memory or was killed.'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/COST-verif-comp-2011-3-TwoDuplicates.dfy /proc:Impl$$_module.__default.Search /compile:0 /rlimit:9999999 /xml:/tmp/tmp2arax32b.xml /proverOpt:O:ackermannization.at_backend=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.Search",
+                        "startTime": "2022-06-22 05:20:12+00:00",
+                        "finished": false,
+                        "endTime": null,
+                        "outcome": null
+                    }
+                ]
+            }
         }
     ]
 }

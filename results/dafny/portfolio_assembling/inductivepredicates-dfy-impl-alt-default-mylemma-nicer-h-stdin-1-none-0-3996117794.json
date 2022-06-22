@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654283262.2813752,
-        "start_readable": "2022-06-03T21:07:42.281375",
-        "end": 1654283288.6411154,
-        "end_readable": "2022-06-03T21:08:08.641115",
-        "duration": "26.3597402573"
+        "start": 1655868794.3904517,
+        "start_readable": "2022-06-22T05:33:14.390452",
+        "end": 1655868829.523971,
+        "end_readable": "2022-06-22T05:33:49.523971",
+        "duration": "35.1335194111"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,15 +28,33 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/InductivePredicates.dfy",
                 "/proc:Impl$$Alt.__default.MyLemma__Nicer_h",
-                "/xml:/tmp/tmppqms2liv.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp1h2a2vv0.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/InductivePredicates.dfy /proc:Impl$$Alt.__default.MyLemma__Nicer_h /compile:0 /rlimit:9999999 /xml:/tmp/tmp1h2a2vv0.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "methods": [
+                    {
+                        "name": "Impl$$Alt.__default.MyLemma__Nicer_h",
+                        "startTime": "2022-06-22 03:33:16+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 03:33:48+00:00",
+                        "duration": 32.2051387,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -44,7 +63,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/InductivePredicates.dfy",
                 "/proc:Impl$$Alt.__default.MyLemma__Nicer_h",
-                "/xml:/tmp/tmpmhzvg7h1.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpt9wsgs05.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -61,31 +82,17 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/InductivePredicates.dfy",
                 "/proc:Impl$$Alt.__default.MyLemma__Nicer_h",
-                "/xml:/tmp/tmp6eg3rbj1.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpdbgpmb1s.xml",
                 "/proverOpt:O:pi.pull_quantifiers=false"
             ],
             "diversification": [
                 "/proverOpt:O:pi.pull_quantifiers=false"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/InductivePredicates.dfy /proc:Impl$$Alt.__default.MyLemma__Nicer_h /xml:/tmp/tmp6eg3rbj1.xml /proverOpt:O:pi.pull_quantifiers=false",
-                "methods": [
-                    {
-                        "name": "Impl$$Alt.__default.MyLemma__Nicer_h",
-                        "startTime": "2022-06-03 19:07:44+00:00",
-                        "finished": true,
-                        "endTime": "2022-06-03 19:08:07+00:00",
-                        "duration": 23.4709517,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

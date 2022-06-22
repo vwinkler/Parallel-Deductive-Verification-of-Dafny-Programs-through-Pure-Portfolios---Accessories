@@ -8,17 +8,18 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1653788567.7197425,
-        "start_readable": "2022-05-29T03:42:47.719743",
-        "end": 1653788574.0612004,
-        "end_readable": "2022-05-29T03:42:54.061200",
-        "duration": "6.3414578438"
+        "start": 1655875348.0321393,
+        "start_readable": "2022-06-22T07:22:28.032139",
+        "end": 1655875355.0575602,
+        "end_readable": "2022-06-22T07:22:35.057560",
+        "duration": "7.0254209042"
     },
-    "termination_reason": "instance termination",
+    "termination_reason": "all instances terminated unsuccessfully",
     "instances": [
         {
             "id": 0,
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/git-issue106.dfy",
                 "/proc:Impl$$_module.__default.L",
-                "/xml:/tmp/tmp21g9rqz8.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmprv47o6os.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -41,14 +44,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue106.dfy /proc:Impl$$_module.__default.L /xml:/tmp/tmp21g9rqz8.xml /proverOpt:O:rewriter.arith_lhs=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue106.dfy /proc:Impl$$_module.__default.L /compile:0 /rlimit:9999999 /xml:/tmp/tmprv47o6os.xml /proverOpt:O:rewriter.arith_lhs=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.L",
-                        "startTime": "2022-05-29 01:42:49+00:00",
+                        "startTime": "2022-06-22 05:22:29+00:00",
                         "finished": true,
-                        "endTime": "2022-05-29 01:42:53+00:00",
-                        "duration": 4.0443865,
+                        "endTime": "2022-06-22 05:22:33+00:00",
+                        "duration": 4.0887638,
                         "outcome": "outofresource"
                     }
                 ]
@@ -61,7 +64,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/git-issue106.dfy",
                 "/proc:Impl$$_module.__default.L",
-                "/xml:/tmp/tmpn7g0mhk9.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpesim_ngj.xml",
                 "/vcsMaxKeepGoingSplits:16",
                 "/vcsKeepGoingTimeout:40"
             ],
@@ -69,9 +74,28 @@
                 "/vcsMaxKeepGoingSplits:16",
                 "/vcsKeepGoingTimeout:40"
             ],
-            "stdout": [],
+            "stdout": [
+                "b'/benchmarks/git-issue106.dfy(8,18): Error: assertion violation'",
+                "b'Execution trace:'",
+                "b'    (0,0): anon0'",
+                "b''",
+                "b'Dafny program verifier finished with 0 verified, 1 error'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue106.dfy /proc:Impl$$_module.__default.L /compile:0 /rlimit:9999999 /xml:/tmp/tmpesim_ngj.xml /vcsMaxKeepGoingSplits:16 /vcsKeepGoingTimeout:40",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.L",
+                        "startTime": "2022-06-22 05:22:29+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-22 05:22:35+00:00",
+                        "duration": 5.5726115,
+                        "outcome": "errors"
+                    }
+                ]
+            }
         }
     ]
 }
