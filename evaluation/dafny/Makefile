@@ -24,7 +24,8 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01_heuristic_cascading_n_vbs_matrix.ods \
 	%_evaluation/01_best_speedup_lineplot.svg \
 	%_evaluation/01_best_speedup_boxplot.svg \
-	%_evaluation/01_best_speedup.txt
+	%_evaluation/01_best_speedup.txt \
+	%_evaluation/01_inverted_cactus.svg 
 
 primary_results_list.txt : $(PORTFOLIO_ASSEMBLING_RESULTS)
 	find $^ -name '*.json' > $@
@@ -95,6 +96,9 @@ more_iterations_results_list.txt : $(MORE_ITERATIONS)
 	
 %_evaluation/01_best_speedup.txt : %_penalized_collection.h5
 	$(PYTHON) plot_best_speedup.py $< --info-file $@
+
+%_evaluation/01_inverted_cactus.svg : %_penalized_collection.h5
+	$(PYTHON) plot_inverted_cactus.py $< --plot-file $@
 
 .PRECIOUS: %_collection.h5 %_penalized_matrix.h5
 .PHONY: all $(evaluations)
