@@ -1,0 +1,95 @@
+{
+    "args": {
+        "dafny_file": "/benchmarks/git-issue-356.dfy",
+        "procedure_name": "Impl$$M.__default.Test3b",
+        "option_selector_name": "stdin",
+        "results_filename": "/result/git-issue-356-dfy-impl-m-default-test3b-stdin-1-none-0-3121561371.json",
+        "seed": "0",
+        "num_instances": 1,
+        "dafny_command": "/opt/dafny/dafny",
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
+    },
+    "commit_hash": "",
+    "total_runtime": {
+        "start": 1656181456.1453779,
+        "start_readable": "2022-06-25T20:24:16.145378",
+        "end": 1656181460.6440284,
+        "end_readable": "2022-06-25T20:24:20.644028",
+        "duration": "4.4986505508"
+    },
+    "termination_reason": "instance termination",
+    "instances": [
+        {
+            "id": 0,
+            "cpu": 0,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/git-issue-356.dfy",
+                "/proc:Impl$$M.__default.Test3b",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp9j7qgufn.xml",
+                "/proverOpt:O:smt.mbqi=true;"
+            ],
+            "diversification": [
+                "/proverOpt:O:smt.mbqi=true;"
+            ],
+            "stdout": [
+                "b'Prover error: line 7 column 1: invalid command, too many arguments'",
+                "b''",
+                "b'Fatal Error: ProverException: Prover died with no further output, perhaps it ran out of memory or was killed.'"
+            ],
+            "stderr": [],
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue-356.dfy /proc:Impl$$M.__default.Test3b /compile:0 /rlimit:9999999 /xml:/tmp/tmp9j7qgufn.xml /proverOpt:O:smt.mbqi=true;",
+                "methods": [
+                    {
+                        "name": "Impl$$M.__default.Test3b",
+                        "startTime": "2022-06-25 18:24:17+00:00",
+                        "finished": false,
+                        "endTime": null,
+                        "outcome": null
+                    }
+                ]
+            }
+        },
+        {
+            "id": 1,
+            "cpu": 10,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/git-issue-356.dfy",
+                "/proc:Impl$$M.__default.Test3b",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmptqsiyhhz.xml",
+                "/proverOpt:O:smt.qi.lazy_threshold=10"
+            ],
+            "diversification": [
+                "/proverOpt:O:smt.qi.lazy_threshold=10"
+            ],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
+            "stderr": [],
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/git-issue-356.dfy /proc:Impl$$M.__default.Test3b /compile:0 /rlimit:9999999 /xml:/tmp/tmptqsiyhhz.xml /proverOpt:O:smt.qi.lazy_threshold=10",
+                "methods": [
+                    {
+                        "name": "Impl$$M.__default.Test3b",
+                        "startTime": "2022-06-25 18:24:17+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-25 18:24:20+00:00",
+                        "duration": 2.8928331,
+                        "outcome": "correct"
+                    }
+                ]
+            }
+        }
+    ]
+}

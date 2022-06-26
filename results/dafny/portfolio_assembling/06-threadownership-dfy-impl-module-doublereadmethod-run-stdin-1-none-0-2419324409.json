@@ -1,0 +1,95 @@
+{
+    "args": {
+        "dafny_file": "/benchmarks/06-ThreadOwnership.dfy",
+        "procedure_name": "Impl$$_module.DoubleReadMethod.Run",
+        "option_selector_name": "stdin",
+        "results_filename": "/result/06-threadownership-dfy-impl-module-doublereadmethod-run-stdin-1-none-0-2419324409.json",
+        "seed": "0",
+        "num_instances": 1,
+        "dafny_command": "/opt/dafny/dafny",
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
+    },
+    "commit_hash": "",
+    "total_runtime": {
+        "start": 1656166344.4584405,
+        "start_readable": "2022-06-25T16:12:24.458441",
+        "end": 1656166368.0262809,
+        "end_readable": "2022-06-25T16:12:48.026281",
+        "duration": "23.5678403378"
+    },
+    "termination_reason": "instance termination",
+    "instances": [
+        {
+            "id": 0,
+            "cpu": 0,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/06-ThreadOwnership.dfy",
+                "/proc:Impl$$_module.DoubleReadMethod.Run",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpmd8bgeu6.xml",
+                "/proverOpt:O:smt.mbqi=true;"
+            ],
+            "diversification": [
+                "/proverOpt:O:smt.mbqi=true;"
+            ],
+            "stdout": [
+                "b'Prover error: line 7 column 1: invalid command, too many arguments'",
+                "b''",
+                "b'Fatal Error: ProverException: Prover died with no further output, perhaps it ran out of memory or was killed.'"
+            ],
+            "stderr": [],
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/06-ThreadOwnership.dfy /proc:Impl$$_module.DoubleReadMethod.Run /compile:0 /rlimit:9999999 /xml:/tmp/tmpmd8bgeu6.xml /proverOpt:O:smt.mbqi=true;",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.DoubleReadMethod.Run",
+                        "startTime": "2022-06-25 14:12:26+00:00",
+                        "finished": false,
+                        "endTime": null,
+                        "outcome": null
+                    }
+                ]
+            }
+        },
+        {
+            "id": 1,
+            "cpu": 10,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/06-ThreadOwnership.dfy",
+                "/proc:Impl$$_module.DoubleReadMethod.Run",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp2c3gnm6n.xml",
+                "/proverOpt:O:rewriter.gcd_rounding=true"
+            ],
+            "diversification": [
+                "/proverOpt:O:rewriter.gcd_rounding=true"
+            ],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
+            "stderr": [],
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/06-ThreadOwnership.dfy /proc:Impl$$_module.DoubleReadMethod.Run /compile:0 /rlimit:9999999 /xml:/tmp/tmp2c3gnm6n.xml /proverOpt:O:rewriter.gcd_rounding=true",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.DoubleReadMethod.Run",
+                        "startTime": "2022-06-25 14:12:26+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-25 14:12:47+00:00",
+                        "duration": 21.3573088,
+                        "outcome": "correct"
+                    }
+                ]
+            }
+        }
+    ]
+}

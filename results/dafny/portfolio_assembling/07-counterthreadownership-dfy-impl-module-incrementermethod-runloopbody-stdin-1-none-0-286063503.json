@@ -1,0 +1,98 @@
+{
+    "args": {
+        "dafny_file": "/benchmarks/07-CounterThreadOwnership.dfy",
+        "procedure_name": "Impl$$_module.IncrementerMethod.RunLoopBody",
+        "option_selector_name": "stdin",
+        "results_filename": "/result/07-counterthreadownership-dfy-impl-module-incrementermethod-runloopbody-stdin-1-none-0-286063503.json",
+        "seed": "0",
+        "num_instances": 1,
+        "dafny_command": "/opt/dafny/dafny",
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
+    },
+    "commit_hash": "",
+    "total_runtime": {
+        "start": 1656167225.0482738,
+        "start_readable": "2022-06-25T16:27:05.048274",
+        "end": 1656167611.4693084,
+        "end_readable": "2022-06-25T16:33:31.469308",
+        "duration": "386.4210345745"
+    },
+    "termination_reason": "all instances terminated unsuccessfully",
+    "instances": [
+        {
+            "id": 0,
+            "cpu": 0,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/07-CounterThreadOwnership.dfy",
+                "/proc:Impl$$_module.IncrementerMethod.RunLoopBody",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpfzhecuv5.xml",
+                "/proverOpt:O:smt.mbqi=true;"
+            ],
+            "diversification": [
+                "/proverOpt:O:smt.mbqi=true;"
+            ],
+            "stdout": [
+                "b'Prover error: line 7 column 1: invalid command, too many arguments'",
+                "b''",
+                "b'Fatal Error: ProverException: Prover died with no further output, perhaps it ran out of memory or was killed.'"
+            ],
+            "stderr": [],
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /compile:0 /rlimit:9999999 /xml:/tmp/tmpfzhecuv5.xml /proverOpt:O:smt.mbqi=true;",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.IncrementerMethod.RunLoopBody",
+                        "startTime": "2022-06-25 14:27:07+00:00",
+                        "finished": false,
+                        "endTime": null,
+                        "outcome": null
+                    }
+                ]
+            }
+        },
+        {
+            "id": 1,
+            "cpu": 10,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/07-CounterThreadOwnership.dfy",
+                "/proc:Impl$$_module.IncrementerMethod.RunLoopBody",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp94rb19kk.xml",
+                "/proverOpt:O:smt.qi.eager_threshold=5"
+            ],
+            "diversification": [
+                "/proverOpt:O:smt.qi.eager_threshold=5"
+            ],
+            "stdout": [
+                "b'Prover error: Unexpected prover response (getting info about \\'unknown\\' response): (:reason-unknown \"Overflow encountered when expanding old_vector\")'",
+                "b''",
+                "b'/benchmarks/07-CounterThreadOwnership.dfy(767,9): Verification inconclusive (Impl$$_module.IncrementerMethod.RunLoopBody)'",
+                "b''",
+                "b'Dafny program verifier finished with 0 verified, 0 errors, 1 inconclusive'"
+            ],
+            "stderr": [],
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /compile:0 /rlimit:9999999 /xml:/tmp/tmp94rb19kk.xml /proverOpt:O:smt.qi.eager_threshold=5",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.IncrementerMethod.RunLoopBody",
+                        "startTime": "2022-06-25 14:27:07+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-25 14:33:31+00:00",
+                        "duration": 383.5219012,
+                        "outcome": "inconclusive"
+                    }
+                ]
+            }
+        }
+    ]
+}

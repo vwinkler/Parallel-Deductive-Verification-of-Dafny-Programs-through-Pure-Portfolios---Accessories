@@ -1,0 +1,82 @@
+{
+    "args": {
+        "dafny_file": "/benchmarks/09-CounterNoStateMachine.dfy",
+        "procedure_name": "Impl$$_module.__default.Incrementer",
+        "option_selector_name": "stdin",
+        "results_filename": "/result/09-counternostatemachine-dfy-impl-module-default-incrementer-stdin-1-none-0-3331120044.json",
+        "seed": "0",
+        "num_instances": 1,
+        "dafny_command": "/opt/dafny/dafny",
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
+    },
+    "commit_hash": "",
+    "total_runtime": {
+        "start": 1656174438.8844304,
+        "start_readable": "2022-06-25T18:27:18.884430",
+        "end": 1656174520.8514934,
+        "end_readable": "2022-06-25T18:28:40.851493",
+        "duration": "81.9670629501"
+    },
+    "termination_reason": "instance termination",
+    "instances": [
+        {
+            "id": 0,
+            "cpu": 0,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/09-CounterNoStateMachine.dfy",
+                "/proc:Impl$$_module.__default.Incrementer",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmplnyvkay1.xml",
+                "/proverOpt:O:smt.mbqi=true;"
+            ],
+            "diversification": [
+                "/proverOpt:O:smt.mbqi=true;"
+            ],
+            "stdout": [
+                "b'Prover error: line 7 column 1: invalid command, too many arguments'",
+                "b''"
+            ],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
+        },
+        {
+            "id": 1,
+            "cpu": 10,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/09-CounterNoStateMachine.dfy",
+                "/proc:Impl$$_module.__default.Incrementer",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp31sc07ax.xml",
+                "/proverOpt:O:smt.qi.eager_threshold=20"
+            ],
+            "diversification": [
+                "/proverOpt:O:smt.qi.eager_threshold=20"
+            ],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
+            "stderr": [],
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/09-CounterNoStateMachine.dfy /proc:Impl$$_module.__default.Incrementer /compile:0 /rlimit:9999999 /xml:/tmp/tmp31sc07ax.xml /proverOpt:O:smt.qi.eager_threshold=20",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.Incrementer",
+                        "startTime": "2022-06-25 16:27:24+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-25 16:28:40+00:00",
+                        "duration": 75.9900928,
+                        "outcome": "correct"
+                    }
+                ]
+            }
+        }
+    ]
+}
