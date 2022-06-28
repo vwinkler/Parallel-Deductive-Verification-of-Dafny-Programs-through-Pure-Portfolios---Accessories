@@ -8,15 +8,16 @@
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1654561612.9698484,
-        "start_readable": "2022-06-07T02:26:52.969848",
-        "end": 1654561623.0570407,
-        "end_readable": "2022-06-07T02:27:03.057041",
-        "duration": "10.0871922970"
+        "start": 1655482393.8543417,
+        "start_readable": "2022-06-17T18:13:13.854342",
+        "end": 1655482404.5775719,
+        "end_readable": "2022-06-17T18:13:24.577572",
+        "duration": "10.7232301235"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -27,7 +28,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/deposit-sc/synthattribute/Siblings.dfy",
                 "/proc:Impl$$Siblings.__default.siblingsInEquivTreesAreEqual",
-                "/xml:/tmp/tmp4rbjprdf.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmplnbnne76.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
@@ -35,25 +38,10 @@
             ],
             "stdout": [
                 "b'/benchmarks/deposit-sc/synthattribute/Siblings.dfy(61,16): Warning: /!\\\\ No terms found to trigger on.'",
-                "b'/benchmarks/deposit-sc/synthattribute/Siblings.dfy(63,8): Warning: /!\\\\ No terms found to trigger on.'",
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+                "b'/benchmarks/deposit-sc/synthattribute/Siblings.dfy(63,8): Warning: /!\\\\ No terms found to trigger on.'"
             ],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/deposit-sc/synthattribute/Siblings.dfy /proc:Impl$$Siblings.__default.siblingsInEquivTreesAreEqual /xml:/tmp/tmp4rbjprdf.xml /proverOpt:O:rewriter.arith_lhs=true",
-                "methods": [
-                    {
-                        "name": "Impl$$Siblings.__default.siblingsInEquivTreesAreEqual",
-                        "startTime": "2022-06-07 00:26:55+00:00",
-                        "finished": true,
-                        "endTime": "2022-06-07 00:27:02+00:00",
-                        "duration": 7.8749853,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         },
         {
             "id": 1,
@@ -62,7 +50,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/deposit-sc/synthattribute/Siblings.dfy",
                 "/proc:Impl$$Siblings.__default.siblingsInEquivTreesAreEqual",
-                "/xml:/tmp/tmpo8p_1y99.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpv3mdxpdz.xml",
                 "/proverOpt:O:rewriter.eq2ineq=true"
             ],
             "diversification": [
@@ -82,7 +72,9 @@
                 "/opt/dafny/dafny",
                 "/benchmarks/deposit-sc/synthattribute/Siblings.dfy",
                 "/proc:Impl$$Siblings.__default.siblingsInEquivTreesAreEqual",
-                "/xml:/tmp/tmpxgjw8oa1.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpptqxk00p.xml",
                 "/proverOpt:O:rewriter.flat=false"
             ],
             "diversification": [
@@ -90,10 +82,25 @@
             ],
             "stdout": [
                 "b'/benchmarks/deposit-sc/synthattribute/Siblings.dfy(61,16): Warning: /!\\\\ No terms found to trigger on.'",
-                "b'/benchmarks/deposit-sc/synthattribute/Siblings.dfy(63,8): Warning: /!\\\\ No terms found to trigger on.'"
+                "b'/benchmarks/deposit-sc/synthattribute/Siblings.dfy(63,8): Warning: /!\\\\ No terms found to trigger on.'",
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
             ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/deposit-sc/synthattribute/Siblings.dfy /proc:Impl$$Siblings.__default.siblingsInEquivTreesAreEqual /compile:0 /rlimit:9999999 /xml:/tmp/tmpptqxk00p.xml /proverOpt:O:rewriter.flat=false",
+                "methods": [
+                    {
+                        "name": "Impl$$Siblings.__default.siblingsInEquivTreesAreEqual",
+                        "startTime": "2022-06-17 16:13:15+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-17 16:13:23+00:00",
+                        "duration": 7.9554412,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         }
     ]
 }
