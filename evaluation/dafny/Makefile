@@ -5,12 +5,13 @@ BOOL_PARAMS_RESULTS=../../results/dafny/bool_params/
 NOASSERT_RESULTS=../../results/dafny/noassert/
 VALIDATION_RESULTS=../../results/dafny/validation/
 MORE_ITERATIONS=../../results/dafny/more_iterations/
+PARALLEL_VCS=../../results/dafny/parallel_vcs/
 
-evaluation_prefixes := primary noassert bool_params validation more_iterations
+evaluation_prefixes := primary noassert bool_params validation more_iterations parallel_vcs
 
 evaluations := $(patsubst %, %_evaluation, $(evaluation_prefixes))
 
-all : $(evaluations)
+all : $(evaluations) misc
 
 $(evaluations) : %_evaluation : \
 	%_evaluation/01.txt \
@@ -28,6 +29,8 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01_best_speedup.txt \
 	%_evaluation/01_inverted_cactus.svg 
 
+misc : external_comparison/cactus.svg
+
 primary_results_list.txt : $(PORTFOLIO_ASSEMBLING_RESULTS)
 	find $^ -name '*.json' > $@
 	
@@ -41,6 +44,9 @@ validation_results_list.txt : $(VALIDATION_RESULTS)
 	find $^ -name '*.json' > $@
 
 more_iterations_results_list.txt : $(MORE_ITERATIONS)
+	find $^ -name '*.json' > $@
+	
+parallel_vcs_results_list.txt : $(PARALLEL_VCS)
 	find $^ -name '*.json' > $@
 
 %_collection.h5 : %_results_list.txt
@@ -101,5 +107,12 @@ more_iterations_results_list.txt : $(MORE_ITERATIONS)
 %_evaluation/01_inverted_cactus.svg : %_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_inverted_cactus.py $< --plot-file $@
 
+external_comparison.h5 : more_iterations_penalized_collection.h5 parallel_vcs_penalized_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/combine_results.py $^ $@ --param source -1 more_iterations -2 parallel_vcs
+
+external_comparison/cactus.svg : external_comparison.h5
+	mkdir -p $(@D)
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_n_vcs_cactus.py $< --plot-file $@
+
 .PRECIOUS: %_collection.h5 %_penalized_matrix.h5
-.PHONY: all $(evaluations)
+.PHONY: all $(evaluations) misc
