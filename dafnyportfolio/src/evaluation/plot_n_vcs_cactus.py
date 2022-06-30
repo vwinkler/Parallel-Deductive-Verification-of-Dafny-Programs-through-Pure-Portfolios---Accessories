@@ -80,12 +80,12 @@ class Main:
         fig, ax = plt.subplots()
         ax.set_xlim(left=0, right=x_max)
 
-        linestyle_by_source = {"parallel_vcs": "--", "more_iterations": '-'}
-        color_by_num_cpus = dict(enumerate(plt.rcParams['axes.prop_cycle'].by_key()['color']))
+        linestyle_by_num_cpus = {1: "solid", 2: "dotted", 3: "dashed", 4: "dashdot"}
+        color_by_source = {"parallel_vcs": "tab:blue", "more_iterations": "tab:orange"}
 
         for (num_cpus, source), column in runtime_chart.iteritems():
-            ax.stairs(column.index, list(column) + [x_max], linestyle=linestyle_by_source[source],
-                      color=color_by_num_cpus[num_cpus])
+            ax.stairs(column.index, list(column) + [x_max], linestyle=linestyle_by_num_cpus[num_cpus],
+                      color=color_by_source[source], alpha=0.7)
         if self.args.plot_file:
             fig.savefig(self.args.plot_file)
 
