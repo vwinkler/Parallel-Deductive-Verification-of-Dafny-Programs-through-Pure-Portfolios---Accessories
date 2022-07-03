@@ -1,6 +1,7 @@
 import argparse
 import datetime
 import math
+import random
 import re
 import time
 from os.path import abspath
@@ -170,6 +171,7 @@ if __name__ == '__main__':
     parser.add_argument("--skip-existing", dest="skip_existing", action='store_true')
     parser.add_argument("--omit-existing", dest="omit_existing", action='store_true')
     parser.add_argument("--max-jobs", dest="max_jobs", type=int, default=None)
+    parser.add_argument("--order-seed", dest="order_seed", type=str, default=None)
     args = parser.parse_args()
 
     print("#!/bin/sh")
@@ -181,4 +183,8 @@ if __name__ == '__main__':
         admit_call_appropriately = admit_call
     calls = []
     for_all_calls(args.filename, lambda call, results_file: admit_call_appropriately(call, results_file, calls))
+
+    if args.order_seed:
+        rand = random.Random(args.order_seed)
+        rand.shuffle(calls)
     print(make_commands(args, calls))
