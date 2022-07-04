@@ -14,7 +14,7 @@ class Main:
         parser.add_argument(metavar="COLLECTION_IN", dest="results_collection_in", type=str)
         parser.add_argument("--max-runtime", dest="max_runtime", type=float, default=600)
         parser.add_argument("--plot-file", dest="plot_file", type=str)
-        parser.add_argument("--vcsMaxKeepGoingSplits", dest="vcs_max_keep_going_splits", type=int)
+        parser.add_argument("--approach", dest="approach", type=str, choices=["s=p", "s=8p", "s=const>>p"])
         self.args = parser.parse_args()
 
     def run(self):
@@ -22,8 +22,9 @@ class Main:
         df["num_cpus"] = self.make_num_cpus_column(df)
         df["vcs_maxsplits"] = self.make_vcsmaxsplitscolumn_column(df)
         df["vcs_split_to_p_ratio"] = df["vcs_maxsplits"] // df["num_cpus"]
+        df["approach"] = self.make_approach_column(df)
         print(df[["num_cpus", "vcs_maxsplits", "vcs_split_to_p_ratio"]].to_string())
-        df = self.filter_best_vcs_config(df)
+        df = self.filter_approach(df)
         df = self.filter_by_parallelity(df)
         df = self.accumulate_iterations(df)
         df = self.filter_timeouts(df)
@@ -35,8 +36,8 @@ class Main:
     def filter_by_parallelity(self, df):
         return df[df["num_cpus"].isin([1, 2, 4, 8])]
 
-    def filter_best_vcs_config(self, df):
-        return df[(df["source"] == "more_iterations") | (df["vcs_split_to_p_ratio"] == 1)]
+    def filter_approach(self, df):
+        return df[(df["approach"].isin(["portfolio", self.args.approach]))]
 
     def filter_timeouts(self, df):
         return df[df["runtime"] <= self.args.max_runtime]
@@ -72,6 +73,21 @@ class Main:
                 raise RuntimeError("Unknown source")
 
         return df.apply(get_vcsmaxsplits, axis="columns")
+
+    def make_approach_column(self, df):
+        def get_approach(row):
+            if row["source"] == "more_iterations":
+                return "portfolio"
+            elif row["source"] == "parallel_vcs":
+                if row["num_cpus"] == row["vcs_maxsplits"]:
+                    return "s=p"
+                elif 8 * row["num_cpus"] == row["vcs_maxsplits"]:
+                    return "s=8p"
+                elif row["vcs_maxsplits"] == 9999:
+                    return "s=const>>p"
+            return "unknown"
+
+        return df.apply(get_approach, axis="columns")
 
     def accumulate_iterations(self, df):
         group_columns = ["problem", "procedure", "num_cpus", "source"]
