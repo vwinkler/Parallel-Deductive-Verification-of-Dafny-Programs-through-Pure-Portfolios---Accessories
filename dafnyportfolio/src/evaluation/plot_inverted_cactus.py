@@ -1,10 +1,9 @@
 import argparse
 
-import pandas as pd
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 
 from collection_persistence import load_collection
-from export_html import export_to_html
+from cactus_plotting import prepare_for_inverted_cactus
 
 
 class Main:
@@ -20,22 +19,12 @@ class Main:
         df = self.accumulate_iterations(df)
         x_max = self.calculate_right_x_limit(df)
 
-        runtime_chart = self.make_sorted_runtime_chart(df)
-        runtime_chart = self.fill_mising_results(runtime_chart, x_max)
-        runtime_chart = self.calculate_prefix_sums(runtime_chart)
-
+        runtime_chart = prepare_for_inverted_cactus(df, x_max, "diversification_string")
         self.plot(runtime_chart, x_max)
 
     def accumulate_iterations(self, df):
         group_columns = ["problem", "procedure", "diversification_string"]
         return df.groupby(group_columns).agg({"runtime": "median"}).reset_index()
-
-    def make_sorted_runtime_chart(self, df):
-        df = df.sort_values(by="runtime", ignore_index=True, ascending=True)
-        runtimes_by_diversification = {div_string: runtimes.reset_index(drop=True) for div_string, runtimes in
-                                       df.groupby("diversification_string")["runtime"]}
-        new_df = pd.DataFrame(runtimes_by_diversification)
-        return new_df
 
     def calculate_right_x_limit(self, df):
         return self.calculate_longest_total_runtime(df) * 1.05
@@ -46,16 +35,10 @@ class Main:
 
         return df.groupby("diversification_string")["runtime"].apply(sum_up_finished_runtimes).max()
 
-    def fill_mising_results(self, df, x_max):
-        return df.fillna(x_max)
-
-    def calculate_prefix_sums(self, new_df):
-        return new_df.cumsum(axis="index")
-
-    def plot(self, new_df, x_max):
+    def plot(self, runtime_chart, x_max):
         fig, ax = plt.subplots()
         ax.set_xlim(left=0, right=x_max)
-        for column_name, column in new_df.iteritems():
+        for column_name, column in runtime_chart.iteritems():
             ax.stairs(column.index, list(column) + [x_max])
         if self.args.plot_file:
             fig.savefig(self.args.plot_file)
