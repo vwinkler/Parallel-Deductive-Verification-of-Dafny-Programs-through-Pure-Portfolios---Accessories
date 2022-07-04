@@ -100,16 +100,22 @@ class Main:
         return df.groupby(["num_cpus", "source"])["runtime"].apply(lambda t: t.agg("sum")).max()
 
     def plot(self, runtime_chart, x_max):
+        plt.rcParams.update({"text.usetex": True})
+
         fig, ax = plt.subplots()
         ax.set_xlim(left=0, right=x_max)
 
         linestyle_by_num_cpus = {1: (0, (1, 1)), 2: (0, (2, 2)), 4: (0, (4, 4)), 8: (0, (8, 8))}
         linewidth_by_source = {"parallel_vcs": 0.8, "more_iterations": 0.5}
         color_by_source = {"parallel_vcs": "tab:blue", "more_iterations": "tab:orange"}
+        label_by_source = {"parallel_vcs": "VCS", "more_iterations": "Portfolio"}
 
         for (num_cpus, source), column in runtime_chart.iteritems():
             ax.stairs(column.index, list(column) + [x_max], linestyle=linestyle_by_num_cpus[num_cpus],
-                      color=color_by_source[source], alpha=1, linewidth=linewidth_by_source[source])
+                      color=color_by_source[source], alpha=1, linewidth=linewidth_by_source[source],
+                      label=f"{label_by_source[source]}, \\(p={num_cpus}\\)")
+
+        ax.legend(loc="lower right")
         if self.args.plot_file:
             fig.savefig(self.args.plot_file)
 
