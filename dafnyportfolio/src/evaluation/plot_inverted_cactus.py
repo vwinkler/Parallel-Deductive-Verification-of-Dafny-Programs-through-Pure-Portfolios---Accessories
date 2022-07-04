@@ -17,10 +17,14 @@ class Main:
     def run(self):
         df = load_collection(self.args.results_collection_in)
         df = self.accumulate_iterations(df)
+        df = self.filter_timeouts(df)
         x_max = self.calculate_right_x_limit(df)
 
         runtime_chart = prepare_for_inverted_cactus(df, x_max, "diversification_string")
         self.plot(runtime_chart, x_max)
+
+    def filter_timeouts(self, df):
+        return df[df["runtime"] <= self.args.max_runtime]
 
     def accumulate_iterations(self, df):
         group_columns = ["problem", "procedure", "diversification_string"]
@@ -30,10 +34,7 @@ class Main:
         return self.calculate_longest_total_runtime(df) * 1.05
 
     def calculate_longest_total_runtime(self, df):
-        def sum_up_finished_runtimes(t):
-            return t[t <= self.args.max_runtime].agg("sum")
-
-        return df.groupby("diversification_string")["runtime"].apply(sum_up_finished_runtimes).max()
+        return df.groupby("diversification_string")["runtime"].apply(lambda t: t.agg("sum")).max()
 
     def plot(self, runtime_chart, x_max):
         fig, ax = plt.subplots()

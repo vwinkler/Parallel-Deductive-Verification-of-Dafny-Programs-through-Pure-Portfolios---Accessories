@@ -29,7 +29,10 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01_best_speedup.txt \
 	%_evaluation/01_inverted_cactus.svg 
 
-misc : external_comparison/cactus.svg
+misc : external_comparison/cactus_1.svg \
+	external_comparison/cactus_8.svg \
+	external_comparison/cactus_c.svg
+
 
 primary_results_list.txt : $(PORTFOLIO_ASSEMBLING_RESULTS)
 	find $^ -name '*.json' > $@
@@ -110,9 +113,17 @@ parallel_vcs_results_list.txt : $(PARALLEL_VCS)
 external_comparison.h5 : more_iterations_penalized_collection.h5 parallel_vcs_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/combine_results.py $^ $@ --param source -1 more_iterations -2 parallel_vcs
 
-external_comparison/cactus.svg : external_comparison.h5
+external_comparison/cactus_1.svg : external_comparison.h5
 	mkdir -p $(@D)
-	$(PYTHON) $(EVAL_SCRIPTS)/plot_n_vcs_cactus.py $< --plot-file $@
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_n_vcs_cactus.py $< --plot-file $@ --approach 's=p'
+
+external_comparison/cactus_8.svg : external_comparison.h5
+	mkdir -p $(@D)
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_n_vcs_cactus.py $< --plot-file $@ --approach 's=8p'
+
+external_comparison/cactus_c.svg : external_comparison.h5
+	mkdir -p $(@D)
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_n_vcs_cactus.py $< --plot-file $@ --approach 's=const>>p'
 
 .PRECIOUS: %_collection.h5 %_penalized_matrix.h5
 .PHONY: all $(evaluations) misc
