@@ -26,6 +26,7 @@ class Main:
         df = self.filter_best_vcs_config(df)
         df = self.filter_by_parallelity(df)
         df = self.accumulate_iterations(df)
+        df = self.filter_timeouts(df)
         x_max = self.calculate_right_x_limit(df)
 
         runtime_chart = prepare_for_inverted_cactus(df, x_max, ["num_cpus", "source"])
@@ -36,6 +37,9 @@ class Main:
 
     def filter_best_vcs_config(self, df):
         return df[(df["source"] == "more_iterations") | (df["vcs_split_to_p_ratio"] == 1)]
+
+    def filter_timeouts(self, df):
+        return df[df["runtime"] <= self.args.max_runtime]
 
     def make_num_cpus_column(self, df):
         def get_num_cpus(row):
@@ -77,10 +81,7 @@ class Main:
         return self.calculate_longest_total_runtime(df) * 1.05
 
     def calculate_longest_total_runtime(self, df):
-        def sum_up_finished_runtimes(t):
-            return t[t <= self.args.max_runtime].agg("sum")
-
-        return df.groupby(["num_cpus", "source"])["runtime"].apply(sum_up_finished_runtimes).max()
+        return df.groupby(["num_cpus", "source"])["runtime"].apply(lambda t: t.agg("sum")).max()
 
     def plot(self, runtime_chart, x_max):
         fig, ax = plt.subplots()
