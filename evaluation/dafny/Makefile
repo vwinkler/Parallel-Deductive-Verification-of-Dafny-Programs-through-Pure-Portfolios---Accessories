@@ -27,12 +27,8 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01_best_speedup_lineplot.svg \
 	%_evaluation/01_best_speedup_boxplot.svg \
 	%_evaluation/01_best_speedup.txt \
-	%_evaluation/01_inverted_cactus.svg 
-
-misc : external_comparison/cactus_1.svg \
-	external_comparison/cactus_8.svg \
-	external_comparison/cactus_c.svg
-
+	%_evaluation/01_inverted_cactus.svg \
+	%_evaluation/01_top_config_latex_table.tex
 
 primary_results_list.txt : $(PORTFOLIO_ASSEMBLING_RESULTS)
 	find $^ -name '*.json' > $@
@@ -124,6 +120,9 @@ external_comparison/cactus_8.svg : external_comparison.h5
 external_comparison/cactus_c.svg : external_comparison.h5
 	mkdir -p $(@D)
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_n_vcs_cactus.py $< --plot-file $@ --approach 's=const>>p'
+	
+%_evaluation/01_top_config_latex_table.tex : %_penalized_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/print_vbs_latex_table.py --prefix '\dafnycl{' --suffix '}' $< > $@
 
 .PRECIOUS: %_collection.h5 %_penalized_matrix.h5
 .PHONY: all $(evaluations) misc
