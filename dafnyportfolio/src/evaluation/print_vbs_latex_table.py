@@ -2,6 +2,7 @@ import argparse
 import pandas as pd
 
 from collection_persistence import load_collection
+from vbs import find_vbs_results
 
 
 def main():
@@ -13,9 +14,7 @@ def main():
 
     df = load_collection(args.results_collection)
 
-    df = df.loc[df["num_running_instances"] == 1].reset_index()
-    top_config_df = df.loc[df.groupby(["problem", "procedure"])["runtime"].idxmin()]
-    top_config_df.sort_values(["problem", "procedure"], ascending=True)
+    top_config_df = find_vbs_results(df)
     top_config_df["Benchmark"] = range(1, len(top_config_df) + 1)
     top_config_df["Configuration"] = top_config_df[("diversification", 0)].str.replace("_", "\\_")
     top_config_df["Configuration"] = args.prefix + top_config_df["Configuration"] + args.suffix

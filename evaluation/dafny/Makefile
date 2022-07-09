@@ -28,7 +28,13 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01_best_speedup_boxplot.svg \
 	%_evaluation/01_best_speedup.txt \
 	%_evaluation/01_inverted_cactus.svg \
+	%_evaluation/01_inverted_cactus_with_vbs.svg \
 	%_evaluation/01_top_config_latex_table.tex
+
+misc : vbs_comparison/cactus_with_vbs.svg \
+	external_comparison/cactus_1.svg \
+	external_comparison/cactus_8.svg \
+	external_comparison/cactus_c.svg
 
 primary_results_list.txt : $(PORTFOLIO_ASSEMBLING_RESULTS)
 	find $^ -name '*.json' > $@
@@ -105,6 +111,12 @@ parallel_vcs_results_list.txt : $(PARALLEL_VCS)
 
 %_evaluation/01_inverted_cactus.svg : %_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_inverted_cactus.py $< --plot-file $@
+
+vbs_comparison_collection.h5 : more_iterations_penalized_collection.h5 primary_penalized_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/combine_results.py $^ $@ --param source -1 portfolio -2 all
+	
+vbs_comparison/cactus_with_vbs.svg : vbs_comparison_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_inverted_cactus_with_vbs.py $< --plot-file $@
 
 external_comparison.h5 : more_iterations_penalized_collection.h5 parallel_vcs_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/combine_results.py $^ $@ --param source -1 more_iterations -2 parallel_vcs
