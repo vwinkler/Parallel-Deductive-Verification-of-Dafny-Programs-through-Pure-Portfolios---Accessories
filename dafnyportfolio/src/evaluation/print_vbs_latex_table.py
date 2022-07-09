@@ -22,6 +22,7 @@ def main():
     top_config_df["Runtime"] = top_config_df["runtime"]
     top_config_df.loc[top_config_df["Runtime"] > 600, "Configuration"] = "not solved by any configuration"
     top_config_df.loc[top_config_df["Runtime"] > 600, "Runtime"] = 1200
+    top_config_df.sort_values(["problem", "procedure"], ascending=True, inplace=True)
 
     with pd.option_context("max_colwidth", 1000):
         columns = ["Benchmark", "Configuration", "Runtime"]
