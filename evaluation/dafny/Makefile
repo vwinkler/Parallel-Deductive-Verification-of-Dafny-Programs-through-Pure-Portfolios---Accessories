@@ -25,6 +25,7 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01_heuristic_cascading_n_vbs_matrix.html \
 	%_evaluation/01_heuristic_cascading_n_vbs_matrix.ods \
 	%_evaluation/01_best_speedup_lineplot.svg \
+	%_evaluation/01_best_speedup_by_benchmark_lineplot.svg \
 	%_evaluation/01_best_speedup_boxplot.svg \
 	%_evaluation/01_best_speedup.txt \
 	%_evaluation/01_inverted_cactus.svg \
@@ -102,6 +103,9 @@ parallel_vcs_results_list.txt : $(PARALLEL_VCS)
 
 %_evaluation/01_best_speedup_lineplot.svg : %_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_best_speedup.py $< --plot-file $@
+	
+%_evaluation/01_best_speedup_by_benchmark_lineplot.svg  : %_penalized_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_best_speedup_benchmark_lines.py $< --plot-file $@
 	
 %_evaluation/01_best_speedup_boxplot.svg : %_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_best_speedup.py --boxplot $< --plot-file $@
