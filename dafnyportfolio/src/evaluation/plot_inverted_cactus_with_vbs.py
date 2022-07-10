@@ -15,7 +15,6 @@ class Main:
         parser.add_argument(metavar="COLLECTION_IN", dest="results_collection_in", type=str)
         parser.add_argument("--max-runtime", dest="max_runtime", type=float, default=600)
         parser.add_argument("--plot-file", dest="plot_file", type=str)
-        parser.add_argument("--approach", dest="approach", type=str, choices=["s=p", "s=8p", "s=const>>p"])
         self.args = parser.parse_args()
 
     def run(self):
@@ -74,7 +73,8 @@ class Main:
         if self.args.plot_file:
             ensure_surrounding_directory_exists(self.args.plot_file)
             fig.savefig(self.args.plot_file)
-        plt.show()
+        else:
+            plt.show()
 
 
 if __name__ == '__main__':
