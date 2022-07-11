@@ -37,7 +37,8 @@ class Main:
         for (problem, procedure), group in df.groupby(["problem", "procedure"]):
             underscore_replacement = '\\_'
             dollar_replacement = '\\$'
-            label = f"{problem}, {procedure.replace('_', underscore_replacement).replace('$', dollar_replacement)}"
+            shortened_procedure = procedure.split(".")[-1]
+            label = f"{shortened_procedure.replace('_', underscore_replacement).replace('$', dollar_replacement)}"
             if self.args.plot_errorbars:
                 ax.errorbar(group["num_running_instances"], group["runtime"], yerr=group["runtime_std"], label=label)
             else:
@@ -45,7 +46,7 @@ class Main:
 
         figure = ax.get_figure()
         ax.set_ylim(bottom=0)
-        ax.legend(loc="lower right")
+        ax.legend(loc="upper right")
         if self.args.plot_file:
             figure.savefig(filename)
         else:
