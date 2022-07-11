@@ -105,7 +105,7 @@ parallel_vcs_results_list.txt : $(PARALLEL_VCS)
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_best_speedup.py $< --plot-file $@
 	
 %_evaluation/01_best_speedup_by_benchmark_lineplot.svg  : %_penalized_collection.h5
-	$(PYTHON) $(EVAL_SCRIPTS)/plot_best_speedup_benchmark_lines.py $< --plot-file $@
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_best_speedup_benchmark_lines.py $< --plot-file $@ --errorbars
 	
 %_evaluation/01_best_speedup_boxplot.svg : %_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_best_speedup.py --boxplot $< --plot-file $@
