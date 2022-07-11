@@ -23,7 +23,7 @@ class Main:
 
     def accumulate_iterations(self, df):
         return df.groupby(["problem", "procedure", "diversification_string", "num_running_instances"]).agg(
-            runtime=("runtime", "median"), runtime_std=("runtime", "std")).reset_index()
+            runtime=("runtime", "mean"), runtime_std=("runtime", "std")).reset_index()
 
     def pick_best_configurations_per_cpu_count_and_problem(self, df_total_mean_runtime):
         columns = ["problem", "procedure", "num_running_instances"]
