@@ -72,7 +72,7 @@ class Main:
         for (approach, num_cores), column in runtime_chart.iteritems():
             if approach == "vbs":
                 linestyle = "dashed"
-                label = f"VBS, \\(p={num_cores}\\)"
+                label = f"\\({num_cores}\\)-VBS"
             else:
                 linestyle = "solid"
                 label = f"Portfolio, \\(p={num_cores}\\)"
