@@ -10,6 +10,9 @@ PARALLEL_VCS=../../results/dafny/parallel_vcs/
 evaluation_prefixes := primary noassert bool_params validation more_iterations parallel_vcs
 
 evaluations := $(patsubst %, %_evaluation, $(evaluation_prefixes))
+ps := 1 2 3 4 5 6 7 8
+n-vbs_h5 := $(patsubst %, vbs_%_vbs.h5, $(ps))
+n-vbs_html := $(patsubst %, vbs_comparison/%_vbs.html, $(ps))
 
 all : $(evaluations) misc
 
@@ -33,6 +36,8 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01_top_config_latex_table.tex
 
 misc : vbs_comparison/cactus_with_vbs.svg \
+	vbs_comparison/cactus_with_n-vbs.svg \
+	$(n-vbs_html) \
 	external_comparison/cactus_1.svg \
 	external_comparison/cactus_8.svg \
 	external_comparison/cactus_c.svg
@@ -121,6 +126,15 @@ vbs_comparison_collection.h5 : more_iterations_penalized_collection.h5 primary_p
 	
 vbs_comparison/cactus_with_vbs.svg : vbs_comparison_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_inverted_cactus_with_vbs.py $< --plot-file $@
+	
+vbs_comparison/cactus_with_n-vbs.svg : vbs_comparison_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_inverted_cactus_with_n-vbs.py $< --plot-file $@
+	
+$(n-vbs_h5) : vbs_%_vbs.h5 : primary_penalized_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/make_n-vbs.py $^ $@ $(patsubst vbs_%_vbs.h5, %, $@)
+	
+$(n-vbs_html) : vbs_comparison/%_vbs.html : vbs_%_vbs.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/export_html.py $< $@
 
 external_comparison.h5 : more_iterations_penalized_collection.h5 parallel_vcs_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/combine_results.py $^ $@ --param source -1 more_iterations -2 parallel_vcs
