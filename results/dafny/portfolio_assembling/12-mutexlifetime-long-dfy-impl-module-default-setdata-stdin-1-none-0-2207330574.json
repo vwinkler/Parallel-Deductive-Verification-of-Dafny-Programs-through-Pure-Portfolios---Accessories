@@ -7,49 +7,38 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651345135.605453,
-        "start_readable": "2022-04-30T20:58:55.605453",
-        "end": 1651346325.130737,
-        "end_readable": "2022-04-30T21:18:45.130737",
-        "duration": "1189.5252840519"
+        "start": 1656541706.834288,
+        "start_readable": "2022-06-30T00:28:26.834288",
+        "end": 1656542307.5545723,
+        "end_readable": "2022-06-30T00:38:27.554572",
+        "duration": "600.7202844620"
     },
+    "termination_reason": "portfolio timeout",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.__default.SetData",
-                "/xml:/tmp/tmpu03or5al.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp4ad5ak8a.xml",
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.arith_lhs=true"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default.SetData /xml:/tmp/tmpu03or5al.xml /proverOpt:O:rewriter.arith_lhs=true",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.__default.SetData",
-                        "startTime": "2022-04-30 18:58:58+00:00",
-                        "finished": true,
-                        "endTime": "2022-04-30 19:18:45+00:00",
-                        "duration": 1186.3679602,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

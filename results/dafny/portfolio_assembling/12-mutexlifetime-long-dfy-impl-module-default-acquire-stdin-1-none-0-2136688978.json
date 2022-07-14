@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651352916.0671148,
-        "start_readable": "2022-04-30T23:08:36.067115",
-        "end": 1651352994.9719188,
-        "end_readable": "2022-04-30T23:09:54.971919",
-        "duration": "78.9048039913"
+        "start": 1656539504.9273713,
+        "start_readable": "2022-06-29T23:51:44.927371",
+        "end": 1656539584.1558566,
+        "end_readable": "2022-06-29T23:53:04.155857",
+        "duration": "79.2284853458"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.__default.Acquire",
-                "/xml:/tmp/tmprb5cz8to.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpf4arrpyd.xml",
                 "/proverOpt:O:fp.datalog.explanations_on_relation_level=true"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default.Acquire /xml:/tmp/tmprb5cz8to.xml /proverOpt:O:fp.datalog.explanations_on_relation_level=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default.Acquire /compile:0 /rlimit:9999999 /xml:/tmp/tmpf4arrpyd.xml /proverOpt:O:fp.datalog.explanations_on_relation_level=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.Acquire",
-                        "startTime": "2022-04-30 21:08:39+00:00",
+                        "startTime": "2022-06-29 21:51:48+00:00",
                         "finished": true,
-                        "endTime": "2022-04-30 21:09:54+00:00",
-                        "duration": 75.7408174,
+                        "endTime": "2022-06-29 21:53:04+00:00",
+                        "duration": 76.0619956,
                         "outcome": "correct"
                     }
                 ]

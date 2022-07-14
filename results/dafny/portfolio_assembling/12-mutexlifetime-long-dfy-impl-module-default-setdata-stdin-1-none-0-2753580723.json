@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651345208.6698298,
-        "start_readable": "2022-04-30T21:00:08.669830",
-        "end": 1651345476.7252982,
-        "end_readable": "2022-04-30T21:04:36.725298",
-        "duration": "268.0554683208"
+        "start": 1656536370.585068,
+        "start_readable": "2022-06-29T22:59:30.585068",
+        "end": 1656536641.917701,
+        "end_readable": "2022-06-29T23:04:01.917701",
+        "duration": "271.3326330185"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.__default.SetData",
-                "/xml:/tmp/tmpwvq2z6u5.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmprmd78mif.xml",
                 "/proverOpt:O:fp.xform.instantiate_arrays=true"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default.SetData /xml:/tmp/tmpwvq2z6u5.xml /proverOpt:O:fp.xform.instantiate_arrays=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default.SetData /compile:0 /rlimit:9999999 /xml:/tmp/tmprmd78mif.xml /proverOpt:O:fp.xform.instantiate_arrays=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.SetData",
-                        "startTime": "2022-04-30 19:00:11+00:00",
+                        "startTime": "2022-06-29 20:59:33+00:00",
                         "finished": true,
-                        "endTime": "2022-04-30 19:04:36+00:00",
-                        "duration": 264.9087854,
+                        "endTime": "2022-06-29 21:04:01+00:00",
+                        "duration": 268.1557228,
                         "outcome": "correct"
                     }
                 ]

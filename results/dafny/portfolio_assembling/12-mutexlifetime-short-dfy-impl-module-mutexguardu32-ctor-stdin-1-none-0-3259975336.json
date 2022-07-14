@@ -7,47 +7,51 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651361298.9528017,
-        "start_readable": "2022-05-01T01:28:18.952802",
-        "end": 1651361352.1138713,
-        "end_readable": "2022-05-01T01:29:12.113871",
-        "duration": "53.1610696316"
+        "start": 1656557478.6933837,
+        "start_readable": "2022-06-30T04:51:18.693384",
+        "end": 1656557548.3384519,
+        "end_readable": "2022-06-30T04:52:28.338452",
+        "duration": "69.6450681686"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
-                "/xml:/tmp/tmpmdvrgh4k.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpol3gl3vv.xml",
                 "/proverOpt:O:fp.datalog.subsumption=false"
             ],
             "diversification": [
                 "/proverOpt:O:fp.datalog.subsumption=false"
             ],
             "stdout": [
-                "b\"/benchmarks/12-MutexLifetime-short.dfy(892,2): Verification of 'Impl$$_module.MutexGuardU32.__ctor' timed out after 30 seconds\"",
                 "b''",
-                "b'Dafny program verifier finished with 0 verified, 0 errors, 1 time out'"
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
             ],
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /xml:/tmp/tmpmdvrgh4k.xml /proverOpt:O:fp.datalog.subsumption=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmpol3gl3vv.xml /proverOpt:O:fp.datalog.subsumption=false",
                 "methods": [
                     {
                         "name": "Impl$$_module.MutexGuardU32.__ctor",
-                        "startTime": "2022-04-30 23:28:21+00:00",
+                        "startTime": "2022-06-30 02:51:21+00:00",
                         "finished": true,
-                        "endTime": "2022-04-30 23:29:12+00:00",
-                        "duration": 50.2079428,
-                        "outcome": "timedout"
+                        "endTime": "2022-06-30 02:52:28+00:00",
+                        "duration": 66.6707806,
+                        "outcome": "correct"
                     }
                 ]
             }

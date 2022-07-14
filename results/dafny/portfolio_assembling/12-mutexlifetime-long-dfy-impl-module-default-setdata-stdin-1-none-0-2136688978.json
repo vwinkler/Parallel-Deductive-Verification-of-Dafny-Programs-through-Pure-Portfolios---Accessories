@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651343687.812572,
-        "start_readable": "2022-04-30T20:34:47.812572",
-        "end": 1651343957.1774948,
-        "end_readable": "2022-04-30T20:39:17.177495",
-        "duration": "269.3649227619"
+        "start": 1656553489.3168,
+        "start_readable": "2022-06-30T03:44:49.316800",
+        "end": 1656553758.4316254,
+        "end_readable": "2022-06-30T03:49:18.431625",
+        "duration": "269.1148252487"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.__default.SetData",
-                "/xml:/tmp/tmpy7_c2vss.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp086f0_8j.xml",
                 "/proverOpt:O:fp.datalog.explanations_on_relation_level=true"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default.SetData /xml:/tmp/tmpy7_c2vss.xml /proverOpt:O:fp.datalog.explanations_on_relation_level=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default.SetData /compile:0 /rlimit:9999999 /xml:/tmp/tmp086f0_8j.xml /proverOpt:O:fp.datalog.explanations_on_relation_level=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.SetData",
-                        "startTime": "2022-04-30 18:34:50+00:00",
+                        "startTime": "2022-06-30 01:44:52+00:00",
                         "finished": true,
-                        "endTime": "2022-04-30 18:39:17+00:00",
-                        "duration": 266.2394262,
+                        "endTime": "2022-06-30 01:49:18+00:00",
+                        "duration": 265.9728594,
                         "outcome": "correct"
                     }
                 ]

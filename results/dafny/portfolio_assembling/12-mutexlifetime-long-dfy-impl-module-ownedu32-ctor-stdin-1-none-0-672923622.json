@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651359977.7943304,
-        "start_readable": "2022-05-01T01:06:17.794330",
-        "end": 1651359983.3966966,
-        "end_readable": "2022-05-01T01:06:23.396697",
-        "duration": "5.6023662090"
+        "start": 1656551571.79002,
+        "start_readable": "2022-06-30T03:12:51.790020",
+        "end": 1656551577.397359,
+        "end_readable": "2022-06-30T03:12:57.397359",
+        "duration": "5.6073389053"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.OwnedU32.__ctor",
-                "/xml:/tmp/tmp2wkee9av.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpfzf8oxw7.xml",
                 "/proverOpt:O:fp.datalog.dbg_fpr_nonempty_relation_signature=true"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.OwnedU32.__ctor /xml:/tmp/tmp2wkee9av.xml /proverOpt:O:fp.datalog.dbg_fpr_nonempty_relation_signature=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.OwnedU32.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmpfzf8oxw7.xml /proverOpt:O:fp.datalog.dbg_fpr_nonempty_relation_signature=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.OwnedU32.__ctor",
-                        "startTime": "2022-04-30 23:06:20+00:00",
+                        "startTime": "2022-06-30 01:12:54+00:00",
                         "finished": true,
-                        "endTime": "2022-04-30 23:06:23+00:00",
-                        "duration": 2.4490028,
+                        "endTime": "2022-06-30 01:12:57+00:00",
+                        "duration": 2.444178,
                         "outcome": "correct"
                     }
                 ]

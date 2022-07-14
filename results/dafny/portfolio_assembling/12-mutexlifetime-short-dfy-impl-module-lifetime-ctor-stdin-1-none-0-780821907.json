@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652922188.1570275,
-        "start_readable": "2022-05-19T03:03:08.157027",
-        "end": 1652922199.4581556,
-        "end_readable": "2022-05-19T03:03:19.458156",
-        "duration": "11.3011281490"
+        "start": 1656557699.3260972,
+        "start_readable": "2022-06-30T04:54:59.326097",
+        "end": 1656557710.6190882,
+        "end_readable": "2022-06-30T04:55:10.619088",
+        "duration": "11.2929909229"
     },
     "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.Lifetime.__ctor",
-                "/xml:/tmp/tmpyqrbdoyj.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp9hawp8hs.xml",
                 "/proverOpt:O:smt.mbqi.max_cexs=100",
                 "/proverOpt:O:smt.qi.quick_checker=2"
             ],
@@ -42,14 +45,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.Lifetime.__ctor /xml:/tmp/tmpyqrbdoyj.xml /proverOpt:O:smt.mbqi.max_cexs=100 /proverOpt:O:smt.qi.quick_checker=2",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.Lifetime.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmp9hawp8hs.xml /proverOpt:O:smt.mbqi.max_cexs=100 /proverOpt:O:smt.qi.quick_checker=2",
                 "methods": [
                     {
                         "name": "Impl$$_module.Lifetime.__ctor",
-                        "startTime": "2022-05-19 01:03:11+00:00",
+                        "startTime": "2022-06-30 02:55:02+00:00",
                         "finished": true,
-                        "endTime": "2022-05-19 01:03:19+00:00",
-                        "duration": 8.3668067,
+                        "endTime": "2022-06-30 02:55:10+00:00",
+                        "duration": 8.3471327,
                         "outcome": "correct"
                     }
                 ]

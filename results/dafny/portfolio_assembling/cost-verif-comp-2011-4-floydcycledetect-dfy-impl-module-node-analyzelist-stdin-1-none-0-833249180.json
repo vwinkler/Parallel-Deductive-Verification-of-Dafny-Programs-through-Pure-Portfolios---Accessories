@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651366389.5947187,
-        "start_readable": "2022-05-01T02:53:09.594719",
-        "end": 1651366394.0090268,
-        "end_readable": "2022-05-01T02:53:14.009027",
-        "duration": "4.4143080711"
+        "start": 1656563557.5868309,
+        "start_readable": "2022-06-30T06:32:37.586831",
+        "end": 1656563562.0159554,
+        "end_readable": "2022-06-30T06:32:42.015955",
+        "duration": "4.4291245937"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/COST-verif-comp-2011-4-FloydCycleDetect.dfy",
                 "/proc:Impl$$_module.Node.AnalyzeList",
-                "/xml:/tmp/tmp87ddc88u.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp_adppz7k.xml",
                 "/proverOpt:O:fp.xform.instantiate_arrays.enforce=true"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/COST-verif-comp-2011-4-FloydCycleDetect.dfy /proc:Impl$$_module.Node.AnalyzeList /xml:/tmp/tmp87ddc88u.xml /proverOpt:O:fp.xform.instantiate_arrays.enforce=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/COST-verif-comp-2011-4-FloydCycleDetect.dfy /proc:Impl$$_module.Node.AnalyzeList /compile:0 /rlimit:9999999 /xml:/tmp/tmp_adppz7k.xml /proverOpt:O:fp.xform.instantiate_arrays.enforce=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.Node.AnalyzeList",
-                        "startTime": "2022-05-01 00:53:11+00:00",
+                        "startTime": "2022-06-30 04:32:39+00:00",
                         "finished": true,
-                        "endTime": "2022-05-01 00:53:13+00:00",
-                        "duration": 2.4451252,
+                        "endTime": "2022-06-30 04:32:41+00:00",
+                        "duration": 2.443824,
                         "outcome": "correct"
                     }
                 ]

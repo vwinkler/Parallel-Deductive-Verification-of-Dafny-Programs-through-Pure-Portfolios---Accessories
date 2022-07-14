@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652746281.51117,
-        "start_readable": "2022-05-17T02:11:21.511170",
-        "end": 1652746882.2464204,
-        "end_readable": "2022-05-17T02:21:22.246420",
-        "duration": "600.7352504730"
+        "start": 1656543933.4735997,
+        "start_readable": "2022-06-30T01:05:33.473600",
+        "end": 1656544235.722649,
+        "end_readable": "2022-06-30T01:10:35.722649",
+        "duration": "302.2490494251"
     },
-    "termination_reason": "portfolio timeout",
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.__default._default_Main",
-                "/xml:/tmp/tmpfn9xloan.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpcpo8j2lr.xml",
                 "/vcsMaxKeepGoingSplits:8",
                 "/vcsKeepGoingTimeout:30"
             ],
@@ -35,9 +38,25 @@
                 "/vcsMaxKeepGoingSplits:8",
                 "/vcsKeepGoingTimeout:30"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default._default_Main /compile:0 /rlimit:9999999 /xml:/tmp/tmpcpo8j2lr.xml /vcsMaxKeepGoingSplits:8 /vcsKeepGoingTimeout:30",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default._default_Main",
+                        "startTime": "2022-06-29 23:05:36+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-29 23:10:35+00:00",
+                        "duration": 299.0786214,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         }
     ]
 }

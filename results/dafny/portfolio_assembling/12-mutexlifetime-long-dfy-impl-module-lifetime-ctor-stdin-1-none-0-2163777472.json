@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652921438.4788442,
-        "start_readable": "2022-05-19T02:50:38.478844",
-        "end": 1652921449.5214763,
-        "end_readable": "2022-05-19T02:50:49.521476",
-        "duration": "11.0426321030"
+        "start": 1656549387.3540668,
+        "start_readable": "2022-06-30T02:36:27.354067",
+        "end": 1656549398.4414053,
+        "end_readable": "2022-06-30T02:36:38.441405",
+        "duration": "11.0873384476"
     },
     "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.Lifetime.__ctor",
-                "/xml:/tmp/tmp0hef_s18.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp9zyh_at6.xml",
                 "/proverOpt:O:smt.qi.max_multi_patterns=10",
                 "/proverOpt:O:smt.qi.quick_checker=2"
             ],
@@ -42,14 +45,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.Lifetime.__ctor /xml:/tmp/tmp0hef_s18.xml /proverOpt:O:smt.qi.max_multi_patterns=10 /proverOpt:O:smt.qi.quick_checker=2",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.Lifetime.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmp9zyh_at6.xml /proverOpt:O:smt.qi.max_multi_patterns=10 /proverOpt:O:smt.qi.quick_checker=2",
                 "methods": [
                     {
                         "name": "Impl$$_module.Lifetime.__ctor",
-                        "startTime": "2022-05-19 00:50:41+00:00",
+                        "startTime": "2022-06-30 00:36:30+00:00",
                         "finished": true,
-                        "endTime": "2022-05-19 00:50:49+00:00",
-                        "duration": 7.8744971,
+                        "endTime": "2022-06-30 00:36:38+00:00",
+                        "duration": 7.9041487,
                         "outcome": "correct"
                     }
                 ]

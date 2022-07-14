@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652744242.6260889,
-        "start_readable": "2022-05-17T01:37:22.626089",
-        "end": 1652744382.2927256,
-        "end_readable": "2022-05-17T01:39:42.292726",
-        "duration": "139.6666367054"
+        "start": 1656565187.8684516,
+        "start_readable": "2022-06-30T06:59:47.868452",
+        "end": 1656565266.4501512,
+        "end_readable": "2022-06-30T07:01:06.450151",
+        "duration": "78.5816996098"
     },
     "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.__default.Acquire",
-                "/xml:/tmp/tmpzuirgfji.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp2rf7i1l9.xml",
                 "/vcsMaxKeepGoingSplits:4",
                 "/vcsKeepGoingTimeout:10"
             ],
@@ -36,31 +39,21 @@
                 "/vcsKeepGoingTimeout:10"
             ],
             "stdout": [
-                "b'/benchmarks/12-MutexLifetime-long.dfy(1032,22): Error: A precondition for this call might not hold.'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(98,13): Related location: This is the precondition that might not hold.'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(83,8): Related location'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(83,67): Related location'",
-                "b'Execution trace:'",
-                "b'    (0,0): anon0'",
-                "b'    /benchmarks/12-MutexLifetime-long.dfy(983,3): anon14_LoopHead'",
-                "b'    (0,0): anon14_LoopBody'",
-                "b'    /benchmarks/12-MutexLifetime-long.dfy(983,3): anon15_Else'",
-                "b'    (0,0): anon20_Then'",
                 "b''",
-                "b'Dafny program verifier finished with 0 verified, 1 error'"
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
             ],
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default.Acquire /xml:/tmp/tmpzuirgfji.xml /vcsMaxKeepGoingSplits:4 /vcsKeepGoingTimeout:10",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default.Acquire /compile:0 /rlimit:9999999 /xml:/tmp/tmp2rf7i1l9.xml /vcsMaxKeepGoingSplits:4 /vcsKeepGoingTimeout:10",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.Acquire",
-                        "startTime": "2022-05-16 23:37:25+00:00",
+                        "startTime": "2022-06-30 04:59:50+00:00",
                         "finished": true,
-                        "endTime": "2022-05-16 23:39:42+00:00",
-                        "duration": 136.447501,
-                        "outcome": "errors"
+                        "endTime": "2022-06-30 05:01:06+00:00",
+                        "duration": 75.4403712,
+                        "outcome": "correct"
                     }
                 ]
             }

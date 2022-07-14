@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652923616.8170824,
-        "start_readable": "2022-05-19T03:26:56.817082",
-        "end": 1652923620.0996103,
-        "end_readable": "2022-05-19T03:27:00.099610",
-        "duration": "3.2825279236"
+        "start": 1656567739.2593882,
+        "start_readable": "2022-06-30T07:42:19.259388",
+        "end": 1656567742.555839,
+        "end_readable": "2022-06-30T07:42:22.555839",
+        "duration": "3.2964508533"
     },
     "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/MultiDimArray.dfy",
                 "/proc:CheckWellformed$$_module.A.M3",
-                "/xml:/tmp/tmpzf8xxaul.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmplegwx8yp.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=40",
                 "/proverOpt:O:smt.qi.quick_checker=2"
             ],
@@ -42,14 +45,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/MultiDimArray.dfy /proc:CheckWellformed$$_module.A.M3 /xml:/tmp/tmpzf8xxaul.xml /proverOpt:O:smt.qi.eager_threshold=40 /proverOpt:O:smt.qi.quick_checker=2",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/MultiDimArray.dfy /proc:CheckWellformed$$_module.A.M3 /compile:0 /rlimit:9999999 /xml:/tmp/tmplegwx8yp.xml /proverOpt:O:smt.qi.eager_threshold=40 /proverOpt:O:smt.qi.quick_checker=2",
                 "methods": [
                     {
                         "name": "CheckWellformed$$_module.A.M3",
-                        "startTime": "2022-05-19 01:26:59+00:00",
+                        "startTime": "2022-06-30 05:42:22+00:00",
                         "finished": true,
-                        "endTime": "2022-05-19 01:27:00+00:00",
-                        "duration": 0.2934016,
+                        "endTime": "2022-06-30 05:42:22+00:00",
+                        "duration": 0.2930062,
                         "outcome": "correct"
                     }
                 ]

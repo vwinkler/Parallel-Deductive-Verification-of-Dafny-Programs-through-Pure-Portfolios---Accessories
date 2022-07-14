@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651331014.7073982,
-        "start_readable": "2022-04-30T17:03:34.707398",
-        "end": 1651331022.6875257,
-        "end_readable": "2022-04-30T17:03:42.687526",
-        "duration": "7.9801275730"
+        "start": 1656526998.2524984,
+        "start_readable": "2022-06-29T20:23:18.252498",
+        "end": 1656527006.252314,
+        "end_readable": "2022-06-29T20:23:26.252314",
+        "duration": "7.9998157024"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/07-CounterThreadOwnership.dfy",
                 "/proc:Impl$$_module.IncrementerMethod.RunLoopBody",
-                "/xml:/tmp/tmpsspi69ol.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpta880ze6.xml",
                 "/proverOpt:O:fp.datalog.unbound_compressor=false"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /xml:/tmp/tmpsspi69ol.xml /proverOpt:O:fp.datalog.unbound_compressor=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /compile:0 /rlimit:9999999 /xml:/tmp/tmpta880ze6.xml /proverOpt:O:fp.datalog.unbound_compressor=false",
                 "methods": [
                     {
                         "name": "Impl$$_module.IncrementerMethod.RunLoopBody",
-                        "startTime": "2022-04-30 15:03:37+00:00",
+                        "startTime": "2022-06-29 18:23:20+00:00",
                         "finished": true,
-                        "endTime": "2022-04-30 15:03:42+00:00",
-                        "duration": 5.2738387,
+                        "endTime": "2022-06-29 18:23:26+00:00",
+                        "duration": 5.2828862,
                         "outcome": "correct"
                     }
                 ]

@@ -7,49 +7,51 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652738432.958613,
-        "start_readable": "2022-05-17T00:00:32.958613",
-        "end": 1652738465.05475,
-        "end_readable": "2022-05-17T00:01:05.054750",
-        "duration": "32.0961370468"
+        "start": 1656567315.693836,
+        "start_readable": "2022-06-30T07:35:15.693836",
+        "end": 1656567529.3479073,
+        "end_readable": "2022-06-30T07:38:49.347907",
+        "duration": "213.6540713310"
     },
     "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/VectorUpdate.dfy",
                 "/proc:Impl$$_module.__default._default_Main",
-                "/xml:/tmp/tmp3xoqgwb8.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpmxw70v41.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=20"
             ],
             "diversification": [
                 "/proverOpt:O:smt.qi.eager_threshold=20"
             ],
             "stdout": [
-                "b\"/benchmarks/VectorUpdate.dfy(54,32): Verification of 'Impl$$_module.__default._default_Main' timed out after 30 seconds\"",
                 "b''",
-                "b'Dafny program verifier finished with 0 verified, 0 errors, 1 time out'"
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
             ],
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/VectorUpdate.dfy /proc:Impl$$_module.__default._default_Main /xml:/tmp/tmp3xoqgwb8.xml /proverOpt:O:smt.qi.eager_threshold=20",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/VectorUpdate.dfy /proc:Impl$$_module.__default._default_Main /compile:0 /rlimit:9999999 /xml:/tmp/tmpmxw70v41.xml /proverOpt:O:smt.qi.eager_threshold=20",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default._default_Main",
-                        "startTime": "2022-05-16 22:00:34+00:00",
+                        "startTime": "2022-06-30 05:35:21+00:00",
                         "finished": true,
-                        "endTime": "2022-05-16 22:01:04+00:00",
-                        "duration": 30.3661495,
-                        "outcome": "timedout"
+                        "endTime": "2022-06-30 05:38:48+00:00",
+                        "duration": 206.6156526,
+                        "outcome": "correct"
                     }
                 ]
             }

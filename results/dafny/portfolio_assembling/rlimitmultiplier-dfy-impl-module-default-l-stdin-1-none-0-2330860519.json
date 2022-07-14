@@ -1,0 +1,117 @@
+{
+    "args": {
+        "dafny_file": "/benchmarks/RlimitMultiplier.dfy",
+        "procedure_name": "Impl$$_module.__default.L",
+        "option_selector_name": "stdin",
+        "results_filename": "/result/rlimitmultiplier-dfy-impl-module-default-l-stdin-1-none-0-2330860519.json",
+        "seed": "0",
+        "num_instances": 1,
+        "dafny_command": "/opt/dafny/dafny",
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
+    },
+    "commit_hash": "",
+    "total_runtime": {
+        "start": 1656895860.8335612,
+        "start_readable": "2022-07-04T02:51:00.833561",
+        "end": 1656895885.0777261,
+        "end_readable": "2022-07-04T02:51:25.077726",
+        "duration": "24.2441649437"
+    },
+    "termination_reason": "instance termination",
+    "instances": [
+        {
+            "id": 0,
+            "cpu": 0,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/RlimitMultiplier.dfy",
+                "/proc:Impl$$_module.__default.L",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmplnfmo5ih.xml",
+                "/proverOpt:O:opt.enable_sat=false"
+            ],
+            "diversification": [
+                "/proverOpt:O:opt.enable_sat=false"
+            ],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
+            "stderr": [],
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/RlimitMultiplier.dfy /proc:Impl$$_module.__default.L /compile:0 /rlimit:9999999 /xml:/tmp/tmplnfmo5ih.xml /proverOpt:O:opt.enable_sat=false",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.L",
+                        "startTime": "2022-07-04 00:51:04+00:00",
+                        "finished": true,
+                        "endTime": "2022-07-04 00:51:24+00:00",
+                        "duration": 19.5822679,
+                        "outcome": "correct"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 1,
+            "cpu": 10,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/RlimitMultiplier.dfy",
+                "/proc:Impl$$_module.__default.L",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpx6j41mz5.xml",
+                "/proverOpt:O:smt.qi.eager_threshold=10"
+            ],
+            "diversification": [
+                "/proverOpt:O:smt.qi.eager_threshold=10"
+            ],
+            "stdout": [
+                "b'/benchmarks/RlimitMultiplier.dfy(8,18): Error: assertion violation'",
+                "b'Execution trace:'",
+                "b'    (0,0): anon0'",
+                "b''",
+                "b'Dafny program verifier finished with 0 verified, 1 error'"
+            ],
+            "stderr": [],
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/RlimitMultiplier.dfy /proc:Impl$$_module.__default.L /compile:0 /rlimit:9999999 /xml:/tmp/tmpx6j41mz5.xml /proverOpt:O:smt.qi.eager_threshold=10",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.L",
+                        "startTime": "2022-07-04 00:51:07+00:00",
+                        "finished": true,
+                        "endTime": "2022-07-04 00:51:09+00:00",
+                        "duration": 1.6434613,
+                        "outcome": "errors"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "cpu": 20,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/RlimitMultiplier.dfy",
+                "/proc:Impl$$_module.__default.L",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp1ago7zdp.xml",
+                "/proverOpt:O:opt.maxres.maximize_assignment=true"
+            ],
+            "diversification": [
+                "/proverOpt:O:opt.maxres.maximize_assignment=true"
+            ],
+            "stdout": [],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
+        }
+    ]
+}

@@ -7,52 +7,38 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652738367.9881003,
-        "start_readable": "2022-05-16T23:59:27.988100",
-        "end": 1652738400.0466366,
-        "end_readable": "2022-05-17T00:00:00.046637",
-        "duration": "32.0585362911"
+        "start": 1656566113.6354845,
+        "start_readable": "2022-06-30T07:15:13.635484",
+        "end": 1656566714.344362,
+        "end_readable": "2022-06-30T07:25:14.344362",
+        "duration": "600.7088775635"
     },
-    "termination_reason": "instance termination",
+    "termination_reason": "portfolio timeout",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/VectorUpdate.dfy",
                 "/proc:Impl$$_module.__default._default_Main",
-                "/xml:/tmp/tmpmm175cid.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpkik78or9.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=5"
             ],
             "diversification": [
                 "/proverOpt:O:smt.qi.eager_threshold=5"
             ],
-            "stdout": [
-                "b\"/benchmarks/VectorUpdate.dfy(54,32): Verification of 'Impl$$_module.__default._default_Main' timed out after 30 seconds\"",
-                "b''",
-                "b'Dafny program verifier finished with 0 verified, 0 errors, 1 time out'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/VectorUpdate.dfy /proc:Impl$$_module.__default._default_Main /xml:/tmp/tmpmm175cid.xml /proverOpt:O:smt.qi.eager_threshold=5",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.__default._default_Main",
-                        "startTime": "2022-05-16 21:59:29+00:00",
-                        "finished": true,
-                        "endTime": "2022-05-16 21:59:59+00:00",
-                        "duration": 30.3578604,
-                        "outcome": "timedout"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }

@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651343147.2598896,
-        "start_readable": "2022-04-30T20:25:47.259890",
-        "end": 1651343416.909499,
-        "end_readable": "2022-04-30T20:30:16.909499",
-        "duration": "269.6496093273"
+        "start": 1656552949.030825,
+        "start_readable": "2022-06-30T03:35:49.030825",
+        "end": 1656553218.7058258,
+        "end_readable": "2022-06-30T03:40:18.705826",
+        "duration": "269.6750009060"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.__default.SetData",
-                "/xml:/tmp/tmp9wokujem.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpy4nh8c9i.xml",
                 "/proverOpt:O:fp.datalog.dbg_fpr_nonempty_relation_signature=true"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default.SetData /xml:/tmp/tmp9wokujem.xml /proverOpt:O:fp.datalog.dbg_fpr_nonempty_relation_signature=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default.SetData /compile:0 /rlimit:9999999 /xml:/tmp/tmpy4nh8c9i.xml /proverOpt:O:fp.datalog.dbg_fpr_nonempty_relation_signature=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.SetData",
-                        "startTime": "2022-04-30 18:25:50+00:00",
+                        "startTime": "2022-06-30 01:35:52+00:00",
                         "finished": true,
-                        "endTime": "2022-04-30 18:30:16+00:00",
-                        "duration": 266.5187137,
+                        "endTime": "2022-06-30 01:40:18+00:00",
+                        "duration": 266.5225155,
                         "outcome": "correct"
                     }
                 ]

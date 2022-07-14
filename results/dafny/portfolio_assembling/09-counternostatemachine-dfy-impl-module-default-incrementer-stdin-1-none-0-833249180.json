@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651333917.6870615,
-        "start_readable": "2022-04-30T17:51:57.687062",
-        "end": 1651333955.0558634,
-        "end_readable": "2022-04-30T17:52:35.055863",
-        "duration": "37.3688018322"
+        "start": 1656529089.4273262,
+        "start_readable": "2022-06-29T20:58:09.427326",
+        "end": 1656529126.5399618,
+        "end_readable": "2022-06-29T20:58:46.539962",
+        "duration": "37.1126356125"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/09-CounterNoStateMachine.dfy",
                 "/proc:Impl$$_module.__default.Incrementer",
-                "/xml:/tmp/tmpu3kti538.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpw05eps2x.xml",
                 "/proverOpt:O:fp.xform.instantiate_arrays.enforce=true"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/09-CounterNoStateMachine.dfy /proc:Impl$$_module.__default.Incrementer /xml:/tmp/tmpu3kti538.xml /proverOpt:O:fp.xform.instantiate_arrays.enforce=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/09-CounterNoStateMachine.dfy /proc:Impl$$_module.__default.Incrementer /compile:0 /rlimit:9999999 /xml:/tmp/tmpw05eps2x.xml /proverOpt:O:fp.xform.instantiate_arrays.enforce=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.Incrementer",
-                        "startTime": "2022-04-30 15:52:00+00:00",
+                        "startTime": "2022-06-29 18:58:11+00:00",
                         "finished": true,
-                        "endTime": "2022-04-30 15:52:35+00:00",
-                        "duration": 34.8765529,
+                        "endTime": "2022-06-29 18:58:46+00:00",
+                        "duration": 34.6314593,
                         "outcome": "correct"
                     }
                 ]

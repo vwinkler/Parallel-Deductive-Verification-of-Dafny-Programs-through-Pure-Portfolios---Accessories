@@ -7,47 +7,51 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651365992.1631002,
-        "start_readable": "2022-05-01T02:46:32.163100",
-        "end": 1651366024.2616427,
-        "end_readable": "2022-05-01T02:47:04.261643",
-        "duration": "32.0985424519"
+        "start": 1656571993.3455343,
+        "start_readable": "2022-06-30T08:53:13.345534",
+        "end": 1656572053.1930025,
+        "end_readable": "2022-06-30T08:54:13.193002",
+        "duration": "59.8474681377"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/VectorUpdate.dfy",
                 "/proc:Impl$$_module.__default._default_Main",
-                "/xml:/tmp/tmpyznxz4ie.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpy3unfvrn.xml",
                 "/proverOpt:O:fp.datalog.use_map_names=false"
             ],
             "diversification": [
                 "/proverOpt:O:fp.datalog.use_map_names=false"
             ],
             "stdout": [
-                "b\"/benchmarks/VectorUpdate.dfy(54,32): Verification of 'Impl$$_module.__default._default_Main' timed out after 30 seconds\"",
                 "b''",
-                "b'Dafny program verifier finished with 0 verified, 0 errors, 1 time out'"
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
             ],
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/VectorUpdate.dfy /proc:Impl$$_module.__default._default_Main /xml:/tmp/tmpyznxz4ie.xml /proverOpt:O:fp.datalog.use_map_names=false",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/VectorUpdate.dfy /proc:Impl$$_module.__default._default_Main /compile:0 /rlimit:9999999 /xml:/tmp/tmpy3unfvrn.xml /proverOpt:O:fp.datalog.use_map_names=false",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default._default_Main",
-                        "startTime": "2022-05-01 00:46:33+00:00",
+                        "startTime": "2022-06-30 06:53:14+00:00",
                         "finished": true,
-                        "endTime": "2022-05-01 00:47:04+00:00",
-                        "duration": 30.3655471,
-                        "outcome": "timedout"
+                        "endTime": "2022-06-30 06:54:13+00:00",
+                        "duration": 58.0661948,
+                        "outcome": "correct"
                     }
                 ]
             }

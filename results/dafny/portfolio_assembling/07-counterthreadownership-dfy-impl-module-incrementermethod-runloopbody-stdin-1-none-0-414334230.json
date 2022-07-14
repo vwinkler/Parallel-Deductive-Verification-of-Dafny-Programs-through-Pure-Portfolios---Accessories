@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651330874.5102828,
-        "start_readable": "2022-04-30T17:01:14.510283",
-        "end": 1651330882.5361638,
-        "end_readable": "2022-04-30T17:01:22.536164",
-        "duration": "8.0258810520"
+        "start": 1656526871.9594386,
+        "start_readable": "2022-06-29T20:21:11.959439",
+        "end": 1656526879.9850163,
+        "end_readable": "2022-06-29T20:21:19.985016",
+        "duration": "8.0255777836"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/07-CounterThreadOwnership.dfy",
                 "/proc:Impl$$_module.IncrementerMethod.RunLoopBody",
-                "/xml:/tmp/tmpr7laka8k.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp3k53nlgs.xml",
                 "/proverOpt:O:rewriter.pull_cheap_ite=true"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /xml:/tmp/tmpr7laka8k.xml /proverOpt:O:rewriter.pull_cheap_ite=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /compile:0 /rlimit:9999999 /xml:/tmp/tmp3k53nlgs.xml /proverOpt:O:rewriter.pull_cheap_ite=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.IncrementerMethod.RunLoopBody",
-                        "startTime": "2022-04-30 15:01:17+00:00",
+                        "startTime": "2022-06-29 18:21:14+00:00",
                         "finished": true,
-                        "endTime": "2022-04-30 15:01:22+00:00",
-                        "duration": 5.3090754,
+                        "endTime": "2022-06-29 18:21:19+00:00",
+                        "duration": 5.3169155,
                         "outcome": "correct"
                     }
                 ]

@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652922856.6553555,
-        "start_readable": "2022-05-19T03:14:16.655355",
-        "end": 1652923156.3968906,
-        "end_readable": "2022-05-19T03:19:16.396891",
-        "duration": "299.7415351868"
+        "start": 1656556658.3445902,
+        "start_readable": "2022-06-30T04:37:38.344590",
+        "end": 1656556961.986937,
+        "end_readable": "2022-06-30T04:42:41.986937",
+        "duration": "303.6423468590"
     },
     "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.__default._default_Main",
-                "/xml:/tmp/tmp937zojjb.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp7tbh49bm.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=40",
                 "/proverOpt:O:smt.qi.quick_checker=2"
             ],
@@ -42,14 +45,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default._default_Main /xml:/tmp/tmp937zojjb.xml /proverOpt:O:smt.qi.eager_threshold=40 /proverOpt:O:smt.qi.quick_checker=2",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default._default_Main /compile:0 /rlimit:9999999 /xml:/tmp/tmp7tbh49bm.xml /proverOpt:O:smt.qi.eager_threshold=40 /proverOpt:O:smt.qi.quick_checker=2",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default._default_Main",
-                        "startTime": "2022-05-19 01:14:19+00:00",
+                        "startTime": "2022-06-30 02:37:41+00:00",
                         "finished": true,
-                        "endTime": "2022-05-19 01:19:16+00:00",
-                        "duration": 296.5540586,
+                        "endTime": "2022-06-30 02:42:41+00:00",
+                        "duration": 300.4594752,
                         "outcome": "correct"
                     }
                 ]

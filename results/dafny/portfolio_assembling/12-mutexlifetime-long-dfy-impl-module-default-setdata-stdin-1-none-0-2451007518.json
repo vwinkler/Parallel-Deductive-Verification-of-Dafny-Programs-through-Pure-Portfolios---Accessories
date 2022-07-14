@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652742022.5025957,
-        "start_readable": "2022-05-17T01:00:22.502596",
-        "end": 1652742623.298646,
-        "end_readable": "2022-05-17T01:10:23.298646",
-        "duration": "600.7960503101"
+        "start": 1656538759.1053946,
+        "start_readable": "2022-06-29T23:39:19.105395",
+        "end": 1656539026.9325092,
+        "end_readable": "2022-06-29T23:43:46.932509",
+        "duration": "267.8271145821"
     },
-    "termination_reason": "portfolio timeout",
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.__default.SetData",
-                "/xml:/tmp/tmpvl7hrmmh.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp162i46vr.xml",
                 "/vcsMaxKeepGoingSplits:16",
                 "/vcsKeepGoingTimeout:40"
             ],
@@ -35,9 +38,25 @@
                 "/vcsMaxKeepGoingSplits:16",
                 "/vcsKeepGoingTimeout:40"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "unclosed token: line 138, column 6"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default.SetData /compile:0 /rlimit:9999999 /xml:/tmp/tmp162i46vr.xml /vcsMaxKeepGoingSplits:16 /vcsKeepGoingTimeout:40",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.SetData",
+                        "startTime": "2022-06-29 21:39:22+00:00",
+                        "finished": true,
+                        "endTime": "2022-06-29 21:43:46+00:00",
+                        "duration": 264.6688336,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         }
     ]
 }

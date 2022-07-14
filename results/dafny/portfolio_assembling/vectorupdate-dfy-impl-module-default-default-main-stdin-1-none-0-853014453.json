@@ -7,47 +7,51 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651366074.79543,
-        "start_readable": "2022-05-01T02:47:54.795430",
-        "end": 1651366106.886828,
-        "end_readable": "2022-05-01T02:48:26.886828",
-        "duration": "32.0913980007"
+        "start": 1656615144.1007533,
+        "start_readable": "2022-06-30T20:52:24.100753",
+        "end": 1656615203.7810264,
+        "end_readable": "2022-06-30T20:53:23.781026",
+        "duration": "59.6802730560"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/VectorUpdate.dfy",
                 "/proc:Impl$$_module.__default._default_Main",
-                "/xml:/tmp/tmpj_fmvs9w.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpk85dgbrp.xml",
                 "/proverOpt:O:opt.pb.compile_equality=true"
             ],
             "diversification": [
                 "/proverOpt:O:opt.pb.compile_equality=true"
             ],
             "stdout": [
-                "b\"/benchmarks/VectorUpdate.dfy(54,32): Verification of 'Impl$$_module.__default._default_Main' timed out after 30 seconds\"",
                 "b''",
-                "b'Dafny program verifier finished with 0 verified, 0 errors, 1 time out'"
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
             ],
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/VectorUpdate.dfy /proc:Impl$$_module.__default._default_Main /xml:/tmp/tmpj_fmvs9w.xml /proverOpt:O:opt.pb.compile_equality=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/VectorUpdate.dfy /proc:Impl$$_module.__default._default_Main /compile:0 /rlimit:9999999 /xml:/tmp/tmpk85dgbrp.xml /proverOpt:O:opt.pb.compile_equality=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default._default_Main",
-                        "startTime": "2022-05-01 00:47:56+00:00",
+                        "startTime": "2022-06-30 18:52:25+00:00",
                         "finished": true,
-                        "endTime": "2022-05-01 00:48:26+00:00",
-                        "duration": 30.3636342,
-                        "outcome": "timedout"
+                        "endTime": "2022-06-30 18:53:23+00:00",
+                        "duration": 57.9035135,
+                        "outcome": "correct"
                     }
                 ]
             }

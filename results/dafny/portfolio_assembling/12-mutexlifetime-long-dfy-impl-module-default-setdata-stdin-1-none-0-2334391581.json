@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652743731.9201407,
-        "start_readable": "2022-05-17T01:28:51.920141",
-        "end": 1652744317.1957622,
-        "end_readable": "2022-05-17T01:38:37.195762",
-        "duration": "585.2756214142"
+        "start": 1656539564.4302325,
+        "start_readable": "2022-06-29T23:52:44.430233",
+        "end": 1656539832.380947,
+        "end_readable": "2022-06-29T23:57:12.380947",
+        "duration": "267.9507145882"
     },
     "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/12-MutexLifetime-long.dfy",
                 "/proc:Impl$$_module.__default.SetData",
-                "/xml:/tmp/tmpu3i760bv.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpqd5r60fl.xml",
                 "/vcsMaxKeepGoingSplits:32",
                 "/vcsKeepGoingTimeout:10"
             ],
@@ -36,73 +39,21 @@
                 "/vcsKeepGoingTimeout:10"
             ],
             "stdout": [
-                "b'/benchmarks/12-MutexLifetime-long.dfy(1141,32): Error: A precondition for this call might not hold.'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(201,13): Related location: This is the precondition that might not hold.'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(201,77): Related location'",
-                "b'Execution trace:'",
-                "b'    (0,0): anon0'",
-                "b'    /benchmarks/12-MutexLifetime-long.dfy(1092,32): anon4_Else'",
-                "b'    (0,0): anon3'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(1141,32): Error: A precondition for this call might not hold.'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(201,13): Related location: This is the precondition that might not hold.'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(201,77): Related location'",
-                "b'Execution trace:'",
-                "b'    (0,0): anon0'",
-                "b'    (0,0): anon3'",
-                "b'    (0,0): anon4_Then'",
-                "b'    (0,0): anon5_Then'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(1141,32): Error: A precondition for this call might not hold.'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(201,13): Related location: This is the precondition that might not hold.'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(201,77): Related location'",
-                "b'Execution trace:'",
-                "b'    (0,0): anon0'",
-                "b'    (0,0): anon3'",
-                "b'    (0,0): anon4_Then'",
-                "b'    /benchmarks/12-MutexLifetime-long.dfy(1092,32): anon5_Else'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(1144,21): Error: assertion violation'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(445,7): Related location'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(302,100): Related location'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(18,8): Related location'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(19,17): Related location'",
-                "b'Execution trace:'",
-                "b'    (0,0): anon0'",
-                "b'    /benchmarks/12-MutexLifetime-long.dfy(1092,32): anon4_Else'",
-                "b'    (0,0): anon3'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(1144,21): Error: assertion violation'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(445,7): Related location'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(302,100): Related location'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(18,8): Related location'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(19,17): Related location'",
-                "b'Execution trace:'",
-                "b'    (0,0): anon0'",
-                "b'    (0,0): anon3'",
-                "b'    (0,0): anon4_Then'",
-                "b'    (0,0): anon5_Then'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(1144,21): Error: assertion violation'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(445,7): Related location'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(302,100): Related location'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(18,8): Related location'",
-                "b'/benchmarks/12-MutexLifetime-long.dfy(19,17): Related location'",
-                "b'Execution trace:'",
-                "b'    (0,0): anon0'",
-                "b'    (0,0): anon3'",
-                "b'    (0,0): anon4_Then'",
-                "b'    /benchmarks/12-MutexLifetime-long.dfy(1092,32): anon5_Else'",
                 "b''",
-                "b'Dafny program verifier finished with 0 verified, 6 errors'"
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
             ],
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default.SetData /xml:/tmp/tmpu3i760bv.xml /vcsMaxKeepGoingSplits:32 /vcsKeepGoingTimeout:10",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.__default.SetData /compile:0 /rlimit:9999999 /xml:/tmp/tmpqd5r60fl.xml /vcsMaxKeepGoingSplits:32 /vcsKeepGoingTimeout:10",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.SetData",
-                        "startTime": "2022-05-16 23:28:55+00:00",
+                        "startTime": "2022-06-29 21:52:47+00:00",
                         "finished": true,
-                        "endTime": "2022-05-16 23:38:37+00:00",
-                        "duration": 582.0772641,
-                        "outcome": "errors"
+                        "endTime": "2022-06-29 21:57:12+00:00",
+                        "duration": 264.7831682,
+                        "outcome": "correct"
                     }
                 ]
             }

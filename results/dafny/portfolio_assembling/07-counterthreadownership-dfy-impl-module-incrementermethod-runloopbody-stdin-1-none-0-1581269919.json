@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651330564.2701626,
-        "start_readable": "2022-04-30T16:56:04.270163",
-        "end": 1651330572.2479165,
-        "end_readable": "2022-04-30T16:56:12.247916",
-        "duration": "7.9777538776"
+        "start": 1656526632.0782528,
+        "start_readable": "2022-06-29T20:17:12.078253",
+        "end": 1656526640.0907428,
+        "end_readable": "2022-06-29T20:17:20.090743",
+        "duration": "8.0124900341"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/07-CounterThreadOwnership.dfy",
                 "/proc:Impl$$_module.IncrementerMethod.RunLoopBody",
-                "/xml:/tmp/tmpml16hnry.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpcvlgc1b8.xml",
                 "/proverOpt:O:rewriter.bv_not_simpl=true"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /xml:/tmp/tmpml16hnry.xml /proverOpt:O:rewriter.bv_not_simpl=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /compile:0 /rlimit:9999999 /xml:/tmp/tmpcvlgc1b8.xml /proverOpt:O:rewriter.bv_not_simpl=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.IncrementerMethod.RunLoopBody",
-                        "startTime": "2022-04-30 14:56:06+00:00",
+                        "startTime": "2022-06-29 18:17:14+00:00",
                         "finished": true,
-                        "endTime": "2022-04-30 14:56:12+00:00",
-                        "duration": 5.2648816,
+                        "endTime": "2022-06-29 18:17:20+00:00",
+                        "duration": 5.3044288,
                         "outcome": "correct"
                     }
                 ]

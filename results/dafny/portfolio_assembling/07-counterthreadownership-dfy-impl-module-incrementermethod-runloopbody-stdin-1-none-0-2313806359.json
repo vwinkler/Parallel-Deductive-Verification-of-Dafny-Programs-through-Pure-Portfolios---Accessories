@@ -7,25 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
-        "commit_hash": ""
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1651331391.2927928,
-        "start_readable": "2022-04-30T17:09:51.292793",
-        "end": 1651331399.277108,
-        "end_readable": "2022-04-30T17:09:59.277108",
-        "duration": "7.9843151569"
+        "start": 1656527191.99799,
+        "start_readable": "2022-06-29T20:26:31.997990",
+        "end": 1656527199.9996977,
+        "end_readable": "2022-06-29T20:26:39.999698",
+        "duration": "8.0017077923"
     },
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/07-CounterThreadOwnership.dfy",
                 "/proc:Impl$$_module.IncrementerMethod.RunLoopBody",
-                "/xml:/tmp/tmpx7islsa3.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp86xykfy2.xml",
                 "/proverOpt:O:fp.xform.transform_arrays=true"
             ],
             "diversification": [
@@ -38,14 +43,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /xml:/tmp/tmpx7islsa3.xml /proverOpt:O:fp.xform.transform_arrays=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/07-CounterThreadOwnership.dfy /proc:Impl$$_module.IncrementerMethod.RunLoopBody /compile:0 /rlimit:9999999 /xml:/tmp/tmp86xykfy2.xml /proverOpt:O:fp.xform.transform_arrays=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.IncrementerMethod.RunLoopBody",
-                        "startTime": "2022-04-30 15:09:53+00:00",
+                        "startTime": "2022-06-29 18:26:34+00:00",
                         "finished": true,
-                        "endTime": "2022-04-30 15:09:59+00:00",
-                        "duration": 5.2735888,
+                        "endTime": "2022-06-29 18:26:39+00:00",
+                        "duration": 5.2833215,
                         "outcome": "correct"
                     }
                 ]

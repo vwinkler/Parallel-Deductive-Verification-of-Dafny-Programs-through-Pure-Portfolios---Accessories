@@ -7,27 +7,30 @@
         "seed": "0",
         "num_instances": 1,
         "dafny_command": "/opt/dafny/dafny",
-        "only_instances": null,
         "commit_hash": "",
-        "timeout": 600
+        "timeout": 600,
+        "cpu_queue": "bw-uni-cluster-single"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1652923966.4007185,
-        "start_readable": "2022-05-19T03:32:46.400718",
-        "end": 1652923971.028518,
-        "end_readable": "2022-05-19T03:32:51.028518",
-        "duration": "4.6277995110"
+        "start": 1656584627.166889,
+        "start_readable": "2022-06-30T12:23:47.166889",
+        "end": 1656584631.792803,
+        "end_readable": "2022-06-30T12:23:51.792803",
+        "duration": "4.6259140968"
     },
     "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
+            "cpu": 0,
             "cmd": [
                 "/opt/dafny/dafny",
                 "/benchmarks/BreadthFirstSearch.dfy",
                 "/proc:Impl$$_module.BreadthFirstSearch.BFS",
-                "/xml:/tmp/tmpc8wxt31v.xml",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp2s4zqvnb.xml",
                 "/proverOpt:O:smt.qi.max_multi_patterns=10",
                 "/proverOpt:O:smt.qi.quick_checker=2"
             ],
@@ -42,14 +45,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/BreadthFirstSearch.dfy /proc:Impl$$_module.BreadthFirstSearch.BFS /xml:/tmp/tmpc8wxt31v.xml /proverOpt:O:smt.qi.max_multi_patterns=10 /proverOpt:O:smt.qi.quick_checker=2",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/BreadthFirstSearch.dfy /proc:Impl$$_module.BreadthFirstSearch.BFS /compile:0 /rlimit:9999999 /xml:/tmp/tmp2s4zqvnb.xml /proverOpt:O:smt.qi.max_multi_patterns=10 /proverOpt:O:smt.qi.quick_checker=2",
                 "methods": [
                     {
                         "name": "Impl$$_module.BreadthFirstSearch.BFS",
-                        "startTime": "2022-05-19 01:32:48+00:00",
+                        "startTime": "2022-06-30 10:23:48+00:00",
                         "finished": true,
-                        "endTime": "2022-05-19 01:32:50+00:00",
-                        "duration": 2.7437595,
+                        "endTime": "2022-06-30 10:23:51+00:00",
+                        "duration": 2.7402165,
                         "outcome": "correct"
                     }
                 ]
