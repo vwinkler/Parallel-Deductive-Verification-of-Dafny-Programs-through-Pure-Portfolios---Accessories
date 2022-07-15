@@ -20,7 +20,3 @@ def find_n_vbs_results(df, n):
 
     best_config = min(total_time_by_portfolio, key=total_time_by_portfolio.get)
     return find_vbs_results(df.loc[df["diversification_string"].isin(best_config)])
-
-# combine them to all combinations of n
-# for each combination get the theoretical runtime from df
-# return best combination
