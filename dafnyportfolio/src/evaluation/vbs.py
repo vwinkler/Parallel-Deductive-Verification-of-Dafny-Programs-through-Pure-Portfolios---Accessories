@@ -11,6 +11,8 @@ def find_vbs_results(df):
 def find_n_vbs_results(df, n):
     possible_configs = find_vbs_results(df)["diversification_string"].unique()
 
+    df = df.loc[df["diversification_string"].isin(possible_configs)]
+
     total_time_by_portfolio = dict()
     for n_portfolio in itertools.combinations(possible_configs, n):
         reduced_df = df.loc[df["diversification_string"].isin(n_portfolio)]
@@ -18,7 +20,3 @@ def find_n_vbs_results(df, n):
 
     best_config = min(total_time_by_portfolio, key=total_time_by_portfolio.get)
     return find_vbs_results(df.loc[df["diversification_string"].isin(best_config)])
-
-# combine them to all combinations of n
-# for each combination get the theoretical runtime from df
-# return best combination
