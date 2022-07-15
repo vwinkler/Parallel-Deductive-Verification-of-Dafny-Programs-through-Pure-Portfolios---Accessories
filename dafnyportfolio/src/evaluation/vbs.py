@@ -11,6 +11,8 @@ def find_vbs_results(df):
 def find_n_vbs_results(df, n):
     possible_configs = find_vbs_results(df)["diversification_string"].unique()
 
+    df = df.loc[df["diversification_string"].isin(possible_configs)]
+
     total_time_by_portfolio = dict()
     for n_portfolio in itertools.combinations(possible_configs, n):
         reduced_df = df.loc[df["diversification_string"].isin(n_portfolio)]
