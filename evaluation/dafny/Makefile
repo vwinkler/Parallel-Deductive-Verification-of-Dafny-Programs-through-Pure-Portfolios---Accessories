@@ -32,7 +32,6 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01_best_speedup_boxplot.svg \
 	%_evaluation/01_best_speedup.txt \
 	%_evaluation/01_inverted_cactus.svg \
-	%_evaluation/01_inverted_cactus_with_vbs.svg \
 	%_evaluation/01_top_config_latex_table.tex
 
 misc : vbs_comparison/cactus_with_vbs.svg \
