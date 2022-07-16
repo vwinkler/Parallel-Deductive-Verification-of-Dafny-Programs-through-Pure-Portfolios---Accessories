@@ -3,11 +3,13 @@ EVAL_SCRIPTS=../../dafnyportfolio/src/evaluation/
 PORTFOLIO_ASSEMBLING_RESULTS=../../results/dafny/portfolio_assembling/
 BOOL_PARAMS_RESULTS=../../results/dafny/bool_params/
 NOASSERT_RESULTS=../../results/dafny/noassert/
+NOASSERT_MORE_ITERATIONS_RESULTS=../../results/dafny/noassert_more_iterations/
 VALIDATION_RESULTS=../../results/dafny/validation/
 MORE_ITERATIONS=../../results/dafny/more_iterations/
 PARALLEL_VCS=../../results/dafny/parallel_vcs/
 
-evaluation_prefixes := primary noassert bool_params validation more_iterations parallel_vcs
+evaluation_prefixes := primary noassert noassert_more_iterations bool_params validation \
+                       more_iterations parallel_vcs
 
 evaluations := $(patsubst %, %_evaluation, $(evaluation_prefixes))
 ps := 1 2 3 4 5 6 7 8
@@ -45,6 +47,9 @@ primary_results_list.txt : $(PORTFOLIO_ASSEMBLING_RESULTS)
 	find $^ -name '*.json' > $@
 	
 noassert_results_list.txt : $(NOASSERT_RESULTS)
+	find $^ -name '*.json' > $@
+	
+noassert_more_iterations_results_list.txt : $(NOASSERT_MORE_ITERATIONS_RESULTS)
 	find $^ -name '*.json' > $@
 	
 bool_params_results_list.txt : $(BOOL_PARAMS_RESULTS)
