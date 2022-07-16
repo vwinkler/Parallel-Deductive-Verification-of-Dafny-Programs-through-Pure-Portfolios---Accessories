@@ -76,8 +76,8 @@ class Main:
             else:
                 linestyle = "solid"
                 label = f"Portfolio, \\(p={num_cores}\\)"
-            ax.stairs(column.index, list(column) + [x_max], linestyle=linestyle, label=label,
-                      color=color_by_num_cores[num_cores])
+            ax.stairs(list(column.index) + [len(column.index)], [0] + list(column) + [x_max], linestyle=linestyle,
+                      label=label, color=color_by_num_cores[num_cores])
 
         ax.legend(loc="lower right")
         if self.args.plot_file:
