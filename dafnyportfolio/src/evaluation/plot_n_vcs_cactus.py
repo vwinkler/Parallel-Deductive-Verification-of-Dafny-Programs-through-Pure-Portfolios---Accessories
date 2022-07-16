@@ -111,9 +111,9 @@ class Main:
         label_by_source = {"parallel_vcs": "VCS", "more_iterations": "Portfolio"}
 
         for (num_cpus, source), column in runtime_chart.iteritems():
-            ax.stairs(column.index, list(column) + [x_max], linestyle=linestyle_by_num_cpus[num_cpus],
-                      color=color_by_source[source], alpha=1, linewidth=linewidth_by_source[source],
-                      label=f"{label_by_source[source]}, \\(p={num_cpus}\\)")
+            ax.stairs(list(column.index) + [len(column.index)], [0] + list(column) + [x_max],
+                      linestyle=linestyle_by_num_cpus[num_cpus], color=color_by_source[source], alpha=1,
+                      linewidth=linewidth_by_source[source], label=f"{label_by_source[source]}, \\(p={num_cpus}\\)")
 
         ax.legend(loc="lower right")
         if self.args.plot_file:

@@ -40,9 +40,11 @@ class Main:
         fig, ax = plt.subplots()
         ax.set_xlim(left=0, right=x_max)
         for column_name, column in runtime_chart.iteritems():
-            ax.stairs(column.index, list(column) + [x_max])
+            ax.stairs(list(column.index) + [len(column.index)], [0] + list(column) + [x_max])
         if self.args.plot_file:
             fig.savefig(self.args.plot_file)
+        else:
+            plt.show()
 
 
 if __name__ == '__main__':
