@@ -1,0 +1,66 @@
+{
+    "args": {
+        "dafny_file": "/benchmarks/VectorUpdate.dfy",
+        "procedure_name": "Impl$$_module.__default._default_Main",
+        "option_selector_name": "stdin",
+        "results_filename": "/result/vectorupdate-dfy-impl-module-default-default-main-stdin-1-none-2-3375849407.json",
+        "seed": "2",
+        "num_instances": 1,
+        "dafny_command": "/opt/dafny/dafny",
+        "commit_hash": "",
+        "timeout": 600,
+        "cpu_queue": "no-assignment"
+    },
+    "commit_hash": "",
+    "total_runtime": {
+        "start": 1656857065.944245,
+        "start_readable": "2022-07-03T16:04:25.944245",
+        "end": 1656857132.1624787,
+        "end_readable": "2022-07-03T16:05:32.162479",
+        "duration": "66.2182335854"
+    },
+    "termination_reason": "all instances terminated unsuccessfully",
+    "instances": [
+        {
+            "id": 0,
+            "cpu": null,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/VectorUpdate.dfy",
+                "/proc:Impl$$_module.__default._default_Main",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpw8x1aul7.xml",
+                "/vcsMaxSplits:40",
+                "/vcsCores:5"
+            ],
+            "diversification": [
+                "/vcsMaxSplits:40",
+                "/vcsCores:5"
+            ],
+            "stdout": [],
+            "stderr": [
+                "b'Unhandled exception. System.AggregateException: One or more errors occurred. (The Writer is closed or in error state.) (The Writer is closed or in error state.)'",
+                "b' ---> System.InvalidOperationException: The Writer is closed or in error state.'",
+                "b'   at System.Xml.XmlWellFormedWriter.AdvanceState(Token token)'",
+                "b'   at System.Xml.XmlWellFormedWriter.WriteStartElement(String prefix, String localName, String ns)'",
+                "b'   at Microsoft.Boogie.XmlSink.WriteEndSplit(String outcome, TimeSpan elapsed)'",
+                "b'   at VC.Split.ReadOutcome(Outcome& curOutcome, Boolean& proverFailed, Int32& totalResourceCount)'",
+                "b'   at VC.SplitAndVerifyWorker.ProcessResult(Split split)'",
+                "b'   at VC.SplitAndVerifyWorker.DoWork(Split split)'",
+                "b'   at VC.SplitAndVerifyWorker.WorkUntilDone()'",
+                "b'   --- End of inner exception stack trace ---'",
+                "b'   at System.AggregateException.Handle(Func`2 predicate)'",
+                "b'   at Microsoft.Boogie.ExecutionEngine.InferAndVerify(Program program, PipelineStatistics stats, String programId, ErrorReporterDelegate er, String requestId)'",
+                "b'   at Microsoft.Dafny.Main.BoogiePipelineWithRerun(Program program, String bplFileName, PipelineStatistics& stats, String programId) in /Users/fmadge/Documents/dafny/Source/Dafny/DafnyMain.cs:line 314'",
+                "b'   at Microsoft.Dafny.Main.BoogieOnce(String baseFile, String moduleName, Program boogieProgram, String programId, PipelineStatistics& stats, PipelineOutcome& oc) in /Users/fmadge/Documents/dafny/Source/Dafny/DafnyMain.cs:line 252'",
+                "b'   at Microsoft.Dafny.DafnyDriver.Boogie(String baseName, IEnumerable`1 boogiePrograms, String programId, Dictionary`2& statss, PipelineOutcome& outcome) in /Users/fmadge/Documents/dafny/Source/DafnyDriver/DafnyDriver.cs:line 373'",
+                "b'   at Microsoft.Dafny.DafnyDriver.ProcessFiles(IList`1 dafnyFiles, ReadOnlyCollection`1 otherFileNames, ErrorReporter reporter, Boolean lookForSnapshots, String programId) in /Users/fmadge/Documents/dafny/Source/DafnyDriver/DafnyDriver.cs:line 295'",
+                "b'   at Microsoft.Dafny.DafnyDriver.ThreadMain(String[] args) in /Users/fmadge/Documents/dafny/Source/DafnyDriver/DafnyDriver.cs:line 55'",
+                "b'   at Microsoft.Dafny.DafnyDriver.<>c__DisplayClass1_0.<Main>b__0() in /Users/fmadge/Documents/dafny/Source/DafnyDriver/DafnyDriver.cs:line 36'",
+                "b'   at System.Threading.Thread.StartCallback()'"
+            ],
+            "xml": "no element found: line 1, column 0"
+        }
+    ]
+}
