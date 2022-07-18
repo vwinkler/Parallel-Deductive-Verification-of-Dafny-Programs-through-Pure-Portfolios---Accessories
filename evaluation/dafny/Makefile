@@ -7,9 +7,15 @@ NOASSERT_MORE_ITERATIONS_RESULTS=../../results/dafny/noassert_more_iterations/
 VALIDATION_RESULTS=../../results/dafny/validation/
 MORE_ITERATIONS=../../results/dafny/more_iterations/
 PARALLEL_VCS=../../results/dafny/parallel_vcs/
+N_VBS_IRL=../../results/dafny/n-vbs_irl/
 
+<<<<<<< Updated upstream
 evaluation_prefixes := primary noassert noassert_more_iterations bool_params validation \
                        more_iterations parallel_vcs
+=======
+evaluation_prefixes := primary noassert bool_params validation more_iterations parallel_vcs \
+                       n-vbs_irl
+>>>>>>> Stashed changes
 
 evaluations := $(patsubst %, %_evaluation, $(evaluation_prefixes))
 ps := 1 2 3 4 5 6 7 8
@@ -39,6 +45,8 @@ $(evaluations) : %_evaluation : \
 misc : vbs_comparison/cactus_with_vbs.svg \
 	vbs_comparison/cactus_with_n-vbs.svg \
 	$(n-vbs_html) \
+	vbs_n-vbs_portfolio_comparison/cactus_with_vbs.svg \
+	vbs_n-vbs_portfolio_comparison/cactus_with_n-vbs.svg \
 	external_comparison/cactus_1.svg \
 	external_comparison/cactus_8.svg \
 	external_comparison/cactus_c.svg
@@ -62,6 +70,9 @@ more_iterations_results_list.txt : $(MORE_ITERATIONS)
 	find $^ -name '*.json' > $@
 	
 parallel_vcs_results_list.txt : $(PARALLEL_VCS)
+	find $^ -name '*.json' > $@
+	
+n-vbs_irl_results_list.txt : $(N_VBS_IRL)
 	find $^ -name '*.json' > $@
 
 %_collection.h5 : %_results_list.txt
@@ -140,6 +151,15 @@ $(n-vbs_h5) : vbs_%_vbs.h5 : primary_penalized_collection.h5
 $(n-vbs_html) : vbs_comparison/%_vbs.html : vbs_%_vbs.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/export_html.py $< $@
 
+vbs_n-vbs_portfolio_comparison_collection.h5 : n-vbs_irl_penalized_collection.h5 primary_penalized_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/combine_results.py $^ $@ --param source -1 portfolio -2 all
+	
+vbs_n-vbs_portfolio_comparison/cactus_with_vbs.svg : vbs_n-vbs_portfolio_comparison_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_inverted_cactus_with_vbs.py $< --plot-file $@
+
+vbs_n-vbs_portfolio_comparison/cactus_with_n-vbs.svg : vbs_n-vbs_portfolio_comparison_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_inverted_cactus_with_n-vbs.py $< --plot-file $@
+	
 external_comparison.h5 : more_iterations_penalized_collection.h5 parallel_vcs_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/combine_results.py $^ $@ --param source -1 more_iterations -2 parallel_vcs
 
