@@ -104,6 +104,7 @@ class Main:
 
         fig, ax = plt.subplots()
         ax.set_xlim(left=0, right=x_max)
+        ax.set(xlabel='Time limit (\(s\))', ylabel='Number of solved benchmarks')
 
         linestyle_by_num_cpus = {1: (0, (1, 1)), 2: (0, (2, 2)), 4: (0, (4, 4)), 8: (0, (8, 8))}
         linewidth_by_source = {"parallel_vcs": 0.8, "more_iterations": 0.5}
@@ -118,6 +119,8 @@ class Main:
         ax.legend(loc="lower right")
         if self.args.plot_file:
             fig.savefig(self.args.plot_file)
+        else:
+            plt.show()
 
 
 if __name__ == '__main__':

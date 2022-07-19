@@ -37,10 +37,15 @@ class Main:
         return df.groupby("diversification_string")["runtime"].apply(lambda t: t.agg("sum")).max()
 
     def plot(self, runtime_chart, x_max):
+        plt.rcParams.update({"text.usetex": True})
         fig, ax = plt.subplots()
         ax.set_xlim(left=0, right=x_max)
+        ax.set(xlabel='Time limit (\(s\))', ylabel='Number of solved benchmarks')
         for column_name, column in runtime_chart.iteritems():
-            ax.stairs(list(column.index) + [len(column.index)], [0] + list(column) + [x_max])
+            p = column_name.count(";") + 1 - column_name.count("None")
+            ax.stairs(list(column.index) + [len(column.index)], [0] + list(column) + [x_max], label=f"\(p={p}\)")
+
+        ax.legend(loc="lower right")
         if self.args.plot_file:
             fig.savefig(self.args.plot_file)
         else:

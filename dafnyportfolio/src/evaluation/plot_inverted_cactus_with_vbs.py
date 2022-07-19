@@ -59,6 +59,7 @@ class Main:
 
         fig, ax = plt.subplots()
         ax.set_xlim(left=0, right=x_max)
+        ax.set(xlabel='Time limit (\(s\))', ylabel='Number of solved benchmarks')
 
         for configuration, column in runtime_chart.iteritems():
             if configuration == "vbs":

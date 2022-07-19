@@ -1,6 +1,7 @@
 import argparse
 
 import seaborn as sns
+from matplotlib import pyplot as plt
 
 from collection_persistence import load_collection
 
@@ -55,10 +56,12 @@ class Main:
         return df_total_mean_runtime.loc[index_of_best_configurations]
 
     def plot(self, filename, df_min_mean_total_runtime):
+        plt.rcParams.update({"text.usetex": True})
         if self.args.make_boxplot:
             ax = sns.boxplot(x="num_running_instances", y="runtime", data=df_min_mean_total_runtime)
         else:
             ax = sns.lineplot(x="num_running_instances", y="runtime", data=df_min_mean_total_runtime)
+        ax.set(xlabel='Number \(p\) of processes/configurations', ylabel='PAR-2 score (\(s\))')
         figure = ax.get_figure()
         ax.set_ylim(bottom=0)
         figure.savefig(filename)
