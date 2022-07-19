@@ -9,13 +9,8 @@ MORE_ITERATIONS=../../results/dafny/more_iterations/
 PARALLEL_VCS=../../results/dafny/parallel_vcs/
 N_VBS_IRL=../../results/dafny/n-vbs_irl/
 
-<<<<<<< Updated upstream
 evaluation_prefixes := primary noassert noassert_more_iterations bool_params validation \
-                       more_iterations parallel_vcs
-=======
-evaluation_prefixes := primary noassert bool_params validation more_iterations parallel_vcs \
-                       n-vbs_irl
->>>>>>> Stashed changes
+                       more_iterations parallel_vcs n-vbs_irl
 
 evaluations := $(patsubst %, %_evaluation, $(evaluation_prefixes))
 ps := 1 2 3 4 5 6 7 8

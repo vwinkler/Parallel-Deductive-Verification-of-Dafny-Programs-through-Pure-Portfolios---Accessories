@@ -33,6 +33,7 @@ class Main:
         plt.rcParams.update({"text.usetex": True})
 
         fig, ax = plt.subplots()
+        ax.set(xlabel='Number \(p\) of processes/configurations', ylabel='PAR-2 score (\(s\))')
 
         for (problem, procedure), group in df.groupby(["problem", "procedure"]):
             underscore_replacement = '\\_'
@@ -46,7 +47,8 @@ class Main:
 
         figure = ax.get_figure()
         ax.set_ylim(bottom=0)
-        ax.legend(loc="upper right")
+        ax.legend(loc="upper center", bbox_to_anchor=(0.5, 1.19), ncol=2)
+        plt.tight_layout()
         if self.args.plot_file:
             figure.savefig(filename)
         else:

@@ -66,6 +66,7 @@ class Main:
 
         fig, ax = plt.subplots()
         ax.set_xlim(left=0, right=x_max)
+        ax.set(xlabel='Time limit (\(s\))', ylabel='Number of solved benchmarks')
 
         color_by_num_cores = {1: "tab:blue", 2: "tab:orange", 4: "tab:green", 8: "tab:red"}
 
