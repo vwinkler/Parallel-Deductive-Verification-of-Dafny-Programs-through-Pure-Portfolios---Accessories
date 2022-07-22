@@ -17,12 +17,14 @@ class Main:
 
     def run(self):
         df = load_collection(self.args.results_collection_in)
+        num_benchmarks = len(df[["problem", "procedure"]].value_counts())
         if not self.args.make_boxplot:
             df_mean_runtime = self.accumulate_iterations(df)
         else:
             df_mean_runtime = df
         df_total_mean_runtime = self.accumulate_benchmarks(df_mean_runtime)
         df_min_mean_total_runtime = self.pick_best_configurations_per_cpu_count(df_total_mean_runtime)
+        df_min_mean_total_runtime["runtime"] = df_min_mean_total_runtime["runtime"] / num_benchmarks
 
         if self.args.plot_file:
             self.plot(self.args.plot_file, df_min_mean_total_runtime)
@@ -61,7 +63,7 @@ class Main:
             ax = sns.boxplot(x="num_running_instances", y="runtime", data=df_min_mean_total_runtime)
         else:
             ax = sns.lineplot(x="num_running_instances", y="runtime", data=df_min_mean_total_runtime)
-        ax.set(xlabel='Number \(p\) of processes/configurations', ylabel='PAR-2 score (\(s\))')
+        ax.set(xlabel='Number \(p\) of processes', ylabel='Cumulative PAR-2 score/\#benchmarks (\(s\))')
         figure = ax.get_figure()
         ax.set_ylim(bottom=0)
         figure.savefig(filename)
