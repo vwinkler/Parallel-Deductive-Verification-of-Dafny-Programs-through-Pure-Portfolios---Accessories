@@ -33,7 +33,7 @@ class Main:
         plt.rcParams.update({"text.usetex": True})
 
         fig, ax = plt.subplots()
-        ax.set(xlabel='Number \(p\) of processes/configurations', ylabel='PAR-2 score (\(s\))')
+        ax.set(xlabel='Number \(p\) of processes', ylabel='Cumulative PAR-2 score (\(s\))')
 
         for (problem, procedure), group in df.groupby(["problem", "procedure"]):
             underscore_replacement = '\\_'
