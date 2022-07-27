@@ -68,8 +68,7 @@ class Main:
             else:
                 linestyle = "solid"
                 label = f"\\(p={len(configuration.split(';')) - configuration.count('None')}\\)"
-            ax.stairs(list(column.index) + [len(column.index)], [0] + list(column) + [x_max], linestyle=linestyle,
-                      label=label)
+            ax.plot([0] + list(column), [0] + list(column.index), linestyle=linestyle, label=label)
 
         ax.legend(loc="lower right")
         if self.args.plot_file:

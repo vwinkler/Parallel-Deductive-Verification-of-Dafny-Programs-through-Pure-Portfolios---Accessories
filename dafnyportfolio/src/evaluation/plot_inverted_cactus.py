@@ -41,9 +41,10 @@ class Main:
         fig, ax = plt.subplots()
         ax.set_xlim(left=0, right=x_max)
         ax.set(xlabel='Time limit (\(s\))', ylabel='Number of solved benchmarks')
+
         for column_name, column in runtime_chart.iteritems():
             p = column_name.count(";") + 1 - column_name.count("None")
-            ax.stairs(list(column.index) + [len(column.index)], [0] + list(column) + [x_max], label=f"\(p={p}\)")
+            ax.plot([0] + list(column), [0] + list(column.index), label=f"\(p={p}\)")
 
         ax.legend(loc="lower right")
         if self.args.plot_file:
