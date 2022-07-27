@@ -13,6 +13,7 @@ class Main:
         parser.add_argument("--plot-file", dest="plot_file", type=str)
         parser.add_argument("--info-file", dest="info_file", type=str)
         parser.add_argument("--boxplot", dest="make_boxplot", action='store_true')
+        parser.add_argument("--show-plot", dest="show", action='store_true')
         self.args = parser.parse_args()
 
     def run(self):
@@ -26,8 +27,8 @@ class Main:
         df_min_mean_total_runtime = self.pick_best_configurations_per_cpu_count(df_total_mean_runtime)
         df_min_mean_total_runtime["runtime"] = df_min_mean_total_runtime["runtime"] / num_benchmarks
 
-        if self.args.plot_file:
-            self.plot(self.args.plot_file, df_min_mean_total_runtime)
+        if self.args.plot_file or self.args.show:
+            self.plot(self.args.plot_file, df_min_mean_total_runtime, self.args.show)
 
         if self.args.info_file:
             self.print_info(df_min_mean_total_runtime, self.args.info_file)
@@ -57,7 +58,7 @@ class Main:
             "runtime"].idxmin()
         return df_total_mean_runtime.loc[index_of_best_configurations]
 
-    def plot(self, filename, df_min_mean_total_runtime):
+    def plot(self, filename, df_min_mean_total_runtime, show):
         plt.rcParams.update({"text.usetex": True})
         if self.args.make_boxplot:
             ax = sns.boxplot(x="num_running_instances", y="runtime", data=df_min_mean_total_runtime)
@@ -66,7 +67,10 @@ class Main:
         ax.set(xlabel='Number \(p\) of processes', ylabel='Cumulative PAR-2 score/\#benchmarks (\(s\))')
         figure = ax.get_figure()
         ax.set_ylim(bottom=0)
-        figure.savefig(filename)
+        if filename:
+            figure.savefig(filename)
+        if show:
+            plt.show()
 
 
 if __name__ == '__main__':
