@@ -31,6 +31,7 @@ class Main:
 
     def plot(self, filename, df):
         plt.rcParams.update({"text.usetex": True})
+        plt.style.use('tableau-colorblind10')
 
         fig, ax = plt.subplots()
         ax.set(xlabel='Number \(p\) of processes', ylabel='Cumulative PAR-2 score (\(s\))')
