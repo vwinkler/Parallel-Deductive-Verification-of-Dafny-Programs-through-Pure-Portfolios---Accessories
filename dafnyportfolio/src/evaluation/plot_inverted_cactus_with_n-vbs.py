@@ -5,9 +5,9 @@ from matplotlib import pyplot as plt
 
 from cactus_plotting import prepare_for_inverted_cactus
 from collection_persistence import load_collection
-from export_html import export_to_html
-from util import ensure_surrounding_directory_exists, make_matrix
-from vbs import find_vbs_results, find_n_vbs_results
+from linestyles import get_color, get_marker, get_zorder
+from util import ensure_surrounding_directory_exists
+from vbs import find_n_vbs_results
 
 
 class Main:
@@ -68,17 +68,15 @@ class Main:
         ax.set_xlim(left=0, right=x_max)
         ax.set(xlabel='Time limit (\(s\))', ylabel='Number of solved benchmarks')
 
-        color_by_num_cores = {1: "tab:blue", 2: "tab:orange", 4: "tab:green", 8: "tab:red"}
-
-        for (approach, num_cores), column in runtime_chart.iteritems():
+        for (approach, p), column in runtime_chart.iteritems():
             if approach == "vbs":
-                linestyle = "dashed"
-                label = f"\\({num_cores}\\)-VBS"
+                linestyle = (0, (5, 5))
+                ax.plot([0] + list(column), [0] + list(column.index), label=f"\\({p}\\)-VBS",
+                        zorder=get_zorder(linestyle), color=get_color(p), alpha=1, linestyle=linestyle, linewidth=1.5)
             else:
-                linestyle = "solid"
-                label = f"Portfolio, \\(p={num_cores}\\)"
-            ax.plot([0] + list(column), [0] + list(column.index), linestyle=linestyle,
-                    label=label, color=color_by_num_cores[num_cores])
+                linestyle = (0, (1, 0))
+                ax.plot([0] + list(column), [0] + list(column.index), label=f"Portfolio, \\(p={p}\\)",
+                        zorder=get_zorder(linestyle), color=get_color(p), alpha=1, linestyle=linestyle, linewidth=1.5)
 
         ax.legend(loc="lower right")
         if self.args.plot_file:
