@@ -42,7 +42,8 @@ class Main:
             shortened_procedure = procedure.split(".")[-1]
             label = f"{shortened_procedure.replace('_', underscore_replacement).replace('$', dollar_replacement)}"
             if self.args.plot_errorbars:
-                ax.errorbar(group["num_running_instances"], group["runtime"], yerr=group["runtime_std"], label=label)
+                ax.errorbar(group["num_running_instances"], group["runtime"], yerr=group["runtime_std"], label=label,
+                            capsize=2)
             else:
                 ax.plot(group["num_running_instances"], group["runtime"], label=label)
 
