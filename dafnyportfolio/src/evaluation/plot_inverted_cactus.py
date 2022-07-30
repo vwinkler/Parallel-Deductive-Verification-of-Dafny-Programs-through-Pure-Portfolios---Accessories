@@ -4,6 +4,7 @@ from matplotlib import pyplot as plt
 
 from collection_persistence import load_collection
 from cactus_plotting import prepare_for_inverted_cactus
+from linestyles import get_color, get_linestyle, get_marker, get_zorder
 
 
 class Main:
@@ -41,9 +42,14 @@ class Main:
         fig, ax = plt.subplots()
         ax.set_xlim(left=0, right=x_max)
         ax.set(xlabel='Time limit (\(s\))', ylabel='Number of solved benchmarks')
+
         for column_name, column in runtime_chart.iteritems():
             p = column_name.count(";") + 1 - column_name.count("None")
-            ax.stairs(list(column.index) + [len(column.index)], [0] + list(column) + [x_max], label=f"\(p={p}\)")
+
+            linestyle = get_linestyle(p)
+            ax.plot([0] + list(column), [0] + list(column.index), label=f"\(p={p}\)", color=get_color(p), alpha=1,
+                    linestyle=linestyle, linewidth=1.5, marker=get_marker(p), markevery=[-1], markersize=5,
+                    zorder=get_zorder(linestyle))
 
         ax.legend(loc="lower right")
         if self.args.plot_file:

@@ -5,6 +5,7 @@ from matplotlib import pyplot as plt
 
 from cactus_plotting import prepare_for_inverted_cactus
 from collection_persistence import load_collection
+from linestyles import get_color, get_marker, vbs_color, vbs_marker, get_zorder
 from util import ensure_surrounding_directory_exists
 from vbs import find_vbs_results
 
@@ -63,13 +64,16 @@ class Main:
 
         for configuration, column in runtime_chart.iteritems():
             if configuration == "vbs":
-                linestyle = "dashed"
-                label = "VBS"
+                linestyle = (0, (5, 5))
+                ax.plot([0] + list(column), [0] + list(column.index), label="VBS", zorder=get_zorder(linestyle),
+                        color=vbs_color, alpha=1, linestyle=linestyle, linewidth=1.5, marker=vbs_marker,
+                        markevery=[-1], markersize=5)
             else:
-                linestyle = "solid"
-                label = f"\\(p={len(configuration.split(';')) - configuration.count('None')}\\)"
-            ax.stairs(list(column.index) + [len(column.index)], [0] + list(column) + [x_max], linestyle=linestyle,
-                      label=label)
+                p = len(configuration.split(';')) - configuration.count('None')
+                linestyle = (0, (1, 0))
+                ax.plot([0] + list(column), [0] + list(column.index), label=f"\\(p={p}\\)",
+                        zorder=get_zorder(linestyle), color=get_color(p), alpha=1, linestyle=linestyle, linewidth=1.5,
+                        marker=get_marker(p), markevery=[-1], markersize=5)
 
         ax.legend(loc="lower right")
         if self.args.plot_file:

@@ -61,7 +61,10 @@ class Main:
     def plot(self, filename, df_min_mean_total_runtime, show):
         plt.rcParams.update({"text.usetex": True})
         if self.args.make_boxplot:
-            ax = sns.boxplot(x="num_running_instances", y="runtime", data=df_min_mean_total_runtime)
+            _, ax = plt.subplots()
+            for num_running_instances, group in df_min_mean_total_runtime.groupby(["num_running_instances"]):
+                ax.boxplot(group["runtime"], positions=[num_running_instances], widths=[0.8],
+                           flierprops={'marker': 'd', 'markersize': 5, 'markerfacecolor': 'black'})
         else:
             ax = sns.lineplot(x="num_running_instances", y="runtime", data=df_min_mean_total_runtime)
         ax.set(xlabel='Number \(p\) of processes', ylabel='Cumulative PAR-2 score/\#benchmarks (\(s\))')
