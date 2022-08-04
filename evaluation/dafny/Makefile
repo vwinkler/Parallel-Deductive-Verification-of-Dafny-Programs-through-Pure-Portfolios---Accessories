@@ -9,9 +9,10 @@ MORE_ITERATIONS=../../results/dafny/more_iterations/
 PARALLEL_VCS=../../results/dafny/parallel_vcs/
 N_VBS_IRL=../../results/dafny/n-vbs_irl/
 N_VBS_IRL_VALIDATION=../../results/dafny/n-vbs_irl_validation
+DEFAULT=../../results/dafny/default_config
 
 evaluation_prefixes := primary noassert noassert_more_iterations bool_params validation \
-                       more_iterations parallel_vcs n-vbs_irl n-vbs_irl_validation
+                       more_iterations parallel_vcs n-vbs_irl n-vbs_irl_validation default
 
 evaluations := $(patsubst %, %_evaluation, $(evaluation_prefixes))
 ps := 1 2 3 4 5 6 7 8
@@ -72,6 +73,9 @@ n-vbs_irl_results_list.txt : $(N_VBS_IRL)
 	find $^ -name '*.json' > $@
 	
 n-vbs_irl_validation_results_list.txt : $(N_VBS_IRL_VALIDATION)
+	find $^ -name '*.json' > $@
+	
+default_results_list.txt : $(DEFAULT)
 	find $^ -name '*.json' > $@
 
 %_collection.h5 : %_results_list.txt
