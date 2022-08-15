@@ -1,9 +1,11 @@
 import argparse
 
 from collection_persistence import load_collection
+from util import ensure_surrounding_directory_exists
 
 
 def export_to_html(filename, df):
+    ensure_surrounding_directory_exists(filename)
     with open(filename, "w") as f:
         df.to_html(f)
 

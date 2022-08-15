@@ -8,10 +8,11 @@ def main():
     parser = argparse.ArgumentParser(description="Penalize results")
     parser.add_argument(metavar="COLLECTION_IN", dest="matrix_in", type=str)
     parser.add_argument(metavar="COLLECTION_OUT", dest="matrix_out", type=str)
+    parser.add_argument("--agg", dest="agg", default="median", type=str)
     args = parser.parse_args()
 
     df = load_collection(args.matrix_in)
-    df = make_matrix(df)
+    df = make_matrix(df, args.agg)
     store_collection(args.matrix_out, df)
 
 
