@@ -127,7 +127,7 @@ class DafnyInstance:
 
         proc_argument = "/proc:{}".format(procedure_name)
         compile_0_argument = "/compile:0"
-        rlimit_argument = "/rlimit:9999999"
+        rlimit_argument = "/rlimit:0"
         static_args = [dafny_command, dfy_filename, proc_argument, compile_0_argument, rlimit_argument]
         xml_argument = "/xml:{}".format(self._xml_file.name)
         self._dynamic_args = dynamic_args
