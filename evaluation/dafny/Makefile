@@ -23,6 +23,7 @@ all : $(evaluations) misc
 $(evaluations) : %_evaluation : \
 	%_evaluation/01.txt \
 	%_evaluation/01.svg \
+	%_evaluation/01_correlation_start_time.svg \
 	%_evaluation/01_relative.svg \
 	%_evaluation/01.html \
 	%_evaluation/01.ods \
@@ -85,6 +86,9 @@ n-vbs_irl_validation_results_list.txt : $(N_VBS_IRL_VALIDATION)
 	
 %_penalized_matrix.h5 : %_unpenalized_matrix.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/penalize_empty_cells.py $< $@ --penalty-runtime 1200
+
+%_evaluation/01_correlation_start_time.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with start_time --plot-file $@
 
 %_evaluation/01_gaps.txt : %_unpenalized_matrix.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/report_empty_cells.py $< > $@
