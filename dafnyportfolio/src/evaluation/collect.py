@@ -48,7 +48,8 @@ def collect_runtime_from_file(filename, max_num_instances):
                          "only_instances": format_only_instances_arg(get_arg("only_instances", results)),
                          "runtime": [results["total_runtime"]["duration"]],
                          "finished": [has_finished(results)],
-                         "correct": [is_correct(results)]})
+                         "correct": [is_correct(results)],
+                         "start_time": [pd.to_datetime(results["total_runtime"]["start_readable"])]})
 
     div_cells = make_diversification_cells(results, max_num_instances)
     for k, v in div_cells.items():
@@ -56,7 +57,7 @@ def collect_runtime_from_file(filename, max_num_instances):
     data["diversification_string"] = "; ".join([str(x) for x in div_cells.values()])
     data["num_running_instances"] = len([div for div in div_cells.values() if div is not None])
 
-    data = data.astype({"runtime": "float64"})
+    data = data.astype({"runtime": "float64", "start_time": "datetime64"})
     return data
 
 

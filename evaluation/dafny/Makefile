@@ -9,9 +9,12 @@ MORE_ITERATIONS=../../results/dafny/more_iterations/
 PARALLEL_VCS=../../results/dafny/parallel_vcs/
 N_VBS_IRL=../../results/dafny/n-vbs_irl/
 N_VBS_IRL_VALIDATION=../../results/dafny/n-vbs_irl_validation
+DEFAULT=../../results/dafny/default_config
+SELECTION=../../results/dafny/selection
 
 evaluation_prefixes := primary noassert noassert_more_iterations bool_params validation \
-                       more_iterations parallel_vcs n-vbs_irl n-vbs_irl_validation
+                       more_iterations parallel_vcs n-vbs_irl n-vbs_irl_validation default \
+                       selection
 
 evaluations := $(patsubst %, %_evaluation, $(evaluation_prefixes))
 ps := 1 2 3 4 5 6 7 8
@@ -23,6 +26,7 @@ all : $(evaluations) misc
 $(evaluations) : %_evaluation : \
 	%_evaluation/01.txt \
 	%_evaluation/01.svg \
+	%_evaluation/01_correlation_start_time.svg \
 	%_evaluation/01_relative.svg \
 	%_evaluation/01.html \
 	%_evaluation/01.ods \
@@ -73,6 +77,12 @@ n-vbs_irl_results_list.txt : $(N_VBS_IRL)
 	
 n-vbs_irl_validation_results_list.txt : $(N_VBS_IRL_VALIDATION)
 	find $^ -name '*.json' > $@
+	
+default_results_list.txt : $(DEFAULT)
+	find $^ -name '*.json' > $@
+	
+selection_results_list.txt : $(SELECTION)
+	find $^ -name '*.json' > $@
 
 %_collection.h5 : %_results_list.txt
 	$(PYTHON) $(EVAL_SCRIPTS)/collect.py $@ - < $<
@@ -83,8 +93,14 @@ n-vbs_irl_validation_results_list.txt : $(N_VBS_IRL_VALIDATION)
 %_unpenalized_matrix.h5 : %_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/make_matrix.py $< $@
 	
+%_std_matrix.h5 : %_penalized_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/make_matrix.py --agg std $< $@
+	
 %_penalized_matrix.h5 : %_unpenalized_matrix.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/penalize_empty_cells.py $< $@ --penalty-runtime 1200
+
+%_evaluation/01_correlation_start_time.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with start_time --plot-file $@
 
 %_evaluation/01_gaps.txt : %_unpenalized_matrix.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/report_empty_cells.py $< > $@
@@ -96,6 +112,9 @@ n-vbs_irl_validation_results_list.txt : $(N_VBS_IRL_VALIDATION)
 %_evaluation/01.html : %_penalized_matrix.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/export_html.py $< $@
 	
+%_evaluation/01_std.html : %_std_matrix.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/export_html.py $< $@
+
 %_evaluation/01.ods : %_penalized_matrix.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/export_ods.py $< $@
 
