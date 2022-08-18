@@ -49,7 +49,10 @@ misc : vbs_comparison/cactus_with_vbs.svg \
 	vbs_n-vbs_portfolio_comparison/cactus_with_n-vbs.svg \
 	external_comparison/cactus_1.svg \
 	external_comparison/cactus_8.svg \
-	external_comparison/cactus_c.svg
+	external_comparison/cactus_c.svg \
+	external_comparison/cactus_optk_1.svg \
+	external_comparison/cactus_optk_8.svg \
+	external_comparison/cactus_optk_c.svg
 
 primary_results_list.txt : $(PORTFOLIO_ASSEMBLING_RESULTS)
 	find $^ -name '*.json' > $@
@@ -190,6 +193,21 @@ external_comparison/cactus_8.svg : external_comparison.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_n_vcs_cactus.py $< --plot-file $@ --approach 's=8p'
 
 external_comparison/cactus_c.svg : external_comparison.h5
+	mkdir -p $(@D)
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_n_vcs_cactus.py $< --plot-file $@ --approach 's=const>>p'
+	
+external_comparison_optk.h5 : n-vbs_irl_penalized_collection.h5 parallel_vcs_penalized_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/combine_results.py $^ $@ --param source -1 more_iterations -2 parallel_vcs
+
+external_comparison/cactus_optk_1.svg : external_comparison_optk.h5
+	mkdir -p $(@D)
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_n_vcs_cactus.py $< --plot-file $@ --approach 's=p'
+
+external_comparison/cactus_optk_8.svg : external_comparison_optk.h5
+	mkdir -p $(@D)
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_n_vcs_cactus.py $< --plot-file $@ --approach 's=8p'
+
+external_comparison/cactus_optk_c.svg : external_comparison_optk.h5
 	mkdir -p $(@D)
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_n_vcs_cactus.py $< --plot-file $@ --approach 's=const>>p'
 	
