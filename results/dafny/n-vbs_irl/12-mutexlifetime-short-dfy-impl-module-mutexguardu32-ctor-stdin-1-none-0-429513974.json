@@ -13,13 +13,13 @@
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1657770757.774273,
-        "start_readable": "2022-07-14T05:52:37.774273",
-        "end": 1657770818.278527,
-        "end_readable": "2022-07-14T05:53:38.278527",
-        "duration": "60.5042541027"
+        "start": 1660765635.0041945,
+        "start_readable": "2022-08-17T21:47:15.004194",
+        "end": 1660765750.618001,
+        "end_readable": "2022-08-17T21:49:10.618001",
+        "duration": "115.6138064861"
     },
-    "termination_reason": "instance termination",
+    "termination_reason": "all instances terminated unsuccessfully",
     "instances": [
         {
             "id": 0,
@@ -29,29 +29,30 @@
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
                 "/compile:0",
-                "/rlimit:9999999",
-                "/xml:/tmp/tmpwvduoi3x.xml",
+                "/rlimit:0",
+                "/xml:/tmp/tmp6yqphwb1.xml",
                 "/proverOpt:O:rewriter.cache_all=true"
             ],
             "diversification": [
                 "/proverOpt:O:rewriter.cache_all=true"
             ],
             "stdout": [
+                "b\"/benchmarks/12-MutexLifetime-short.dfy(892,2): Verification of 'Impl$$_module.MutexGuardU32.__ctor' timed out after 30 seconds\"",
                 "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+                "b'Dafny program verifier finished with 0 verified, 0 errors, 1 time out'"
             ],
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmpwvduoi3x.xml /proverOpt:O:rewriter.cache_all=true",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /compile:0 /rlimit:0 /xml:/tmp/tmp6yqphwb1.xml /proverOpt:O:rewriter.cache_all=true",
                 "methods": [
                     {
                         "name": "Impl$$_module.MutexGuardU32.__ctor",
-                        "startTime": "2022-07-14 03:52:40+00:00",
+                        "startTime": "2022-08-17 19:47:18+00:00",
                         "finished": true,
-                        "endTime": "2022-07-14 03:53:37+00:00",
-                        "duration": 56.6917457,
-                        "outcome": "correct"
+                        "endTime": "2022-08-17 19:48:12+00:00",
+                        "duration": 53.9899921,
+                        "outcome": "timedout"
                     }
                 ]
             }
@@ -64,16 +65,33 @@
                 "/benchmarks/12-MutexLifetime-short.dfy",
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
                 "/compile:0",
-                "/rlimit:9999999",
-                "/xml:/tmp/tmpkacpuvk8.xml",
+                "/rlimit:0",
+                "/xml:/tmp/tmp4v26uz3c.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=10"
             ],
             "diversification": [
                 "/proverOpt:O:smt.qi.eager_threshold=10"
             ],
-            "stdout": [],
+            "stdout": [
+                "b\"/benchmarks/12-MutexLifetime-short.dfy(892,2): Verification of 'Impl$$_module.MutexGuardU32.__ctor' timed out after 30 seconds\"",
+                "b''",
+                "b'Dafny program verifier finished with 0 verified, 0 errors, 1 time out'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /compile:0 /rlimit:0 /xml:/tmp/tmp4v26uz3c.xml /proverOpt:O:smt.qi.eager_threshold=10",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.MutexGuardU32.__ctor",
+                        "startTime": "2022-08-17 19:47:31+00:00",
+                        "finished": true,
+                        "endTime": "2022-08-17 19:49:09+00:00",
+                        "duration": 97.829686,
+                        "outcome": "timedout"
+                    }
+                ]
+            }
         }
     ]
 }
