@@ -27,6 +27,9 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01.txt \
 	%_evaluation/01.svg \
 	%_evaluation/01_correlation_start_time.svg \
+	%_evaluation/01_correlation_call_number.svg \
+	%_evaluation/01_correlation_job_number.svg \
+	%_evaluation/01_correlation_call_in_job_number.svg \
 	%_evaluation/01_relative.svg \
 	%_evaluation/01.html \
 	%_evaluation/01.ods \
@@ -104,6 +107,15 @@ selection_results_list.txt : $(SELECTION)
 
 %_evaluation/01_correlation_start_time.svg : %_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with start_time --plot-file $@
+
+%_evaluation/01_correlation_call_number.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_number --plot-file $@
+
+%_evaluation/01_correlation_job_number.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with job_number --plot-file $@
+
+%_evaluation/01_correlation_call_in_job_number.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_in_job_number --plot-file $@
 
 %_evaluation/01_gaps.txt : %_unpenalized_matrix.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/report_empty_cells.py $< > $@

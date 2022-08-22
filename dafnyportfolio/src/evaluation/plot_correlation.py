@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt
 from collect import *
 from collection_persistence import load_collection
 
-quantities = ["start_time"]
+quantities = ["start_time", "call_number", "job_number", "call_in_job_number"]
 
 
 def main():
@@ -18,9 +18,12 @@ def main():
     medians_by_group = df.groupby(group_columns).agg({"runtime": "median"}).reset_index()
     df_with_median = pd.merge(df, medians_by_group, how="inner", on=group_columns, suffixes=("", "_agg"))
     df_with_median["runtime_factor"] = df_with_median["runtime"] / df_with_median["runtime_agg"]
+    df_with_median["runtime_factor_rank_in_group"] = df_with_median.groupby(group_columns)["runtime_factor"].rank()
+    df_with_median.sort_values(args.other_quantity, inplace=True)
 
     figure, ax = plt.subplots()
-    ax.scatter(x=df_with_median[args.other_quantity], y=df_with_median["runtime_factor"])
+    ax.scatter(x=df_with_median[args.other_quantity], y=df_with_median["runtime_factor"],
+               c=df_with_median["runtime_factor_rank_in_group"])
 
     if args.output_file:
         figure.savefig(args.output_file)
