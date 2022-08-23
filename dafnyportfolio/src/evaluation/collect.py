@@ -50,9 +50,9 @@ def collect_runtime_from_file(filename, max_num_instances):
                          "finished": [has_finished(results)],
                          "correct": [is_correct(results)],
                          "start_time": [pd.to_datetime(results["total_runtime"]["start_readable"])],
-                         "call_number": [int(results["key-values"]["call_number"])],
-                         "job_number": [int(results["key-values"]["job_number"])],
-                         "call_in_job_number": [int(results["key-values"]["call_in_job_number"])]})
+                         "call_number": [retrieve_key_value_value(results, "call_number")],
+                         "job_number": [retrieve_key_value_value(results, "job_number")],
+                         "call_in_job_number": [retrieve_key_value_value(results, "call_in_job_number")]})
 
     div_cells = make_diversification_cells(results, max_num_instances)
     for k, v in div_cells.items():
@@ -62,6 +62,13 @@ def collect_runtime_from_file(filename, max_num_instances):
 
     data = data.astype({"runtime": "float64", "start_time": "datetime64"})
     return data
+
+
+def retrieve_key_value_value(results, key):
+    try:
+        return int(results["key-values"][key])
+    except KeyError:
+        return None
 
 
 def has_finished(results):
