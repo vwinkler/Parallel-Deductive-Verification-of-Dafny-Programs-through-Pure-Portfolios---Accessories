@@ -166,13 +166,13 @@ vbs_comparison/cactus_with_vbs.svg : vbs_comparison_collection.h5
 vbs_comparison/cactus_with_n-vbs.svg : vbs_comparison_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_inverted_cactus_with_n-vbs.py $< --plot-file $@
 	
-$(n-vbs_h5) : vbs_%_vbs.h5 : primary_penalized_collection.h5
+$(n-vbs_h5) : vbs_%_vbs.h5 : selection_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/make_n-vbs.py $^ $@ $(patsubst vbs_%_vbs.h5, %, $@)
 	
 $(n-vbs_html) : vbs_comparison/%_vbs.html : vbs_%_vbs.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/export_html.py $< $@
 
-vbs_n-vbs_portfolio_comparison_collection.h5 : n-vbs_irl_penalized_collection.h5 primary_penalized_collection.h5
+vbs_n-vbs_portfolio_comparison_collection.h5 : n-vbs_irl_penalized_collection.h5 selection_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/combine_results.py $^ $@ --param source -1 portfolio -2 all
 	
 vbs_n-vbs_portfolio_comparison/cactus_with_vbs.svg : vbs_n-vbs_portfolio_comparison_collection.h5
