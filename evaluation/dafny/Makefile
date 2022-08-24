@@ -30,6 +30,7 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01_correlation_call_number.svg \
 	%_evaluation/01_correlation_job_number.svg \
 	%_evaluation/01_correlation_call_in_job_number.svg \
+	%_evaluation/01_correlation_median_runtime.svg \
 	%_evaluation/01_relative.svg \
 	%_evaluation/01.html \
 	%_evaluation/01.ods \
@@ -115,6 +116,9 @@ selection_results_list.txt : $(SELECTION)
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with job_number --plot-file $@
 
 %_evaluation/01_correlation_call_in_job_number.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_in_job_number --plot-file $@
+
+%_evaluation/01_correlation_median_runtime.svg : %_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_in_job_number --plot-file $@
 
 %_evaluation/01_gaps.txt : %_unpenalized_matrix.h5
