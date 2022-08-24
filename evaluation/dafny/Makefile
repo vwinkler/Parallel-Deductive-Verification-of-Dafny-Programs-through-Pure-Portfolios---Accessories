@@ -27,6 +27,10 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01.txt \
 	%_evaluation/01.svg \
 	%_evaluation/01_correlation_start_time.svg \
+	%_evaluation/01_correlation_call_number.svg \
+	%_evaluation/01_correlation_job_number.svg \
+	%_evaluation/01_correlation_call_in_job_number.svg \
+	%_evaluation/01_correlation_median_runtime.svg \
 	%_evaluation/01_relative.svg \
 	%_evaluation/01.html \
 	%_evaluation/01.ods \
@@ -105,6 +109,18 @@ selection_results_list.txt : $(SELECTION)
 %_evaluation/01_correlation_start_time.svg : %_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with start_time --plot-file $@
 
+%_evaluation/01_correlation_call_number.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_number --plot-file $@
+
+%_evaluation/01_correlation_job_number.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with job_number --plot-file $@
+
+%_evaluation/01_correlation_call_in_job_number.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_in_job_number --plot-file $@
+
+%_evaluation/01_correlation_median_runtime.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_in_job_number --plot-file $@
+
 %_evaluation/01_gaps.txt : %_unpenalized_matrix.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/report_empty_cells.py $< > $@
 
@@ -166,13 +182,13 @@ vbs_comparison/cactus_with_vbs.svg : vbs_comparison_collection.h5
 vbs_comparison/cactus_with_n-vbs.svg : vbs_comparison_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_inverted_cactus_with_n-vbs.py $< --plot-file $@
 	
-$(n-vbs_h5) : vbs_%_vbs.h5 : primary_penalized_collection.h5
+$(n-vbs_h5) : vbs_%_vbs.h5 : selection_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/make_n-vbs.py $^ $@ $(patsubst vbs_%_vbs.h5, %, $@)
 	
 $(n-vbs_html) : vbs_comparison/%_vbs.html : vbs_%_vbs.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/export_html.py $< $@
 
-vbs_n-vbs_portfolio_comparison_collection.h5 : n-vbs_irl_penalized_collection.h5 primary_penalized_collection.h5
+vbs_n-vbs_portfolio_comparison_collection.h5 : n-vbs_irl_penalized_collection.h5 selection_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/combine_results.py $^ $@ --param source -1 portfolio -2 all
 	
 vbs_n-vbs_portfolio_comparison/cactus_with_vbs.svg : vbs_n-vbs_portfolio_comparison_collection.h5

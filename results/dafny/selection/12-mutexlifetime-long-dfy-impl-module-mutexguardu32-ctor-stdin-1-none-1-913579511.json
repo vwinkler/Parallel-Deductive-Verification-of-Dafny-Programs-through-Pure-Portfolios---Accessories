@@ -9,17 +9,36 @@
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
         "timeout": 600,
-        "cpu_queue": "bw-uni-cluster-single"
+        "cpu_queue": "bw-uni-cluster-single",
+        "pairs": [
+            [
+                "call_number",
+                "8975"
+            ],
+            [
+                "job_number",
+                "25"
+            ],
+            [
+                "call_in_job_number",
+                "259"
+            ]
+        ]
+    },
+    "key-values": {
+        "call_number": "8975",
+        "job_number": "25",
+        "call_in_job_number": "259"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1659958442.2260451,
-        "start_readable": "2022-08-08T13:34:02.226045",
-        "end": 1659959042.8160717,
-        "end_readable": "2022-08-08T13:44:02.816072",
-        "duration": "600.5900266171"
+        "start": 1661247872.6534574,
+        "start_readable": "2022-08-23T11:44:32.653457",
+        "end": 1661248164.8356392,
+        "end_readable": "2022-08-23T11:49:24.835639",
+        "duration": "292.1821818352"
     },
-    "termination_reason": "portfolio timeout",
+    "termination_reason": "instance termination",
     "instances": [
         {
             "id": 0,
@@ -30,15 +49,31 @@
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
                 "/compile:0",
                 "/rlimit:9999999",
-                "/xml:/tmp/tmp1uf0qkje.xml",
+                "/xml:/tmp/tmpsb03_ru9.xml",
                 "/proverOpt:O:smt.qi.max_multi_patterns=1"
             ],
             "diversification": [
                 "/proverOpt:O:smt.qi.max_multi_patterns=1"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-long.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmpsb03_ru9.xml /proverOpt:O:smt.qi.max_multi_patterns=1",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.MutexGuardU32.__ctor",
+                        "startTime": "2022-08-23 09:44:35+00:00",
+                        "finished": true,
+                        "endTime": "2022-08-23 09:49:24+00:00",
+                        "duration": 288.9660047,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         }
     ]
 }

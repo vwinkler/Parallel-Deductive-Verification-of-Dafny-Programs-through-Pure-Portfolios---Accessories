@@ -16,7 +16,7 @@ def main():
 
     top_config_df = find_vbs_results(df)
     top_config_df["Benchmark"] = range(1, len(top_config_df) + 1)
-    top_config_df["Configuration"] = top_config_df[("diversification", 0)].str.replace("_", "\\_")
+    top_config_df["Configuration"] = top_config_df["diversification_string"].str.replace("_", "\\_")
     top_config_df["Configuration"] = args.prefix + top_config_df["Configuration"] + args.suffix
     top_config_df["Runtime"] = top_config_df["runtime"]
     top_config_df.loc[top_config_df["Runtime"] > 600, "Configuration"] = "not solved by any configuration"

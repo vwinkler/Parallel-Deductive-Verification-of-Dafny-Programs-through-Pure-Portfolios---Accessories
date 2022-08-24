@@ -16,17 +16,17 @@ def make_commands(args, calls):
     cmd = ""
     assert args.max_jobs is None or args.max_jobs > 0
     chunk_size = math.ceil(len(calls) / args.max_jobs) if args.max_jobs is not None else len(calls)
-    for i, job_calls in enumerate(chunk(calls, chunk_size)):
-        time_sum = sum_times(job_calls)
-        mem_max = max_mems(job_calls)
+    for job_number, job_calls in enumerate(chunk(calls, chunk_size)):
+        time_sum = sum_times([call for call, _, _ in job_calls])
+        mem_max = max_mems([call for call, _, _ in job_calls])
 
         if not args.omit_sbatch:
-            cmd += make_sbatch_prefix(args, f"job_{i}", runtime=time_sum, mem=mem_max)
-        for call, results_filename in job_calls:
+            cmd += make_sbatch_prefix(args, f"job_{job_number}", runtime=time_sum, mem=mem_max)
+        for call_in_job_no, (call, results_filename, call_number) in enumerate(job_calls):
             if args.skip_existing:
                 path = prepend_base_path(args.results_base_path, results_filename)
                 cmd += f"if [[ ! -e '{path}' ]]; then\n"
-            cmd += f"{make_container_command(args, call, results_filename)}"
+            cmd += f"{make_container_command(args, call, results_filename, call_number, job_number, call_in_job_no)}"
             cmd += f" {make_stdin_heredoc(call)}"
             cmd += "\n"
             if args.skip_existing:
@@ -47,7 +47,7 @@ def chunk(values, chunk_size):
 
 
 def max_mems(calls):
-    memory_estimates = [parse_memory_value(call["estimated_memory"]) for call, _ in calls if "estimated_memory" in call]
+    memory_estimates = [parse_memory_value(call["estimated_memory"]) for call in calls if "estimated_memory" in call]
 
     if len(memory_estimates) > 0:
         return max([0] + memory_estimates)
@@ -64,7 +64,7 @@ def parse_memory_value(memory_value):
 
 
 def sum_times(calls):
-    runtimes = [parse_runtime_value_to_seconds(call["estimated_runtime"]) for call, _ in calls if
+    runtimes = [parse_runtime_value_to_seconds(call["estimated_runtime"]) for call in calls if
                 "estimated_runtime" in call]
     if len(runtimes) > 0:
         return seconds_to_hours_minutes_seconds(int(sum(runtimes)))
@@ -109,11 +109,12 @@ def make_sbatch_suffix_string():
     return "EOF"
 
 
-def make_container_command(args, call, results_filename):
-    return make_container_command_string(make_container_command_args(args, call, results_filename))
+def make_container_command(args, call, results_filename, call_number, job_number, call_in_job_no):
+    command_args = make_container_command_args(args, call, results_filename, call_number, job_number, call_in_job_no)
+    return make_container_command_string(command_args)
 
 
-def make_container_command_args(args, call, results_filename):
+def make_container_command_args(args, call, results_filename, call_number, job_number, call_in_job_number):
     results_base_path = abspath(args.results_base_path)
     dfy_base_path = abspath(args.dfy_base_path)
     cmd_args = [f"{make_container_start_command(args.container_framework)}",
@@ -126,7 +127,8 @@ def make_container_command_args(args, call, results_filename):
                 turn_key_errors_and_null_to_emptystring("--num-instances {} ", call, "num_instances"),
                 turn_key_errors_and_null_to_emptystring("--seed {} ", call, "seed"),
                 turn_key_errors_and_null_to_emptystring("--only-instances {} ", call, "only_instances"),
-                turn_key_errors_and_null_to_emptystring("--cpu-queue {} ", call, "cpu_queue")]
+                turn_key_errors_and_null_to_emptystring("--cpu-queue {} ", call, "cpu_queue"),
+                f"--add-key-value call_number={call_number} job_number={job_number} call_in_job_number={call_in_job_number}"]
     cmd_args = [arg for arg in cmd_args if arg != ""]
     return cmd_args
 
@@ -152,11 +154,11 @@ def make_mount_argument(framework, host_dir, container_dir, read_only):
 
 def admit_call_if_result_new(call, results_filename, calls, results_base_path):
     if not os.path.isfile(prepend_base_path(results_base_path, results_filename)):
-        calls.append((call, results_filename))
+        calls.append((call, results_filename, len(calls)))
 
 
 def admit_call(call, results_filename, calls):
-    calls.append((call, results_filename))
+    calls.append((call, results_filename, len(calls)))
 
 
 if __name__ == '__main__':
