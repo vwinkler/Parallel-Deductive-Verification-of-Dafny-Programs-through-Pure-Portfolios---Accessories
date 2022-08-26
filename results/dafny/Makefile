@@ -37,7 +37,7 @@ missing: $(cluster_container_missing_results)
 	echo "#!/bin/sh" > $@;\
 	echo "mkdir -p $$target_dir" >> $@;\
 	cat print_warning.sh >> $@;\
-	python $(make_cloud_job) --order-seed StVO --omit-existing --max-jobs 100 --results-base-path $(patsubst %_run_cloud_single.sh,%, $@)/ --dfy-base-path ../../benchmarks/dafny/ $< single vwinkler+dafnyportfolio-evaluation >> $@
+	python $(make_cloud_job) --order-seed StVO --omit-existing --max-jobs 25 --results-base-path $(patsubst %_run_cloud_single.sh,%, $@)/ --dfy-base-path ../../benchmarks/dafny/ $< single vwinkler+dafnyportfolio-evaluation >> $@
 	
 %_run_local_container.sh : %.job.json $(make_cloud_job) .
 	cat print_warning.sh > $@
