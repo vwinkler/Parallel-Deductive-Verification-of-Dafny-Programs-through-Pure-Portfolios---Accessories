@@ -34,6 +34,10 @@ def get_commit_hash():
     return args.commit_hash if args.commit_hash is not None else util.get_current_commit_hash()
 
 
+def pairs_to_dict(pairs):
+    return {key: value for key, value in pairs}
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Run the Dafny solver in a portfolio")
     parser.add_argument(metavar="DAFNYFILE", dest="dafny_file", type=str)
@@ -47,6 +51,7 @@ if __name__ == '__main__':
     parser.add_argument("--commit-hash", dest="commit_hash", type=str)
     parser.add_argument("--timeout", dest="timeout", type=int, default=2 ** 31 - 1)
     parser.add_argument("--cpu-queue", dest="cpu_queue", choices=cpu_queue.keys(), default=default_cpu_queue)
+    parser.add_argument("--add-key-value", dest="pairs", type=lambda arg: arg.split("="), nargs="*")
     args = parser.parse_args()
 
     chosen_option_selector = option_selectors[args.option_selector_name]
@@ -59,6 +64,7 @@ if __name__ == '__main__':
     instances_results = portfolio.run()
     end_time = time()
     portfolio_results = {"args": vars(args),
+                         "key-values": pairs_to_dict(args.pairs),
                          "commit_hash": get_commit_hash(),
                          "total_runtime": util.format_timediff(start_time, end_time),
                          "termination_reason": portfolio.termination_reason,
