@@ -18,8 +18,9 @@ def make_commands(args, calls):
     chunk_size = math.ceil(len(calls) / args.max_jobs) if args.max_jobs is not None else len(calls)
     for job_number, job_calls in enumerate(chunk(calls, chunk_size)):
         num_buffer_seconds = 10
+        allocate_all_memory = True
         time_sum = sum_times([call for call, _, _ in job_calls], num_buffer_seconds)
-        mem_max = max_mems([call for call, _, _ in job_calls])
+        mem_max = max_mems([call for call, _, _ in job_calls]) if not allocate_all_memory else 0
 
         if not args.omit_sbatch:
             cmd += make_sbatch_prefix(args, f"job_{job_number}", runtime=time_sum, mem=mem_max)
