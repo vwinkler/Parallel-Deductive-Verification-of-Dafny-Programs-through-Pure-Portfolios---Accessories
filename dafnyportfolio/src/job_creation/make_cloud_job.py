@@ -17,7 +17,8 @@ def make_commands(args, calls):
     assert args.max_jobs is None or args.max_jobs > 0
     chunk_size = math.ceil(len(calls) / args.max_jobs) if args.max_jobs is not None else len(calls)
     for job_number, job_calls in enumerate(chunk(calls, chunk_size)):
-        time_sum = sum_times([call for call, _, _ in job_calls])
+        num_buffer_seconds = 10
+        time_sum = sum_times([call for call, _, _ in job_calls], num_buffer_seconds)
         mem_max = max_mems([call for call, _, _ in job_calls])
 
         if not args.omit_sbatch:
@@ -33,6 +34,7 @@ def make_commands(args, calls):
                 cmd += "else\n"
                 cmd += f"echo skipping '{path}'\n"
                 cmd += "fi\n"
+            cmd += f"sleep {num_buffer_seconds}s\n"
         if not args.omit_sbatch:
             cmd += make_sbatch_suffix_string()
             cmd += "\n"
@@ -63,9 +65,9 @@ def parse_memory_value(memory_value):
     return mem
 
 
-def sum_times(calls):
-    runtimes = [parse_runtime_value_to_seconds(call["estimated_runtime"]) for call in calls if
-                "estimated_runtime" in call]
+def sum_times(calls, additional_seconds_per_call):
+    runtimes = [parse_runtime_value_to_seconds(call["estimated_runtime"]) + additional_seconds_per_call for call in
+                calls if "estimated_runtime" in call]
     if len(runtimes) > 0:
         return seconds_to_hours_minutes_seconds(int(sum(runtimes)))
     else:
