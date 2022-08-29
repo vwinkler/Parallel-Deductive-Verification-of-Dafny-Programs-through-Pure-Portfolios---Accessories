@@ -9,15 +9,34 @@
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
         "timeout": 600,
-        "cpu_queue": "bw-uni-cluster-single"
+        "cpu_queue": "bw-uni-cluster-single",
+        "pairs": [
+            [
+                "call_number",
+                "969"
+            ],
+            [
+                "job_number",
+                "25"
+            ],
+            [
+                "call_in_job_number",
+                "2"
+            ]
+        ]
+    },
+    "key-values": {
+        "call_number": "969",
+        "job_number": "25",
+        "call_in_job_number": "2"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1661382107.023375,
-        "start_readable": "2022-08-25T01:01:47.023375",
-        "end": 1661382111.188107,
-        "end_readable": "2022-08-25T01:01:51.188107",
-        "duration": "4.1647319794"
+        "start": 1661745063.968145,
+        "start_readable": "2022-08-29T05:51:03.968145",
+        "end": 1661745066.7211251,
+        "end_readable": "2022-08-29T05:51:06.721125",
+        "duration": "2.7529802322"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -30,30 +49,11 @@
                 "/proc:Impl$$_module.__default.m8",
                 "/compile:0",
                 "/rlimit:9999999",
-                "/xml:/tmp/tmp12nnnzyv.xml",
+                "/xml:/tmp/tmp96fxfvwe.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=10"
             ],
             "diversification": [
                 "/proverOpt:O:smt.qi.eager_threshold=10"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 1,
-            "cpu": 10,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/IMaps.dfy",
-                "/proc:Impl$$_module.__default.m8",
-                "/compile:0",
-                "/rlimit:9999999",
-                "/xml:/tmp/tmpxlwdile1.xml",
-                "/vcsMaxSplits:8"
-            ],
-            "diversification": [
-                "/vcsMaxSplits:8"
             ],
             "stdout": [
                 "b'/benchmarks/IMaps.dfy(36,18): Warning: /!\\\\ No terms found to trigger on.'",
@@ -66,18 +66,42 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/IMaps.dfy /proc:Impl$$_module.__default.m8 /compile:0 /rlimit:9999999 /xml:/tmp/tmpxlwdile1.xml /vcsMaxSplits:8",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/IMaps.dfy /proc:Impl$$_module.__default.m8 /compile:0 /rlimit:9999999 /xml:/tmp/tmp96fxfvwe.xml /proverOpt:O:smt.qi.eager_threshold=10",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.m8",
-                        "startTime": "2022-08-24 23:01:48+00:00",
+                        "startTime": "2022-08-29 03:51:05+00:00",
                         "finished": true,
-                        "endTime": "2022-08-24 23:01:50+00:00",
-                        "duration": 1.5595802,
+                        "endTime": "2022-08-29 03:51:05+00:00",
+                        "duration": 0.3438279,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 1,
+            "cpu": 10,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/IMaps.dfy",
+                "/proc:Impl$$_module.__default.m8",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmp5qjsy181.xml",
+                "/vcsMaxSplits:8"
+            ],
+            "diversification": [
+                "/vcsMaxSplits:8"
+            ],
+            "stdout": [
+                "b'/benchmarks/IMaps.dfy(36,18): Warning: /!\\\\ No terms found to trigger on.'",
+                "b'/benchmarks/IMaps.dfy(36,49): Warning: /!\\\\ No terms found to trigger on.'",
+                "b'/benchmarks/IMaps.dfy(51,18): Warning: /!\\\\ No terms found to trigger on.'",
+                "b'/benchmarks/IMaps.dfy(79,33): Warning: /!\\\\ No terms found to trigger on.'"
+            ],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }
