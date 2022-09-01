@@ -9,17 +9,36 @@
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
         "timeout": 600,
-        "cpu_queue": "bw-uni-cluster-single"
+        "cpu_queue": "bw-uni-cluster-single",
+        "pairs": [
+            [
+                "call_number",
+                "537"
+            ],
+            [
+                "job_number",
+                "20"
+            ],
+            [
+                "call_in_job_number",
+                "53"
+            ]
+        ]
+    },
+    "key-values": {
+        "call_number": "537",
+        "job_number": "20",
+        "call_in_job_number": "53"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1661473468.688834,
-        "start_readable": "2022-08-26T02:24:28.688834",
-        "end": 1661474069.404732,
-        "end_readable": "2022-08-26T02:34:29.404732",
-        "duration": "600.7158980370"
+        "start": 1662030543.8791823,
+        "start_readable": "2022-09-01T13:09:03.879182",
+        "end": 1662031120.227995,
+        "end_readable": "2022-09-01T13:18:40.227995",
+        "duration": "576.3488125801"
     },
-    "termination_reason": "portfolio timeout",
+    "termination_reason": "all instances terminated unsuccessfully",
     "instances": [
         {
             "id": 0,
@@ -30,15 +49,37 @@
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
                 "/compile:0",
                 "/rlimit:9999999",
-                "/xml:/tmp/tmpp5el7ote.xml",
+                "/xml:/tmp/tmp4ayey_7r.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=10"
             ],
             "diversification": [
                 "/proverOpt:O:smt.qi.eager_threshold=10"
             ],
-            "stdout": [],
+            "stdout": [
+                "b'/benchmarks/12-MutexLifetime-short.noassert.dfy(946,23): Error: A precondition for this call might not hold.'",
+                "b'/benchmarks/12-MutexLifetime-short.noassert.dfy(97,13): Related location: This is the precondition that might not hold.'",
+                "b'/benchmarks/12-MutexLifetime-short.noassert.dfy(82,8): Related location'",
+                "b'/benchmarks/12-MutexLifetime-short.noassert.dfy(82,67): Related location'",
+                "b'Execution trace:'",
+                "b'    (0,0): anon0'",
+                "b''",
+                "b'Dafny program verifier finished with 0 verified, 1 error'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.noassert.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmp4ayey_7r.xml /proverOpt:O:smt.qi.eager_threshold=10",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.MutexGuardU32.__ctor",
+                        "startTime": "2022-09-01 11:09:20+00:00",
+                        "finished": true,
+                        "endTime": "2022-09-01 11:18:39+00:00",
+                        "duration": 558.7386933,
+                        "outcome": "errors"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -49,7 +90,7 @@
                 "/proc:Impl$$_module.MutexGuardU32.__ctor",
                 "/compile:0",
                 "/rlimit:9999999",
-                "/xml:/tmp/tmppeeez7uw.xml",
+                "/xml:/tmp/tmpewvu43fq.xml",
                 "/vcsMaxSplits:8"
             ],
             "diversification": [
@@ -68,14 +109,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.noassert.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmppeeez7uw.xml /vcsMaxSplits:8",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/12-MutexLifetime-short.noassert.dfy /proc:Impl$$_module.MutexGuardU32.__ctor /compile:0 /rlimit:9999999 /xml:/tmp/tmpewvu43fq.xml /vcsMaxSplits:8",
                 "methods": [
                     {
                         "name": "Impl$$_module.MutexGuardU32.__ctor",
-                        "startTime": "2022-08-26 00:24:31+00:00",
+                        "startTime": "2022-09-01 11:09:06+00:00",
                         "finished": true,
-                        "endTime": "2022-08-26 00:25:23+00:00",
-                        "duration": 52.2813527,
+                        "endTime": "2022-09-01 11:09:59+00:00",
+                        "duration": 52.7406164,
                         "outcome": "errors"
                     }
                 ]

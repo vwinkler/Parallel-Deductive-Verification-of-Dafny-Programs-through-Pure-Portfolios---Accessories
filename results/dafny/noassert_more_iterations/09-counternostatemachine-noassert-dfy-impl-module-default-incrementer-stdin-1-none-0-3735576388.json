@@ -9,15 +9,34 @@
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
         "timeout": 600,
-        "cpu_queue": "bw-uni-cluster-single"
+        "cpu_queue": "bw-uni-cluster-single",
+        "pairs": [
+            [
+                "call_number",
+                "121"
+            ],
+            [
+                "job_number",
+                "10"
+            ],
+            [
+                "call_in_job_number",
+                "19"
+            ]
+        ]
+    },
+    "key-values": {
+        "call_number": "121",
+        "job_number": "10",
+        "call_in_job_number": "19"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1661463055.4248662,
-        "start_readable": "2022-08-25T23:30:55.424866",
-        "end": 1661463086.1586018,
-        "end_readable": "2022-08-25T23:31:26.158602",
-        "duration": "30.7337355614"
+        "start": 1662018269.7902327,
+        "start_readable": "2022-09-01T09:44:29.790233",
+        "end": 1662018290.060763,
+        "end_readable": "2022-09-01T09:44:50.060763",
+        "duration": "20.2705302238"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -30,15 +49,31 @@
                 "/proc:Impl$$_module.__default.Incrementer",
                 "/compile:0",
                 "/rlimit:9999999",
-                "/xml:/tmp/tmprbn4k6r7.xml",
+                "/xml:/tmp/tmp_rn_fzhu.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=10"
             ],
             "diversification": [
                 "/proverOpt:O:smt.qi.eager_threshold=10"
             ],
-            "stdout": [],
+            "stdout": [
+                "b''",
+                "b'Dafny program verifier finished with 1 verified, 0 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/09-CounterNoStateMachine.noassert.dfy /proc:Impl$$_module.__default.Incrementer /compile:0 /rlimit:9999999 /xml:/tmp/tmp_rn_fzhu.xml /proverOpt:O:smt.qi.eager_threshold=10",
+                "methods": [
+                    {
+                        "name": "Impl$$_module.__default.Incrementer",
+                        "startTime": "2022-09-01 07:44:32+00:00",
+                        "finished": true,
+                        "endTime": "2022-09-01 07:44:49+00:00",
+                        "duration": 16.945258,
+                        "outcome": "correct"
+                    }
+                ]
+            }
         },
         {
             "id": 1,
@@ -49,31 +84,15 @@
                 "/proc:Impl$$_module.__default.Incrementer",
                 "/compile:0",
                 "/rlimit:9999999",
-                "/xml:/tmp/tmplyy0nk1a.xml",
+                "/xml:/tmp/tmpo_j3c6id.xml",
                 "/vcsMaxSplits:8"
             ],
             "diversification": [
                 "/vcsMaxSplits:8"
             ],
-            "stdout": [
-                "b''",
-                "b'Dafny program verifier finished with 1 verified, 0 errors'"
-            ],
+            "stdout": [],
             "stderr": [],
-            "xml": {
-                "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/09-CounterNoStateMachine.noassert.dfy /proc:Impl$$_module.__default.Incrementer /compile:0 /rlimit:9999999 /xml:/tmp/tmplyy0nk1a.xml /vcsMaxSplits:8",
-                "methods": [
-                    {
-                        "name": "Impl$$_module.__default.Incrementer",
-                        "startTime": "2022-08-25 21:30:57+00:00",
-                        "finished": true,
-                        "endTime": "2022-08-25 21:31:25+00:00",
-                        "duration": 27.5571651,
-                        "outcome": "correct"
-                    }
-                ]
-            }
+            "xml": "no element found: line 1, column 0"
         }
     ]
 }
