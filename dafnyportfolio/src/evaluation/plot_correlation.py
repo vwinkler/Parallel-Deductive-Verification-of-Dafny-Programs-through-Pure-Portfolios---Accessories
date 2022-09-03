@@ -14,11 +14,27 @@ def get_other_quantity_column_name(other_quantity_arg_name):
         return other_quantity_arg_name
 
 
+def boxplot_grouper(num_boxplots_arg):
+    def group_num_calls(df, other_quantity):
+        try:
+            num_boxplots = int(num_boxplots_arg)
+            ranges = pd.cut(df[other_quantity], bins=num_boxplots)
+            return df.groupby(ranges)
+        except:
+            pass
+        if num_boxplots_arg == "atomic":
+            return df.groupby(df[other_quantity])
+
+        raise RuntimeError(f"Illegal Argument {num_boxplots_arg}")
+
+    return group_num_calls
+
+
 def main():
     parser = argparse.ArgumentParser(description="Plot matrix displaying runtime")
     parser.add_argument(metavar="COLLECTION", dest="results_collection", type=str)
     parser.add_argument("--plot-file", dest="output_file", type=str)
-    parser.add_argument("--boxplot", dest="make_boxplot", action='store_true')
+    parser.add_argument("--num-boxplots", dest="boxplot_grouper", type=boxplot_grouper)
     parser.add_argument("--regression", dest="make_regression", action='store_true')
     parser.add_argument("--with", dest="other_quantity", choices=quantities, default=quantities[0], type=str)
     args = parser.parse_args()
@@ -45,17 +61,30 @@ def main():
     if not df.empty:
         x = df_with_median[other_quantity]
         y = df_with_median["runtime_factor"]
-        if not args.make_boxplot:
+        if args.boxplot_grouper is None:
             ax.scatter(x=x, y=y, c=df_with_median["runtime_factor_rank_in_group"], s=5)
         else:
-            for other_quantity_value, group in df_with_median.groupby([other_quantity]):
-                ax.boxplot(group["runtime_factor"], positions=[other_quantity_value], widths=[0.8],
-                           flierprops={'marker': 'd', 'markersize': 5, 'markerfacecolor': 'black'})
+            for other_quantity_value, group in args.boxplot_grouper(df_with_median, other_quantity):
+                try:
+                    position = other_quantity_value.mid
+                    assert other_quantity_value.open_left
+                    assert other_quantity_value.closed_right
+
+                    label = f"({round(other_quantity_value.left)}, {round(other_quantity_value.right)}]"
+                    width = other_quantity_value.length / 2
+                except TypeError:
+                    position = other_quantity_value
+                    label = str(other_quantity_value)
+                    width = 0.8
+                ax.boxplot(group["runtime_factor"], positions=[position], widths=[width], whis=[5, 95],
+                           flierprops={'marker': 'd', 'markersize': 1, 'markerfacecolor': 'black'}, labels=[label])
+            plt.setp(ax.get_xticklabels(), rotation=90)
 
         if args.make_regression:
             regression_b, regression_m = polyfit(x=x, y=y, deg=1)
             ax.plot(x, regression_b + regression_m * x)
 
+    plt.tight_layout()
     if args.output_file:
         figure.savefig(args.output_file)
     else:
