@@ -72,7 +72,7 @@ def main():
 
                     label = f"({round(other_quantity_value.left)}, {round(other_quantity_value.right)}]"
                     width = other_quantity_value.length / 2
-                except TypeError:
+                except AttributeError:
                     position = other_quantity_value
                     label = str(other_quantity_value)
                     width = 0.8
