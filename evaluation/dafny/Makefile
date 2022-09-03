@@ -32,6 +32,10 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01_correlation_job_number.svg \
 	%_evaluation/01_correlation_call_in_job_number.svg \
 	%_evaluation/01_correlation_median_runtime.svg \
+	%_evaluation/01_correlation_job_number_boxplot.svg \
+	%_evaluation/01_correlation_call_in_job_number_boxplot.svg \
+	%_evaluation/01_correlation_job_number_boxplot_grouped.svg \
+	%_evaluation/01_correlation_call_in_job_number_boxplot_grouped.svg \
 	%_evaluation/01_relative.svg \
 	%_evaluation/01.html \
 	%_evaluation/01.ods \
@@ -114,16 +118,28 @@ local_results_list.txt : $(LOCAL)
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with start_time --plot-file $@
 
 %_evaluation/01_correlation_call_number.svg : %_collection.h5
-	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_number --plot-file $@
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_number --plot-file $@ --regression
 
 %_evaluation/01_correlation_job_number.svg : %_collection.h5
-	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with job_number --plot-file $@
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with job_number --plot-file $@ --regression
 
 %_evaluation/01_correlation_call_in_job_number.svg : %_collection.h5
-	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_in_job_number --plot-file $@
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_in_job_number --plot-file $@ --regression
 
 %_evaluation/01_correlation_median_runtime.svg : %_collection.h5
-	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_in_job_number --plot-file $@
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with median_runtime --plot-file $@ --regression
+
+%_evaluation/01_correlation_job_number_boxplot.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with job_number --plot-file $@ --num-boxplots atomic --regression
+
+%_evaluation/01_correlation_call_in_job_number_boxplot.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_in_job_number --plot-file $@ --num-boxplots atomic --regression
+
+%_evaluation/01_correlation_job_number_boxplot_grouped.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with job_number --plot-file $@ --num-boxplots 10 --regression
+
+%_evaluation/01_correlation_call_in_job_number_boxplot_grouped.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_in_job_number --plot-file $@ --num-boxplots 10 --regression
 
 %_evaluation/01_gaps.txt : %_unpenalized_matrix.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/report_empty_cells.py $< > $@
