@@ -9,15 +9,34 @@
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
         "timeout": 600,
-        "cpu_queue": "bw-uni-cluster-single"
+        "cpu_queue": "bw-uni-cluster-single",
+        "pairs": [
+            [
+                "call_number",
+                "120"
+            ],
+            [
+                "job_number",
+                "61"
+            ],
+            [
+                "call_in_job_number",
+                "0"
+            ]
+        ]
+    },
+    "key-values": {
+        "call_number": "120",
+        "job_number": "61",
+        "call_in_job_number": "0"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1661388372.4847286,
-        "start_readable": "2022-08-25T02:46:12.484729",
-        "end": 1661388375.6861753,
-        "end_readable": "2022-08-25T02:46:15.686175",
-        "duration": "3.2014467716"
+        "start": 1662257381.3788989,
+        "start_readable": "2022-09-04T04:09:41.378899",
+        "end": 1662257383.552851,
+        "end_readable": "2022-09-04T04:09:43.552851",
+        "duration": "2.1739521027"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -30,49 +49,11 @@
                 "/proc:Impl$$_module.__default.m8",
                 "/compile:0",
                 "/rlimit:9999999",
-                "/xml:/tmp/tmp6yv665bi.xml",
+                "/xml:/tmp/tmp0o005dw8.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=10"
             ],
             "diversification": [
                 "/proverOpt:O:smt.qi.eager_threshold=10"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 1,
-            "cpu": 10,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/IMaps.dfy",
-                "/proc:Impl$$_module.__default.m8",
-                "/compile:0",
-                "/rlimit:9999999",
-                "/xml:/tmp/tmpuf6iionu.xml",
-                "/vcsMaxSplits:8"
-            ],
-            "diversification": [
-                "/vcsMaxSplits:8"
-            ],
-            "stdout": [],
-            "stderr": [],
-            "xml": "no element found: line 1, column 0"
-        },
-        {
-            "id": 2,
-            "cpu": 20,
-            "cmd": [
-                "/opt/dafny/dafny",
-                "/benchmarks/IMaps.dfy",
-                "/proc:Impl$$_module.__default.m8",
-                "/compile:0",
-                "/rlimit:9999999",
-                "/xml:/tmp/tmpris_5vgk.xml",
-                "/proverOpt:O:smt.qi.eager_threshold=20"
-            ],
-            "diversification": [
-                "/proverOpt:O:smt.qi.eager_threshold=20"
             ],
             "stdout": [
                 "b'/benchmarks/IMaps.dfy(36,18): Warning: /!\\\\ No terms found to trigger on.'",
@@ -85,18 +66,66 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/IMaps.dfy /proc:Impl$$_module.__default.m8 /compile:0 /rlimit:9999999 /xml:/tmp/tmpris_5vgk.xml /proverOpt:O:smt.qi.eager_threshold=20",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/IMaps.dfy /proc:Impl$$_module.__default.m8 /compile:0 /rlimit:9999999 /xml:/tmp/tmp0o005dw8.xml /proverOpt:O:smt.qi.eager_threshold=10",
                 "methods": [
                     {
                         "name": "Impl$$_module.__default.m8",
-                        "startTime": "2022-08-25 00:46:14+00:00",
+                        "startTime": "2022-09-04 02:09:43+00:00",
                         "finished": true,
-                        "endTime": "2022-08-25 00:46:14+00:00",
-                        "duration": 0.4397521,
+                        "endTime": "2022-09-04 02:09:43+00:00",
+                        "duration": 0.3445904,
                         "outcome": "correct"
                     }
                 ]
             }
+        },
+        {
+            "id": 1,
+            "cpu": 10,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/IMaps.dfy",
+                "/proc:Impl$$_module.__default.m8",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpwiuc_4l0.xml",
+                "/vcsMaxSplits:8"
+            ],
+            "diversification": [
+                "/vcsMaxSplits:8"
+            ],
+            "stdout": [
+                "b'/benchmarks/IMaps.dfy(36,18): Warning: /!\\\\ No terms found to trigger on.'",
+                "b'/benchmarks/IMaps.dfy(36,49): Warning: /!\\\\ No terms found to trigger on.'",
+                "b'/benchmarks/IMaps.dfy(51,18): Warning: /!\\\\ No terms found to trigger on.'",
+                "b'/benchmarks/IMaps.dfy(79,33): Warning: /!\\\\ No terms found to trigger on.'"
+            ],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
+        },
+        {
+            "id": 2,
+            "cpu": 20,
+            "cmd": [
+                "/opt/dafny/dafny",
+                "/benchmarks/IMaps.dfy",
+                "/proc:Impl$$_module.__default.m8",
+                "/compile:0",
+                "/rlimit:9999999",
+                "/xml:/tmp/tmpj7jzg9dl.xml",
+                "/proverOpt:O:smt.qi.eager_threshold=20"
+            ],
+            "diversification": [
+                "/proverOpt:O:smt.qi.eager_threshold=20"
+            ],
+            "stdout": [
+                "b'/benchmarks/IMaps.dfy(36,18): Warning: /!\\\\ No terms found to trigger on.'",
+                "b'/benchmarks/IMaps.dfy(36,49): Warning: /!\\\\ No terms found to trigger on.'",
+                "b'/benchmarks/IMaps.dfy(51,18): Warning: /!\\\\ No terms found to trigger on.'",
+                "b'/benchmarks/IMaps.dfy(79,33): Warning: /!\\\\ No terms found to trigger on.'"
+            ],
+            "stderr": [],
+            "xml": "no element found: line 1, column 0"
         },
         {
             "id": 3,
@@ -107,7 +136,7 @@
                 "/proc:Impl$$_module.__default.m8",
                 "/compile:0",
                 "/rlimit:9999999",
-                "/xml:/tmp/tmpfnx1bua0.xml",
+                "/xml:/tmp/tmpd3etnkv8.xml",
                 "/proverOpt:O:rewriter.cache_all=true"
             ],
             "diversification": [
