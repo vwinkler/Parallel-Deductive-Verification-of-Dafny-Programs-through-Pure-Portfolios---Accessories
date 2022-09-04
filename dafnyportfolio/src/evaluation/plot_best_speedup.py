@@ -39,14 +39,24 @@ class Main:
 
     def accumulate_iterations(self, df):
         return df.groupby(["problem", "procedure", "diversification_string", "num_running_instances"]).agg(
-            {"runtime": "mean"}).reset_index()
+            runtime=("runtime", "mean"), iterations=("runtime", "count")).reset_index()
 
     def accumulate_benchmarks(self, df_mean_runtime):
         if self.args.make_boxplot:
             columns = ["diversification_string", "num_running_instances", "seed"]
+            df_total_mean_runtime = df_mean_runtime.groupby(columns).agg(runtime=("runtime", "sum")).reset_index()
         else:
+            def join(xs):
+                xs = xs.tolist()
+                if len(xs) == 0:
+                    return "none"
+                if all([xs[0] == x for x in xs]):
+                    return xs[0]
+                return "varies"
+
             columns = ["diversification_string", "num_running_instances"]
-        df_total_mean_runtime = df_mean_runtime.groupby(columns).agg({"runtime": "sum"}).reset_index()
+            df_total_mean_runtime = df_mean_runtime.groupby(columns).agg(runtime=("runtime", "sum"),
+                                                                         iterations=("iterations", join)).reset_index()
         return df_total_mean_runtime
 
     def pick_best_configurations_per_cpu_count(self, df_total_mean_runtime):
