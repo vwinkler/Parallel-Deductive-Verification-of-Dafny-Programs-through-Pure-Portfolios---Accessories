@@ -233,6 +233,9 @@ external_comparison/cactus_optk_c.svg : external_comparison_optk.h5
 	
 %_evaluation/01_top_config_latex_table.tex : %_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/print_vbs_latex_table.py --prefix '\dafnycl{' --suffix '}' $< > $@
+	
+%_evaluation/01_dates.txt : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/print_dates.py $< > $@
 
 .PRECIOUS: %_collection.h5 %_penalized_matrix.h5
 .PHONY: all $(evaluations) misc
