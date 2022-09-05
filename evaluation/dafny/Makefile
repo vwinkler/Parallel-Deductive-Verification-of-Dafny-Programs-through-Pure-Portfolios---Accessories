@@ -11,10 +11,11 @@ N_VBS_IRL=../../results/dafny/n-vbs_irl/
 N_VBS_IRL_VALIDATION=../../results/dafny/n-vbs_irl_validation
 DEFAULT=../../results/dafny/default_config
 SELECTION=../../results/dafny/selection
+OPT_PF_SHORTER_JOBS=../../results/dafny/optimal_portfolio_shorter_jobs
 
 evaluation_prefixes := primary noassert noassert_more_iterations bool_params validation \
                        more_iterations parallel_vcs n-vbs_irl n-vbs_irl_validation default \
-                       selection
+                       selection opt_portfolio_shorter_jobs
 
 evaluations := $(patsubst %, %_evaluation, $(evaluation_prefixes))
 ps := 1 2 3 4 5 6 7 8
@@ -89,6 +90,9 @@ default_results_list.txt : $(DEFAULT)
 	find $^ -name '*.json' > $@
 	
 selection_results_list.txt : $(SELECTION)
+	find $^ -name '*.json' > $@
+	
+opt_portfolio_shorter_jobs_results_list.txt : $(OPT_PF_SHORTER_JOBS)
 	find $^ -name '*.json' > $@
 
 %_collection.h5 : %_results_list.txt
