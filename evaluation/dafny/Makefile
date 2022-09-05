@@ -11,11 +11,12 @@ N_VBS_IRL=../../results/dafny/n-vbs_irl/
 N_VBS_IRL_VALIDATION=../../results/dafny/n-vbs_irl_validation
 DEFAULT=../../results/dafny/default_config
 SELECTION=../../results/dafny/selection
+OPT_PF_SHORTER_JOBS=../../results/dafny/optimal_portfolio_shorter_jobs
 LOCAL=../../results/dafny/local/n-vbs_irl_desktop
 
 evaluation_prefixes := primary noassert noassert_more_iterations bool_params validation \
                        more_iterations parallel_vcs n-vbs_irl n-vbs_irl_validation default \
-                       selection local
+                       selection opt_portfolio_shorter_jobs local
 
 evaluations := $(patsubst %, %_evaluation, $(evaluation_prefixes))
 ps := 1 2 3 4 5 6 7 8
@@ -47,7 +48,9 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01_best_speedup_lineplot.svg \
 	%_evaluation/01_best_speedup_by_benchmark_lineplot.svg \
 	%_evaluation/01_best_speedup_boxplot.svg \
+	%_evaluation/01_best_speedup_boxplot_penalties_filtered.svg \
 	%_evaluation/01_best_speedup.txt \
+	%_evaluation/01_best_speedup_penalties_filtered.txt \
 	%_evaluation/01_inverted_cactus.svg \
 	%_evaluation/01_top_config_latex_table.tex
 
@@ -96,6 +99,9 @@ default_results_list.txt : $(DEFAULT)
 selection_results_list.txt : $(SELECTION)
 	find $^ -name '*.json' > $@
 	
+opt_portfolio_shorter_jobs_results_list.txt : $(OPT_PF_SHORTER_JOBS)
+	find $^ -name '*.json' > $@
+
 local_results_list.txt : $(LOCAL)
 	find $^ -name '*.json' > $@
 
@@ -189,6 +195,12 @@ local_results_list.txt : $(LOCAL)
 	
 %_evaluation/01_best_speedup.txt : %_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_best_speedup.py $< --info-file $@
+	
+%_evaluation/01_best_speedup_penalties_filtered.txt : %_penalized_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_best_speedup.py $< --info-file $@ --ignore-runtimes-above 600
+	
+%_evaluation/01_best_speedup_boxplot_penalties_filtered.svg : %_penalized_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_best_speedup.py --boxplot $< --plot-file $@ --ignore-runtimes-above 600
 
 %_evaluation/01_inverted_cactus.svg : %_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_inverted_cactus.py $< --plot-file $@
@@ -249,6 +261,9 @@ external_comparison/cactus_optk_c.svg : external_comparison_optk.h5
 	
 %_evaluation/01_top_config_latex_table.tex : %_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/print_vbs_latex_table.py --prefix '\dafnycl{' --suffix '}' $< > $@
+	
+%_evaluation/01_dates.txt : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/print_dates.py $< > $@
 
 .PRECIOUS: %_collection.h5 %_penalized_matrix.h5
 .PHONY: all $(evaluations) misc

@@ -52,7 +52,8 @@ def collect_runtime_from_file(filename, max_num_instances):
                          "start_time": [pd.to_datetime(results["total_runtime"]["start_readable"])],
                          "call_number": [retrieve_key_value_value(results, "call_number")],
                          "job_number": [retrieve_key_value_value(results, "job_number")],
-                         "call_in_job_number": [retrieve_key_value_value(results, "call_in_job_number")]})
+                         "call_in_job_number": [retrieve_key_value_value(results, "call_in_job_number")],
+                         "filename": [filename]})
 
     div_cells = make_diversification_cells(results, max_num_instances)
     for k, v in div_cells.items():

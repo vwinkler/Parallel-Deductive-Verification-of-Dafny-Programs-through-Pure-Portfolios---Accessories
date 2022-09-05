@@ -13,6 +13,7 @@ class Main:
         parser.add_argument("--plot-file", dest="plot_file", type=str)
         parser.add_argument("--info-file", dest="info_file", type=str)
         parser.add_argument("--boxplot", dest="make_boxplot", action='store_true')
+        parser.add_argument("--ignore-runtimes-above", dest="lower_runtime_limit", type=float)
         parser.add_argument("--show-plot", dest="show", action='store_true')
         self.args = parser.parse_args()
 
@@ -23,7 +24,8 @@ class Main:
             df_mean_runtime = self.accumulate_iterations(df)
         else:
             df_mean_runtime = df
-        df_total_mean_runtime = self.accumulate_benchmarks(df_mean_runtime)
+        df_mean_runtime_filtered = self.filter(df_mean_runtime)
+        df_total_mean_runtime = self.accumulate_benchmarks(df_mean_runtime_filtered)
         df_min_mean_total_runtime = self.pick_best_configurations_per_cpu_count(df_total_mean_runtime)
         df_min_mean_total_runtime["runtime"] = df_min_mean_total_runtime["runtime"] / num_benchmarks
 
@@ -33,20 +35,35 @@ class Main:
         if self.args.info_file:
             self.print_info(df_min_mean_total_runtime, self.args.info_file)
 
+    def filter(self, df_mean_runtime):
+        if self.args.lower_runtime_limit is not None:
+            return df_mean_runtime[df_mean_runtime["runtime"] < self.args.lower_runtime_limit]
+        return df_mean_runtime
+
     def print_info(self, df_min_mean_total_runtime, info_file_name):
         with open(info_file_name, "w") as file:
             file.write(df_min_mean_total_runtime.to_string())
 
     def accumulate_iterations(self, df):
         return df.groupby(["problem", "procedure", "diversification_string", "num_running_instances"]).agg(
-            {"runtime": "mean"}).reset_index()
+            runtime=("runtime", "mean"), iterations=("runtime", "count")).reset_index()
 
     def accumulate_benchmarks(self, df_mean_runtime):
         if self.args.make_boxplot:
             columns = ["diversification_string", "num_running_instances", "seed"]
+            df_total_mean_runtime = df_mean_runtime.groupby(columns).agg(runtime=("runtime", "sum")).reset_index()
         else:
+            def join(xs):
+                xs = xs.tolist()
+                if len(xs) == 0:
+                    return "none"
+                if all([xs[0] == x for x in xs]):
+                    return xs[0]
+                return "varies"
+
             columns = ["diversification_string", "num_running_instances"]
-        df_total_mean_runtime = df_mean_runtime.groupby(columns).agg({"runtime": "sum"}).reset_index()
+            df_total_mean_runtime = df_mean_runtime.groupby(columns).agg(runtime=("runtime", "sum"),
+                                                                         iterations=("iterations", join)).reset_index()
         return df_total_mean_runtime
 
     def pick_best_configurations_per_cpu_count(self, df_total_mean_runtime):
