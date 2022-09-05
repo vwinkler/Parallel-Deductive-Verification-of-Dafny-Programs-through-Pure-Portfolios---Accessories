@@ -13,6 +13,7 @@ class Main:
         parser.add_argument("--plot-file", dest="plot_file", type=str)
         parser.add_argument("--info-file", dest="info_file", type=str)
         parser.add_argument("--boxplot", dest="make_boxplot", action='store_true')
+        parser.add_argument("--ignore-runtimes-above", dest="lower_runtime_limit", type=float)
         parser.add_argument("--show-plot", dest="show", action='store_true')
         self.args = parser.parse_args()
 
@@ -23,7 +24,8 @@ class Main:
             df_mean_runtime = self.accumulate_iterations(df)
         else:
             df_mean_runtime = df
-        df_total_mean_runtime = self.accumulate_benchmarks(df_mean_runtime)
+        df_mean_runtime_filtered = self.filter(df_mean_runtime)
+        df_total_mean_runtime = self.accumulate_benchmarks(df_mean_runtime_filtered)
         df_min_mean_total_runtime = self.pick_best_configurations_per_cpu_count(df_total_mean_runtime)
         df_min_mean_total_runtime["runtime"] = df_min_mean_total_runtime["runtime"] / num_benchmarks
 
@@ -32,6 +34,11 @@ class Main:
 
         if self.args.info_file:
             self.print_info(df_min_mean_total_runtime, self.args.info_file)
+
+    def filter(self, df_mean_runtime):
+        if self.args.lower_runtime_limit is not None:
+            return df_mean_runtime[df_mean_runtime["runtime"] < self.args.lower_runtime_limit]
+        return df_mean_runtime
 
     def print_info(self, df_min_mean_total_runtime, info_file_name):
         with open(info_file_name, "w") as file:

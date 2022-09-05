@@ -43,7 +43,9 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01_best_speedup_lineplot.svg \
 	%_evaluation/01_best_speedup_by_benchmark_lineplot.svg \
 	%_evaluation/01_best_speedup_boxplot.svg \
+	%_evaluation/01_best_speedup_boxplot_penalties_filtered.svg \
 	%_evaluation/01_best_speedup.txt \
+	%_evaluation/01_best_speedup_penalties_filtered.txt \
 	%_evaluation/01_inverted_cactus.svg \
 	%_evaluation/01_top_config_latex_table.tex
 
@@ -173,6 +175,12 @@ opt_portfolio_shorter_jobs_results_list.txt : $(OPT_PF_SHORTER_JOBS)
 	
 %_evaluation/01_best_speedup.txt : %_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_best_speedup.py $< --info-file $@
+	
+%_evaluation/01_best_speedup_penalties_filtered.txt : %_penalized_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_best_speedup.py $< --info-file $@ --ignore-runtimes-above 600
+	
+%_evaluation/01_best_speedup_boxplot_penalties_filtered.svg : %_penalized_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_best_speedup.py --boxplot $< --plot-file $@ --ignore-runtimes-above 600
 
 %_evaluation/01_inverted_cactus.svg : %_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_inverted_cactus.py $< --plot-file $@
