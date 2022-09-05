@@ -12,10 +12,11 @@ N_VBS_IRL_VALIDATION=../../results/dafny/n-vbs_irl_validation
 DEFAULT=../../results/dafny/default_config
 SELECTION=../../results/dafny/selection
 OPT_PF_SHORTER_JOBS=../../results/dafny/optimal_portfolio_shorter_jobs
+LOCAL=../../results/dafny/local/n-vbs_irl_desktop
 
 evaluation_prefixes := primary noassert noassert_more_iterations bool_params validation \
                        more_iterations parallel_vcs n-vbs_irl n-vbs_irl_validation default \
-                       selection opt_portfolio_shorter_jobs
+                       selection opt_portfolio_shorter_jobs local
 
 evaluations := $(patsubst %, %_evaluation, $(evaluation_prefixes))
 ps := 1 2 3 4 5 6 7 8
@@ -32,6 +33,10 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01_correlation_job_number.svg \
 	%_evaluation/01_correlation_call_in_job_number.svg \
 	%_evaluation/01_correlation_median_runtime.svg \
+	%_evaluation/01_correlation_job_number_boxplot.svg \
+	%_evaluation/01_correlation_call_in_job_number_boxplot.svg \
+	%_evaluation/01_correlation_job_number_boxplot_grouped.svg \
+	%_evaluation/01_correlation_call_in_job_number_boxplot_grouped.svg \
 	%_evaluation/01_relative.svg \
 	%_evaluation/01.html \
 	%_evaluation/01.ods \
@@ -97,6 +102,9 @@ selection_results_list.txt : $(SELECTION)
 opt_portfolio_shorter_jobs_results_list.txt : $(OPT_PF_SHORTER_JOBS)
 	find $^ -name '*.json' > $@
 
+local_results_list.txt : $(LOCAL)
+	find $^ -name '*.json' > $@
+
 %_collection.h5 : %_results_list.txt
 	$(PYTHON) $(EVAL_SCRIPTS)/collect.py $@ - < $<
 	
@@ -116,16 +124,28 @@ opt_portfolio_shorter_jobs_results_list.txt : $(OPT_PF_SHORTER_JOBS)
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with start_time --plot-file $@
 
 %_evaluation/01_correlation_call_number.svg : %_collection.h5
-	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_number --plot-file $@
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_number --plot-file $@ --regression
 
 %_evaluation/01_correlation_job_number.svg : %_collection.h5
-	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with job_number --plot-file $@
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with job_number --plot-file $@ --regression
 
 %_evaluation/01_correlation_call_in_job_number.svg : %_collection.h5
-	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_in_job_number --plot-file $@
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_in_job_number --plot-file $@ --regression
 
 %_evaluation/01_correlation_median_runtime.svg : %_collection.h5
-	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_in_job_number --plot-file $@
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with median_runtime --plot-file $@ --regression
+
+%_evaluation/01_correlation_job_number_boxplot.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with job_number --plot-file $@ --num-boxplots atomic --regression
+
+%_evaluation/01_correlation_call_in_job_number_boxplot.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_in_job_number --plot-file $@ --num-boxplots atomic --regression
+
+%_evaluation/01_correlation_job_number_boxplot_grouped.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with job_number --plot-file $@ --num-boxplots 10 --regression
+
+%_evaluation/01_correlation_call_in_job_number_boxplot_grouped.svg : %_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_correlation.py $< --with call_in_job_number --plot-file $@ --num-boxplots 10 --regression
 
 %_evaluation/01_gaps.txt : %_unpenalized_matrix.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/report_empty_cells.py $< > $@
