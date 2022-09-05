@@ -60,7 +60,8 @@ def main():
     ax.set(title="", xlabel=args.other_quantity.replace("_", "\\_"), ylabel='runtime / median runtime')
     if not df.empty:
         x = df_with_median[other_quantity]
-        y = df_with_median["runtime_factor"]
+        y = df_with_median["runtime_factor"].astype("float64")
+
         if args.boxplot_grouper is None:
             ax.scatter(x=x, y=y, c=df_with_median["runtime_factor_rank_in_group"], s=5)
         else:
