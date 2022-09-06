@@ -9,15 +9,34 @@
         "dafny_command": "/opt/dafny/dafny",
         "commit_hash": "",
         "timeout": 600,
-        "cpu_queue": "bw-uni-cluster-single"
+        "cpu_queue": "bw-uni-cluster-single",
+        "pairs": [
+            [
+                "call_number",
+                "82"
+            ],
+            [
+                "job_number",
+                "56"
+            ],
+            [
+                "call_in_job_number",
+                "2"
+            ]
+        ]
+    },
+    "key-values": {
+        "call_number": "82",
+        "job_number": "56",
+        "call_in_job_number": "2"
     },
     "commit_hash": "",
     "total_runtime": {
-        "start": 1661314906.9165883,
-        "start_readable": "2022-08-24T06:21:46.916588",
-        "end": 1661314914.4645612,
-        "end_readable": "2022-08-24T06:21:54.464561",
-        "duration": "7.5479729176"
+        "start": 1662429922.6031811,
+        "start_readable": "2022-09-06T04:05:22.603181",
+        "end": 1662429938.8520916,
+        "end_readable": "2022-09-06T04:05:38.852092",
+        "duration": "16.2489104271"
     },
     "termination_reason": "instance termination",
     "instances": [
@@ -30,7 +49,7 @@
                 "/proc:Impl$$RSiblings.__default.siblingsRightOfPathAreConstant",
                 "/compile:0",
                 "/rlimit:9999999",
-                "/xml:/tmp/tmp6zzc74bd.xml",
+                "/xml:/tmp/tmp12i_qo1v.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=10"
             ],
             "diversification": [
@@ -49,7 +68,7 @@
                 "/proc:Impl$$RSiblings.__default.siblingsRightOfPathAreConstant",
                 "/compile:0",
                 "/rlimit:9999999",
-                "/xml:/tmp/tmpfm2w4krx.xml",
+                "/xml:/tmp/tmpz3s8yoo_.xml",
                 "/vcsMaxSplits:8"
             ],
             "diversification": [
@@ -62,14 +81,14 @@
             "stderr": [],
             "xml": {
                 "version": "3.4.2.40221",
-                "command": "/opt/dafny/Dafny.dll /benchmarks/deposit-sc/synthattribute/RightSiblings.dfy /proc:Impl$$RSiblings.__default.siblingsRightOfPathAreConstant /compile:0 /rlimit:9999999 /xml:/tmp/tmpfm2w4krx.xml /vcsMaxSplits:8",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/deposit-sc/synthattribute/RightSiblings.dfy /proc:Impl$$RSiblings.__default.siblingsRightOfPathAreConstant /compile:0 /rlimit:9999999 /xml:/tmp/tmpz3s8yoo_.xml /vcsMaxSplits:8",
                 "methods": [
                     {
                         "name": "Impl$$RSiblings.__default.siblingsRightOfPathAreConstant",
-                        "startTime": "2022-08-24 04:21:48+00:00",
+                        "startTime": "2022-09-06 02:05:27+00:00",
                         "finished": true,
-                        "endTime": "2022-08-24 04:21:53+00:00",
-                        "duration": 4.7553207,
+                        "endTime": "2022-09-06 02:05:38+00:00",
+                        "duration": 10.1571605,
                         "outcome": "correct"
                     }
                 ]
@@ -84,15 +103,86 @@
                 "/proc:Impl$$RSiblings.__default.siblingsRightOfPathAreConstant",
                 "/compile:0",
                 "/rlimit:9999999",
-                "/xml:/tmp/tmpq6dg2ytp.xml",
+                "/xml:/tmp/tmpopo_54qs.xml",
                 "/proverOpt:O:smt.qi.eager_threshold=20"
             ],
             "diversification": [
                 "/proverOpt:O:smt.qi.eager_threshold=20"
             ],
-            "stdout": [],
+            "stdout": [
+                "b'/benchmarks/deposit-sc/synthattribute/RightSiblings.dfy(247,68): Error: A precondition for this call might not hold.'",
+                "b'/benchmarks/deposit-sc/synthattribute/RightSiblings.dfy(133,17): Related location: This is the precondition that might not hold.'",
+                "b'/benchmarks/deposit-sc/synthattribute/../trees/Trees.dfy(143,8): Related location'",
+                "b'/benchmarks/deposit-sc/synthattribute/../trees/Trees.dfy(143,69): Related location'",
+                "b'Execution trace:'",
+                "b'    (0,0): anon0'",
+                "b'    (0,0): anon70_Then'",
+                "b'    (0,0): anon71_Else'",
+                "b'    (0,0): anon91_Else'",
+                "b'    (0,0): anon109_Then'",
+                "b'    (0,0): anon110_Then'",
+                "b'    (0,0): anon115_Then'",
+                "b'/benchmarks/deposit-sc/synthattribute/RightSiblings.dfy(247,68): Error: A precondition for this call might not hold.'",
+                "b'/benchmarks/deposit-sc/synthattribute/RightSiblings.dfy(137,17): Related location: This is the precondition that might not hold.'",
+                "b'/benchmarks/deposit-sc/synthattribute/RightSiblings.dfy(137,72): Related location'",
+                "b'Execution trace:'",
+                "b'    (0,0): anon0'",
+                "b'    (0,0): anon70_Then'",
+                "b'    (0,0): anon71_Else'",
+                "b'    (0,0): anon91_Else'",
+                "b'    (0,0): anon109_Then'",
+                "b'    (0,0): anon110_Then'",
+                "b'    (0,0): anon115_Then'",
+                "b'/benchmarks/deposit-sc/synthattribute/RightSiblings.dfy(248,48): Error: the calculation step between the previous line and this line might not hold'",
+                "b'Execution trace:'",
+                "b'    (0,0): anon0'",
+                "b'    (0,0): anon70_Then'",
+                "b'    (0,0): anon71_Else'",
+                "b'    (0,0): anon91_Else'",
+                "b'    (0,0): anon109_Then'",
+                "b'    (0,0): anon110_Then'",
+                "b'    (0,0): anon115_Then'",
+                "b'/benchmarks/deposit-sc/synthattribute/RightSiblings.dfy(264,68): Error: A precondition for this call might not hold.'",
+                "b'/benchmarks/deposit-sc/synthattribute/RightSiblings.dfy(133,17): Related location: This is the precondition that might not hold.'",
+                "b'/benchmarks/deposit-sc/synthattribute/../trees/Trees.dfy(143,8): Related location'",
+                "b'/benchmarks/deposit-sc/synthattribute/../trees/Trees.dfy(143,69): Related location'",
+                "b'Execution trace:'",
+                "b'    (0,0): anon0'",
+                "b'    (0,0): anon70_Then'",
+                "b'    (0,0): anon71_Else'",
+                "b'    (0,0): anon91_Else'",
+                "b'    (0,0): anon109_Then'",
+                "b'    (0,0): anon110_Else'",
+                "b'    (0,0): anon120_Then'",
+                "b'/benchmarks/deposit-sc/synthattribute/RightSiblings.dfy(264,68): Error: A precondition for this call might not hold.'",
+                "b'/benchmarks/deposit-sc/synthattribute/RightSiblings.dfy(137,17): Related location: This is the precondition that might not hold.'",
+                "b'/benchmarks/deposit-sc/synthattribute/RightSiblings.dfy(137,72): Related location'",
+                "b'Execution trace:'",
+                "b'    (0,0): anon0'",
+                "b'    (0,0): anon70_Then'",
+                "b'    (0,0): anon71_Else'",
+                "b'    (0,0): anon91_Else'",
+                "b'    (0,0): anon109_Then'",
+                "b'    (0,0): anon110_Else'",
+                "b'    (0,0): anon120_Then'",
+                "b''",
+                "b'Dafny program verifier finished with 0 verified, 5 errors'"
+            ],
             "stderr": [],
-            "xml": "no element found: line 1, column 0"
+            "xml": {
+                "version": "3.4.2.40221",
+                "command": "/opt/dafny/Dafny.dll /benchmarks/deposit-sc/synthattribute/RightSiblings.dfy /proc:Impl$$RSiblings.__default.siblingsRightOfPathAreConstant /compile:0 /rlimit:9999999 /xml:/tmp/tmpopo_54qs.xml /proverOpt:O:smt.qi.eager_threshold=20",
+                "methods": [
+                    {
+                        "name": "Impl$$RSiblings.__default.siblingsRightOfPathAreConstant",
+                        "startTime": "2022-09-06 02:05:24+00:00",
+                        "finished": true,
+                        "endTime": "2022-09-06 02:05:36+00:00",
+                        "duration": 11.9442835,
+                        "outcome": "errors"
+                    }
+                ]
+            }
         }
     ]
 }
