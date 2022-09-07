@@ -59,12 +59,17 @@ misc : vbs_comparison/cactus_with_vbs.svg \
 	$(n-vbs_html) \
 	vbs_n-vbs_portfolio_comparison/cactus_with_vbs.svg \
 	vbs_n-vbs_portfolio_comparison/cactus_with_n-vbs.svg \
+	vbs_opt_portfolio_shorter_jobs_comparison/cactus_with_vbs.svg \
+	vbs_opt_portfolio_shorter_jobs_comparison/cactus_with_n-vbs.svg \
 	external_comparison/cactus_1.svg \
 	external_comparison/cactus_8.svg \
 	external_comparison/cactus_c.svg \
 	external_comparison/cactus_optk_1.svg \
 	external_comparison/cactus_optk_8.svg \
-	external_comparison/cactus_optk_c.svg
+	external_comparison/cactus_optk_c.svg \
+	external_comparison/cactus_optk_1_short_jobs.svg \
+	external_comparison/cactus_optk_8_short_jobs.svg \
+	external_comparison/cactus_optk_c_short_jobs.svg
 
 primary_results_list.txt : $(PORTFOLIO_ASSEMBLING_RESULTS)
 	find $^ -name '*.json' > $@
@@ -224,9 +229,20 @@ vbs_n-vbs_portfolio_comparison_collection.h5 : n-vbs_irl_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/combine_results.py $^ $@ --param source -1 portfolio -2 all
 	
 vbs_n-vbs_portfolio_comparison/cactus_with_vbs.svg : vbs_n-vbs_portfolio_comparison_collection.h5
-	$(PYTHON) $(EVAL_SCRIPTS)/plot_inverted_cactus_with_vbs.py $< --plot-file $@
+	#$(PYTHON) $(EVAL_SCRIPTS)/plot_inverted_cactus_with_vbs.py $< --plot-file $@
+	touch $@
 
 vbs_n-vbs_portfolio_comparison/cactus_with_n-vbs.svg : vbs_n-vbs_portfolio_comparison_collection.h5
+	#$(PYTHON) $(EVAL_SCRIPTS)/plot_inverted_cactus_with_n-vbs.py $< --plot-file $@
+	touch $@
+
+vbs_opt_portfolio_shorter_jobs_comparison_collection.h5 : opt_portfolio_shorter_jobs_penalized_collection.h5 selection_penalized_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/combine_results.py $^ $@ --param source -1 portfolio -2 all
+	
+vbs_opt_portfolio_shorter_jobs_comparison/cactus_with_vbs.svg : vbs_opt_portfolio_shorter_jobs_comparison_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_inverted_cactus_with_vbs.py $< --plot-file $@
+
+vbs_opt_portfolio_shorter_jobs_comparison/cactus_with_n-vbs.svg : vbs_opt_portfolio_shorter_jobs_comparison_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_inverted_cactus_with_n-vbs.py $< --plot-file $@
 	
 external_comparison.h5 : more_iterations_penalized_collection.h5 parallel_vcs_penalized_collection.h5
@@ -259,6 +275,21 @@ external_comparison/cactus_optk_c.svg : external_comparison_optk.h5
 	mkdir -p $(@D)
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_n_vcs_cactus.py $< --plot-file $@ --approach 's=const>>p'
 	
+external_comparison_optk_short_jobs.h5 : opt_portfolio_shorter_jobs_penalized_collection.h5 parallel_vcs_penalized_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/combine_results.py $^ $@ --param source -1 more_iterations -2 parallel_vcs
+
+external_comparison/cactus_optk_1_short_jobs.svg : external_comparison_optk_short_jobs.h5
+	mkdir -p $(@D)
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_n_vcs_cactus.py $< --plot-file $@ --approach 's=p'
+
+external_comparison/cactus_optk_8_short_jobs.svg : external_comparison_optk_short_jobs.h5
+	mkdir -p $(@D)
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_n_vcs_cactus.py $< --plot-file $@ --approach 's=8p'
+
+external_comparison/cactus_optk_c_short_jobs.svg : external_comparison_optk_short_jobs.h5
+	mkdir -p $(@D)
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_n_vcs_cactus.py $< --plot-file $@ --approach 's=const>>p'
+
 %_evaluation/01_top_config_latex_table.tex : %_penalized_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/print_vbs_latex_table.py --prefix '\dafnycl{' --suffix '}' $< > $@
 	
