@@ -14,6 +14,10 @@ def get_other_quantity_column_name(other_quantity_arg_name):
         return other_quantity_arg_name
 
 
+def translate_x_label(args):
+    return args.other_quantity.replace("_", "\\_").capitalize()
+
+
 def boxplot_grouper(num_boxplots_arg):
     def group_num_calls(df, other_quantity):
         try:
@@ -57,7 +61,7 @@ def main():
 
     plt.rcParams.update({"text.usetex": True})
     figure, ax = plt.subplots()
-    ax.set(title="", xlabel=args.other_quantity.replace("_", "\\_"), ylabel='runtime / median runtime')
+    ax.set(title="", xlabel=translate_x_label(args), ylabel='Runtime / median runtime')
     if not df.empty:
         x = df_with_median[other_quantity]
         y = df_with_median["runtime_factor"].astype("float64")
