@@ -1,4 +1,4 @@
-# Parallel-Deductive-Verification-of-Dafny-Programs-through-Pure-Portfolios---Accessories
+# Parallel Deductive Verification of Dafny Programs through Pure Portfolios
 
 This repository contains the source code, benchmarks, results and means to generate the figures
 of my thesis "Parallel Deductive Verification of Dafny Programs through Pure Portfolios"
