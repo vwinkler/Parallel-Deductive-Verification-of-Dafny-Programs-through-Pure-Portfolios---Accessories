@@ -55,13 +55,13 @@ class Main:
         if self.args.plot_file:
             figure.savefig(self.args.plot_file)
         else:
-            annot = ax.annotate("", xy=(0, 0), xytext=(20, 20), textcoords="offset points",
+            annot = ax.annotate("", xy=(0, 0), xytext=(5, 5), textcoords="offset points",
                                 bbox=dict(boxstyle="round", fc="w"), arrowprops=dict(arrowstyle="->"))
 
             def update_annot(ind):
                 pos = scatter_plot.get_offsets()[ind["ind"][0]]
                 annot.xy = pos
-                text = "\n".join([z_values[n] for n in ind["ind"]])
+                text = "\n".join([f"{z_values[n]}, BM {x_values[n]}, SU {y_values[n]:.2f}" for n in ind["ind"]])
                 text = text.replace("_", "\\_")
                 annot.set_text(text)
                 annot.get_bbox_patch().set_alpha(0.4)
@@ -74,7 +74,6 @@ class Main:
                         update_annot(ind)
                         annot.set_visible(True)
                         figure.canvas.draw_idle()
-                        ax.set(title=f"{random.choice([1, 2, 3])}")
                     else:
                         if vis:
                             annot.set_visible(False)
@@ -93,7 +92,7 @@ class Main:
         df_benchmarks = df[columns_sorted].groupby(columns_sorted).size().reset_index(name="Freq")
         df_benchmarks.sort_values(columns_sorted, inplace=True)
         benchmarks = list(df_benchmarks[columns_sorted].itertuples(index=False, name=None))
-        renaming = {benchmark: num for benchmark, num in zip(benchmarks, range(len(benchmarks)))}
+        renaming = {benchmark: num for benchmark, num in zip(benchmarks, range(1, 1 + len(benchmarks)))}
         return df.apply(lambda row: renaming[(row["problem"], row["procedure"])], axis=1)
 
     def accumulate_iterations(self, df):
