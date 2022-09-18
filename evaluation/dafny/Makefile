@@ -296,5 +296,11 @@ external_comparison/cactus_optk_c_short_jobs.svg : external_comparison_optk_shor
 %_evaluation/01_dates.txt : %_collection.h5
 	$(PYTHON) $(EVAL_SCRIPTS)/print_dates.py $< > $@
 
+%_evaluation/01_by_benchmark_all.svg : %_penalized_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_by_benchmark.py $< --plot-file $@ --max-runtime 600 --y-scale log
+
+%_evaluation/01_by_benchmark_10-percent-plus.svg : %_penalized_collection.h5
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_by_benchmark.py $< --plot-file $@ --max-runtime 600 --y-scale log
+
 .PRECIOUS: %_collection.h5 %_penalized_matrix.h5
 .PHONY: all $(evaluations) misc
