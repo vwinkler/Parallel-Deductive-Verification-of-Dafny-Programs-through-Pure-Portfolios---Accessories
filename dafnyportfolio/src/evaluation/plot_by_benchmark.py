@@ -18,6 +18,7 @@ class Main:
         parser.add_argument("--y-scale", dest="y_scale", type=str, choices=["linear", "log"], default="linear")
         parser.add_argument("--y-lower-limit", dest="y_lower_limit", type=float)
         parser.add_argument("--y-upper-limit", dest="y_upper_limit", type=float)
+        parser.add_argument("--highlight-configuration", dest="highlighted_configuration", type=str)
         self.args = parser.parse_args()
 
         self.x_column = "benchmark"
@@ -27,11 +28,16 @@ class Main:
     def run(self):
         df = load_collection(self.args.results_collection_in)
         df = self.accumulate_iterations(df)
-        df["benchmark"] = self.make_benchmark_column(df)
+        df[self.x_column] = self.make_benchmark_column(df)
         df["default_runtime"] = self.make_default_runtime_column(df)
         df[self.y_column] = df["default_runtime"] / df["runtime"]
         df = self.filter_results(df)
+        df["color"] = self.make_color_column(df)
+        df.sort_values("color", inplace=True, kind="stable")
         self.plot(df)
+
+    def make_color_column(self, df):
+        return np.where(df[self.z_column].str.match(self.args.highlighted_configuration), "C1", "C0")
 
     def filter_results(self, df):
         result = df
@@ -49,7 +55,8 @@ class Main:
         x_values = np.array(df[self.x_column])
         y_values = np.array(df[self.y_column])
         z_values = np.array(df[self.z_column])
-        scatter_plot = ax.scatter(x=x_values, y=y_values)
+        colors = np.array(df["color"])
+        scatter_plot = ax.scatter(x=x_values, y=y_values, c=colors)
         plt.yscale(self.args.y_scale)
         plt.tight_layout()
         if self.args.plot_file:
