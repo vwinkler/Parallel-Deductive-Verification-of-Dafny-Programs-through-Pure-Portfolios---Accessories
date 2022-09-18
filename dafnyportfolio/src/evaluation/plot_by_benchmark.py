@@ -16,6 +16,8 @@ class Main:
         parser.add_argument("--max-runtime", dest="max_runtime", type=float)
         parser.add_argument("--plot-file", dest="plot_file", type=str)
         parser.add_argument("--y-scale", dest="y_scale", type=str, choices=["linear", "log"], default="linear")
+        parser.add_argument("--y-lower-limit", dest="y_lower_limit", type=float)
+        parser.add_argument("--y-upper-limit", dest="y_upper_limit", type=float)
         self.args = parser.parse_args()
 
         self.x_column = "benchmark"
@@ -35,6 +37,10 @@ class Main:
         result = df
         if self.args.max_runtime:
             result = result[df["runtime"] < self.args.max_runtime]
+        if self.args.y_lower_limit:
+            result = result[df[self.y_column] >= self.args.y_lower_limit]
+        if self.args.y_upper_limit:
+            result = result[df[self.y_column] <= self.args.y_upper_limit]
         return result
 
     def plot(self, df):
