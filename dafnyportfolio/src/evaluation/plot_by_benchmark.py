@@ -11,6 +11,7 @@ class Main:
     def __init__(self):
         parser = argparse.ArgumentParser(description="Make inverted cactus plot")
         parser.add_argument(metavar="COLLECTION_IN", dest="results_collection_in", type=str)
+        parser.add_argument("--max-runtime", dest="max_runtime", type=float)
         parser.add_argument("--plot-file", dest="plot_file", type=str)
         self.args = parser.parse_args()
 
@@ -20,7 +21,13 @@ class Main:
         df["benchmark"] = self.make_benchmark_column(df)
         df["default_runtime"] = self.make_default_runtime_column(df)
         df["speedup"] = df["default_runtime"] / df["runtime"]
+        df = self.filter_results(df)
         self.plot(df, "benchmark", "speedup")
+
+    def filter_results(self, df):
+        if self.args.max_runtime:
+            result = df[df["runtime"] < self.args.max_runtime]
+        return result
 
     def plot(self, df, x, y):
         plt.rcParams.update({"text.usetex": True})
