@@ -18,26 +18,31 @@ class Main:
         parser.add_argument("--y-scale", dest="y_scale", type=str, choices=["linear", "log"], default="linear")
         self.args = parser.parse_args()
 
+        self.x_column = "benchmark"
+        self.y_column = "speedup"
+        self.z_column = "diversification_string"
+
     def run(self):
         df = load_collection(self.args.results_collection_in)
         df = self.accumulate_iterations(df)
         df["benchmark"] = self.make_benchmark_column(df)
         df["default_runtime"] = self.make_default_runtime_column(df)
-        df["speedup"] = df["default_runtime"] / df["runtime"]
+        df[self.y_column] = df["default_runtime"] / df["runtime"]
         df = self.filter_results(df)
-        self.plot(df, "benchmark", "speedup", "diversification_string")
+        self.plot(df)
 
     def filter_results(self, df):
+        result = df
         if self.args.max_runtime:
-            result = df[df["runtime"] < self.args.max_runtime]
+            result = result[df["runtime"] < self.args.max_runtime]
         return result
 
-    def plot(self, df, x, y, hover_text):
+    def plot(self, df):
         plt.rcParams.update({"text.usetex": True})
         figure, ax = plt.subplots()
-        x_values = np.array(df[x])
-        y_values = np.array(df[y])
-        configurations = np.array(df[hover_text])
+        x_values = np.array(df[self.x_column])
+        y_values = np.array(df[self.y_column])
+        z_values = np.array(df[self.z_column])
         scatter_plot = ax.scatter(x=x_values, y=y_values)
         plt.yscale(self.args.y_scale)
         plt.tight_layout()
@@ -50,7 +55,7 @@ class Main:
             def update_annot(ind):
                 pos = scatter_plot.get_offsets()[ind["ind"][0]]
                 annot.xy = pos
-                text = "\n".join([configurations[n] for n in ind["ind"]])
+                text = "\n".join([z_values[n] for n in ind["ind"]])
                 text = text.replace("_", "\\_")
                 annot.set_text(text)
                 annot.get_bbox_patch().set_alpha(0.4)
