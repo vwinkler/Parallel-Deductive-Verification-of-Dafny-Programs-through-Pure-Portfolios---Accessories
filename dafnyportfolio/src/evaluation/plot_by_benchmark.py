@@ -13,6 +13,7 @@ class Main:
         parser.add_argument(metavar="COLLECTION_IN", dest="results_collection_in", type=str)
         parser.add_argument("--max-runtime", dest="max_runtime", type=float)
         parser.add_argument("--plot-file", dest="plot_file", type=str)
+        parser.add_argument("--y-scale", dest="y_scale", type=str, choices=["linear", "log"], default="linear")
         self.args = parser.parse_args()
 
     def run(self):
@@ -35,6 +36,7 @@ class Main:
         x_values = df[x]
         y_values = df[y]
         ax.scatter(x=x_values, y=y_values)
+        plt.yscale(self.args.y_scale)
         plt.tight_layout()
         if self.args.plot_file:
             figure.savefig(self.args.plot_file)
