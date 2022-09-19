@@ -37,7 +37,10 @@ class Main:
         self.plot(df)
 
     def make_color_column(self, df):
-        return np.where(df[self.z_column].str.match(self.args.highlighted_configuration), "C1", "C0")
+        if self.args.highlighted_configuration:
+            return np.where(df[self.z_column].str.match(self.args.highlighted_configuration), "C1", "C0")
+        else:
+            return "C0"
 
     def filter_results(self, df):
         result = df

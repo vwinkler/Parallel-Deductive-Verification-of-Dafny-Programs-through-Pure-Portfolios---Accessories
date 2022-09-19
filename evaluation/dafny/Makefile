@@ -52,7 +52,9 @@ $(evaluations) : %_evaluation : \
 	%_evaluation/01_best_speedup.txt \
 	%_evaluation/01_best_speedup_penalties_filtered.txt \
 	%_evaluation/01_inverted_cactus.svg \
-	%_evaluation/01_top_config_latex_table.tex
+	%_evaluation/01_top_config_latex_table.tex \
+	%_evaluation/01_by_benchmark_all.svg \
+	%_evaluation/01_by_benchmark_10-percent-plus.svg
 
 misc : vbs_comparison/cactus_with_vbs.svg \
 	vbs_comparison/cactus_with_n-vbs.svg \
@@ -300,7 +302,7 @@ external_comparison/cactus_optk_c_short_jobs.svg : external_comparison_optk_shor
 	$(PYTHON) $(EVAL_SCRIPTS)/plot_by_benchmark.py $< --plot-file $@ --max-runtime 600 --y-scale log
 
 %_evaluation/01_by_benchmark_10-percent-plus.svg : %_penalized_collection.h5
-	$(PYTHON) $(EVAL_SCRIPTS)/plot_by_benchmark.py $< --plot-file $@ --max-runtime 600 --y-scale log
+	$(PYTHON) $(EVAL_SCRIPTS)/plot_by_benchmark.py $< --plot-file $@ --max-runtime 600 --y-scale log --y-lower-limit 1.1
 
 .PRECIOUS: %_collection.h5 %_penalized_matrix.h5
 .PHONY: all $(evaluations) misc
